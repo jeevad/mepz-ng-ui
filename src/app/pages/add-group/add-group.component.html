@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<section class="section">
+
+    <div class="container">
+        <div class="row page-content">
+           <div class="col-md-12">
+
+            <div class="d-lg-flex align-items-center mb-4 gap-3">
+                <h4 class="mb-0 text-primary">Group Add</h4>
+                <div class="ms-auto"><a routerLink="/group-detail" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i class="bx bx-table"></i>Manage Group</a></div>
+             </div>
+
+             <div class="card border-top border-0 border-4 border-primary">
+                <div class="card-body p-5">
+                           
+                            
+                            <form   [formGroup] = "addGroups" (ngSubmit)="SaveData()">
+                                <div class="col-md-6 mt-0" >
+                                    <label for="inputFirstName" class="form-label">Group  Code</label>
+                                    <input type="text"  class="form-control" id="inputFirstName" placeholder="Enter Group code" formControlName="groupcode" autocomplete="off"
+                                    [ngClass]="{'is-invalid':submitted && addGroups.controls['groupcode'].errors}"/>
+                                    <div class="text-danger" *ngIf="submitted && addGroups.controls['groupcode'].errors && addGroups.controls['groupcode'].errors?.['required']">groupcode is Required</div>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label for="inputLastName" class="form-label">Group Name</label>
+                                    <input type="text"  class="form-control" id="inputLastName" placeholder="Enter Group name" formControlName="groupname" autocomplete="o
+                                    " [ngClass]="{'is-invalid':submitted && addGroups.controls['groupname'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addGroups.controls['groupname'].errors && addGroups.controls['groupname'].errors?.['required']">groupname is Required</div>
+                                </div>
+                                <div class="col-md-6 text-center mt-3">
+                                    <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+                                    <!-- <a routerLink="/group-detail" class="btn btn-secondary px-5">Cancel</a> -->
+                                    <a routerLink="/group-detail"><i class="material-icon">Cancel</i></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          
+            </section>

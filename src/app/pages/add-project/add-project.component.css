@@ -1,0 +1,9 @@
+.form-label {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.px-5 {
+    padding-right: 3rem!important;
+    padding-left: 3rem!important;
+}

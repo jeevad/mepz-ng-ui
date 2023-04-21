@@ -1,0 +1,171 @@
+<app-header></app-header>
+
+<section class="section">
+
+    <div class="container">
+        <div class="row page-content">
+
+            
+                <div class="col-md-12">
+
+                    <div class="d-lg-flex align-items-center mb-4 gap-3">
+                        <h4 class="mb-0 text-primary">Add Company </h4>
+                        <div class="ms-auto"><a routerLink="/company" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i class="bx bx-table"></i>Manage Company</a></div>
+                     </div>
+
+
+
+                    <div class="card border-top border-0 border-4 border-primary">
+                        <div class="card-body p-5">
+                        
+                            <div class="row">
+
+                            
+                            <div class="col-md-4">
+                                <label for="formFile" class="form-label">Setup logo 1</label>
+                                <input class="form-control" type="file" id="formFile" formControlName="logo1">
+                                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show1">
+                                <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="formFile" class="form-label">Setup logo 2</label>
+                                <input class="form-control" type="file" id="formFile" formControlName="logo2">
+                                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show2">
+                                <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="formFile" class="form-label">Setup logo 3</label>
+                                <input class="form-control" type="file" id="formFile" formControlName="logo3">
+                                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show3">
+                                <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
+                            </div>
+
+                        </div>
+
+                           <form class="row g-3 mt-4" [formGroup] = "addCompany" (ngSubmit)="SaveData()">
+                                <div class="col-md-6">
+                                    <label for="inputCode" class="form-label">Company Code</label>
+                                    <input type="text" class="form-control" id="inputCode" placeholder="Enter Company code"formControlName="code" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['code'].errors}"/>
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['code'].errors && addCompany.controls['code'].errors?.['required']">
+                                        Company code is Required</div>
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="inactive">
+                                        <label class="form-check-label" for="gridCheck">Inactive</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputName" class="form-label">Company Name</label>
+                                    <input type="text" class="form-control" id="inputName" placeholder="Enter Company name"
+                                    formControlName="name" autocomplete="off" 
+                                        [ngClass]="{'is-invalid':submitted && addCompany.controls['name'].errors}"/>
+                                        <div class="text-danger" *ngIf="submitted && addCompany.controls['name'].errors && addCompany.controls['name'].errors?.['required']">Company Name is Required</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputAddress" class="form-label">Address</label>
+                                    <textarea class="form-control" id="inputAddress" placeholder="Address..." rows="3"  formControlName="address1" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['address1'].errors}"></textarea>
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['address1'].errors && addCompany.controls['address1'].errors?.['required']">Address is Required</div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputAddress2" class="form-label">Address 2</label>
+                                    <textarea class="form-control" id="inputAddress2" placeholder="Address 2..." rows="3" formControlName="address2" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['address2'].errors}"></textarea>
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['address2'].errors && addCompany.controls['address2'].errors?.['required']">Address is Required</div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputCity" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="inputCity" placeholder="Enter City" formControlName="city" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['city'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['city'].errors && addCompany.controls['city'].errors?.['required']">city is Required</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputState" class="form-label">State</label>
+                                    <input type="text" class="form-control" id="inputState" placeholder="Enter State"
+                                    formControlName="state" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['state'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['state'].errors && addCompany.controls['state'].errors?.['required']">state is Required</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputZip" class="form-label">Postal/Zip</label>
+                                    <input type="text" class="form-control" id="inputZip" placeholder="Enter Postal/Zip" formControlName="postal" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['postal'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['postal'].errors && addCompany.controls['postal'].errors?.['required']">Postal is Required</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputCountry" class="form-label">Country</label>
+                                    <input type="text" class="form-control" id="inputCountry" placeholder="Enter Country" formControlName="country" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['country'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['country'].errors && addCompany.controls['country'].errors?.['required']">Country is Required</div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <label for="formFile" class="form-label">Setup logo 1</label>
+                                    <input class="form-control" type="file" id="formFile" formControlName="logo1">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show1">
+                                    <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
+                                </div> -->
+                                <!-- <div class="col-md-4">
+                                    <label for="formFile" class="form-label">Setup logo 2</label>
+                                    <input class="form-control" type="file" id="formFile" formControlName="logo2">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show2">
+                                    <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="formFile" class="form-label">Setup logo 3</label>
+                                    <input class="form-control" type="file" id="formFile" formControlName="logo3">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show3">
+                                    <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
+                                </div> -->
+                                <!-- <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="inactive">
+                                    <label class="form-check-label" for="gridCheck">Do no Show</label>
+                                </div> -->
+                                <div class="card-title d-flex align-items-center mt-4">
+                                    <h5 class="mb-0 text-primary">Contact Details</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Contact" class="form-label">Contact</label>
+                                    <input type="text" class="form-control" id="Contact" placeholder="Enter Contact no" formControlName="contact" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['contact'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['contact'].errors && addCompany.controls['city'].errors?.['required']">contact is Required</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Phone" class="form-label">Phone</label>
+                                    <input type="text" class="form-control" id="Phone" placeholder="Enter Phone no" formControlName="phone" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['phone'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['phone'].errors && addCompany.controls['phone'].errors?.['required']">phone is Required</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Fax" class="form-label">Fax</label>
+                                    <input type="text" class="form-control" id="Fax" placeholder="Enter Fax" formControlName="fax" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['fax'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['city'].errors && addCompany.controls['fax'].errors?.['required']">Fax is Required</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Mobile" class="form-label">Mobile</label>
+                                    <input type="text" class="form-control" id="Mobile" placeholder="Enter Mobile"
+                                    formControlName="mobile" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['mobile'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['mobile'].errors && addCompany.controls['mobile'].errors?.['required']">mobile is Required</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="Email" placeholder="Enter Email address" formControlName="email" autocomplete="off" 
+                                    [ngClass]="{'is-invalid':submitted && addCompany.controls['email'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addCompany.controls['city'].errors && addCompany.controls['email'].errors?.['required']">Email is Required</div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary px-5 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+                                        <a routerLink="/company" class="btn btn-secondary px-5">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            </section>
+   

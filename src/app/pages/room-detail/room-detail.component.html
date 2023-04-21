@@ -1,0 +1,56 @@
+<app-header></app-header>
+
+<section class="section">
+
+    <div class="container">
+        <div class="row page-content">
+           <div class="col-md-12">
+       
+           
+
+                <div class="d-lg-flex align-items-center mb-4 gap-3">
+                    <h4 class="mb-0 text-primary">Room </h4>
+                    <div class="ms-auto"><a routerLink="/room-form" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add Room</a></div>
+                 </div>
+
+
+           
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <table class="example table dt-responsive nowrap " style="width:100%;"><br><br>
+                             <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Room Code</th>
+                                        <th>Room Name</th>
+                                        <th>Active</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                <!-- </thead> -->
+                                <tbody>
+                                    <tr *ngFor= "let item of roomData; let i=index;">
+                                        <td>{{i+1}}</td>
+                                        <td>{{item.roomcode}}</td>
+                                        <td>{{item.roomname}}</td>
+                                        <td>{{item.active}}</td>
+                                        <td>
+                                            <!-- <div class="d-flex order-actions"> -->
+                                             <!-- <a routerLink="/company-form/{{item._id}}" ><i class="material-icons">Edit</i></a> <a href="javascript:;" (click)="delete(item._id)"  ><i class="material-icon">Delete</i></a> -->
+                                             <a routerLink="/company-form/{{item._id}}"><i class="material-icons">Edit</i></a>  <a href="javascript:;"  (click)="delete(item._id)"  ><i class="material-icon">Delete</i></a>
+                                            <!-- </div> -->
+                                        </td>
+                                    </tr>
+                                   
+                                    
+                                    
+                                    
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+    </div>
+    </section>
+    

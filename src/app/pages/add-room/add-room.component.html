@@ -1,0 +1,63 @@
+<app-header></app-header>
+<section class="section">
+
+    <div class="container">
+        <div class="row page-content">
+
+            
+                <div class="col-md-12">
+
+                    <div class="d-lg-flex align-items-center mb-4 gap-3">
+                        <h4 class="mb-0 text-primary">Add Room </h4>
+                        <div class="ms-auto"><a routerLink="/room-detail" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i class="bx bx-table"></i>Manage Room</a></div>
+                     </div>
+           
+                        <div class="card border-top border-0 border-4 border-primary">
+                            <div class="card-body p-5">
+                                
+                                
+                                <div class="row">
+                                    <div class=" col-lg-6">
+                                      <div class="mb-3" *ngIf="isEdit">
+                                        <input  name="_id" type="hidden" class="form-control" formControlName="_id">
+                                    </div>
+                                    </div>
+                                
+                                <form [formGroup] = "addRoom" (ngSubmit)="SaveData()">
+                                    <div class="col-md-6 mt-0" >
+                                        <label for="inputFirstName" class="form-label">Room Code</label>
+                                        <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Room code" formControlName="roomcode" 
+                                        autocomplete="off" [ngClass]="{'is-invalid':submitted && addRoom.controls['roomcode'].errors}" />
+                                        <div class="text-danger" *ngIf="submitted && addRoom.controls['roomcode'].errors && addRoom.controls['roomcode'].errors?.['required']">
+                                            roomcode is Required</div>
+
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label for="inputLastName" class="form-label">Room Name</label>
+                                        <input type="text" class="form-control" id="inputLastName" placeholder="Enter Room name" formControlName="roomname" 
+                                        autocomplete="off" [ngClass]="{'is-invalid':submitted && addRoom.controls['roomname'].errors}" />
+                                        <div class="text-danger" *ngIf="submitted && addRoom.controls['roomname'].errors && addRoom.controls['roomname'].errors?.['required']">
+                                        roomname is Required</div>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label for="inputState"  class="form-label">Active</label>
+                                        <select class="custom-select form-select form-control"   (change)="change($event)" formControlName="active">
+                                            <option *ngFor="let list of active" [ngValue]="list">{{list}}</option>
+                                          </select>
+                                    </div>
+                                    <!-- <div class="col-md-12" *ngIf="error">
+                                        <span class={{messageclass}}>{{message}}</span>
+                                    </div> -->
+                                    <div class="col-md-6 text-center mt-3">
+                                        <button type="submit" class="btn btn-primary px-4 me-3" >{{ isEdit ? 'Update' : 'Save'}}</button>
+                                        <!-- <a routerLink="/room-detail" class="btn btn-secondary px-">Cancel</a> -->
+                                        <a routerLink="/room-detail"><i class="material-icon">Cancel</i></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+   </div>
+   </div>
+   </section>

@@ -1,0 +1,51 @@
+<app-header></app-header>
+<section class="section">
+
+    <div class="container">
+        <div class="row page-content">
+
+            <div class="col-md-12">
+
+            <div class="d-lg-flex align-items-center mb-4 gap-3">
+                <h4 class="mb-0 text-primary">Add Package </h4>
+                <div class="ms-auto"><a routerLink="/package" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
+                    <i class="bx bx-table"></i>Manage Package</a></div>
+             </div>
+            
+                    <div class="card border-top border-0 border-4 border-primary">
+                        <div class="card-body p-4">
+                            
+                            
+                            <form class="" [formGroup] = "addPackage" (ngSubmit)="SaveData()">
+                                <div class="col-md-6">
+                                    <label for="inputCode" class="form-label">Package Code</label>
+                                    <input type="text" class="form-control" id="inputCode" placeholder="Enter Package code" formControlName="packagecode" autocomplete="off"
+                                    [ngClass]="{'is-invalid':submitted && addPackage.controls['packagecode'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addPackage.controls['packagecode'].errors && addPackage.controls['packagecode'].errors?.['required']">packagecode is Required</div>
+
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label for="inputName" class="form-label">Package Name</label>
+                                    <input type="text" class="form-control" id="inputName" placeholder="Enter Package name" formControlName="packagename" autocomplete="off"
+                                    [ngClass]="{'is-invalid':submitted && addPackage.controls['packagename'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addPackage.controls['packagename'].errors && addPackage.controls['packagename'].errors?.['required']">packagename is Required</div>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label for="inputState" class="form-label">Active</label>
+                                    <select class="custom-select form-select form-control" (change)="change($event)" formControlName="active">
+                                        <option *ngFor="let list of active" [ngValue]="list">{{list}}</option>
+                                      </select>
+                                </div>
+                                <div class="col-md-6 text-center mt-3">
+                                    <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+                                        <!-- <a routerLink="/package" class="btn btn-secondary px-5">Cancel</a> -->
+                                        <a routerLink="/package" ><i class="material-icon">Cancel</i></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    </div>
+    
+    </section>

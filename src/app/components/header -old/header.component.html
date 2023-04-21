@@ -1,0 +1,109 @@
+ <!-- ======= Header Start ======= -->
+ <header class="header header--software header--transparrent d-lg-block">
+    <div id="navbar-wrap" class="header-bottom container-custom navbar-wrap">
+      
+       <div class="container">
+          <div class="header-bottom__row header-bottom__software_row">
+             <!-- <div class="header-bottom__col">
+                <div class="logo">
+                   <a href="index.html" class="logo__link">
+                   <img src="assets/images/logo.png" alt="" />
+                   </a>
+                </div>
+             </div>
+            -->
+             <div class="header-bottom__col">
+                <div class="main-menu">
+
+                 <nav class="navbar navbar-expand-lg navbar-light main-menu__nav">
+                    <a href="index.html" class="logo__link navbar-brand">
+                        <h2>MEPS</h2>
+                       </a>
+                   
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+                       <span class="navbar-toggler-icon"></span>
+                       </button>
+                     
+                       <div class="collapse navbar-collapse" id="navbarColor03" [ngbCollapse]="isCollapsed">
+                          <ul class="navbar-nav mr-auto" routerLinkActive="active">
+                             <li class="nav-item">
+                                <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+                             </li>
+
+                             <li class="nav-item"><a class="nav-link"  routerLink="/project" routerLinkActive="active"> Project</a></li>
+                             <li class="nav-item"><a class="nav-link"  routerLink="/project-template" routerLinkActive="active">  Project Template </a></li>
+                             <li class="nav-item dropdown submenu list" routerLinkActive="active">
+                                <a href="javascript:void(0)" class=" nav-link dropdown-toggle animation" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master file</a>
+                                <ul class="dropdown-menu myself main-menu__dropdown">
+                                   
+                                      
+                                    <li> <a routerLink="/company" >Company</a></li> 
+                                    <li> <a routerLink="/department">Department</a></li>
+                                     <li> <a routerLink="/room-detail">Rooms</a></li> 
+                                    <li> <a routerLink="/group-detail">Group</a></li>
+                                    <li> <a routerLink="/utility-detail">Utility</a></li>
+                                    <li> <a routerLink="/equipment-data">Equipment data</a></li>
+                                    <li> <a routerLink="/package">Package</a></li>
+                                   <li> <a routerLink="/hospital-data">Hospital classification</a></li>
+                                   <li> <a routerLink="/currency">Currency</a></li>
+                                      
+                                   
+                                   
+                                </ul>
+                             </li>
+
+                             <li class="nav-item dropdown submenu list">
+                                <a href="javascript:void(0)" class=" nav-link dropdown-toggle animation" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator</a>
+                                <ul class="dropdown-menu myself main-menu__dropdown">
+                                   
+                                      
+                                    <li> <a routerLink="/">User</a></li> 
+                                    <li> <a routerLink="/">Group</a></li>
+                                     <li> <a routerLink="/">User access level</a></li> 
+                                    <li> <a routerLink="/">Activities Log</a></li>
+                                    
+                                      
+                                   
+                                   
+                                </ul>
+                             </li>
+                            
+                            
+                            
+                            
+                            
+
+                           
+                          </ul>
+                          <div ngbDropdown class="d-flex align-items-center ms-3">
+                            <a  class="nav-link myself" id="dropdownBasic1" ngbDropdownToggle><img src="assets/images/admin.png" class="img-fluid rounded-circle me-3" alt="user" width="40">
+                             Hi Admin
+                            </a>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" id="dropdown-menu">
+                              <ul class="user-inf mb-0">
+                              <!-- <li><a class="dropdown-item" routerLink="/"><i class="bx bx-user"></i><span>Profile</span></a></li> -->
+                               <li><a class="dropdown-item" routerLink="/"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li> 
+                                
+                             </ul>
+                            </div>
+                          </div>
+                       </div>
+
+                       
+                    
+                 </nav>
+
+
+
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </header>
+
+ <!-- ======= Header End ======= -->
+
+
+
+         

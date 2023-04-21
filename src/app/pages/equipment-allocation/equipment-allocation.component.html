@@ -1,0 +1,232 @@
+<app-header></app-header>
+<section class="section">
+   <div class="container">
+      <div class="row page-content">
+         <div class="col-md-12">
+            <div class="d-lg-flex align-items-center mb-4 gap-3">
+               <h4 class="mb-0 text-primary">Equipment Allocation </h4>
+            </div>
+
+            
+         </div>
+
+         <div class="col-sm-12">
+        
+            <table id="table-info" class="table table-condensed">
+                <tbody><tr><td><h6>Project Info</h6></td><td colspan="2"><strong>Code: </strong>ASM</td><td><strong>Project Name: </strong>ARUNAMARI SPECIALIST MEDICAL CENTRE</td>
+                    <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span> <span class="label label-primary replace-eq">Replaced Equipment</span></td>
+                </tr>
+            </tbody></table>
+        </div>
+
+
+        <div><div>
+			<div class="float-start d-lg-flex gap-3">
+				<a class="btn btn-sm btn-success" routerLink="/Project" title="Back"><i class="fa-solid fa-chevron-left fa-sm"></i> </a>
+
+            <a class="btn btn-sm btn-danger" routerLink="/Project" title="Cancel"><i class="fa-solid fa-cancel fa-sm"></i> </a>
+
+            <a class="btn btn-sm btn-primary" routerLink="/Project" title="Summary"><i class="fa-solid fa-list-alt fa-sm"></i> </a>
+				
+				
+			</div>
+			<div class="float-end d-lg-flex gap-3">
+                <button type="button" class="btn btn-primary btn-xs" title=" All Equipments"> <i class='fal fa-list'></i></button>
+                <!-- <button type="button" class="btn btn-primary btn-xs" title=" No Equipments"><i class='fal fa-list'></i></button> -->
+                
+				<button type="button" class="btn btn-sm btn-primary" title="Filter"><i class='fal fa-filter'></i></button>
+
+            <button type="button" class="btn btn-sm btn-primary"  title="Add Equipment" ><i class='fal fa-file-plus'></i></button>
+
+            <button type="button" class="btn btn-sm btn-primary"  title="Replace" ><i class='fal fa-exchange'></i></button>
+                    				
+                                    				
+                                    				<button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE" ><i class='bx bxs-trash'></i></button>
+                                    				<button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i class='bx bxs-copy'></i></button>
+                    
+                			</div>
+
+			
+		</div></div>
+
+
+
+         <div class="col-md-12 mt-4">
+            <div class="card p-3">
+               <div class="card-body">
+                  <table id="example" class="display" cellspacing="0" width="100%">
+                     
+                     
+                     <thead>
+                        <tr role="row">
+                           <th>Department</th>
+                           <th>Room</th>
+                           <th>Equipment</th>
+                           <th>APQ</th>
+                           <th>FPQ</th>
+                           <th>QTY</th>
+                        </tr>
+                       
+                     </thead>
+
+                     <thead>
+
+                     <tr>
+                        <th><input type="text" placeholder="Search Department" fdprocessedid="6ij23s"></th>
+                        <th><input type="text" placeholder="Search Room" fdprocessedid="tvivm"></th>
+                        <th><input type="text" placeholder="Search Equipment" fdprocessedid="aw57a6"></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                     </tr>
+                     </thead>
+
+
+                     <tbody>
+                        <tr role="row" class="odd">
+                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                           <td >
+                              <div data-dep="AD - ADMINISTRATION (L4)" data-room="AD101 - RECEPTION" data-room_code="27278"><strong>AD101</strong> - RECEPTION </div>
+                           </td>
+                           <td>
+                              <div class="checkbox  " style="margin: 0px;">
+                                 <label>
+                                 <input type="checkbox" name="eq_id" value="174731" >
+                                 <strong>HOF120/002</strong> - BOARD COMBINATION 1200X900MM
+                                 </label>
+                              </div>
+                           </td>
+                           <td class=" editablex">
+                              <div    data-id="174731">1</div>
+                           </td>
+                           <td class=" editablex">
+                              <div    data-id="174731">0</div>
+                           </td>
+                           <td class=" editablex">
+                              <div   data-id="174731">1</div>
+                           </td>
+                        </tr>
+                        <tr role="row" class="even">
+                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                           <td >
+                              <div><strong>AD101</strong> - RECEPTION </div>
+                           </td>
+                           <td>
+                              <div class="checkbox  " style="margin: 0px;">
+                                 <label>
+                                 <input type="checkbox" name="eq_id" value="174727">
+                                 <strong>HOF120/010</strong> - CLOCK WALL BATTERY OPERATED
+                                 </label>
+                              </div>
+                           </td>
+                           <td class=" editablex">
+                              <div >1</div>
+                           </td>
+                           <td class=" editablex">
+                              <div>0</div>
+                           </td>
+                           <td class=" editablex">
+                              <div>1</div>
+                           </td>
+                        </tr>
+                        <tr role="row" class="odd first-item">
+                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                           <td >
+                              <div><strong>AD102</strong> - WAITING </div>
+                           </td>
+                           <td>
+                              <div class="checkbox  " style="margin: 0px;">
+                                 <label>
+                                 <input type="checkbox" name="eq_id" value="174904" data-eq="HOF120/010" data-desc="CLOCK WALL BATTERY OPERATED">
+                                 <strong>HOF120/010</strong> - CLOCK WALL BATTERY OPERATED
+                                 </label>
+                              </div>
+                           </td>
+                           <td class=" editablex">
+                              <div    >1</div>
+                           </td>
+                           <td class=" editablex">
+                              <div    >0</div>
+                           </td>
+                           <td class=" editablex">
+                              <div   >1</div>
+                           </td>
+                        </tr>
+                        <tr role="row" >
+                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                           <td >
+                              <div ><strong>AD103</strong> - CONFERENCE ROOM (25 PAX) </div>
+                           </td>
+                           <td>
+                              <div class="checkbox  " style="margin: 0px;">
+                                 <label>
+                                 <input type="checkbox" name="eq_id" value="177522">
+                                 <strong>HOF120/069</strong> - 
+                                 </label>
+                              </div>
+                           </td>
+                           <td class="editablex">
+                              <div>1</div>
+                           </td>
+                           <td class="editablex">
+                              <div>0</div>
+                           </td>
+                           <td class="editablex">
+                              <div>1</div>
+                           </td>
+                        </tr>
+                        <tr role="row" class="odd">
+                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                           <td >
+                              <div data-dep="AD - ADMINISTRATION (L4)"><strong>AD103</strong> - CONFERENCE ROOM (25 PAX) </div>
+                           </td>
+                           <td>
+                              <div class="checkbox  " style="margin: 0px;">
+                                 <label>
+                                 <input type="checkbox" name="eq_id" value="177517">
+                                 <strong>HOF120/017</strong> - BOARD WHITE 900MMX1200MM MAGNETIC BASE
+                                 </label>
+                              </div>
+                           </td>
+                           <td class=" editablex">
+                              <div >1</div>
+                           </td>
+                           <td class=" editablex">
+                              <div >0</div>
+                           </td>
+                           <td class=" editablex">
+                              <div >1</div>
+                           </td>
+                        </tr>
+                        <tr role="row" class="even">
+                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                           <td >
+                              <div data-dep="AD - ADMINISTRATION (L4)"><strong>AD103</strong> - CONFERENCE ROOM (25 PAX) </div>
+                           </td>
+                           <td>
+                              <div class="checkbox  " style="margin: 0px;">
+                                 <label>
+                                 <input type="checkbox" name="eq_id" value="177520">
+                                 <strong>HOF120/010</strong> - CLOCK WALL BATTERY OPERATED
+                                 </label>
+                              </div>
+                           </td>
+                           <td class=" editablex">
+                              <div >1</div>
+                           </td>
+                           <td class=" editablex">
+                              <div >0</div>
+                           </td>
+                           <td class=" editablex">
+                              <div>1</div>
+                           </td>
+                        </tr>
+                        
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
