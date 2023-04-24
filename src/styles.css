@@ -2362,3 +2362,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before{
 .dataTable tr, td{
     font-size: 14px;
 }
+
+.body-width {
+    margin-left: 250px !important;
+  }
