@@ -131,9 +131,9 @@ html, body {
 }
 .page-wrapper {
   height: 100% !important;
-  margin-top: 60px !important;
-  margin-bottom: 30px !important;
-  margin-left: 155px !important
+  margin-top: 30px !important;
+  margin-bottom: 0px !important;
+  /* margin-left: 155px !important */
 }
 .page-content {
   padding: 1.5rem 1.5rem 0.7rem 1.5rem

@@ -1,4 +1,4 @@
-<app-header></app-header>
+
 
 
         
@@ -50,10 +50,14 @@
                                         <td>{{item.state}}</td>
                                         <td>{{item.country}}</td>
                                         <td>
-                                            <!-- <div class="d-flex order-actions"> -->
-                                            <a routerLink="/company-form/{{item._id}}" ><i class="material-icons">Edit</i></a> <a href="javascript:;" (click)="delete(item._id)"  ><i class="material-icon">Delete</i></a>
+                                            <div class="d-flex order-actions">
+
+                                                <a routerLink="/company-form/{{item._id}}" title="Edit" class="text-success me-2"><i class="fa fa-edit"> </i> </a>
+                                               
+                                                <a href="javascript:;" (click)="delete(item._id)" title="Delete"  class="text-danger me-2"><i class="fa fa-trash"> </i>  </a>
+                                            <!-- <a routerLink="/company-form/{{item._id}}" ><i class="material-icons">Edit</i></a> <a href="javascript:;" (click)="delete(item._id)"  ><i class="material-icon">Delete</i></a> -->
                          
-                                          <!-- </div> -->
+                                          </div>
                                         </td>
                                     </tr>
                                 </tbody>
