@@ -52,7 +52,7 @@ html, body {
 /*------------- Side bar start---------------------------*/
 
 .simplebar-content-wrapper {
-  background-color: #22abe2 !important;
+  background-color: #1CABB1 !important;
 }
 
 .wrapper {
@@ -73,7 +73,7 @@ html, body {
   top: 0;
   bottom: 0;
   left: 0;
-  background: #22abe2 !important;
+  background: #1CABB1 !important;
   border-right: 0 solid #e4e4e4;
   z-index: 11;
   box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%)!important;
@@ -101,12 +101,12 @@ html, body {
   margin-left: 10px;
   margin-bottom: 0;
   letter-spacing: 1px;
-  color: #22abe2;
+  color: #1CABB1;
 }
 .toggle-icon {
   font-size: 22px;
   cursor: pointer;
-  color: #22abe2
+  color: #1CABB1
 }
 .topbar {
   position: fixed;
@@ -114,7 +114,7 @@ html, body {
   /* left: 250px; */
   right: 0;
   height: 60px;
-  background: #22abe2;
+  background: #1CABB1;
   border-bottom: 1px solid rgb(228 228 228 / 0%);
   z-index: 10;
   -webkit-box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 0px 6px 0 rgb(206 206 238 / 54%);
@@ -166,7 +166,7 @@ html, body {
   background: 0 0
 }
 .simplebar-content-wrapper{
-  background-color: #22abe2 !important;
+  background-color: #1CABB1 !important;
 }
 .sidebar-wrapper .metismenu {
   background: 0 0;
@@ -232,7 +232,7 @@ html, body {
 }
 .sidebar-wrapper .metismenu ul {
   border: 1px solid #ededed;
-  background: #22abe2;
+  background: #1CABB1;
   
 }
 .sidebar-wrapper .metismenu ul ul a {
@@ -242,7 +242,7 @@ html, body {
   padding: 8px 15px 8px 45px
 }
 .sidebar-wrapper .metismenu .mm-active>a, .sidebar-wrapper .metismenu a:active, .sidebar-wrapper .metismenu a:focus, .sidebar-wrapper .metismenu a:hover {
-  color: #22abe2;
+  color: #1CABB1;
   text-decoration: none;
   background: #fff;
 }

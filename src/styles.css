@@ -12,7 +12,7 @@
 
 /*------------ Datatable thead --------------------*/
 .example thead.table-light{
-    --bs-table-bg: #22abe2;
+    --bs-table-bg: #1CABB1;
     color: #fff;
 }
 /*---------------------------------------------------- Buttons ----------------------------------------------------*/
@@ -47,16 +47,16 @@
     outline: 0;
 }
 .nav-tabs .nav-link{
-    border: 1px solid #22abe2;
+    border: 1px solid #1CABB1;
     border-radius: 0px;
     background: #fff;
-    color: #22abe2;
+    color: #1CABB1;
     font-weight: 500;
 }
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,.nav-tabs .nav-link:hover{
-    border: 1px solid #22abe2;
+    border: 1px solid #1CABB1;
     border-radius: 0px;
-    background: #22abe2;
+    background: #1CABB1;
     color: #fff;
     font-weight: 500;
 }
@@ -108,11 +108,11 @@ a {
     margin-left: 10px;
     margin-bottom: 0;
     letter-spacing: 1px;
-    color: #22abe2;
+    color: #1CABB1;
 }
 .toggle-icon {
     font-size: 26px;
-    color: #22abe2;
+    color: #1CABB1;
     cursor: pointer;
 }
 /* Header */
@@ -196,12 +196,12 @@ a {
 }
 .nav-container.primary-menu .navbar-nav a.nav-link:hover, .nav-container.primary-menu .navbar-nav a.nav-link:focus, .nav-container.primary-menu .nav-link.active, .nav-container.primary-menu .show > .nav-link {
     color: #ffffff;
-    background-color: #22abe2;
+    background-color: #1CABB1;
 }
 .nav-container.primary-menu .dropdown-menu .dropdown-item.active, .nav-container.primary-menu .dropdown-menu .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #22abe2;
+    background-color: #1CABB1;
 }
 .nav-container .secondary-menu.navbar-nav a.nav-link {
     color: #fff;
@@ -275,7 +275,7 @@ a {
     border-radius: 10px;
     bottom: 20px;
     right: 12px;
-    background-color: #22abe2;
+    background-color: #1CABB1;
     z-index: 5;
 }
 .back-to-top:hover {
@@ -455,7 +455,7 @@ a {
     font-size: 23px;
 }
 .fm-menu .list-group a:hover {
-    background: #22abe2;
+    background: #1CABB1;
     color: #ffffff;
     transition: all 0.2s ease-out;
 }
@@ -755,7 +755,7 @@ a {
 .invoice header {
     padding: 10px 0;
     margin-bottom: 20px;
-    border-bottom: 1px solid #22abe2;
+    border-bottom: 1px solid #1CABB1;
 }
 .invoice .company-details {
     text-align: right;
@@ -779,7 +779,7 @@ a {
 }
 .invoice .invoice-details .invoice-id {
     margin-top: 0;
-    color: #22abe2;
+    color: #1CABB1;
 }
 .invoice main {
     padding-bottom: 50px;
@@ -791,7 +791,7 @@ a {
 }
 .invoice main .notices {
     padding-left: 6px;
-    border-left: 6px solid #22abe2;
+    border-left: 6px solid #1CABB1;
     background: #e7f2ff;
     padding: 10px;
 }
@@ -817,7 +817,7 @@ a {
 .invoice table td h3 {
     margin: 0;
     font-weight: 400;
-    color: #22abe2;
+    color: #1CABB1;
     font-size: 1.2em;
 }
 .invoice table .qty, .invoice table .total, .invoice table .unit {
@@ -827,13 +827,13 @@ a {
 .invoice table .no {
     color: #fff;
     font-size: 1.6em;
-    background: #22abe2;
+    background: #1CABB1;
 }
 .invoice table .unit {
     background: #ddd;
 }
 .invoice table .total {
-    background: #22abe2;
+    background: #1CABB1;
     color: #fff;
 }
 .invoice table tbody tr:last-child td {
@@ -852,9 +852,9 @@ a {
     border-top: none;
 }
 .invoice table tfoot tr:last-child td {
-    color: #22abe2;
+    color: #1CABB1;
     font-size: 1.4em;
-    border-top: 1px solid #22abe2;
+    border-top: 1px solid #1CABB1;
 }
 .invoice table tfoot tr td:first-child {
     border: none;
@@ -997,7 +997,7 @@ a {
     color: #4a4b4c;
 }
 .chat-tab-menu .nav-pills .nav-link.active, .chat-tab-menu .nav-pills .show > .nav-link {
-    color: #22abe2;
+    color: #1CABB1;
     background-color: rgb(0 123 255 / 0%);
 }
 .chat-title {
@@ -1255,8 +1255,8 @@ a {
 }
 /* Navs and Tabs */
 .nav-primary.nav-tabs .nav-link.active {
-    color: #22abe2;
-    border-color: #22abe2 #22abe2 #fff;
+    color: #1CABB1;
+    border-color: #1CABB1 #1CABB1 #fff;
 }
 .nav-danger.nav-tabs .nav-link.active {
     color: #f41127;
@@ -1508,17 +1508,17 @@ a {
     /* margin-right: 5px; */
 }
 .btn-inverse-primary {
-    color: #22abe2;
+    color: #1CABB1;
     background-color: rgba(0, 140, 255, 0.18);
     border-color: rgb(209, 234, 255);
 }
 .btn-inverse-primary:hover {
-    color: #22abe2;
+    color: #1CABB1;
     background-color: rgba(0, 140, 255, 0.18);
     border-color: rgba(0, 140, 255, 0.18);
 }
 .btn-inverse-primary:focus {
-    color: #22abe2;
+    color: #1CABB1;
     background-color: rgba(0, 140, 255, 0.18);
     border-color: rgba(0, 140, 255, 0.18);
     box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.3);
@@ -1929,7 +1929,7 @@ input::placeholder {
     cursor: pointer;
 }
 .topbar{
-    background-color: #22abe2;
+    background-color: #1CABB1;
 }
 .user-info .user-name{
     color: #fff;
@@ -1953,7 +1953,7 @@ input::placeholder {
     height: 40px;
     line-height: 40px;
     font-size: 24px;
-    background: #22abe2;
+    background: #1CABB1;
     box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.13);
     color: #fff;
     text-align: center;
@@ -2229,14 +2229,14 @@ input::placeholder {
 }
 /*******Feb 25-Update******/
 .border-primary {
-    border-color: #22abe2!important;
+    border-color: #1CABB1!important;
 }
 .text-primary {
-    color: #22abe2!important;
+    color: #1CABB1!important;
 }
 .btn-primary{
-    background-color: #22abe2;
-    border-color: #22abe2;
+    background-color: #1CABB1;
+    border-color: #1CABB1;
 }
 .btn-primary:hover {
 	color: #fff;
@@ -2250,11 +2250,11 @@ input::placeholder {
 	box-shadow: 0 0 0 .25rem rgb(66, 194, 255, .5);
 }
 .pagination{
-    --bs-pagination-active-bg: #22abe2;
-    --bs-pagination-active-border-color: #22abe2;
+    --bs-pagination-active-bg: #1CABB1;
+    --bs-pagination-active-border-color: #1CABB1;
 }
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before{
-    background-color: #22abe2 !important;
+    background-color: #1CABB1 !important;
 	top: 38% !important;
 }
 table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before{
@@ -2319,12 +2319,12 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before{
     color:white;
     width: 50px;
     border-radius: 5px;
-    background-color: #73a839;
+    background-color: #aeab39;
 }
 .order-actions .btn-spec{
     font-size: 12px;
     color: #fff;
-    background-color:#033c73 ;
+    background-color:#1CABB1 ;
     width: 50px;
     border-radius: 5px;
 }

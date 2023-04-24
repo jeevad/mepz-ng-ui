@@ -6,57 +6,51 @@
             <div class="d-lg-flex align-items-center mb-4 gap-3">
                <h4 class="mb-0 text-primary">Equipment Allocation </h4>
             </div>
-
-            
          </div>
-
          <div class="col-sm-12">
-        
             <table id="table-info" class="table table-condensed">
-                <tbody><tr><td><h6>Project Info</h6></td><td colspan="2"><strong>Code: </strong>ASM</td><td><strong>Project Name: </strong>ARUNAMARI SPECIALIST MEDICAL CENTRE</td>
-                    <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span> <span class="label label-primary replace-eq">Replaced Equipment</span></td>
-                </tr>
-            </tbody></table>
-        </div>
-
-
-        <div><div>
-			<div class="float-start d-lg-flex gap-3">
-				<a class="btn btn-sm btn-success" routerLink="/Project" title="Back"><i class="fa-solid fa-chevron-left fa-sm"></i> </a>
-
-            <a class="btn btn-sm btn-danger" routerLink="/Project" title="Cancel"><i class="fa-solid fa-cancel fa-sm"></i> </a>
-
-            <a class="btn btn-sm btn-primary" routerLink="/Project" title="Summary"><i class="fa-solid fa-list-alt fa-sm"></i> </a>
-				
-				
-			</div>
-			<div class="float-end d-lg-flex gap-3">
-                <button type="button" class="btn btn-primary btn-xs" title=" All Equipments"> <i class='fal fa-list'></i></button>
-                <!-- <button type="button" class="btn btn-primary btn-xs" title=" No Equipments"><i class='fal fa-list'></i></button> -->
-                
-				<button type="button" class="btn btn-sm btn-primary" title="Filter"><i class='fal fa-filter'></i></button>
-
-            <button type="button" class="btn btn-sm btn-primary"  title="Add Equipment" ><i class='fal fa-file-plus'></i></button>
-
-            <button type="button" class="btn btn-sm btn-primary"  title="Replace" ><i class='fal fa-exchange'></i></button>
-                    				
-                                    				
-                                    				<button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE" ><i class='bx bxs-trash'></i></button>
-                                    				<button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i class='bx bxs-copy'></i></button>
-                    
-                			</div>
-
-			
-		</div></div>
-
-
-
+               <tbody>
+                  <tr>
+                     <td>
+                        <h6>Project Info</h6>
+                     </td>
+                     <td colspan="2"><strong>Code: </strong>ASM</td>
+                     <td><strong>Project Name: </strong>ARUNAMARI SPECIALIST MEDICAL CENTRE</td>
+                     <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span> <span class="label label-primary replace-eq">Replaced Equipment</span></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div>
+            <div>
+               <div class="float-start d-lg-flex gap-3">
+                  <a class="btn btn-sm btn-success" routerLink="/Project" title="Back"><i class="fa-solid fa-chevron-left fa-sm"></i> </a>
+                  <a class="btn btn-sm btn-danger" routerLink="/Project" title="Cancel"><i class="fa-solid fa-cancel fa-sm"></i> </a>
+                  <a class="btn btn-sm btn-primary" routerLink="/Project" title="Summary"><i class="fa-solid fa-list-alt fa-sm"></i> </a>
+               </div>
+               <div class="float-end d-lg-flex gap-3">
+                  <button type="button" class="btn btn-primary btn-xs" title=" All Equipments"> <i class='fal fa-list'></i></button>
+                  <!-- <button type="button" class="btn btn-primary btn-xs" title=" No Equipments"><i class='fal fa-list'></i></button> -->
+                  <button type="button" class="btn btn-sm btn-primary" title="Filter"><i class='fal fa-filter'></i></button>
+                  <button title="Add Equipment"
+                     type="button"
+                     class="btn btn-sm btn-primary"
+                     data-toggle="modal"
+                     data-target="#myModal2"
+                     >
+                  <i class="fal fa-file-plus"> </i>
+                  </button>
+                  <!-- <button type="button" class="btn btn-sm btn-primary"  title="Add Equipment" ><i class='fal fa-file-plus'></i></button> -->
+                  <button type="button" class="btn btn-sm btn-primary"  title="Replace" ><i class='fal fa-exchange'></i></button>
+                  <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE" ><i class='bx bxs-trash'></i></button>
+                  <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i class='bx bxs-copy'></i></button>
+               </div>
+            </div>
+         </div>
          <div class="col-md-12 mt-4">
             <div class="card p-3">
                <div class="card-body">
                   <table id="example" class="display" cellspacing="0" width="100%">
-                     
-                     
                      <thead>
                         <tr role="row">
                            <th>Department</th>
@@ -66,22 +60,17 @@
                            <th>FPQ</th>
                            <th>QTY</th>
                         </tr>
-                       
                      </thead>
-
                      <thead>
-
-                     <tr>
-                        <th><input type="text" placeholder="Search Department" fdprocessedid="6ij23s"></th>
-                        <th><input type="text" placeholder="Search Room" fdprocessedid="tvivm"></th>
-                        <th><input type="text" placeholder="Search Equipment" fdprocessedid="aw57a6"></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                     </tr>
+                        <tr>
+                           <th><input type="text" placeholder="Search Department" fdprocessedid="6ij23s"></th>
+                           <th><input type="text" placeholder="Search Room" fdprocessedid="tvivm"></th>
+                           <th><input type="text" placeholder="Search Equipment" fdprocessedid="aw57a6"></th>
+                           <th></th>
+                           <th></th>
+                           <th></th>
+                        </tr>
                      </thead>
-
-
                      <tbody>
                         <tr role="row" class="odd">
                            <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
@@ -221,7 +210,6 @@
                               <div>1</div>
                            </td>
                         </tr>
-                        
                      </tbody>
                   </table>
                </div>
@@ -230,3 +218,243 @@
       </div>
    </div>
 </section>
+<!-- modal -->
+<div class="container demo">
+   <!-- Modal -->
+   <div
+      class="modal right fade"
+      id="myModal2"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel2"
+      >
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  >
+               <span aria-hidden="true">&times;</span>
+               </button>
+               <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
+            </div>
+            <div class="modal-body">
+
+               <div class="d-flex justify-content-center align-items-center bg-light">
+               <div class="card p-3 shadow">
+                  <nav>
+                     <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Add Equipment from Master</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Add Equipment from Existing Project</button>
+                     </div>
+                  </nav>
+                  <div class="tab-content p-3 border bg-light" id="nav-tabContent">
+                     <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="col-sm-12">
+                           <div class="form-group">
+                              <label>Department: </label>
+                              <span id="master_dep">AD - ADMINISTRATION (L4)</span>
+                                                             
+                           </div>
+                           <div class="form-group">
+                              <label>Room: </label>
+                              <span id="master_room">AD101 - RECEPTION</span>
+
+
+
+                              
+                           </div>
+                           <div class="form-group">
+                              <label>Equipment List:</label>
+                              
+
+                              <table id="example1" class="display" cellspacing="0" width="100%">
+                                 <thead>
+                                  
+                                    <tr role="row">
+                                       <th ></th>
+                                       <th >Equipment</th>
+                                       <th >Code</th>
+                                      
+                                       
+                                    </tr>
+                                 </thead>
+            
+                                 <tbody>
+            
+                                 <tr>
+                                    <td><input  class="checkbox" type="checkbox" name="" value=""></td>
+                                    <td >IMPRESSION TRAY (PAEDS)</td>
+
+                                    <td>HID066/037A</td>
+                                    
+                                </tr>
+            
+                                <tr>
+                                 <td><input  class="checkbox" type="checkbox" name="" value=""></td>
+                                    <td >IMPRESSION TRAY (PAEDS)</td>
+                                    <td>HID066/037A</td>
+                                 
+                                </tr>
+            
+            
+                                <tr>
+                                 <td><input  class="checkbox" type="checkbox" name="" value=""></td>
+                                    <td >IMPRESSION TRAY (PAEDS)</td>
+                                    <td>HID066/037A</td>
+                                 
+                                </tr>
+                            </tbody>
+            
+            
+                              </table>
+
+                              
+                           </div>
+
+                           <div class="col-md-12 text-center mt-3">
+
+                           <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Add</button>	
+                           <a class="btn btn-secondary px-5" href="">Close</a>
+                        </div>
+                        </div>
+                     </div>
+                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="col-sm-12">
+                           <div class="form-group">
+                              <label>Department: </label>
+                              <span id="master_dep">AD - ADMINISTRATION (L4)</span>
+                                                             
+                           </div>
+                           <div class="form-group">
+                              <label>Room: </label>
+                              <span id="master_room">AD101 - RECEPTION</span>
+
+                           </div>
+
+                           <hr>
+
+                           <h5>Select from Existing Project</h5>
+
+                           <form class="form-horizontal row" method="post">
+                              
+                            
+                              
+                              <div class="col-md-12">
+                                 <label class=" form-label">Project</label>
+                                
+                                    <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
+                                       <option value="">-Select Project-</option>
+                                       <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+                                       <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+
+                                       <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+
+                                       <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+                                       
+                                     
+                                    </select>
+                                 </div>
+
+                                 <div class="col-md-12">
+                                    <label class=" form-label">Department</label>
+                                   
+                                    <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
+                                       <option value="">-Select Department-</option>
+                                       
+                                       
+                                     
+                                    </select>
+                                 </div>
+
+                                 <div class="col-md-12">
+                                    <label class=" form-label">Room</label>
+                                   
+                                    <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
+                                       <option value="">-Select Room-</option>
+                                       
+                                       
+                                     
+                                    </select>
+                                 </div>
+
+
+
+                           </form>
+
+                           
+                           <div class="form-group mt-4">
+                              <label>Equipment List:</label>
+                              
+
+                              <table id="example2" class="display mt-2" cellspacing="0" width="100%">
+                                 <thead>
+                                  
+                                    <tr role="row">
+                                       <th ></th>
+                                       <th >Equipment</th>
+                                       <th >Code</th>
+                                       <th >Quantity</th>
+                                      
+                                       
+                                    </tr>
+                                 </thead>
+            
+                                 <tbody>
+            
+                                 <tr>
+                                    <td><input  class="checkbox" type="checkbox" name="" value=""></td>
+                                    <td >IMPRESSION TRAY (PAEDS)</td>
+
+                                    <td>HID066/037A</td>
+                                    <td>15</td>
+                                    
+                                </tr>
+            
+                                <tr>
+                                 <td><input  class="checkbox" type="checkbox" name="" value=""></td>
+                                    <td >IMPRESSION TRAY (PAEDS)</td>
+                                    <td>HID066/037A</td>
+                                    <td>33</td>
+                                 
+                                </tr>
+            
+            
+                                <tr>
+                                 <td><input  class="checkbox" type="checkbox" name="" value=""></td>
+                                    <td >IMPRESSION TRAY (PAEDS)</td>
+                                    <td>HID066/037A</td>
+                                    <td>45</td>
+                                 
+                                </tr>
+                            </tbody>
+            
+            
+                              </table>
+
+                              
+                           </div>
+
+                           <div class="col-md-12 text-center mt-3">
+
+                           <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Add</button>	
+                           <a class="btn btn-secondary px-5" href="">Close</a>
+                        </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               </div>
+            </div>
+         </div>
+         <!-- modal-content -->
+      </div>
+      <!-- modal-dialog -->
+   </div>
+   <!-- modal -->
+</div>
+<!-- container -->
