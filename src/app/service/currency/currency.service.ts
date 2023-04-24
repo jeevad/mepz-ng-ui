@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CurrencyService {
-  apiUrl="http://localhost:3000/currency";
+  apiUrl="http://13.232.11.217/api/currency";
   constructor(private http:HttpClient) { }
    Find(){
     return this.http.get(this.apiUrl + '/getall');

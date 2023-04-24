@@ -27,9 +27,6 @@
             "styles": [
            
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
-              "node_modules/datatables.net-responsive-bs/css/responsive.bootstrap.min.css",
-              "node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css",
               "node_modules/metismenu/dist/metisMenu.css",
               "node_modules/simplebar/dist/simplebar.css",
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
@@ -42,7 +39,6 @@
               "node_modules/datatables.net/js/jquery.dataTables.min.js",
               "node_modules/datatables.net-responsive/js/dataTables.responsive.min.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
-              "node_modules/datatables.net-bs/js/dataTables.bootstrap.min.js",
               "node_modules/metismenu/dist/metisMenu.min.js",
               "node_modules/simplebar/dist/simplebar.min.js",
               "node_modules/perfect-scrollbar/dist/perfect-scrollbar.js"
