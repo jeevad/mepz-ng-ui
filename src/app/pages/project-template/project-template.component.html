@@ -1,4 +1,4 @@
-
+<app-header></app-header><br>
             <div class="full-width">
                 <section class="section">
                     <div class="container">
@@ -7,7 +7,7 @@
                                 <div class="d-lg-flex align-items-center mb-4 gap-3">
                                     <h4 class="mb-0 text-primary">Project Template </h4>
                                     <div class="ms-auto"><a routerLink="/Project-newtemplate" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>New Template</a></div>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -26,76 +26,39 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>NATIONAL CENTRE FOR DISEASE CONTROL</td>
-                                                    <td>100</td>
-                                                    <td>GOVERNMENT</td>
-                                                    <td>SPECIALIZED HOSPITAL</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>NATIONAL CENTRE FOR DISEASE CONTROL-2</td>
-                                                    <td>100</td>
-                                                    <td>GOVERNMENT</td>
-                                                    <td>CHILDRENS HOSPITAL</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>HOSPITAL ANGKATAN TENTERA, MELAKA</td>
-                                                    <td>144</td>
-                                                    <td>GOVERNMENT</td>
-                                                    <td>GENERAL HOSPITAL</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>sheen</td>
-                                                    <td>100</td>
-                                                    <td>GOVERNMENT</td>
-                                                    <td>CHILDRENS HOSPITAL</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Test 21</td>
-                                                    <td>120</td>
-                                                    <td>PRIVATE</td>
-                                                    <td>WELLNESS CENTRE</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                              <tr *ngFor="let item of departmentData; let i = index">
+                                                <td>{{ i + 1 }}</td>
+                                                <td>{{ item.name }}</td>
+                                                <td>{{ item.noofbeds }}</td>
+                                                <td>{{ item.classification }}</td>
+                                                <td>{{ item.projecttype }}</td>
+                                                <td>
+                                                  <div class="d-flex order-actions">
+                                                    <a
+                                                      routerLink="/add-project"
+                                                      class="text-primary me-2"
+                                                      data-bs-toggle="tooltip"
+                                                      title="Create Project"
+                                                      ><i class="fal fa-file-plus"></i
+                                                    ></a>
+                                                    <a
+                                                      routerLink="/Project-newtemplate/{{ item._id }}"
+                                                      class="text-success me-2"
+                                                      data-bs-toggle="tooltip"
+                                                      title="View/Edit"
+                                                      ><i class="bx bxs-edit"></i
+                                                    ></a>
+                                                    <a
+                                                      href="javascript:;"
+                                                      class="text-danger me-2"
+                                                      data-bs-toggle="tooltip"
+                                                      title="Delete"
+                                                      (click)="delete(item._id)"
+                                                      ><i class="bx bxs-trash"></i
+                                                    ></a>
+                                                  </div>
+                                                </td>
+                                              </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -106,6 +69,5 @@
                     </div>
                 </section>
             </div>
-            
-           
-            
+
+

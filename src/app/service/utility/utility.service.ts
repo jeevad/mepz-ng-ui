@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UtilityService {
-  apiUrl="http://13.232.11.217/api/utility";
+  apiUrl="http://localhost:3000/utility";
+
   constructor(private http:HttpClient) { }
   Find(){
     return this.http.get(this.apiUrl + '/getall');
@@ -19,7 +20,7 @@ export class UtilityService {
   update(id:any,departmentdata:any){
     return this.http.put(this.apiUrl+'/'+ id,departmentdata);
   }
-  
+
   Removedata(id:any){
     return this.http.delete(this.apiUrl + '/' + id);
   }

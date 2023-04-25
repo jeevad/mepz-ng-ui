@@ -11,122 +11,126 @@
             </div>
             <div class="card border-top border-0 border-4 border-primary">
                <div class="card-body p-4">
-                  <form class="form-horizontal row" method="post">
+
+
+
+                  <form  class="form-horizontal row" method="post" [formGroup]="addDepartment" (ngSubmit)="SaveData()">
+                    <div class="col-md-6">
+                      <label class="form-label">Code</label>
+                      <input type="text" class="form-control" name="code" placeholder="Code" formControlName="code"
+                             [ngClass]="{'is-invalid':submitted && addDepartment.controls['code'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['code'].errors?.['required']">Code is required</div>
+                    </div>
                      <div class="col-md-6">
-                        <label class=" form-label">Code</label>
-                       
-                           <input type="text" class="form-control" name="h_code" placeholder="Code" value="" fdprocessedid="kzc7tl">
-                       
-                     </div>
+                      <label class="form-label">Project Name</label>
+                      <input type="text" class="form-control" name="projectname" placeholder="Project Name" formControlName="projectname"
+                             [ngClass]="{'is-invalid':submitted && addDepartment.controls['projectname'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['projectname'].errors?.['required']">Project Name is required</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Full Project Name</label>
+                      <input type="text" class="form-control" name="fullProjectName" placeholder="Full Project Name" formControlName="fullProjectName"
+                             [ngClass]="{'is-invalid':submitted && addDepartment.controls['fullProjectName'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['fullProjectName'].errors?.['required']">Full Project Name is required</div>
+                    </div>
                      <div class="col-md-6">
-                        <label class=" form-label">Project Name</label>
-                       
-                           <input type="text" class="form-control" name="h_short_name" placeholder="Project Name" value="" fdprocessedid="lcdbjo">
-                        
-                     </div>
-                     <div class="col-md-6">
-                        <label class=" form-label">Full Project Name</label>
-                       
-                           <input type="text" class="form-control" name="h_full_name" placeholder="Full Project Name" value="" fdprocessedid="dsh3qi">
-                        
-                     </div>
-                     <div class="col-md-6">
-                        <label class=" form-label">Client/Owner</label>
-                       
-                           <input type="text" class="form-control" name="owner" placeholder="Client/Owner" value="" fdprocessedid="1ul5l">
-                        
-                     </div>
-                     <div class="col-md-6">
-                        <label class=" form-label">Contract No</label>
-                       
-                           <input type="text" class="form-control" name="contract_no" placeholder="Contract No" value="" fdprocessedid="himqv">
-                       
-                     </div>
-                     <div class="col-md-6">
-                        <label class=" form-label">No. of Beds</label>
-                       
-                           <input type="text" class="form-control" name="bed_no" placeholder="Beds" value="" fdprocessedid="5b87q9">
-                        
-                     </div>
-                     <div class="col-md-6">
-                        <label class=" form-label">Classification</label>
-                       
-                           <input type="text" class="form-control" name="hcl_code" placeholder="Classification" value="" fdprocessedid="gqwnx">
-                        
-                     </div>
-                     <div class="col-md-6">
-                        <label class=" form-label">Project Type</label>
-                       
-                           <input type="text" class="form-control" name="type" placeholder="Project Type" value="" fdprocessedid="x522z">
-                        
-                     </div>
-                     <div class="col-md-6">
-                        <label class=" form-label">Company</label>
-                       
-                           <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
-                              <option value="">-Select Company-</option>
-                              <option value="100001">LIKAS NUCLEAR AND RADIOTHERAPY SPECIALIST HOSPITAL</option>
-                              <option value="1234">HSS JV QATTA</option>
-                              <option value="8766">HEALTH SOLUTION (SE ASIA) SDN BHD</option>
-                              <option value="ACC-SP">HEALTH SOLUTIONS (SEA) SDN BHD</option>
-                              <option value="CRH001">HOSPITAL REHABILITASI CHERAS</option>
-                              <option value="GESB">GADANG ENGINEERING (M) SDN BHD</option>
-                              <option value="HKKS001">KLINIK KESIHATAN</option>
-                              <option value="HM">CADANGAN PEMBINAAN BANGUNAN BARU MAKMAL PATOLOGI</option>
-                              <option value="HMED">PEMBINAAN BANGUNAN TAMBAHAN  HOSPITAL TANAH MERAH</option>
-                              <option value="HPKK,UKM01">HOSPITAL KANAK KANAK UKM, KUALA LUMPUR</option>
-                              <option value="HSM001">KONSORTIUM GADANG PEREMBUM</option>
-                              <option value="HSM1234">HEALTH SOLUTION</option>
-                              <option value="HSS-0001">PROPOSED DEVELOPMENT OF MAHSA SPECIALIST HOSPITAL</option>
-                              <option value="LNRSH001">HEALTH SOLUTIONS (SE ASIA) SDN BHD</option>
-                              <option value="MEP">MEP, HEALTH SOLUTION (M) SDN BHD</option>
-                              <option value="MNE">MNE SOLUTIONS</option>
-                              <option value="MSC-HKT">HEALTH SOLUTIONS (SEA) SDN BHD</option>
-                              <option value="PTH001">HEALTH SOLUTION (M) SDN BHD</option>
-                              <option value="ZCB">ZECON BERHAD</option>
-                              <option value="001">shyla </option>
-                              <option value="TRC001">TRANS RESOURCES CORPORATION SDN BHD </option>
-                              <option value="MU">MUSYATI SDN BHD </option>
-                              <option value="HSB">HANIMED SDN BHD</option>
-                              <option value="PEN001">SERI LIBANA PPC JV SDN BHD</option>
-                              <option value="PMB">PESONA METRO BERHAD</option>
-                              <option value="PESB-1">PERBENA EMAS SDN BHD</option>
-                              <option value="KKSB">KAYANGAN KEMAS SDN BHD</option>
-                              <option value="OB-01">ORANGEBEAM</option>
-                              <option value="IBR">IBRACO BERHAD</option>
-                              <option value="SM ">SM PELANGI</option>
-                              <option value="KPSB">KEMUNCAK PESAKA SDN BHD</option>
-                              <option value="TCS">TCS GROUP HOLDINGS BHD</option>
-                              <option value="RBJ">REKABINA JAYA SDN BHD</option>
-                              <option value="RSP">RSP ARCHITECT SDN BHD</option>
-                              <option value="WCT GANDA ">BLOK KLINIK PAKAR DAN WAD HOSPITAL PULAU PINANG (R</option>
-                              <option value="WCT GANDA ">WCT CONSTRUCTION SDN BHD</option>
-                              <option value="WCT">BLOK KLINIK PAKAR DAN WAD HOSPITAL PULAU PINANG</option>
-                              <option value="QSE-01">QSE CONSTRUCTION SDN BHD</option>
-                              <option value="PER-01">CADANGAN PEMBANGUNAN PUSAT REHABILITASI ROBOTIK </option>
-                           </select>
-                        </div>
-                   
-                     <div class="col-md-6">
-                        <label class=" form-label">Signature 1</label>
-                       
-                           <input type="text" class="form-control" name="signature1" placeholder="Signature 1" value="" fdprocessedid="xjrfa">
-                        </div>
-                     
-                     <div class="col-md-6">
-                        <label class=" form-label">Signature 2</label>
-                       
-                           <input type="text" class="form-control" name="signature2" placeholder="Signature 2" value="" fdprocessedid="9mniza">
-                        </div>
-                    
-                        <div class="col-md-12 text-center mt-3">
-                       
-                          
-                           <button type="submit" class="btn btn-primary px-4 me-3" fdprocessedid="hipqpp">Save</button>	
-                           <a class="btn btn-secondary px-5" href="">Cancel</a>				
-                        
-                     </div>
+                      <label class="form-label">Client/Owner</label>
+                      <input type="text" class="form-control" name="clientOwner" placeholder="Client/Owner" formControlName="clientOwner"
+                             [ngClass]="{'is-invalid':submitted && addDepartment.controls['clientOwner'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['clientOwner'].errors?.['required']">Client/Owner is required</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Contract No</label>
+                      <input type="text" class="form-control" name="contractNo" placeholder="Contract No" formControlName="contractNo"/>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">No. of Beds</label>
+                      <input type="text" class="form-control" name="noofBeds" placeholder="Beds" formControlName="noofBeds"
+                             [ngClass]="{'is-invalid':submitted && addDepartment.controls['noofBeds'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofBeds'].errors?.['required']">No. of Beds is required</div>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="form-label">Classification</label>
+                      <input type="text" class="form-control" name="classification" placeholder="Classification" formControlName="classification"
+                             [ngClass]="{'is-invalid':submitted && addDepartment.controls['classification'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['classification'].errors?.['required']">Classification is required</div>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="form-label">Project Type</label>
+                      <input type="text" class="form-control" name="projecttype" placeholder="Project Type" formControlName="projecttype"
+                             [ngClass]="{'is-invalid':submitted && addDepartment.controls['projecttype'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['projecttype'].errors?.['required']">Project Type is required</div>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="form-label">Company</label>
+                      <select class="form-control" name="company" formControlName="company"
+                              [ngClass]="{'is-invalid':submitted && addDepartment.controls['company'].errors}">
+                          <option value="">-Select Company-</option>
+                          <option value="100001">LIKAS NUCLEAR AND RADIOTHERAPY SPECIALIST HOSPITAL</option>
+                          <option value="1234">HSS JV QATTA</option>
+                                                <option value="8766">HEALTH SOLUTION (SE ASIA) SDN BHD</option>
+                                                <option value="ACC-SP">HEALTH SOLUTIONS (SEA) SDN BHD</option>
+                                                <option value="CRH001">HOSPITAL REHABILITASI CHERAS</option>
+                                                <option value="GESB">GADANG ENGINEERING (M) SDN BHD</option>
+                                                <option value="HKKS001">KLINIK KESIHATAN</option>
+                                                <option value="HM">CADANGAN PEMBINAAN BANGUNAN BARU MAKMAL PATOLOGI</option>
+                                                <option value="HMED">PEMBINAAN BANGUNAN TAMBAHAN  HOSPITAL TANAH MERAH</option>
+                                                <option value="HPKK,UKM01">HOSPITAL KANAK KANAK UKM, KUALA LUMPUR</option>
+                                                <option value="HSM001">KONSORTIUM GADANG PEREMBUM</option>
+                                                <option value="HSM1234">HEALTH SOLUTION</option>
+                                                <option value="HSS-0001">PROPOSED DEVELOPMENT OF MAHSA SPECIALIST HOSPITAL</option>
+                                                <option value="LNRSH001">HEALTH SOLUTIONS (SE ASIA) SDN BHD</option>
+                                                <option value="MEP">MEP, HEALTH SOLUTION (M) SDN BHD</option>
+                                                <option value="MNE">MNE SOLUTIONS</option>
+                                                <option value="MSC-HKT">HEALTH SOLUTIONS (SEA) SDN BHD</option>
+                                                <option value="PTH001">HEALTH SOLUTION (M) SDN BHD</option>
+                                                <option value="ZCB">ZECON BERHAD</option>
+                                                <option value="001">shyla </option>
+                                                <option value="TRC001">TRANS RESOURCES CORPORATION SDN BHD </option>
+                                                <option value="MU">MUSYATI SDN BHD </option>
+                                                <option value="HSB">HANIMED SDN BHD</option>
+                                                <option value="PEN001">SERI LIBANA PPC JV SDN BHD</option>
+                                                <option value="PMB">PESONA METRO BERHAD</option>
+                                                <option value="PESB-1">PERBENA EMAS SDN BHD</option>
+                                                <option value="KKSB">KAYANGAN KEMAS SDN BHD</option>
+                                                <option value="OB-01">ORANGEBEAM</option>
+                                                <option value="IBR">IBRACO BERHAD</option>
+                                                <option value="SM ">SM PELANGI</option>
+                                                <option value="KPSB">KEMUNCAK PESAKA SDN BHD</option>
+                                                <option value="TCS">TCS GROUP HOLDINGS BHD</option>
+                                                <option value="RBJ">REKABINA JAYA SDN BHD</option>
+                                                <option value="RSP">RSP ARCHITECT SDN BHD</option>
+                                                <option value="WCT GANDA ">BLOK KLINIK PAKAR DAN WAD HOSPITAL PULAU PINANG (R</option>
+                                                <option value="WCT GANDA ">WCT CONSTRUCTION SDN BHD</option>
+                                                <option value="WCT">BLOK KLINIK PAKAR DAN WAD HOSPITAL PULAU PINANG</option>
+                                                <option value="QSE-01">QSE CONSTRUCTION SDN BHD</option>
+                                                <option value="PER-01">CADANGAN PEMBANGUNAN PUSAT REHABILITASI ROBOTIK </option>
+                      </select>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['company'].errors?.['required']">Company is required</div>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="form-label">Signature 1</label>
+                      <input type="text" class="form-control" name="signature1" placeholder="Signature 1" formControlName="signature1"
+                             [ngClass]="{'is-invalid':submitted && addDepartment.controls['signature1'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['signature1'].errors?.['required']">Signature 1 is required</div>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="form-label">Signature 2</label>
+                      <input type="text" class="form-control" name="signature2" placeholder="Signature 2" formControlName="signature2"
+                             [ngClass]="{'is-invalid':submitted && addDepartment.controls['signature2'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['signature2'].errors?.['required']">Signature 2 is required</div>
+                  </div>
+                  <div class="col-md-12 text-center mt-3">
+                      <button type="submit" class="btn btn-primary px-4 me-3" [disabled]="addDepartment.invalid">Save</button>
+                      <a class="btn btn-secondary px-5" href="">Cancel</a>
+                  </div>
+
+
+
+
+
                   </form>
+
                </div>
             </div>
          </div>

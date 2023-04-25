@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AdminGroupService {
 
-  apiUrl="http://13.232.11.217/api/group";
+  apiUrl="http://localhost:3000/group";
   constructor(private http:HttpClient) {
 
    }

@@ -13,41 +13,64 @@
 
                     <div class="card border-top border-0 border-4 border-primary">
                         <div class="card-body p-4">
-                            
-                            <form class="row">
-                                <div class="col-md-6 mt-0" >
-                                    <label for="inputFirstName" class="form-label">Equipment Code</label>
-                                    <input type="text"  class="form-control" id="inputFirstName" placeholder="Enter Equipment code">
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="inputLastName" class="form-label">Equipment Name</label>
-                                    <input type="text"  class="form-control" id="inputLastName" placeholder="Enter Equipment name">
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="inputLastName" class="form-label">Cost</label>
-                                    <input type="text" c class="form-control" id="inputLastName" placeholder="Enter Cost">
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="inputLastName" class="form-label">Mark Up (%)</label>
-                                    <input type="text"  class="form-control" id="inputLastName" placeholder="Enter Mark Up (%)">
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="inputLastName" class="form-label">HEAT DISSIPATION (kw)(each)</label>
-                                    <input type="text"  class="form-control" id="inputLastName" placeholder="Enter HEAT DISSIPATION">
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="inputLastName" class="form-label">ICT PORT</label>
-                                    <input type="text"  class="form-control" id="inputLastName" placeholder="Enter ICT PORT">
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="inputLastName" class="form-label">BSS PORT</label>
-                                    <input type="text"  class="form-control"id="inputLastName" placeholder="Enter BSS PORT">
-                                </div>
-                                <div class="col-md-12  mt-3">
-                                    <a href="equipment.html" class="btn btn-primary px-4 me-3">Save</a>
-                                    <a href="equipment.html"> <i class="material-icon">Cancel</i></a>
-                                </div>
+
+                          <form class="row" [formGroup]="addDepartment" (ngSubmit)="SaveData()">
+                            <div class="col-md-6 mt-0">
+                                <label for="inputFirstName" class="form-label">Equipment Code</label>
+                                <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Equipment code" formControlName="equipmentCode"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['equipmentCode'].errors}">
+
+                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['equipmentCode'].errors && addDepartment.controls['equipmentCode'].errors?.['required']">Equipment code is required</div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="inputLastName" class="form-label">Equipment Name</label>
+                                <input type="text" class="form-control" id="inputLastName" placeholder="Enter Equipment name" formControlName="equipmentName"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['equipmentName'].errors}">
+
+                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['equipmentName'].errors && addDepartment.controls['equipmentName'].errors?.['required']">Equipment name is required</div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="inputLastName" class="form-label">Cost</label>
+                                <input type="text" class="form-control" id="inputLastName" placeholder="Enter Cost" formControlName="cost"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['cost'].errors}">
+
+                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['cost'].errors && addDepartment.controls['cost'].errors?.['required']">Cost is required</div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="inputLastName" class="form-label">Mark Up (%)</label>
+                                <input type="text" class="form-control" id="inputLastName" placeholder="Enter Mark Up (%)" formControlName="markUp"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['markUp'].errors}">
+
+                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['markUp'].errors && addDepartment.controls['markUp'].errors?.['required']">Mark up is required</div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="inputLastName" class="form-label">HEAT DISSIPATION (kw)(each)</label>
+                                <input type="text" class="form-control" id="inputLastName" placeholder="Enter HEAT DISSIPATION" formControlName="heatDissipation"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['heatDissipation'].errors}">
+
+                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['heatDissipation'].errors && addDepartment.controls['heatDissipation'].errors?.['required']">Heat dissipation is required</div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="inputLastName" class="form-label">ICT PORT</label>
+                                <input type="text" class="form-control" id="inputLastName" placeholder="Enter ICT PORT" formControlName="ictPort"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['ictPort'].errors}">
+
+                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['ictPort'].errors && addDepartment.controls['ictPort'].errors?.['required']">ICT port is required</div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="inputLastName" class="form-label">BSS PORT</label>
+                                <input type="text" class="form-control" id="inputLastName" placeholder="Enter BSS PORT" formControlName="bssPort"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['bssPort'].errors}">
+
+                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['bssPort'].errors && addDepartment.controls['bssPort'].errors?.['required']">BSS port is required</div>
+                              </div>
+                              <div class="col-md-6 text-center mt-3">
+                                <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+                                <a routerLink="/equipment-data"><i class="material-icon">Cancel</i></a>
+                            </div>
                             </form>
+
+
                         </div>
                     </div>
                 </div>
