@@ -1,0 +1,494 @@
+<section class="section">
+    <div class="container">
+       <div class="row page-content">
+          <div class="col-md-12">
+             <div class="d-lg-flex align-items-center mb-4 gap-3">
+                <h4 class="mb-0 text-primary">Reports </h4>
+                <!-- <div class="ms-auto"><a routerLink="/project" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
+                   <i class="bx bx-table"></i>Manage Projects</a>
+                   </div> -->
+             </div>
+             <div class="card border-top border-0 border-4 border-primary">
+                <div class="card-body p-4">
+                   <table class="example table dt-responsive nowrap table-responsive" style="width:100%;">
+                      <tbody>
+                         <tr>
+                            <th>Report Type</th>
+                            <th>Generate</th>
+                         </tr>
+                         <tr>
+                            <td>Equipment Location Listing</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Department list</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - by Floor</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Room Listing</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - by Floor</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing(BQ)</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">PDF with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Disabled Equipment Listing(BQ)</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">PDF with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>
+                               <div class="form-group">
+                                <label for="inputState" class="form-label"> Revisions</label>
+                                  <select name="equ_listing" id="equ_listing1" style="width: 100%"class="form-select" fdprocessedid="vc1rn">
+                                     <option value="">Select revisions</option>
+                                     <option value="109">1</option>
+                                     <option value="110">2</option>
+                                     <option value="111">2.001</option>
+                                     <option value="112">3</option>
+                                     <option value="113">4</option>
+                                     <option value="114">5</option>
+                                     <option value="118">5.001</option>
+                                  </select>
+                                  <label for="inputState" class="form-label mt-2">  Compare with</label>
+                                  <select name="equ_listing" id="equ_listing2" style="width: 100%" class="form-select" fdprocessedid="ojlwow">
+                                     <option value="">Select revisions</option>
+                                     <option value="109">1</option>
+                                     <option value="110">2</option>
+                                     <option value="111">2.001</option>
+                                     <option value="112">3</option>
+                                     <option value="113">4</option>
+                                     <option value="114">5</option>
+                                     <option value="118">5.001</option>
+                                  </select>
+                               </div>
+                            </td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels equ_listing_link">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels equ_listing_link">PDF with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels equ_listing_link">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing by Department</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">PDF - 1 Page with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing by Department and Room</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - 1 Page (w/ sign)</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">PDF - 1 Page with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing by Department and Room(Disabled)</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - 1 Page (w/ sign)</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">PDF - 1 Page with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Room to Room variation</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels room_transaction_link">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels room_transaction_link">PDF -1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels room_transaction_link">PDF -1 Page with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary room_transaction_link">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>
+                               <div class="form-group">
+                                <label for="inputState" class="form-label">Revisions</label>
+                                  <select name="room_transactions" id="room_transactions1" style="width: 100%" class="form-select "fdprocessedid="3qgx2">
+                                     <option value="">Select revisions</option>
+                                     <option value="109">1</option>
+                                     <option value="110">2</option>
+                                     <option value="111">2.001</option>
+                                     <option value="112">3</option>
+                                     <option value="113">4</option>
+                                     <option value="114">5</option>
+                                     <option value="118">5.001</option>
+                                  </select>
+                                  <label for="inputState" class="form-label mt-2">Compare with</label>
+                                  <select name="room_transactions" id="room_transactions2" style="width: 100%" class="form-select" fdprocessedid="9q3eol">
+                                     <option value="">Select revisions</option>
+                                     <option value="109">1</option>
+                                     <option value="110">2</option>
+                                     <option value="111">2.001</option>
+                                     <option value="112">3</option>
+                                     <option value="113">4</option>
+                                     <option value="114">5</option>
+                                     <option value="118">5.001</option>
+                                  </select>
+                               </div>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing by Floor</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Power Requirement</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Power Requirement for RDS<span class="glyphicon glyphicon-star" style="color: red; font-size: 10px;" aria-hidden="true"></span></td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing for RDS <span class="glyphicon glyphicon-star" style="color: red; font-size: 10px;" aria-hidden="true"></span></td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Specs</td>
+                            <td>
+                               <a id="equipment_spec" target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>
+                               <div class="form-group">
+                                <label for="inputState" class="form-label">Package:</label>
+                                  <select name="package" id="package" style="width: 100%" class="form-select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                     <option value="">Select package</option>
+                                     <option value="VEN-1">VEN-1 - ANAESTHETIC, VENTILATOR &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="MON-1">MON-1 - MONITOR PATIENT &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="ECG-1">ECG-1 - ECG, STRESS TEST &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="DIA-1">DIA-1 - HAEMODIALYSIS ASSOCIATED PACKAGE</option>
+                                     <option value="ADL-1">ADL-1 - ASSISTED DAILY LIVING KITCHEN</option>
+                                     <option value="DEF-1">DEF-1 - DEFIBRILLATOR &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="RST-1">RST-1 - RESUSCITATION, TROLLEY &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="CTG-1">CTG-1 - CTG, FETAL DOPPLER &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="NCU-1">NCU-1 - NICU INCUBATOR, RADIANT WARMER &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="ULT-1">ULT-1 - ULTRASOUND &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="PIF-1">PIF-1 - PUMP INFUSION &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="INS-1">INS-1 - SURGICAL INSTRUMENT ASSOCIATED PACKAGE</option>
+                                     <option value="DEN-1">DEN-1 - DENTAL ASSOCIATED PACKAGE</option>
+                                     <option value="LAN-1">LAN-1 - LAB ANALYSER &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="LIC-1">LIC-1 - LAB MICROBIOLOGY, INCUBATOR, CENTRIFUGE &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="LMI-1">LMI-1 - LAB MICROSCOPE, WEIGHING SCALE &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="LLG-1">LLG-1 - LAB LOOSE &amp; GLASSWARE ASSOCIATED PACKAGE</option>
+                                     <option value="BIC-1">BIC-1 - ICU BED &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="BED-1">BED-1 - BED, COUCH, WHEELCHAIR &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="SCO-1">SCO-1 - ENDOSCOPE, LAPAROSCOPE &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="OTM-1">OTM-1 - MICROSCOPE OPERATING DIAGNOSTIC &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="LES-1">LES-1 - LASER ENT, EYE &amp; DENTAL ASSOCIATED PACKAGE</option>
+                                     <option value="EYE-1">EYE-1 - OPTHALMOLOGY ASSOCIATED PACKAGE</option>
+                                     <option value="ENT-1">ENT-1 - ENT, AUDIOLOGY &amp; SPEECH ASSOCIATED PACKAGE</option>
+                                     <option value="CLI-1">CLI-1 - CLINICAL, DIAGNOSTIC &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="OTL-1">OTL-1 - OT LOOSE ASSOCIATED PACKAGE</option>
+                                     <option value="PSC-1">PSC-1 - PUMP SUCTION &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="PHA-1">PHA-1 - PHARMACY ASSOCIATED PACKAGE</option>
+                                     <option value="REF-1">REF-1 - REFRIGERATOR MEDICAL &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="WSC-1">WSC-1 - WEIGHING SCALE &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="GAS-1">GAS-1 - MEDICAL GAS ASSOCIATED PACKAGE</option>
+                                     <option value="ELT-1">ELT-1 - ELECTROTHERAPY MACHINE &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="GYM-1">GYM-1 - GYM EQUIPMENT, COUCH &amp; ASSOCIATED PACKAGE</option>
+                                     <option value="REH-1">REH-1 - REHABILITATION LOOSE &amp; ADL ASSOCIATED PACKAGE</option>
+                                     <option value="POP-1">POP-1 - POP &amp; SPLINT ASSOCIATED PACKAGE</option>
+                                     <option value="EDU-1">EDU-1 - EDUCATION MATERIAL ASSOCIATED PACKAGE</option>
+                                     <option value="MOR-1">MOR-1 - LOOSE MORTUARY ASSOCIATED PACKAGE</option>
+                                     <option value="XRY-1">XRY-1 - LOOSE X-RAY ASSOCIATED PACKAGE</option>
+                                     <option value="DIS-1">DIS-1 - DISASTER EQUIPMENT ASSOCIATED PACKAGE</option>
+                                     <option value="DOM-1">DOM-1 - DOMESTIC ELECTRICAL ASSOCIATED PACKAGE</option>
+                                     <option value="KIT-1">KIT-1 - KITCHEN LOOSE ASSOCIATED PACKAGE</option>
+                                     <option value="NON-1">NON-1 - NON MEDICAL EQUIPMENT ASSOCIATED PACKAGE</option>
+                                     <option value="OFF-1">OFF-1 - OFFICE STATIONERY ASSOCIATED PACKAGE</option>
+                                     <option value="MRI-1">MRI-1 - MRI COMPATIBLE EQUIPMENT ASSOCIATED PACKAGE</option>
+                                     <option value="Test-1">Test-1 - Test for pages</option>
+                                     <option value="VEHI">VEHI - AMBULANCE &amp; VEHICLES</option>
+                                     <option value="PHAR">PHAR - PHARMACY EQUIPMENT</option>
+                                     <option value="HXR001">HXR001 - IMAGING</option>
+                                     <option value="HPH080">HPH080 - PHARMACY</option>
+                                     <option value="HMG005">HMG005 - MEDICAL GAS PACKAGE</option>
+                                     <option value="AMBU">AMBU - AMBULANCE RELATED EQUIPMENT</option>
+                                     <option value="MNE-1">MNE-1 - EQUIPMENT RELATED TO G1</option>
+                                  </select>
+                                 
+                               </div>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Brands</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                            </td>
+                         </tr>
+                         <!-- group -->
+                         <tr class="info">
+                            <th colspan="2">By Group</th>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing(BQ), by Group</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels">PDF - 1 Page with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Summary of Equipment variation </td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels transaction_link">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels transaction_link">PDF - 1 page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels transaction_link">PDF - 1 Page with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels transaction_link">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>
+                               <div class="form-group">
+                                <label for="inputState" class="form-label">Revisions</label>
+                                  <select name="transactions" id="transactions1" style="width: 100%" class="form-select" fdprocessedid="lwofog">
+                                     <option value="">Select revisions</option>
+                                     <option value="109">1</option>
+                                     <option value="110">2</option>
+                                     <option value="111">2.001</option>
+                                     <option value="112">3</option>
+                                     <option value="113">4</option>
+                                     <option value="114">5</option>
+                                     <option value="118">5.001</option>
+                                  </select>
+                                  <label for="inputState" class="form-label mt-2"> Compare with</label>
+                                  <select name="transactions" id="transactions2" style="width: 100%" class="form-select" fdprocessedid="obyzwp">
+                                     <option value="">Select revisions</option>
+                                     <option value="109">1</option>
+                                     <option value="110">2</option>
+                                     <option value="111">2.001</option>
+                                     <option value="112">3</option>
+                                     <option value="113">4</option>
+                                     <option value="114">5</option>
+                                     <option value="118">5.001</option>
+                                  </select>
+                               </div>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Location Listing, by Group</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">EXCEL</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing by Department, by Group</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels">PDF - 1 Page with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing by Department and Room, by Group</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">PDF - 1 Page (w/ sign)</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels">PDF - 1 Page with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels">EXCEL</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>
+                               <div class="form-group">
+                                <label for="inputState" class="form-label">Revisions</label>
+                                  <select name="equ_listing_dep_room_group" id="equ_listing_dep_room_group1" style="width: 100%" class="form-select" fdprocessedid="q4p2o">
+                                     <option value="">Select revisions</option>
+                                     <option value="109">1</option>
+                                     <option value="110">2</option>
+                                     <option value="111">2.001</option>
+                                     <option value="112">3</option>
+                                     <option value="113">4</option>
+                                     <option value="114">5</option>
+                                     <option value="118">5.001</option>
+                                  </select>
+                                  <label for="inputState" class="form-label mt-2"> Compare with</label>
+                                  <select name="equ_listing_dep_room_group" id="equ_listing_dep_room_group2" style="width: 100%" class="form-select" fdprocessedid="eb7i0t">
+                                     <option value="">Select revisions</option>
+                                     <option value="109">1</option>
+                                     <option value="110">2</option>
+                                     <option value="111">2.001</option>
+                                     <option value="112">3</option>
+                                     <option value="113">4</option>
+                                     <option value="114">5</option>
+                                     <option value="118">5.001</option>
+                                  </select>
+                               </div>
+                            </td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels equ_listing_dep_room_group_link">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info labels equ_listing_dep_room_group_link">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels equ_listing_dep_room_group_link">PDF - 1 Page with price</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-primary labels equ_listing_dep_room_group_link">EXCEL with price</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td class="labels-check">
+                               <div class="pull-right">
+                                  <input type="checkbox" id="select_all_group"> <strong>Select All</strong>
+                               </div>
+                               <div class="checkbox"><label><input type="checkbox" value="G1 (Major Equipment)">G1 (Major Equipment)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G1 (Medical Mechanical)">G1 (Medical Mechanical)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G1 (Medical Electrical)">G1 (Medical Electrical)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G3 (Loose Medical Equipment)">G3 (Loose Medical Equipment)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G3 (Non Medical Equipment)">G3 (Non Medical Equipment)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Loose Furniture">Loose Furniture</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Non Medical Furniture">Non Medical Furniture</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Vehicle">Vehicle</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G2 (Existing/Relocating)">G2 (Existing/Relocating)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G4 (Consumables)">G4 (Consumables)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G4 (Non medical equipment)">G4 (Non medical equipment)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G2ME (relocation related to M&amp;E)">G2ME (relocation related to M&amp;E)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G2LM (relocation related to Loose medical)">G2LM (relocation related to Loose medical)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G2NM (relocation related to non medical)">G2NM (relocation related to non medical)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="G2LF (relocation related to loose furniture)">G2LF (relocation related to loose furniture)</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="GROUP 1 MEDICAL EQUIPMENT">GROUP 1 MEDICAL EQUIPMENT</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Residential Furniture">Residential Furniture</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Residential Equipment">Residential Equipment</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Architectural">Architectural</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Mechanical">Mechanical</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Electrical">Electrical</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="ICT">ICT</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Others">Others</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="No Equipment">No Equipment</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="Medical furniture">Medical furniture</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="ACCESSORIES">ACCESSORIES</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="SOCSO MEDICAL EQUIPMENT">SOCSO MEDICAL EQUIPMENT</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="PERKESO MEDICAL/REHAB EQUIPMENT">PERKESO MEDICAL/REHAB EQUIPMENT</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="OPERATIONAL/NON MEDICAL EQUIPMENT">OPERATIONAL/NON MEDICAL EQUIPMENT</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="ID FURNITURE">ID FURNITURE</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="KITCHEN EQUIPMENT">KITCHEN EQUIPMENT</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="AUDIOVISUAL">AUDIOVISUAL</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="VOCATIONAL EQUIPMENT">VOCATIONAL EQUIPMENT</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="FUTURE">FUTURE</label></div>
+                               <div class="checkbox"><label><input type="checkbox" value="TESTNEW">TESTNEW</label></div>
+                            </td>
+                            <td class="labels-check">
+                                <div class="col-md-6">
+                               <div id="addgrp" class="d-flex">
+                                  <input type="text" class="form-control" id="txtName" fdprocessedid="hi8hka">
+                                  <input type="button" value="Add Group Name" id="btnSave" fdprocessedid="5nl4dk">
+                               </div>
+                            </div>
+
+                            <br>
+                            <div class="col-md-6">
+                               <div id="delgrp" class="d-flex">
+                                  <input type="text" class="form-control" id="txtName1" fdprocessedid="toj9k">
+                                  <input type="button" value="Remove Group Name" id="saveBtn" fdprocessedid="pfalsf"> 
+                               </div>
+                            </div>
+                               
+                            </td>
+                         </tr>
+                         <!-- Utility -->
+                         <tr class="info">
+                            <th colspan="2">With Utility</th>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing(BQ)</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>Equipment Listing by Department and Room</td>
+                            <td>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - 1 Page</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">PDF - 1 Page (w/ sign)</a>
+                               <a target="_blank" href="" class="btn btn-sm btn-info">EXCEL</a>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td colspan="2">
+                               <div><strong>Include</strong></div>
+                               <div class="checkbox">
+                                  <label>
+                                  <input type="checkbox" id="owner_logo"> Hanimed logo
+                                  </label>
+                               </div>
+                               <div class="checkbox">
+                                  <label>
+                                  <input type="checkbox" id="owner_logo_bottom"> Hanimed logo Bottom
+                                  </label>
+                               </div>
+                               <div class="checkbox">
+                                  <label>
+                                  <input type="checkbox" id="company_logo"> ARUNAMARI SPECIALIST MEDICAL CENTRE logo
+                                  </label>
+                               </div>
+                               <div class="checkbox">
+                                  <label>
+                                  <input type="checkbox" id="company_logo2"> ARUNAMARI SPECIALIST MEDICAL CENTRE logo2
+                                  </label>
+                               </div>
+                               <div class="checkbox">
+                                  <label>
+                                  <input type="checkbox" id="company_logo3"> ARUNAMARI SPECIALIST MEDICAL CENTRE logo3
+                                  </label>
+                               </div>
+                            </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
