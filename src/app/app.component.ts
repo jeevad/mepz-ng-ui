@@ -1,4 +1,6 @@
 import { Component,AfterViewInit} from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component,AfterViewInit} from '@angular/core';
 })
 export class AppComponent  {
   title = 'app';
+  isLoggedIn$: Observable<boolean> = new BehaviorSubject<boolean>(true);
 }

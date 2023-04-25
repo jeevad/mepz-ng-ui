@@ -32,11 +32,18 @@
                                         <td>{{item.packagename}}</td>
                                         <td>{{item.active}}</td>
                                         <td>
-                                            <!-- <div class="d-flex order-actions"> -->
-                                                <!-- <a routerLink="/add-package/{{item._id}}" class="btn text-success"><i class='bx bxs-edit'></i></a>  <a routerLink="/"  (click)="delete(item._id)" class="btn text-danger ms-3" ><i class='bx bxs-trash'></i></a> -->
-                                                <a routerLink="/add-package/{{item._id}}"><i class="material-icons">Edit</i></a>  <a href="javascript:;"  (click)="delete(item._id)"  ><i class="material-icon">Delete</i></a>
+                                            <div class="d-flex order-actions">
 
-                                            <!-- </div> -->
+                                                <a routerLink="/add-package/{{item._id}}" title="Edit" class="text-success me-2"><i class="fa fa-edit"> </i> </a>
+                                               
+                                                <a href="javascript:;" (click)="delete(item._id)" title="Delete"  class="text-danger me-2"><i class="fa fa-trash"> </i>  </a>
+
+
+
+                                               
+                                             
+
+                                            </div>
                                         </td>
                                     </tr>
    
