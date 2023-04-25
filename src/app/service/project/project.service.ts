@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProjectService {
-  apiUrl="http://localhost:3000/project";
+  apiUrl="http://13.232.11.217/api//project";
   constructor(private http:HttpClient) { }
   Load(){
     return this.http.get(this.apiUrl + '/getall');

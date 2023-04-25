@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProjecttemplateService {
-  apiUrl="http://localhost:3000/projecttemplate";
+  apiUrl="http://13.232.11.217/api//projecttemplate";
   constructor(private http:HttpClient) { }
   Load(){
     return this.http.get(this.apiUrl + '/getall');
