@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DepartmentService {
-  apiUrl="http://13.232.11.217/api//department";
+  apiUrl="http://13.232.11.217/api/department";
   constructor(private http:HttpClient) { }
   Load(){
     return this.http.get(this.apiUrl + '/getall');

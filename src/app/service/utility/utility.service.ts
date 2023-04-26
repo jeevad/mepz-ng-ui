@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UtilityService {
-  apiUrl="http://13.232.11.217/api//utility";
+  apiUrl="http://13.232.11.217/api/utility";
 
   constructor(private http:HttpClient) { }
   Find(){

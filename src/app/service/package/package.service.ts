@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PackageService {
-  apiUrl="http://13.232.11.217/api//package";
+  apiUrl="http://13.232.11.217/api/package";
 
   constructor(private http:HttpClient) { }
   Find(){

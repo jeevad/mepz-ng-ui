@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GroupsService {
-  apiUrl = "http://13.232.11.217/api//groups";
+  apiUrl = "http://13.232.11.217/api/groups";
   constructor(private http:HttpClient) { }
   Find(){
     return this.http.get(this.apiUrl + '/getall');

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EquipmentService {
-  apiUrl="http://13.232.11.217/api//equipment";
+  apiUrl="http://13.232.11.217/api/equipment";
 
   constructor(private http:HttpClient) { }
   Load(){
