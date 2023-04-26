@@ -39,6 +39,7 @@ import { DepartmentTransactionComponent } from './pages/department-transaction/d
 import { PastTransactionComponent } from './pages/past-transaction/past-transaction.component';
 import { ProjectEditComponent } from './pages/project-edit/project-edit.component';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { EquipmentSpecificationComponent } from './pages/equipment-specification/equipment-specification.component';
 
 const routes: Routes = [
   {path: 'signup',component: SignupComponent},
@@ -90,6 +91,7 @@ const routes: Routes = [
   {path:'past-transaction', component:PastTransactionComponent},
   {path:'edit-project', component:ProjectEditComponent},
   {path:'reports', component:ReportsComponent},
+  {path:'specification', component:EquipmentSpecificationComponent},
 
   
   
