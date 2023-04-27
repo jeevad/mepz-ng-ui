@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { EquipmentSpecificationComponent } from './equipment-specification/equipment-specification.component';
+import { EquipmentBrandComponent } from './equipment-brand/equipment-brand.component';
+import { ReportsByPackageComponent } from './reports-by-package/reports-by-package.component';
 
 
 @NgModule({
   declarations: [
-    EquipmentSpecificationComponent
+    EquipmentSpecificationComponent,
+    EquipmentBrandComponent,
+    ReportsByPackageComponent
   ],
   imports: [
     CommonModule,
