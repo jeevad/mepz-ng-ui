@@ -1,111 +1,284 @@
-
-            <div class="full-width">
-                <section class="section">
-                    <div class="container">
-                        <div class="row page-content">
-                            <div class="col-md-12">
-                                <div class="d-lg-flex align-items-center mb-4 gap-3">
-                                    <h4 class="mb-0 text-primary">Project Template </h4>
-                                    <div class="ms-auto"><a routerLink="/Project-newtemplate" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>New Template</a></div>
-                                    
-                                </div>
+<div class="full-width">
+    <section class="section">
+       <div class="container">
+          <div class="row page-content">
+             <div class="col-md-12">
+                <div class="d-lg-flex align-items-center mb-4 gap-3">
+                   <h4 class="mb-0 text-primary">Project Template </h4>
+                   <div class="ms-auto"><a routerLink="/Project-newtemplate" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>New Template</a></div>
+                </div>
+             </div>
+             <div class="col-md-12">
+                <div class="card p-3">
+                   <div class="card-body">
+                      <div class="table-responsive">
+                         <table id="example" class="example table dt-responsive nowrap table-responsive" style="width:100%;">
+                            <thead class="table-light">
+                               <tr>
+                                  <th>S.No</th>
+                                  <th>Name</th>
+                                  <th>No of Beds</th>
+                                  <th>classification</th>
+                                  <th>Project type</th>
+                                  <th>Actions</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                               <tr>
+                                  <td>1</td>
+                                  <td>NATIONAL CENTRE FOR DISEASE CONTROL</td>
+                                  <td>100</td>
+                                  <td>GOVERNMENT</td>
+                                  <td>SPECIALIZED HOSPITAL</td>
+                                  <td>
+                                     <div class="d-flex order-actions">
+                                        <button title="Create Project"
+                                           type="button"
+                                           class="text-primary me-2"
+                                           data-toggle="modal"
+                                           data-target="#myModal2"
+                                           >
+                                        <i class="fal fa-file-plus"> </i>
+                                        </button>
+                                        
+                                        <a routerLink="/template-department" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
+                                        <a routerLink="" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
+                                     </div>
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td>2</td>
+                                  <td>NATIONAL CENTRE FOR DISEASE CONTROL-2</td>
+                                  <td>100</td>
+                                  <td>GOVERNMENT</td>
+                                  <td>CHILDRENS HOSPITAL</td>
+                                  <td>
+                                     <div class="d-flex order-actions">
+                                        <button title="Create Project"
+                                           type="button"
+                                           class="text-primary me-2"
+                                           data-toggle="modal"
+                                           data-target="#myModal2"
+                                           >
+                                        <i class="fal fa-file-plus"> </i>
+                                        </button>
+                                        <a routerLink="" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
+                                        <a routerLink="" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
+                                     </div>
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td>3</td>
+                                  <td>HOSPITAL ANGKATAN TENTERA, MELAKA</td>
+                                  <td>144</td>
+                                  <td>GOVERNMENT</td>
+                                  <td>GENERAL HOSPITAL</td>
+                                  <td>
+                                     <div class="d-flex order-actions">
+                                        <button title="Create Project"
+                                        type="button"
+                                        class="text-primary me-2"
+                                        data-toggle="modal"
+                                        data-target="#myModal2"
+                                        >
+                                     <i class="fal fa-file-plus"> </i>
+                                     </button>
+                                        <a routerLink="" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
+                                        <a routerLink="" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
+                                     </div>
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td>4</td>
+                                  <td>sheen</td>
+                                  <td>100</td>
+                                  <td>GOVERNMENT</td>
+                                  <td>CHILDRENS HOSPITAL</td>
+                                  <td>
+                                     <div class="d-flex order-actions">
+                                        <button title="Create Project"
+                                           type="button"
+                                           class="text-primary me-2"
+                                           data-toggle="modal"
+                                           data-target="#myModal2"
+                                           >
+                                        <i class="fal fa-file-plus"> </i>
+                                        </button>
+                                        <a routerLink="" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
+                                        <a routerLink="" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
+                                     </div>
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td>5</td>
+                                  <td>Test 21</td>
+                                  <td>120</td>
+                                  <td>PRIVATE</td>
+                                  <td>WELLNESS CENTRE</td>
+                                  <td>
+                                     <div class="d-flex order-actions">
+                                        <button title="Create Project"
+                                        type="button"
+                                        class="text-primary me-2"
+                                        data-toggle="modal"
+                                        data-target="#myModal2"
+                                        >
+                                     <i class="fal fa-file-plus"> </i>
+                                     </button>
+                                        <a routerLink="" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
+                                        <a routerLink="" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
+                                     </div>
+                                  </td>
+                               </tr>
+                            </tbody>
+                         </table>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </div>
+ <!-- modal -->
+ <div class="container demo">
+    <!-- Modal -->
+    <div
+       class="modal right fade"
+       id="myModal2"
+       tabindex="-1"
+       role="dialog"
+       aria-labelledby="myModalLabel2"
+       >
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-header">
+                <button
+                   type="button"
+                   class="close"
+                   data-dismiss="modal"
+                   aria-label="Close"
+                   >
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
+             </div>
+             <div class="modal-body">
+                <div class="d-flex justify-content-center align-items-center bg-light">
+                   <div class="card p-3 shadow">
+                      <h4 class="mb-4 text-primary">Create New Project </h4>
+                      <div class="col-sm-12">
+                         <form id="save_project_form" class="form-horizontal" method="post" action="">
+                            <input type="hidden" name="temp_id" value="7">
+                            <div class="form-group">
+                               <label class="col-sm-6 control-label">Code</label>
+                               <div class="col-sm-12">
+                                  <input type="text" class="form-control" name="h_code" placeholder="Code" value="" fdprocessedid="jtn36a">
+                               </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="card p-3">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                        <table id="example" class="example table dt-responsive nowrap table-responsive" style="width:100%;">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th>S.No</th>
-                                                    <th>Name</th>
-                                                    <th>No of Beds</th>
-                                                    <th>classification</th>
-                                                    <th>Project type</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>NATIONAL CENTRE FOR DISEASE CONTROL</td>
-                                                    <td>100</td>
-                                                    <td>GOVERNMENT</td>
-                                                    <td>SPECIALIZED HOSPITAL</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>NATIONAL CENTRE FOR DISEASE CONTROL-2</td>
-                                                    <td>100</td>
-                                                    <td>GOVERNMENT</td>
-                                                    <td>CHILDRENS HOSPITAL</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>HOSPITAL ANGKATAN TENTERA, MELAKA</td>
-                                                    <td>144</td>
-                                                    <td>GOVERNMENT</td>
-                                                    <td>GENERAL HOSPITAL</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>sheen</td>
-                                                    <td>100</td>
-                                                    <td>GOVERNMENT</td>
-                                                    <td>CHILDRENS HOSPITAL</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Test 21</td>
-                                                    <td>120</td>
-                                                    <td>PRIVATE</td>
-                                                    <td>WELLNESS CENTRE</td>
-                                                    <td>
-                                                        <div class="d-flex order-actions">
-                                                            <a href="javascript:;" class="text-primary me-2"><span data-bs-toggle="tooltip" title="Create Project"><i class="fal fa-file-plus"></i></span></a>
-                                                            <a href="javascript:;" class="text-success me-2" data-bs-toggle="tooltip" title="View/Edit"><i class='bx bxs-edit'></i></a>
-                                                            <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"><i class='bx bxs-trash'></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                               <label class="col-sm-6 control-label">Project Name</label>
+                               <div class="col-sm-12">
+                                  <input type="text" class="form-control" name="h_short_name" placeholder="Project Name" value="" fdprocessedid="70bnc6">
+                               </div>
                             </div>
-                        </div>
-                    </div>
-                    </div>
-                </section>
-            </div>
-            
-           
-            
+                            <div class="form-group">
+                               <label class="col-sm-6 control-label">Full Project Name</label>
+                               <div class="col-sm-12">
+                                  <input type="text" class="form-control" name="h_full_name" placeholder="Full Project Name" value="" fdprocessedid="65ccrw">
+                               </div>
+                            </div>
+                            <div class="form-group">
+                               <label class="col-sm-6 control-label">Client/Owner</label>
+                               <div class="col-sm-12">
+                                  <input type="text" class="form-control" name="owner" placeholder="Client/Owner" value="" fdprocessedid="piyp8v">
+                               </div>
+                            </div>
+                            <div class="form-group">
+                               <label class="col-sm-6 control-label">Contract No</label>
+                               <div class="col-sm-12">
+                                  <input type="text" class="form-control" name="contract_no" placeholder="Contract No" value="" fdprocessedid="vsn8vf">
+                               </div>
+                            </div>
+                            <div class="form-group">
+                               <label class="col-sm-6 control-label">No. of Beds</label>
+                               <div class="col-sm-12">
+                                  <input type="text" class="form-control" name="bed_no" placeholder="Beds" value="" fdprocessedid="pgnr3b">
+                               </div>
+                            </div>
+                            <div class="form-group">
+                               <label class="col-sm-6 control-label">Classification</label>
+                               <div class="col-sm-12">
+                                  <input type="text" class="form-control" name="hcl_code" placeholder="Classification" value="" fdprocessedid="1jsc8n">
+                               </div>
+                            </div>
+                            <div class="form-group">
+                               <label class="col-sm-6 control-label">Project Type</label>
+                               <div class="col-sm-12">
+                                  <input type="text" class="form-control" name="type" placeholder="Project Type" value="" fdprocessedid="u9pez7p">
+                               </div>
+                            </div>
+                            <div class="form-group">
+                               <label class="col-sm-6 control-label">Company</label>
+                               <div class="col-sm-12">
+                                  <select class="form-control" name="com_code" fdprocessedid="x10jd6">
+                                     <option value="">-Select Company-</option>
+                                     <option value="100001">LIKAS NUCLEAR AND RADIOTHERAPY SPECIALIST HOSPITAL</option>
+                                     <option value="1234">HSS JV QATTA</option>
+                                     <option value="8766">HEALTH SOLUTION (SE ASIA) SDN BHD</option>
+                                     <option value="ACC-SP">HEALTH SOLUTIONS (SEA) SDN BHD</option>
+                                     <option value="CRH001">HOSPITAL REHABILITASI CHERAS</option>
+                                     <option value="GESB">GADANG ENGINEERING (M) SDN BHD</option>
+                                     <option value="HKKS001">KLINIK KESIHATAN</option>
+                                     <option value="HM">CADANGAN PEMBINAAN BANGUNAN BARU MAKMAL PATOLOGI</option>
+                                     <option value="HMED">PEMBINAAN BANGUNAN TAMBAHAN  HOSPITAL TANAH MERAH</option>
+                                     <option value="HPKK,UKM01">HOSPITAL KANAK KANAK UKM, KUALA LUMPUR</option>
+                                     <option value="HSM001">KONSORTIUM GADANG PEREMBUM</option>
+                                     <option value="HSM1234">HEALTH SOLUTION</option>
+                                     <option value="HSS-0001">PROPOSED DEVELOPMENT OF MAHSA SPECIALIST HOSPITAL</option>
+                                     <option value="LNRSH001">HEALTH SOLUTIONS (SE ASIA) SDN BHD</option>
+                                     <option value="MEP">MEP, HEALTH SOLUTION (M) SDN BHD</option>
+                                     <option value="MNE">MNE SOLUTIONS</option>
+                                     <option value="MSC-HKT">HEALTH SOLUTIONS (SEA) SDN BHD</option>
+                                     <option value="PTH001">HEALTH SOLUTION (M) SDN BHD</option>
+                                     <option value="ZCB">ZECON BERHAD</option>
+                                     <option value="001">shyla </option>
+                                     <option value="TRC001">TRANS RESOURCES CORPORATION SDN BHD </option>
+                                     <option value="MU">MUSYATI SDN BHD </option>
+                                     <option value="HSB">HANIMED SDN BHD</option>
+                                     <option value="PEN001">SERI LIBANA PPC JV SDN BHD</option>
+                                     <option value="PMB">PESONA METRO BERHAD</option>
+                                     <option value="PESB-1">PERBENA EMAS SDN BHD</option>
+                                     <option value="KKSB">KAYANGAN KEMAS SDN BHD</option>
+                                     <option value="OB-01">ORANGEBEAM</option>
+                                     <option value="IBR">IBRACO BERHAD</option>
+                                     <option value="SM ">SM PELANGI</option>
+                                     <option value="KPSB">KEMUNCAK PESAKA SDN BHD</option>
+                                     <option value="TCS">TCS GROUP HOLDINGS BHD</option>
+                                     <option value="RBJ">REKABINA JAYA SDN BHD</option>
+                                     <option value="RSP">RSP ARCHITECT SDN BHD</option>
+                                     <option value="WCT GANDA ">BLOK KLINIK PAKAR DAN WAD HOSPITAL PULAU PINANG (R</option>
+                                     <option value="WCT GANDA ">WCT CONSTRUCTION SDN BHD</option>
+                                     <option value="WCT">BLOK KLINIK PAKAR DAN WAD HOSPITAL PULAU PINANG</option>
+                                     <option value="QSE-01">QSE CONSTRUCTION SDN BHD</option>
+                                     <option value="PER-01">CADANGAN PEMBANGUNAN PUSAT REHABILITASI ROBOTIK </option>
+                                  </select>
+                               </div>
+                            </div>
+                            <div class="col-md-12  mt-3">
+                               <a href="" class="btn btn-primary px-4 me-3">Save</a>
+                               <a href="" class="btn btn-secondary px-5"> Cancel</a>
+                            </div>
+                         </form>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <!-- modal-content -->
+       </div>
+       <!-- modal-dialog -->
+    </div>
+    <!-- modal -->
+ </div>
+ <!-- container -->

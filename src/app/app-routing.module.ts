@@ -42,6 +42,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
 import { EquipmentSpecificationComponent } from './pages/equipment-specification/equipment-specification.component';
 import { EquipmentBrandComponent } from './pages/equipment-brand/equipment-brand.component';
 import { ReportsByPackageComponent } from './pages/reports-by-package/reports-by-package.component';
+import { TemplateDepartmentComponent } from './pages/template-department/template-department.component';
 
 const routes: Routes = [
   {path: 'signup',component: SignupComponent},
@@ -96,6 +97,7 @@ const routes: Routes = [
   {path:'specification', component:EquipmentSpecificationComponent},
   {path:'brand', component:EquipmentBrandComponent},
   {path:'reports-by-package', component:ReportsByPackageComponent},
+  {path:'template-department', component:TemplateDepartmentComponent},
 
   
   

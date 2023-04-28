@@ -1,0 +1,165 @@
+<div class="full-width">
+    <section class="section">
+       <div class="container">
+          <div class="row page-content">
+             <div class="col-md-12">
+                <div class="d-lg-flex align-items-center mb-4 gap-3">
+                   <h4 class="mb-0 text-primary">Template - Department & Room Information </h4>
+                </div>
+             </div>
+             <div class="col-md-12">
+                <table class="table table-condensed table-striped">
+                   <tbody>
+                      <tr>
+                         <td><strong>Name:</strong> NATIONAL CENTRE FOR DISEASE CONTROL</td>
+                         <td><strong>No of Beds:</strong> 100</td>
+                         <td><strong>Classification:</strong> SPECIALIZED HOSPITAL</td>
+                         <td><strong>Project Type:</strong> GOVERNMENT</td>
+                      </tr>
+                   </tbody>
+                </table>
+                <a class="btn btn-primary " routerLink="">Template List</a>
+                <a class="btn btn-info m-1" routerLink="" disabled="">Department and Room Info</a>
+                <a class="btn btn-info" routerLink="">Equipment Allocation</a>
+                <div class="pull-right">
+                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" fdprocessedid="x587uj">Copy Dept. from Existing Project</button>
+                  
+                   <button type="button" class="btn btn-danger m-1" id="delete_department" fdprocessedid="hyq05i">Delete Department</button>
+                   <button type="button" class="btn btn-danger" id="delete_room" fdprocessedid="z3fp8">Delete Room</button>
+                </div>
+                <br> <br>
+                <small class="text-danger">Note: <strong>Select</strong> any department to add/delete room, <strong>un-select</strong> to add new department</small>
+               
+                <div class="card p-3 mt-4">
+                   <div class="card-body ">
+                    <div class="row">
+                      <div class="col-md-6">
+                         <table id="table8s" style="font-size: 11px;" class="table table-condensed table-striped tablesorter">
+                            <thead>
+                               <tr>
+                                  <th class="header headerSortDown">Department</th>
+                                  <th class="header">Code</th>
+                                  <th class="header">Dept. Alias</th>
+                               </tr>
+                            </thead>
+                            <tbody id="table_dept">
+                               <tr id="213">
+                                  <td>ADMINISTRATION DEPARTMENT</td>
+                                  <td class="editable" data-tb="tb_temp_dep" data-col="prj_dep_code" data-id="213">AD</td>
+                                  <td class="editable" data-tb="tb_temp_dep" data-col="prj_dep_desc" data-id="213">ADMINISTRATION DEPT</td>
+                               </tr>
+                            </tbody>
+                         </table>
+                      </div>
+                      <div class="col-md-6">
+                         <table id="table9s" style="font-size: 11px;" class="table table-condensed table-striped tablesorter">
+                            <thead>
+                               <tr>
+                                  <th class="header headerSortDown">Room</th>
+                                  <th class="header">Code</th>
+                                  <th class="header">Room Alias</th>
+                               </tr>
+                            </thead>
+                            <tbody id="table_room">
+                               <tr id="3642" class="table_room_213">
+                                  <td>COUNTER RECEPTION &amp; REGISTRATION</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3642">AD3101</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3642">RECEPTION</td>
+                               </tr>
+                               <tr id="3660" class="table_room_213">
+                                  <td>OFFICE GENERAL </td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3660">AD3213</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3660">HOTLINE ROOM</td>
+                               </tr>
+                               <tr id="3652" class="table_room_213">
+                                  <td>OFFICE HEAD OF DEPARTMENT</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3652">AD3204</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3652">OFFICE ROOM - HEAD OF SECTIONS</td>
+                               </tr>
+                               <tr id="3655" class="table_room_213">
+                                  <td>OFFICE HEAD OF DEPARTMENT</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3655">SF3201</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3655">SPECIALIST OFFICE</td>
+                               </tr>
+                               <tr id="3643" class="table_room_213">
+                                  <td>OFFICE HOSPITAL DIRECTOR</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3643">AD3201</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3643">HOSPITAL DIRECTOR'S OFFICE</td>
+                               </tr>
+                               <tr id="3644" class="table_room_213">
+                                  <td>OFFICE SECRETARY/PERSONAL ASSISTANT (PA)</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3644">AD3201A</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3644">PA 1 (HOSPITAL DIRECTOR)</td>
+                               </tr>
+                               <tr id="3654" class="table_room_213">
+                                  <td>ROOM DISCUSSION</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3654">AD3401</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3654">DISCUSSION ROOM</td>
+                               </tr>
+                               <tr id="3656" class="table_room_213">
+                                  <td>ROOM DOCTOR ON CALL </td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3656">FCW-7404</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3656">ON CALL ROOM WITH ENSUITE M/F</td>
+                               </tr>
+                               <tr id="3645" class="table_room_213">
+                                  <td>ROOM FILE/DOCUMENT</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3645">AD3405</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3645">CENTRAL FILE ROOM</td>
+                               </tr>
+                               <tr id="3646" class="table_room_213">
+                                  <td>ROOM MEETING </td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3646">AD3402</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3646">MAIN MEETING ROOM</td>
+                               </tr>
+                               <tr id="3659" class="table_room_213">
+                                  <td>ROOM MEETING </td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3659">SF3219</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3659">VIDEO CONFERENCING ROOM</td>
+                               </tr>
+                               <tr id="3653" class="table_room_213">
+                                  <td>ROOM OFFICER</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3653">AD3205</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3653">GRADE 17 - 35</td>
+                               </tr>
+                               <tr id="3649" class="table_room_213">
+                                  <td>ROOM PHOTOCOPY/PRINTER</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3649">AD3404</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3649">PHOTOSTAT AND PRINTING ROOM</td>
+                               </tr>
+                               <tr id="3648" class="table_room_213">
+                                  <td>ROOM QUALITY CONTROL</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3648">AD3407</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3648">STRONG / CONFIDENTIAL FILE ROOM</td>
+                               </tr>
+                               <tr id="3651" class="table_room_213">
+                                  <td>ROOM REST/LOUNGE/PANTRY STAFF</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3651">AD3501</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3651">STAFF REST WITH PANTRY</td>
+                               </tr>
+                               <tr id="3658" class="table_room_213">
+                                  <td>ROOM SEMINAR</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3658">CME2109</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3658">PRESS CONFERENCE ROOM</td>
+                               </tr>
+                               <tr id="3650" class="table_room_213">
+                                  <td>STORE STATIONERY </td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3650">AD3409</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3650">VOUCHER ROOM</td>
+                               </tr>
+                               <tr id="3647" class="table_room_213">
+                                  <td>WAITING AREA SUB-WAIT</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_code" data-id="3647">AD3201B</td>
+                                  <td class="editable" data-tb="tb_temp_dep_line" data-col="prj_rm_desc" data-id="3647">SUB-WAIT (HOSPITAL DIRECTOR)</td>
+                               </tr>
+                            </tbody>
+                         </table>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </div>
+ 
