@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlTree } from '@angular/router';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
@@ -43,6 +43,7 @@ import { EquipmentSpecificationComponent } from './pages/equipment-specification
 import { EquipmentBrandComponent } from './pages/equipment-brand/equipment-brand.component';
 import { ReportsByPackageComponent } from './pages/reports-by-package/reports-by-package.component';
 import { TemplateDepartmentComponent } from './pages/template-department/template-department.component';
+import { EditAdminUserComponent } from './pages/edit-admin-user/edit-admin-user.component';
 
 const routes: Routes = [
   {path: 'signup',component: SignupComponent},
@@ -98,6 +99,7 @@ const routes: Routes = [
   {path:'brand', component:EquipmentBrandComponent},
   {path:'reports-by-package', component:ReportsByPackageComponent},
   {path:'template-department', component:TemplateDepartmentComponent},
+  {path:'edit-admin-user', component:EditAdminUserComponent},
 
   
   

@@ -6,6 +6,7 @@ import { EquipmentSpecificationComponent } from './equipment-specification/equip
 import { EquipmentBrandComponent } from './equipment-brand/equipment-brand.component';
 import { ReportsByPackageComponent } from './reports-by-package/reports-by-package.component';
 import { TemplateDepartmentComponent } from './template-department/template-department.component';
+import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { TemplateDepartmentComponent } from './template-department/template-depa
     EquipmentBrandComponent,
     ReportsByPackageComponent,
     TemplateDepartmentComponent,
+    EditAdminUserComponent,
   ],
   imports: [
     CommonModule,
