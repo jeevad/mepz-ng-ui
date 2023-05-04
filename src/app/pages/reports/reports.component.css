@@ -13,3 +13,8 @@ td a{
     font-weight: normal;
     cursor: pointer;
 }
+
+.overflow-auto {
+    height:150px;
+    overflow-y: scroll;
+  }
