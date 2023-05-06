@@ -22,15 +22,24 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor= "let item of groupdata;let i=index;">
-                                        <td>{{i+1}}</td>
+                                      <td>{{ skip + i+1 }}</td>
                                         <td>{{item.groupname}}</td>
                                         <td>
                                             <div class="d-flex order-actions">
                                               <a routerLink="/admin-group-form/{{item._id}}" class="btn text-success"><i class='bx bxs-edit'></i></a>  <a  (click)="delete(item._id)" class="btn text-danger ms-3" ><i class='bx bxs-trash'></i></a>
-                                            </div> 
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                  <tr>
+                                    <td colspan="5">
+                                      <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="LoadGroupData()"
+                                        aria-label="Default pagination"></ngb-pagination>
+                                      <pre>Current page: {{page}}</pre>
+                                    </td>
+                                  </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

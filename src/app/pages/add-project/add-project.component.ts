@@ -40,18 +40,19 @@ export class AddProjectComponent {
       }
     })
     this.addDepartment = this.formBuilder.group({
-      'code':[''],
-      'projectname':[''],
-      'fullProjectName':[''],
-      'clientOwner':[''],
-      'contractNo':[''],
-      'classification':[''],
-      'projecttype':[''],
-      'company':[''],
+      'code':['',Validators.required],
+      'projectname':['',Validators.required],
+
+      'fullProjectName':['',Validators.required],
+      'clientOwner':['',Validators.required],
+      'contractNo':['',Validators.required],
+      'classification':['',Validators.required],
+      'projecttype':['',Validators.required],
+      'company':['',Validators.required],
       'signature1':[''],
       'signature2':[''],
       'remarks':[''],
-      'noofBeds':[''],
+       'noofBeds':['',Validators.required],
     })
   }
 

@@ -26,8 +26,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                              <tr *ngFor="let item of departmentData; let i = index">
-                                                <td>{{ i + 1 }}</td>
+                                              <tr *ngFor="let item of projectTempData; let i = index">
+                                                <td>{{ skip + i+1 }}</td>
                                                 <td>{{ item.name }}</td>
                                                 <td>{{ item.noofbeds }}</td>
                                                 <td>{{ item.classification }}</td>
@@ -60,6 +60,14 @@
                                                 </td>
                                               </tr>
                                             </tbody>
+                                            <tfoot>
+                                              <tr>
+                                                <td colspan="5">
+                                                  <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination"></ngb-pagination>
+                                                <pre>Current page: {{page}}</pre>
+                                                </td>
+                                              </tr>
+                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>

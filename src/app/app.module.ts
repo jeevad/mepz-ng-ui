@@ -58,7 +58,7 @@ import { DeletedialogComponent } from './pages/deletedialog/deletedialog.compone
     MatDialogModule,
     MatInputModule,
     CollapseModule.forRoot(),
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

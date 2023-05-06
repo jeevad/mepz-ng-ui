@@ -11,11 +11,6 @@
               <div class="ms-auto"><a routerLink="/department-form" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add Department</a></div>
            </div>
 
-
-
-
-
-
               <div class="col-md-12">
                   <div class="card p-3">
                       <div class="card-body">
@@ -31,7 +26,7 @@
                               </thead>
                               <tbody>
                                   <tr *ngFor= "let item of departmentData; let i=index;">
-                                      <td>{{i+1}}</td>
+                                    <td>{{ skip + i+1 }}</td>
                                       <td>{{item.departmentcode}}</td>
                                       <td>{{item.departmentname | uppercase}}</td>
                                       <td>{{item.active}}</td>
@@ -49,6 +44,14 @@
                                   </tr>
 
                               </tbody>
+                              <tfoot>
+                                <tr>
+                                  <td colspan="5">
+                                    <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination"></ngb-pagination>
+                                  <pre>Current page: {{page}}</pre>
+                                  </td>
+                                </tr>
+                              </tfoot>
                           </table>
                       </div>
                   </div>
@@ -57,4 +60,3 @@
           </div>
           </div>
           </section>
-  

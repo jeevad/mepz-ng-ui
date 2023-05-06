@@ -1,44 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
-// import 'datatables.net';
-// import 'datatables.net-responsive-bs5';
-// import 'datatables.net-responsive';
 import { CurrencyService } from 'src/app/service/currency/currency.service';
 import { HttpClient } from '@angular/common/http';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
-  styleUrls: ['./currency.component.css']
+  styleUrls: ['./currency.component.css'],
 })
 export class CurrencyComponent implements OnInit {
-  currencyData: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count: number = 0;
+  // currencyData: any;
+  currencyData: any[] = [];
+  newData: any;
+
   constructor(private service: CurrencyService, private http: HttpClient) {
     this.find();
   }
   ngOnInit() {
-    // $(function () {
-    //   $('.example').DataTable({
-    //     responsive: true,
-    //     paging: false,
-    //     columnDefs: [
-    //       { responsivePriority: 2, targets: -1 }
-    //     ]
-    //   });
-    // });
+    this.find();
   }
-
   find() {
-    this.service.Find().subscribe(data => {
-      console.log(data);
-      this.currencyData = data;
+    this.skip = this.limit * (this.page - 1);
+    this.service.Find(this.skip, this.limit).subscribe((data: any) => {
+      // console.log(data);
+      this.currencyData = data.results;
+      this.count = data.count;
+      // console.log(data.count);
     });
   }
+
   delete(id: any) {
     if (confirm('delete?')) {
-      this.service.Removedata(id).subscribe(data => {
+      this.service.Removedata(id).subscribe((data) => {
         this.find();
       });
     }
-
   }
 }

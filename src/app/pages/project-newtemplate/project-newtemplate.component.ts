@@ -37,11 +37,11 @@ export class ProjectNewtemplateComponent {
       }
     })
     this.addDepartment = this.formBuilder.group({
-      'name':[''],
-      'noofbeds':[''],
+      'name':['',Validators.required],
+      'noofbeds':['',Validators.required],
       'remarks':[''],
       'classification':[''],
-      'projecttype':[''],
+      'projecttype':['',Validators.required],
 
     })
   }

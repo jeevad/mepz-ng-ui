@@ -12,14 +12,25 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./room-detail.component.css']
 })
 export class RoomDetailComponent implements OnInit {
-  roomData: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count: number = 0;
+  roomData: any[] = [];
   constructor(private room: RoomService, private http: HttpClient) {
     this.Load();
   }
+
+  ngOnInit() {
+    this.Load();
+
+  }
   Load() {
-    this.room.Load().subscribe(data => {
+    this.skip = this.limit * (this.page - 1);
+    this.room.Load(this.skip, this.limit).subscribe((data : any) => {
       console.log(data);
-      this.roomData = data;
+      this.roomData = data.results;
+      this.count = data.count;
     });
   }
   delete(id: any) {
@@ -31,15 +42,5 @@ export class RoomDetailComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    // $(function () {
-    //   $('.example').DataTable({
-    //     responsive: true,
-    //     paging: false,
-    //     columnDefs: [
-    //       { responsivePriority: 2, targets: -1 }
-    //     ]
-    //   });
-    // });
-  }
+
 }

@@ -24,13 +24,13 @@
                     <label class="form-label">Project Name</label>
                     <input type="text" class="form-control" name="projectname" formControlName="projectname" autocomplete="off"
                       [ngClass]="{'is-invalid': addDepartment.controls['projectname'].errors && addDepartment.controls['projectname'].touched}">
-                    <div class="text-danger" *ngIf="addDepartment.controls['projectname'].errors?.['required'] && addDepartment.controls['projectname'].touched">Project Name is required</div>
+                    <div class="text-danger" *ngIf="addDepartment.controls['projectname'].errors?.['required'] && addDepartment.controls['projectname'].touched">Project name is required</div>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label">Full Project Name</label>
                     <input type="text" class="form-control" name="fullProjectName" formControlName="fullProjectName" autocomplete="off"
                       [ngClass]="{'is-invalid': addDepartment.controls['fullProjectName'].errors && addDepartment.controls['fullProjectName'].touched}">
-                    <div class="text-danger" *ngIf="addDepartment.controls['fullProjectName'].errors?.['required'] && addDepartment.controls['fullProjectName'].touched">Full Project Name is required</div>
+                    <div class="text-danger" *ngIf="addDepartment.controls['fullProjectName'].errors?.['required'] && addDepartment.controls['fullProjectName'].touched">Full project name is required</div>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label">Client/Owner</label>

@@ -24,7 +24,7 @@
                                 <label for="inputLastName" class="form-label">No of Beds</label>
                                 <input type="text" class="form-control" id="inputLastName" placeholder="Enter No of Beds" formControlName="noofbeds"
                                   [ngClass]="{'is-invalid': submitted && addDepartment.controls['noofbeds'].errors}">
-                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofbeds'].errors?.['required']">No of Beds is required</div>
+                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofbeds'].errors?.['required']">No of beds is required</div>
                               </div>
 
                              <div class="col-md-6">

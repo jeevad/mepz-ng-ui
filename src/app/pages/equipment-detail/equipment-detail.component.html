@@ -1,77 +1,72 @@
-
-
 <section class="section">
 
-    <div class="container">
+  <div class="container">
+    <div class="row page-content">
+      <div class="col-md-12">
+
+        <div class="d-lg-flex align-items-center mb-4 gap-3">
+          <h4 class="mb-0 text-primary">Equipment </h4>
+          <div class="ms-auto"><a routerLink="/add-equipment" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
+              <i class="bx bxs-plus-square"></i>Add add-equipment</a></div>
+        </div>
+
         <div class="row page-content">
-           <div class="col-md-12">
 
-            <div class="d-lg-flex align-items-center mb-4 gap-3">
-                <h4 class="mb-0 text-primary">Equipment </h4>
-                <div class="ms-auto"><a routerLink="/add-equipment" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
-                    <i class="bx bxs-plus-square"></i>Add add-equipment</a></div>
-             </div>
+          <div class="col-md-12">
+            <div class="card p-3">
+              <div class="card-body">
+                <table class="example table dt-responsive nowrap table-responsive" style="width:100%;">
+                  <thead>
+                    <tr>
+                      <th>S.No</th>
+                      <th>Equipment Code</th>
+                      <th>Equipment Name</th>
+                      <th>Cost</th>
+                      <th>Mark Up (%)</th>
+                      <th>Group</th>
+                      <th>RM</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of equipmentdata; let i = index">
 
-            <div class="row page-content">
+                      <td>{{ skip + i+1 }}</td>
+                      <td>{{ item.equipmentCode }}</td>
+                      <!-- <td><span class="hiddentxt">AIRWAY GUEDEL VARIOUS SIZES</span><span class="hiddenimg"><img src="assets/images/equipment/1.jpg" class="img-fluid" alt="equipment" /></span></td> -->
+                      <td>{{ item.equipmentName }}</td>
 
-                <div class="col-md-12">
-                    <div class="card p-3">
-                        <div class="card-body">
-                            <table class="example table dt-responsive nowrap table-responsive" style="width:100%;">
-                                <thead>
-                                    <tr>
-                                        <th>S.No</th>
-                                        <th>Equipment Code</th>
-                                        <th>Equipment Name</th>
-                                        <th>Cost</th>
-                                        <th>Mark Up (%)</th>
-                                        <th>Group</th>
-                                        <th>RM</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  <tr *ngFor="let item of departmentData; let i = index">
+                      <td>{{ item.cost }}</td>
+                      <td>{{ item.markUp }}</td>
 
-                                    <td>{{ i + 1 }}</td>
-                                    <td>{{ item.equipmentCode }}</td>
-                                        <!-- <td><span class="hiddentxt">AIRWAY GUEDEL VARIOUS SIZES</span><span class="hiddenimg"><img src="assets/images/equipment/1.jpg" class="img-fluid" alt="equipment" /></span></td> -->
-                                   <td>{{ item.equipmentName }}</td>
-
-                                        <td>{{ item.cost }}</td>
-                                        <td>{{ item.markUp }}</td>
-
-                                        <td>{{item.heatDissipation}}</td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex order-actions">
-                                                <a href="javascript:;" class="btn btn-brand me-2">Brand</a>
-                                                <a href="javascript:;" class="btn btn-spec me-2">Spec</a>
-                                                <a
-                                                routerLink="/Project-newtemplate/{{ item._id }}"
-                                                class="text-success me-2"
-                                                data-bs-toggle="tooltip"
-                                                title="View/Edit"
-                                                ><i class="bx bxs-edit"></i
-                                              ></a>
-                                                <a
-                                                href="javascript:;"
-                                                class="text-danger me-2"
-                                                data-bs-toggle="tooltip"
-                                                title="Delete"
-                                                (click)="delete(item._id)"
-                                                ><i class="bx bxs-trash"></i
-                                              ></a>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                      <td>{{item.heatDissipation}}</td>
+                      <td></td>
+                      <td>
+                        <div class="d-flex order-actions">
+                          <a href="javascript:;" class="btn btn-brand me-2">Brand</a>
+                          <a href="javascript:;" class="btn btn-spec me-2">Spec</a>
+                          <a routerLink="/Project-newtemplate/{{ item._id }}" class="text-success me-2"
+                            data-bs-toggle="tooltip" title="View/Edit"><i class="bx bxs-edit"></i></a>
+                          <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"
+                            (click)="delete(item._id)"><i class="bx bxs-trash"></i></a>
                         </div>
-                    </div>
-                </div>
-   </div>
-   </div>
-   </div>
-   </div>
-   </section>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="5">
+                        <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination"></ngb-pagination>
+                      <pre>Current page: {{page}}</pre>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
