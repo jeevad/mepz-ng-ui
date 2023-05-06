@@ -15,7 +15,7 @@ td a{
 }
 
 .overflow-auto {
-    height:150px;
+    height:140px;
     overflow-y: scroll;
     
   }
@@ -24,4 +24,5 @@ td a{
     -webkit-column-count: 3;
     -moz-column-count: 3;
     column-count: 3;
+    padding-left: 0px;;
 }
