@@ -30,6 +30,14 @@ export class EquipmentAllocationComponent {
           });
       }
     });
+
+    let table3 = $('#example3').DataTable({
+      drawCallback: () => {
+        $('.paginate_button.next').on('click', () => {
+            this.nextButtonClickEvent();
+          });
+      }
+    });
   }
 
   
