@@ -1,3 +1,12 @@
+.pull-right{
+    float:right
+}
+
+.pull-left{
+    float: left;
+}
+
+
 /*******************************
 * MODAL AS RIGHT SIDEBAR
 * "right" in modal parent div, after class="modal".

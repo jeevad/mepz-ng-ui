@@ -1,0 +1,28 @@
+.form-control{
+    border-radius: 0px;
+}
+
+td a{
+    margin-right: 10px;;
+}
+
+.radio label, .checkbox label {
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.overflow-auto {
+    height:140px;
+    overflow-y: scroll;
+    
+  }
+
+  ul {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    padding-left: 0px;;
+}

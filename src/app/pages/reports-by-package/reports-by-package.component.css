@@ -1,0 +1,20 @@
+.form-control{
+    
+    height: 38px;
+}
+
+td a{
+    margin-right: 10px;;
+}
+
+.radio label, .checkbox label {
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.pull-right {
+    float: right !important;
+}
