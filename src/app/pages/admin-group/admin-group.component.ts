@@ -25,7 +25,10 @@ export class AdminGroupComponent implements OnInit {
       console.log(data);
       this.groupdata = data.results;
       this.count = data.count;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 81cb2dd0a80190563cf51f21673edb81def5628e
     });
   }
   delete(id: any) {
@@ -36,20 +39,8 @@ export class AdminGroupComponent implements OnInit {
     }
 
   }
+ ngOnInit() {
+    this.LoadGroupData();
 
-
-  ngOnInit() {
-    // $(function () {
-    //   $('.example').DataTable({
-    //     responsive: true,
-    //     columnDefs: [
-    //       { responsivePriority: 2, targets: -1 }
-    //     ]
-    //   });
-    // });
   }
-
-
-
-
 }

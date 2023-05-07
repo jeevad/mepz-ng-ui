@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlTree } from '@angular/router';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
@@ -35,15 +35,9 @@ import { ProjectComponent } from './pages/project/project.component';
 import { AddProjectComponent } from './pages/add-project/add-project.component';
 import { EquipmentAllocationComponent } from './pages/equipment-allocation/equipment-allocation.component';
 import { EquipmentSummaryComponent } from './pages/equipment-summary/equipment-summary.component';
-import { DepartmentTransactionComponent } from './pages/department-transaction/department-transaction.component'; 
+import { DepartmentTransactionComponent } from './pages/department-transaction/department-transaction.component';
 import { PastTransactionComponent } from './pages/past-transaction/past-transaction.component';
 import { ProjectEditComponent } from './pages/project-edit/project-edit.component';
-import { ReportsComponent } from './pages/reports/reports.component';
-import { EquipmentSpecificationComponent } from './pages/equipment-specification/equipment-specification.component';
-import { EquipmentBrandComponent } from './pages/equipment-brand/equipment-brand.component';
-import { ReportsByPackageComponent } from './pages/reports-by-package/reports-by-package.component';
-import { TemplateDepartmentComponent } from './pages/template-department/template-department.component';
-import { EditAdminUserComponent } from './pages/edit-admin-user/edit-admin-user.component';
 
 const routes: Routes = [
   {path: 'signup',component: SignupComponent},
@@ -88,6 +82,8 @@ const routes: Routes = [
   { path:'add-currency/:id',component:AddCurrencyComponent},
   {path:'project-template', component:ProjectTemplateComponent},
   {path:'Project-newtemplate', component:ProjectNewtemplateComponent},
+  {path:'Project-newtemplate/:id', component:ProjectNewtemplateComponent},
+
   {path:'project', component:ProjectComponent},
   {path:'add-project', component:AddProjectComponent},
   {path:'equipment-allocation', component: EquipmentAllocationComponent},
@@ -95,15 +91,10 @@ const routes: Routes = [
   {path:'department-transaction', component:DepartmentTransactionComponent},
   {path:'past-transaction', component:PastTransactionComponent},
   {path:'edit-project', component:ProjectEditComponent},
-  {path:'reports', component:ReportsComponent},
-  {path:'specification', component:EquipmentSpecificationComponent},
-  {path:'brand', component:EquipmentBrandComponent},
-  {path:'reports-by-package', component:ReportsByPackageComponent},
-  {path:'template-department', component:TemplateDepartmentComponent},
-  {path:'edit-admin-user', component:EditAdminUserComponent},
+  {path:'edit-project/:id', component:ProjectEditComponent}
 
-  
-  
+
+
 ];
 
 @NgModule({
@@ -113,10 +104,10 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingcomponents = [ SignupComponent,LoginComponent, HeaderComponent,ForgetpasswordComponent,
   AdminUserComponent,UserFormComponent, AdminGroupComponent, AdminGroupFormComponent, AccessLevelComponent,
-  ActivityLogComponent,CompanydetailComponent,CompanyFormComponent, DepartmentComponent, 
-  AddDepartmentComponent,GroupDetailComponent, AddGroupComponent, RoomDetailComponent, AddRoomComponent, 
+  ActivityLogComponent,CompanydetailComponent,CompanyFormComponent, DepartmentComponent,
+  AddDepartmentComponent,GroupDetailComponent, AddGroupComponent, RoomDetailComponent, AddRoomComponent,
   DashboardComponent,UtilityDetailComponent, AddUtilityComponent, EquipmentDetailComponent,AddEquipmentComponent,
   PackageComponent , AddPackageComponent, HospitalClassificationComponent,AddClassificationComponent, CurrencyComponent,
-  AddCurrencyComponent
-    
+  AddCurrencyComponent, ProjectTemplateComponent, ProjectNewtemplateComponent
+
 ]

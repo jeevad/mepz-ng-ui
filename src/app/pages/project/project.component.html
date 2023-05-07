@@ -31,19 +31,30 @@
                        </tr>
                     </tfoot>
                     <tbody onload="passVariable()">
+<<<<<<< HEAD
                      <tr role="row" class="odd" *ngFor= "let item of departmentData; let i=index;">
                          <td>{{ skip + i+1 }}</td>
+=======
+                     <tr role="row" class="even" *ngFor= "let item of departmentData; let i=index;">
+                      <td>{{ skip + i+1 }}</td>
+>>>>>>> 81cb2dd0a80190563cf51f21673edb81def5628e
                          <td>{{item.code}}</td>
                          <td  class="sorting_1">{{item.projectname}}</td>
                          <td>{{item.projecttype}}</td>
                          <td>{{item.company}}</td>
+<<<<<<< HEAD
                          <td class="projects-button">
 
+=======
+
+                         <td class="projects-button">
+>>>>>>> 81cb2dd0a80190563cf51f21673edb81def5628e
                           <button
                           type="button"
                           class="btn btn-sm"
                           data-toggle="modal"
                           data-target="#myModal2"
+<<<<<<< HEAD
                           >
                           <i class="fa fa-cog"> </i>
                           </button>
@@ -64,6 +75,38 @@
                   </tr>
                 </tfoot>
 
+=======
+                        >
+                        <i class="fa fa-cog"> </i>
+                        </button>
+
+                               <!-- <a routerLink="/equipment-allocation" title="Equipment Allocation" class="btn btn-sm btn-info">Equipment Allocation</a>
+                               <a routerLink="/equipment-summary" title="Summary" class="btn btn-sm btn-warning">Summary</a>
+                               <a routerLink="/department-transaction" title="Current Transaction" class="btn btn-sm btn-primary">Current Transaction</a>
+                               <a routerLink="/past-transaction" title="Past Transaction" class="btn btn-sm btn-warning">Past Transaction</a> -->
+
+
+
+                               <a routerLink="/edit-project/{{ item._id }}" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                               <!-- <a routerLink="" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"> </i> Edit</a> -->
+                               <!-- <a href="javascript:;"class="text-danger me-2"data-bs-toggle="tooltip"title="Delete"(click)="delete(item._id)"><i class="bx bxs-trash"></i></a> -->
+                               <!-- <a (click)="openDialog()" title="Delete"  class="btn btn-sm btn-danger btn_delete"> <i class="fa fa-trash"> </i> Delete</a> -->
+                               <a href="javascript:;" class="btn btn-sm btn-danger btn_delete" data-bs-toggle="tooltip" title="Delete" (click)="delete(item._id)"><i class='fa fa-trash'></i></a>
+                               <a title="Reports" data-code="ASM" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"><i class="fa fa-print"> </i></a>
+                               <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
+                         </td>
+                     </tr>
+                 </tbody>
+                 <tfoot>
+                  <tr>
+                    <td colspan="5">
+                      <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination"></ngb-pagination>
+                    <pre>Current page: {{page}}</pre>
+                    </td>
+                  </tr>
+                </tfoot>
+                 </table>
+>>>>>>> 81cb2dd0a80190563cf51f21673edb81def5628e
               </div>
            </div>
         </div>

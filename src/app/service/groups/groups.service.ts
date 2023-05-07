@@ -24,7 +24,7 @@ export class GroupsService {
     console.log("update data",groupsdata);
     return this.http.patch(environment.apiUrl+'/group/'+ id,groupsdata);
   }
-  
+
   Removedata(id:any){
     return this.http.delete(environment.apiUrl + '/group/' + id);
   }
