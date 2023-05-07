@@ -20,11 +20,11 @@ export class CompanydetailComponent implements OnInit {
   }
 
   ngOnInit() {
-<<<<<<< HEAD
+
     // this.find();
-=======
+
     this.find();
->>>>>>> 81cb2dd0a80190563cf51f21673edb81def5628e
+
   }
   find() {
     this.skip = this.limit * (this.page - 1);
