@@ -12,28 +12,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./group-detail.component.css']
 })
 export class GroupDetailComponent implements OnInit {
-  groupsData: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count: number = 0;
+  groupsData: any[] = [];
   constructor(private groups: GroupsService, private http: HttpClient) {
     this.Find();
   }
 
 
   ngOnInit() {
-    // $(function () {
-    //   $('.example').DataTable({
-    //     responsive: true,
-    //     searching: true,
-    //     paging: false,
-    //     columnDefs: [
-    //       { responsivePriority: 2, targets: -1 }
-    //     ]
-    //   });
-    // });
+    this.Find();
   }
   Find() {
-    this.groups.Find().subscribe(data => {
-      // console.log(data);
-      this.groupsData = data;
+    this.skip = this.limit * (this.page - 1);
+
+    this.groups.Find(this.skip, this.limit).subscribe((data : any)=> {
+      console.log(data);
+      this.groupsData = data.results;
+      this.count = data.count;
     });
   }
   delete(id: any) {

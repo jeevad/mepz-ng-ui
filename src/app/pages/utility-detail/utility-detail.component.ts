@@ -11,25 +11,23 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./utility-detail.component.css']
 })
 export class UtilityDetailComponent implements OnInit {
-  utilityData: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count: number = 0;
+  utilityData: any[] = [];
   constructor(private utility: UtilityService, private http: HttpClient) {
     this.Find();
   }
   ngOnInit() {
-    // $(function() {
-    //       $('.example').DataTable({
-    //         responsive: true,
-    //         searching:true,
-    //       paging:false,
-    //         columnDefs: [
-    //           { responsivePriority: 2, targets: -1 }
-    //       ]
-    //       });
-    //     });
+    this.Find();
   }
   Find() {
-    this.utility.Find().subscribe(data => {
-      this.utilityData = data;
+    this.skip = this.limit * (this.page - 1);
+    this.utility.Find(this.skip, this.limit).subscribe((data : any) => {
+      this.utilityData = data.results;
+      console.log(data);
+      this.count = data.count;
     });
   }
   delete(id: any) {

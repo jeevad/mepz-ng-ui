@@ -1,67 +1,83 @@
-
 <div class="page-wrapper">
-	<section class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<!--  <h6 class="mb-0 text-uppercase"></h6>
-						<hr/> -->
-					<div class="card border-top border-0 border-4 border-primary">
-						<div class="card-body p-5">
-							<div class="card-title d-flex align-items-center">
-								<h5 class="mb-0 text-primary">Add User</h5>
-							</div>
-							<form class="row g-3">
-								<div class="col-md-6">
-									<label for="inputFirstName" class="form-label">Username</label>
-									<input type="text" class="form-control" id="inputFirstName" placeholder="Enter Username">
-								</div>
-								<div class="col-md-6">
-									<label for="inputLastName" class="form-label">Staff ID</label>
-									<input type="text" class="form-control" id="inputLastName" placeholder="Enter Staff ID">
-								</div>
-								<div class="col-md-6">
-									<label for="inputState" class="form-label">Admin</label>
-									<select id="inputState" class="form-select">
-										<option value="yes" selected>Yes</option>
-										<option value="no">No</option>
-									</select>
-								</div>
-								<div class="col-md-6">
-									<label for="inputState" class="form-label">Active</label>
-									<select id="inputState" class="form-select">
-										<option value="yes" selected>Yes</option>
-										<option value="no">No</option>
-									</select>
-								</div>
-								<div class="col-md-6">
-									<label for="inputCity" class="form-label">Valid Until</label>
-									<input type="text" class="form-control" id="inputCity" placeholder="Enter Valid Until">
-								</div>
-								<div class="col-md-6">
-									<label for="inputAddress" class="form-label">Remarks</label>
-									<textarea class="form-control" id="inputAddress" placeholder="Remarks..." rows="2"></textarea>
-								</div>
-								<div class="card-title d-flex align-items-center">
-									<h5 class="mb-0 text-primary">Change Password</h5>
-								</div>
-								<div class="col-md-6">
-									<label for="Contact" class="form-label">Password</label>
-									<input type="text" class="form-control" id="Contact" placeholder="Enter Password">
-								</div>
-								<div class="col-md-6">
-									<label for="Phone" class="form-label">Re-Enter Password</label>
-									<input type="text" class="form-control" id="Phone" placeholder="Enter Re-Enter Password">
-								</div>
-								<div class="col-12 text-center">
-									<a href="admin-user.html" class="btn btn-primary px-5 me-3">Save</a>
-									<a href="admin-user.html" class="btn btn-secondary px-5">Cancel</a>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card border-top border-0 border-4 border-primary">
+            <div class="card-body p-5">
+              <div class="card-title d-flex align-items-center">
+                <h5 class="mb-0 text-primary">Add User</h5>
+              </div>
+
+              <form [formGroup]="userForm" >
+                <div class="col-md-6">
+                  <label for="inputFirstName" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Username" formControlName="username">
+                  <div class="text-danger" *ngIf="userForm.controls['username'].invalid && userForm.controls['username'].touched">
+                    Username is required
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputLastName" class="form-label">Staff ID</label>
+                  <input type="text" class="form-control" id="inputLastName" placeholder="Enter Staff ID" formControlName="staffId">
+                  <div class="text-danger" *ngIf="userForm.controls['staffId'].invalid && userForm.controls['staffId'].touched">
+                    Staff ID is required
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Admin</label>
+                  <select id="inputState" class="form-select" formControlName="isAdmin">
+                    <option value="yes" selected>Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Active</label>
+                  <select id="inputState" class="form-select" formControlName="isActive">
+                    <option value="yes" selected>Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputCity" class="form-label">Valid Until</label>
+                  <input type="text" class="form-control" id="inputCity" placeholder="Enter Valid Until" formControlName="validUntil">
+                  <div class="text-danger" *ngIf="userForm.controls['validUntil'].errors && userForm.controls['validUntil'].errors?.['required']">
+                    Valid Until is required
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputAddress" class="form-label">Remarks</label>
+                  <textarea class="form-control" id="inputAddress" placeholder="Remarks..." rows="2" formControlName="remarks"></textarea>
+                </div>
+
+                <div class="card-title d-flex align-items-center">
+                  <h5 class="mb-0 text-primary">Change Password</h5>
+                </div>
+                <div class="col-md-6">
+                  <label for="Contact" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="Contact" placeholder="Enter Password" formControlName="password">
+                  <div class="text-danger" *ngIf="userForm.controls['password'].errors && userForm.controls['password'].errors?.['required']">
+                    Password is required
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="Phone" class="form-label">Re-Enter Password</label>
+                  <input type="password" class="form-control" id="Phone" placeholder="Enter Re-Enter Password" formControlName="confirmPassword">
+                  <div class="text-danger" *ngIf="userForm.controls['confirmPassword'].errors && userForm.controls['confirmPassword'].errors?.['required']">
+                    Confirm Password is required
+                  </div>
+                </div>
+                <div class="col-12 text-center">
+                  <button type="submit" class="btn btn-primary px-5 me-3">Save</button>
+                  <a routerLink="/admin-user" class="btn btn-secondary px-5">Cancel</a>
+                </div>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
