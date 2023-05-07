@@ -1,26 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroupsService {
-  apiUrl = "http://13.232.11.217/api/groups";
+  // apiUrl = "http://13.232.11.217/api/groups";
   constructor(private http:HttpClient) { }
-  Find(){
-    return this.http.get(this.apiUrl + '/getall');
+  Find(skip: number, limit: number){
+    return this.http.get(environment.apiUrl + '/group', {params:{skip, limit}});
+
    }
    SaveData(groupsdata:any){
-    return this.http.post(this.apiUrl + '/add',groupsdata)
+    return this.http.post(environment.apiUrl + '/group',groupsdata)
+
    }
    FindbyID(id:any){
-    return this.http.get(this.apiUrl + '/' + id)
+    return this.http.get(environment.apiUrl + '/group/' + id)
   }
   update(id:any,groupsdata:any){
-    return this.http.put(this.apiUrl+'/'+ id,groupsdata);
+    console.log("update id",id);
+    console.log("update data",groupsdata);
+    return this.http.patch(environment.apiUrl+'/group/'+ id,groupsdata);
   }
   
   Removedata(id:any){
-    return this.http.delete(this.apiUrl + '/' + id);
+    return this.http.delete(environment.apiUrl + '/group/' + id);
   }
 }
+
+
+

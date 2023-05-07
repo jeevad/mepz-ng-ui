@@ -26,89 +26,36 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>admin</td>
-                                        <td>1001</td>
-                                        <td>Yes</td>
-                                        <td>Active</td>
-                                        <td>Admin</td>
-                                        <td>2020-01-01</td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex order-actions">
-                                                <a routerLink="/edit-admin-user" class="text-success"><i class='bx bxs-edit'></i></a>
-                                                <a routerLink="" class="text-danger ms-3"><i class='bx bxs-trash'></i></a>
-                                            </div>
-                                        </td>
+
+
+                                  <tbody>
+                                    <tr *ngFor="let item of userdata; let i = index">
+                                      <td>{{ skip + i+1 }}</td>
+                                      <td>{{ item.username }}</td>
+                                      <td>{{ item.staffid }}</td>
+                                      <td>{{ item.admin }}</td>
+                                      <td>{{ item.active ? 'Yes' : 'No' }}</td>
+                                      <td>{{ item.group }}</td>
+                                      <td>{{ item.valid }}</td>
+<td></td>
+                                      <td>
+                                        <div class="d-flex order-actions">
+                                          <a routerLink="/edit-user/{{ item.id }}" title="Edit" class="text-success me-2"><i class="fa fa-edit"> </i> </a>
+                                          <a href="javascript:;" (click)="delete(item.id)" title="Delete" class="text-danger me-2"><i class="fa fa-trash"> </i> </a>
+                                        </div>
+                                      </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>aizat</td>
-                                        <td>1007</td>
-                                        <td>No</td>
-                                        <td>Active</td>
-                                        <td>Staffs</td>
-                                        <td>2100-01-17</td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex order-actions">
-                                                <a routerLink="/edit-admin-user" class="text-success"><i class='bx bxs-edit'></i></a>
-                                                <a routerLink="" class="text-danger ms-3"><i class='bx bxs-trash'></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>arvin</td>
-                                        <td>1003</td>
-                                        <td>No</td>
-                                        <td>Active</td>
-                                        <td>Staffs</td>
-                                        <td>0001-11-30</td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex order-actions">
-                                                <a routerLink="/edit-admin-user" class="text-success"><i class='bx bxs-edit'></i></a>
-                                                <a routerLink="" class="text-danger ms-3"><i class='bx bxs-trash'></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>developer</td>
-                                        <td>999</td>
-                                        <td>No</td>
-                                        <td>Active</td>
-                                        <td>Admin</td>
-                                        <td>-0001-11-30</td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex order-actions">
-                                                <a routerLink="/edit-admin-user" class="text-success"><i class='bx bxs-edit'></i></a>
-                                                <a routerLink="" class="text-danger ms-3"><i class='bx bxs-trash'></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>gadang</td>
-                                        <td>002</td>
-                                        <td>No</td>
-                                        <td>Active</td>
-                                        <td>CLIENT</td>
-                                        <td>2019-06-30</td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex order-actions">
-                                                <a routerLink="/edit-admin-user" class="text-success"><i class='bx bxs-edit'></i></a>
-                                                <a routerLink="" class="text-danger ms-3"><i class='bx bxs-trash'></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    
-                                </tbody>
+                                  </tbody>
+                                  <tfoot>
+                                  <tr>
+                                    <td colspan="5">
+                                      <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="find()" aria-label="Default pagination"></ngb-pagination>
+                                    <pre>Current page: {{page}}</pre>
+                                    </td>
+                                  </tr>
+                                </tfoot>
+
+
                             </table>
                         </div>
                     </div>

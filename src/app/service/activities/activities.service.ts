@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGroupService {
+export class ActivitiesService {
 
   // apiUrl="http://13.232.11.217/api/admingroup";
   constructor(private http:HttpClient) {
@@ -15,17 +15,17 @@ export class AdminGroupService {
     return this.http.get(environment.apiUrl + '/admingroup', {params:{skip, limit}});
    }
 
-   SaveGroupData(groupdata:any){
-    return this.http.post(environment.apiUrl + '/admingroup',groupdata)
+   SaveGroupData(activityData:any){
+    return this.http.post(environment.apiUrl + '/admingroup',activityData)
    }
 
   LoadbyID(id:any){
     return this.http.get(environment.apiUrl + '/admingroup/' + id)
   }
-  update(id:any,groupdata:any){
+  update(id:any,activityData:any){
     console.log("update id",id);
-    console.log("update data",groupdata);
-    return this.http.patch(environment.apiUrl+'/admingroup/'+ id,groupdata);
+    console.log("update data",activityData);
+    return this.http.patch(environment.apiUrl+'/admingroup/'+ id,activityData);
   }
   Removedata(id:any){
     return this.http.delete(environment.apiUrl + '/admingroup/' + id);

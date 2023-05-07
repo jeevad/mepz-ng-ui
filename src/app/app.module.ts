@@ -61,7 +61,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
     MatDialogModule,
     MatInputModule,
     CollapseModule.forRoot(),
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

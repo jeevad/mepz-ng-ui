@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery'
+import { UsermodelService } from 'src/app/service/usermodel/usermodel.service';
 // import 'datatables.net';
 // import 'datatables.net-responsive-bs5';
 // import 'datatables.net-responsive';
@@ -9,18 +11,34 @@ import * as $ from 'jquery'
   styleUrls: ['./admin-user.component.css']
 })
 export class AdminUserComponent implements OnInit {
-  userdata: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count: number = 0;
+  userdata: any[] = [];
 
-  constructor() { }
+  constructor(private service: UsermodelService, private http: HttpClient) {
+    this.find();
+  }
 
   ngOnInit() {
-    // $(function () {
-    //   $('.example').DataTable({
-    //     responsive: true,
-    //     columnDefs: [
-    //       { responsivePriority: 2, targets: -1 }
-    //     ]
-    //   });
-    // });
+    this.find();
+  }
+  find() {
+    this.skip = this.limit * (this.page - 1);
+    this.service.Find(this.skip, this.limit).subscribe((data: any) => {
+      // console.log(data);
+      this.userdata = data.results;
+      this.count = data.count;
+      // console.log(data.count);
+    });
+  }
+
+  delete(id: any) {
+    if (confirm('delete?')) {
+      this.service.Removedata(id).subscribe((data) => {
+        this.find();
+      });
+    }
   }
 }
