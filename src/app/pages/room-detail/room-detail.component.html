@@ -1,4 +1,5 @@
 <section class="section">
+
   <div class="container">
     <div class="row page-content">
       <div class="col-md-12">
@@ -89,3 +90,85 @@
     </div>
   </div>
 </section>
+
+
+  <div class="container">
+      <div class="row page-content">
+         <div class="col-md-12">
+
+
+
+              <div class="d-lg-flex align-items-center mb-4 gap-3">
+                  <h4 class="mb-0 text-primary">Room </h4>
+                  <div class="ms-auto"><a routerLink="/room-form" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add Room</a></div>
+               </div>
+
+
+
+                  <div class="card p-3">
+                      <div class="card-body">
+                          <table class="example table dt-responsive nowrap " style="width:100%;"><br><br>
+                           <thead>
+                                  <tr>
+                                      <th>S.No</th>
+                                      <th>Room Code</th>
+                                      <th>Room Name</th>
+                                      <th>Active</th>
+                                      <th>Actions</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor= "let item of roomData; let i=index;">
+                                    <td>{{ skip + i+1 }}</td>
+                                      <td>{{item.roomcode}}</td>
+                                      <td>{{item.roomname}}</td>
+                                      <td>{{item.active}}</td>
+                                      <td>
+                                          <div class="d-flex order-actions">
+                                              <a routerLink="/room-form/{{item._id}}" title="Edit" class="text-success me-2"><i class="fa fa-edit"> </i> </a>
+
+                                              <a href="javascript:;" (click)="delete(item._id)" title="Delete"  class="text-danger me-2"><i class="fa fa-trash"> </i>  </a>
+
+
+
+                                          </div>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <td colspan="5">
+                                    <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination"></ngb-pagination>
+                                  <pre>Current page: {{page}}</pre>
+                                  </td>
+                                </tr>
+                              </tfoot>
+
+                                  <!-- <tbody>
+                                    <tr>
+                                      <td>{{ roomData?.roomcode }}</td>
+                                      <td>{{ roomData?.roomname }}</td>
+                                      <td>{{ roomData?.active }}</td>
+                                      <td>
+                                        <div class="d-flex order-actions">
+                                          <a routerLink="/room-form/{{ roomData?._id }}" title="Edit" class="text-success me-2"><i class="fa fa-edit"></i></a>
+                                          <a href="javascript:;" (click)="delete(roomData?._id)" title="Delete" class="text-danger me-2"><i class="fa fa-trash"></i></a>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody> -->
+
+
+
+
+
+
+
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  </div>
+  </section>
+

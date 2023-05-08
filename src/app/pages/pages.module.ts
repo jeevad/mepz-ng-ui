@@ -11,7 +11,13 @@ import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.compon
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    EquipmentSpecificationComponent,
+    EquipmentBrandComponent,
+    ReportsByPackageComponent,
+    TemplateDepartmentComponent,
+    EditAdminUserComponent,
+  ],
   imports: [
     CommonModule,
     PagesRoutingModule

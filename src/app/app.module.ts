@@ -44,6 +44,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
     DeletedialogComponent,
     ReportsComponent,
 
+
 ],
   imports: [
     BrowserModule,

@@ -77,6 +77,7 @@ const routes: Routes = [
   { path:'add-utility/:id',component:AddUtilityComponent},
   { path:'equipment-data',component:EquipmentDetailComponent},
   { path: 'add-equipment',component:AddEquipmentComponent},
+  { path: 'add-equipment/:id',component:AddEquipmentComponent},
   { path:'package',component:PackageComponent},
   { path:'add-package',component:AddPackageComponent},
   { path:'add-package/:id',component:AddPackageComponent},
