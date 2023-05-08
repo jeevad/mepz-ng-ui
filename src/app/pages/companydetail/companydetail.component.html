@@ -4,14 +4,19 @@
     <div class="row page-content">
       <div class="col-md-12">
         <div class="d-lg-flex align-items-center mb-4 gap-3">
-          <h4 class="mb-0 text-primary">Company </h4>
-          <div class="ms-auto"><a routerLink="/company-form" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i
-                class="bx bxs-plus-square"></i>Add Company</a></div>
+          <h4 class="mb-0 text-primary">Company</h4>
+          <div class="ms-auto">
+            <a
+              routerLink="/company-form"
+              class="btn btn-primary sqare-0 mt-2 mt-lg-0"
+              ><i class="bx bxs-plus-square"></i>Add Company</a
+            >
+          </div>
         </div>
         <!-- <div class="card p-3"> -->
         <div class="card-body">
           <!-- <div class="table-responsive"> -->
-          <table class="example table dt-responsive nowrap" style="width:100%;">
+          <table class="example table dt-responsive nowrap" style="width: 100%">
             <thead>
               <tr>
                 <th>S.No</th>
@@ -22,25 +27,37 @@
                 <th>City</th>
                 <th>Postal/Zip</th>
                 <th>Prov./State</th>
-                <th>Country </th>
+                <th>Country</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of data; let i = index">
-                <td>{{ skip + i+1 }}</td>
-                <td>{{item.code}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.address1}}</td>
-                <td>{{item.address2}}</td>
-                <td>{{item.city}}</td>
-                <td>{{item.pincode}}</td>
-                <td>{{item.state}}</td>
-                <td>{{item.country}}</td>
+                <td>{{ skip + i + 1 }}</td>
+                <td>{{ item.code }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.address1 }}</td>
+                <td>{{ item.address2 }}</td>
+                <td>{{ item.city }}</td>
+                <td>{{ item.postal }}</td>
+                <td>{{ item.state }}</td>
+                <td>{{ item.country }}</td>
                 <td>
                   <div class="d-flex order-actions">
-                    <a routerLink="/company-form/{{item._id}}"><i class="material-icons">Edit</i></a> <a
-                      href="javascript:;" (click)="delete(item._id)"><i class="material-icon">Delete</i></a>
+                    <a
+                      routerLink="/company-form/{{ item._id }}"
+                      title="Edit"
+                      class="text-success me-2"
+                      ><i class="fa fa-edit"> </i>
+                    </a>
+
+                    <a
+                      href="javascript:;"
+                      (click)="delete(item._id)"
+                      title="Delete"
+                      class="text-danger me-2"
+                      ><i class="fa fa-trash"> </i>
+                    </a>
                   </div>
                 </td>
               </tr>
@@ -48,9 +65,13 @@
             <tfoot>
               <tr>
                 <td colspan="5">
-                  <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="find()"
-                    aria-label="Default pagination"></ngb-pagination>
-                  <pre>Current page: {{page}}</pre>
+                  <ngb-pagination
+                    [collectionSize]="count"
+                    [(page)]="page"
+                    (pageChange)="find()"
+                    aria-label="Default pagination"
+                  ></ngb-pagination>
+                  <pre>Current page: {{ page }}</pre>
                 </td>
               </tr>
             </tfoot>
