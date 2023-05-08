@@ -5737,7 +5737,7 @@ jQuery.Event = function( src, props ) {
 		this.type = src;
 	}
 
-	// Put explicitly provided properties onto the event object
+	// patch explicitly provided properties onto the event object
 	if ( props ) {
 		jQuery.extend( this, props );
 	}
@@ -6601,7 +6601,7 @@ function curCSS( elem, name, computed ) {
 			minWidth = style.minWidth;
 			maxWidth = style.maxWidth;
 
-			// Put in the new values to get a computed value out
+			// patch in the new values to get a computed value out
 			style.minWidth = style.maxWidth = style.width = ret;
 			ret = computed.width;
 
@@ -9579,7 +9579,7 @@ jQuery.extend( {
 		// More options handling for requests with no content
 		if ( !s.hasContent ) {
 
-			// Remember the hash so we can put it back
+			// Remember the hash so we can patch it back
 			uncached = s.url.slice( cacheURL.length );
 
 			// If data is available and should be processed, append data to url
@@ -9597,7 +9597,7 @@ jQuery.extend( {
 					uncached;
 			}
 
-			// Put hash and anti-cache on the URL that will be requested (gh-1732)
+			// patch hash and anti-cache on the URL that will be requested (gh-1732)
 			s.url = cacheURL + uncached;
 
 		// Change '%20' to '+' if this is encoded form body content (gh-2658)

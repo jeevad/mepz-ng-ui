@@ -35,7 +35,7 @@ import { ProjectComponent } from './pages/project/project.component';
 import { AddProjectComponent } from './pages/add-project/add-project.component';
 import { EquipmentAllocationComponent } from './pages/equipment-allocation/equipment-allocation.component';
 import { EquipmentSummaryComponent } from './pages/equipment-summary/equipment-summary.component';
-import { DepartmentTransactionComponent } from './pages/department-transaction/department-transaction.component'; 
+import { DepartmentTransactionComponent } from './pages/department-transaction/department-transaction.component';
 import { PastTransactionComponent } from './pages/past-transaction/past-transaction.component';
 import { ProjectEditComponent } from './pages/project-edit/project-edit.component';
 
@@ -70,6 +70,7 @@ const routes: Routes = [
   { path:'add-utility/:id',component:AddUtilityComponent},
   { path:'equipment-data',component:EquipmentDetailComponent},
   { path: 'add-equipment',component:AddEquipmentComponent},
+  { path: 'add-equipment/:id',component:AddEquipmentComponent},
   { path:'package',component:PackageComponent},
   { path:'add-package',component:AddPackageComponent},
   { path:'add-package/:id',component:AddPackageComponent},
@@ -81,16 +82,19 @@ const routes: Routes = [
   { path:'add-currency/:id',component:AddCurrencyComponent},
   {path:'project-template', component:ProjectTemplateComponent},
   {path:'Project-newtemplate', component:ProjectNewtemplateComponent},
+  {path:'Project-newtemplate/:id', component:ProjectNewtemplateComponent},
+
   {path:'project', component:ProjectComponent},
   {path:'add-project', component:AddProjectComponent},
   {path:'equipment-allocation', component: EquipmentAllocationComponent},
   {path:'equipment-summary', component:EquipmentSummaryComponent},
   {path:'department-transaction', component:DepartmentTransactionComponent},
   {path:'past-transaction', component:PastTransactionComponent},
-  {path:'edit-project', component:ProjectEditComponent}
+  {path:'edit-project', component:ProjectEditComponent},
+  {path:'edit-project/:id', component:ProjectEditComponent}
 
-  
-  
+
+
 ];
 
 @NgModule({
@@ -100,10 +104,10 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingcomponents = [ SignupComponent,LoginComponent, HeaderComponent,ForgetpasswordComponent,
   AdminUserComponent,UserFormComponent, AdminGroupComponent, AdminGroupFormComponent, AccessLevelComponent,
-  ActivityLogComponent,CompanydetailComponent,CompanyFormComponent, DepartmentComponent, 
-  AddDepartmentComponent,GroupDetailComponent, AddGroupComponent, RoomDetailComponent, AddRoomComponent, 
+  ActivityLogComponent,CompanydetailComponent,CompanyFormComponent, DepartmentComponent,
+  AddDepartmentComponent,GroupDetailComponent, AddGroupComponent, RoomDetailComponent, AddRoomComponent,
   DashboardComponent,UtilityDetailComponent, AddUtilityComponent, EquipmentDetailComponent,AddEquipmentComponent,
   PackageComponent , AddPackageComponent, HospitalClassificationComponent,AddClassificationComponent, CurrencyComponent,
-  AddCurrencyComponent
-    
+  AddCurrencyComponent, ProjectTemplateComponent, ProjectNewtemplateComponent
+
 ]

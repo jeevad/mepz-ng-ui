@@ -11,25 +11,23 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./package.component.css']
 })
 export class PackageComponent implements OnInit {
-  packagedata: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count : number = 0;
+  packagedata: any[] = [];
   constructor(private http: HttpClient, private service: PackageService) {
     this.Find();
   }
-
   ngOnInit() {
-    // $(function () {
-    //   $('.example').DataTable({
-    //     responsive: true,
-    //     paging: false,
-    //     columnDefs: [
-    //       { responsivePriority: 2, targets: -1 }
-    //     ]
-    //   });
-    // });
   }
   Find() {
-    this.service.Find().subscribe(data => {
-      this.packagedata = data;
+    this.skip = this.limit*(this.page-1)
+    this.service.Find(this.skip, this.limit).subscribe((data : any)=> {
+      this.packagedata = data.results;
+      this.count = data.count;
+      console.log(data);
+
     })
   }
   delete(id: any) {

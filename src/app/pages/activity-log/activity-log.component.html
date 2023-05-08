@@ -22,6 +22,7 @@
                                 <table class="table mb-0 text-center table-striped" style="position:relative;height: 400px;overflow:auto;width: 100%;">
                                     <thead class="table-light">
                                         <tr>
+                                          <!-- <td>{{ skip + i+1 }}</td> -->
                                             <th>Activity Id</th>
                                             <th>User</th>
                                             <th>Action</th>
@@ -78,15 +79,23 @@
                                             </td>
                                         </tr>
                                     </tbody>
+                                    <tfoot>
+                                      <tr>
+                                        <td colspan="5">
+                                          <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="LoadGroupData()" aria-label="Default pagination"></ngb-pagination>
+                                        <pre>Current page: {{page}}</pre>
+                                        </td>
+                                      </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div class="showing-entities my-4">
+                    <!-- <div class="showing-entities my-4">
                         <div class="float-start">
                             <p>Showing 1 to 10 of 141 entities </p>
                         </div>
-                </div>
+                </div> -->
                 </div>
             </div>
         </div>

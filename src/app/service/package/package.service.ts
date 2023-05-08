@@ -1,25 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PackageService {
-apiUrl="http://13.232.11.217/api/package";
+  // apiUrl="http://13.232.11.217/api/package";
+
   constructor(private http:HttpClient) { }
-  Find(){
-    return this.http.get(this.apiUrl + '/getall');
+  Find( skip: number, limit: number){
+    return this.http.get(environment.apiUrl + '/package', {params:{skip, limit}});
    }
    SaveData(packagedata:any){
-    return this.http.post(this.apiUrl + '/add',packagedata)
+    return this.http.post(environment.apiUrl + '/package',packagedata)
    }
    FindbyID(id:any){
-    return this.http.get(this.apiUrl + '/' + id)
+    return this.http.get(environment.apiUrl + '/package/' + id)
   }
   update(id:any,packagedata:any){
-    return this.http.put(this.apiUrl+'/'+ id,packagedata);
+    console.log("update id",id);
+    console.log("update data",packagedata);
+    return this.http.patch(environment.apiUrl+'/package/'+ id,packagedata);
   }
   Removedata(id:any){
-    return this.http.delete(this.apiUrl + '/' + id);
+    return this.http.delete(environment.apiUrl + '/package/' + id);
   }
 }

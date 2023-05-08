@@ -1,9 +1,17 @@
 .pull-right{
+<<<<<<< HEAD
   float:right
 }
 
 .pull-left{
   float: left;
+=======
+    float:right
+}
+
+.pull-left{
+    float: left;
+>>>>>>> 7d7a92c158a9a9159d817bd3acab386b08ee9c85
 }
 
 
@@ -13,6 +21,7 @@
 *******************************/
 
 .order-actions button {
+<<<<<<< HEAD
   font-size: 18px;
   width: 34px;
   height: 34px;
@@ -108,3 +117,101 @@ label{
 #nav-tab{
   display: grid;
 }
+=======
+    font-size: 18px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f1f1;
+    border: 1px solid #eeecec;
+    text-align: center;
+    border-radius: 20%;
+    color: #2b2a2a;
+}
+
+.form-control{
+    margin-bottom: 10px;;
+}
+
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+  }
+  
+  .modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .modal.right .modal-body {
+    padding: 15px 15px 80px;
+    background-color: #f9f6f6;
+  }
+  
+  /*Right*/
+  .modal.right.fade .modal-dialog {
+    right: -320px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+    transition: opacity 0.3s linear, right 0.3s ease-out;
+  }
+  
+  .modal.right.fade.in .modal-dialog {
+    right: 0;
+  }
+  
+  /* ----- MODAL STYLE ----- */
+  .modal-content {
+    border-radius: 0;
+    border: none;
+  }
+  
+  .modal-header {
+    border-bottom-color: #eeeeee;
+    background-color: #fafafa;
+  }
+  
+  /* ----- v CAN BE DELETED v ----- */
+  
+  
+  
+  
+  .btn-demo {
+    /* margin: 15px; */
+    padding: 4px 5px;
+    border-radius: 0;
+    font-size: 16px;
+    background-color: #102d8b;;
+  }
+  
+  /* .btn-demo:focus {
+    outline: 0;
+  } */
+  
+  label{
+    font-weight: bold;
+  }
+  
+  
+  .fade.in {
+    opacity: 1;
+  }
+  
+  .fade:not(.show) {
+    opacity: 1;
+  }
+
+  #nav-tab{
+    display: grid;
+  }
+  
+>>>>>>> 7d7a92c158a9a9159d817bd3acab386b08ee9c85

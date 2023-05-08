@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-// import 'datatables.net';
-// import 'datatables.net-responsive-bs5';
-// import 'datatables.net-responsive';
 import { ClassificationService } from 'src/app/service/classification/classification.service'
 import { HttpClient } from '@angular/common/http';
 
@@ -12,31 +9,32 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./hospital-classification.component.css']
 })
 export class HospitalClassificationComponent implements OnInit {
-  data: any;
-
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count : number = 0;
+  classificationdata: any[] = [];
   constructor(private service: ClassificationService, private http: HttpClient) {
     this.find()
   }
 
   ngOnInit() {
-    // $(function () {
-    //   $('.example').DataTable({
-    //     responsive: true,
-    //     paging: false,
-    //     columnDefs: [
-    //       { responsivePriority: 2, targets: -1 }
-    //     ]
-    //   });
-    // });
+    this.find();
   }
   find() {
-    this.service.Find().subscribe(result => {
-      this.data = result;
+    this.skip = this.limit * (this.page - 1);
+    console.log(this.limit, "limit");
+
+    this.service.Find(this.skip, this.limit).subscribe((result: any) => {
+      console.log(result, "result");
+      this.classificationdata = result.results;
+      this.count = result.count;
+      console.log(result.count, "count");
     });
   }
   delete(id: any) {
     if (confirm('delete?')) {
-      this.service.Removedata(id).subscribe(data => {
+      this.service.Removedata(id).subscribe(classificationdata => {
         this.find();
       });
     }
