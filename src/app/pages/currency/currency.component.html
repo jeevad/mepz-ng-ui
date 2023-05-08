@@ -5,8 +5,17 @@
         <div class="d-lg-flex align-items-center mb-4 gap-3">
           <h4 class="mb-0 text-primary">Currency</h4>
           <div class="ms-auto">
+
+            <a
+              routerLink="/add-currency"
+              class="btn btn-primary sqare-0 mt-2 mt-lg-0"
+            >
+              <i class="bx bxs-plus-square"></i>Add Currency</a
+            >
+
             <a routerLink="/add-currency"class="btn btn-primary sqare-0 mt-2 mt-lg-0">
               <i class="bx bxs-plus-square"></i>Add Currency</a>
+
           </div>
         </div>
 
@@ -28,21 +37,59 @@
                     </tr>
                   </thead>
 
+
+                  <tbody>
+                    <tr *ngFor="let item of currencyData; let i = index">
+                      <td>{{ skip + i + 1 }}</td>
+
                    <tbody>
                     <tr *ngFor="let item of currencyData; let i = index">
                       <!-- <tr *ngFor="let item of currencyData.slice((page - 1) * 10, page * 10); let i = index"> -->
                       <td>{{ skip + i+1 }}</td>
+
                       <td>{{ item.code }}</td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.symbol }}</td>
                       <td>
                         <div class="d-flex order-actions">
+
+                          <a
+                            routerLink="/add-currency/{{ item._id }}"
+                            title="Edit"
+                            class="text-success me-2"
+                            ><i class="fa fa-edit"> </i>
+                          </a>
+                          <a
+                            href="javascript:;"
+                            (click)="delete(item._id)"
+                            title="Delete"
+                            class="text-danger me-2"
+                            ><i class="fa fa-trash"> </i>
+                          </a>
+
                           <a routerLink="/add-currency/{{ item._id }}" title="Edit" class="text-success me-2"><i class="fa fa-edit"> </i> </a>
                           <a href="javascript:;" (click)="delete(item._id)" title="Delete" class="text-danger me-2"><i class="fa fa-trash"> </i> </a>
+
                         </div>
                       </td>
                     </tr>
                   </tbody>
+
+
+                  <tfoot>
+                    <tr>
+                      <td colspan="5">
+                        <ngb-pagination
+                          [collectionSize]="count"
+                          [(page)]="page"
+                          (pageChange)="find()"
+                          aria-label="Default pagination"
+                        ></ngb-pagination>
+                        <pre>Current page: {{ page }}</pre>
+                      </td>
+                    </tr>
+                  </tfoot>
+
                   
                   <tfoot>
                     <tr>
@@ -52,6 +99,7 @@
                       </td>
                     </tr>
                   </tfoot>
+
 
 
                 </table>

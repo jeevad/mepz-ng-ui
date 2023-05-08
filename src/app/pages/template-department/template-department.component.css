@@ -1,17 +1,18 @@
 .pull-right{
-<<<<<<< HEAD
+
   float:right
 }
 
 .pull-left{
   float: left;
-=======
+
+
     float:right
 }
 
 .pull-left{
     float: left;
->>>>>>> 7d7a92c158a9a9159d817bd3acab386b08ee9c85
+
 }
 
 
@@ -21,7 +22,7 @@
 *******************************/
 
 .order-actions button {
-<<<<<<< HEAD
+
   font-size: 18px;
   width: 34px;
   height: 34px;
@@ -117,7 +118,7 @@ label{
 #nav-tab{
   display: grid;
 }
-=======
+
     font-size: 18px;
     width: 34px;
     height: 34px;
@@ -213,5 +214,4 @@ label{
   #nav-tab{
     display: grid;
   }
-  
->>>>>>> 7d7a92c158a9a9159d817bd3acab386b08ee9c85
+ 

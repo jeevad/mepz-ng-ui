@@ -7,7 +7,11 @@
         <div class="d-lg-flex align-items-center mb-4 gap-3">
           <h4 class="mb-0 text-primary">Equipment </h4>
           <div class="ms-auto"><a routerLink="/add-equipment" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
+
+              <i class="bx bxs-plus-square"></i>Add add-equipment</a></div>
+
               <i class="bx bxs-plus-square"></i>Add Equipment</a></div>
+
         </div>
 
         <div class="row page-content">
@@ -43,9 +47,15 @@
                       <td></td>
                       <td>
                         <div class="d-flex order-actions">
+
+                          <a routerLink="/brand" class="btn btn-brand me-2">Brand</a>
+                          <a routerLink="/specification" class="btn btn-spec me-2">Spec</a>
+                          <a routerLink="/Project-newtemplate/{{ item._id }}" class="text-success me-2"
+
                           <a href="javascript:;" class="btn btn-brand me-2">Brand</a>
                           <a href="javascript:;" class="btn btn-spec me-2">Spec</a>
                           <a routerLink="/add-equipment/{{ item._id }}" class="text-success me-2"
+
                             data-bs-toggle="tooltip" title="View/Edit"><i class="bx bxs-edit"></i></a>
                           <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"
                             (click)="delete(item._id)"><i class="bx bxs-trash"></i></a>

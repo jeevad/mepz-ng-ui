@@ -21,9 +21,13 @@ export class CompanydetailComponent implements OnInit {
 
   ngOnInit() {
 
+    this.find();
+
+
     // this.find();
 
     this.find();
+
 
   }
   find() {

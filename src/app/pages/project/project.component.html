@@ -14,6 +14,7 @@
                  <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                        <tr>
+                        <th>S.No</th>
                           <th>Code</th>
                           <th>Project Name</th>
                           <th>Project Type</th>
@@ -23,6 +24,7 @@
                     </thead>
                     <tfoot>
                        <tr>
+                        <th>S.No</th>
                           <th>Code</th>
                           <th>Project Name</th>
                           <th>Project Type</th>
@@ -47,6 +49,16 @@
                           >
                           <i class="fa fa-cog"> </i>
                           </button>
+
+
+                               <!-- <a routerLink="/equipment-allocation" title="Equipment Allocation" class="btn btn-sm btn-info">Equipment Allocation</a>
+                               <a routerLink="/equipment-summary" title="Summary" class="btn btn-sm btn-warning">Summary</a>
+                               <a routerLink="/department-transaction" title="Current Transaction" class="btn btn-sm btn-primary">Current Transaction</a>
+                               <a routerLink="/past-transaction" title="Past Transaction" class="btn btn-sm btn-warning">Past Transaction</a> -->
+
+
+
+
                                <a routerLink="/edit-project/{{ item._id }}" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
                                <a href="javascript:;" class="btn btn-sm btn-danger btn_delete" data-bs-toggle="tooltip" title="Delete" (click)="delete(item._id)"><i class='fa fa-trash'></i></a>
                                <a title="Reports" data-code="ASM" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"><i class="fa fa-print"> </i></a>
@@ -54,7 +66,9 @@
                          </td>
                      </tr>
                  </tbody>
+
                 </table>
+
                  <tfoot>
                   <tr>
                     <td colspan="5">
@@ -63,6 +77,8 @@
                     </td>
                   </tr>
                 </tfoot>
+
+                 </table>
 
               </div>
            </div>

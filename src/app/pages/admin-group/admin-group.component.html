@@ -34,14 +34,18 @@
                                 <tfoot>
                                   <tr>
                                     <td colspan="5">
-<<<<<<< HEAD
+
+                                    <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="LoadGroupData()"
+                                        aria-label="Default pagination"></ngb-pagination>
+                                      <pre>Current page: {{page}}</pre>
+
                                       <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="LoadGroupData()" aria-label="Default pagination"></ngb-pagination>
                                     <pre>Current page: {{page}}</pre>
-=======
+
                                       <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="LoadGroupData()"
                                         aria-label="Default pagination"></ngb-pagination>
                                       <pre>Current page: {{page}}</pre>
->>>>>>> 81cb2dd0a80190563cf51f21673edb81def5628e
+
                                     </td>
                                   </tr>
                                 </tfoot>

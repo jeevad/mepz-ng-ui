@@ -38,6 +38,13 @@ import { EquipmentSummaryComponent } from './pages/equipment-summary/equipment-s
 import { DepartmentTransactionComponent } from './pages/department-transaction/department-transaction.component';
 import { PastTransactionComponent } from './pages/past-transaction/past-transaction.component';
 import { ProjectEditComponent } from './pages/project-edit/project-edit.component';
+import { ReportsComponent } from './pages/reports/reports.component';
+import { EquipmentSpecificationComponent } from './pages/equipment-specification/equipment-specification.component';
+import { EquipmentBrandComponent } from './pages/equipment-brand/equipment-brand.component';
+import { ReportsByPackageComponent } from './pages/reports-by-package/reports-by-package.component';
+import { TemplateDepartmentComponent } from './pages/template-department/template-department.component';
+import { EditAdminUserComponent } from './pages/edit-admin-user/edit-admin-user.component';
+
 
 const routes: Routes = [
   {path: 'signup',component: SignupComponent},
@@ -91,7 +98,14 @@ const routes: Routes = [
   {path:'department-transaction', component:DepartmentTransactionComponent},
   {path:'past-transaction', component:PastTransactionComponent},
   {path:'edit-project', component:ProjectEditComponent},
-  {path:'edit-project/:id', component:ProjectEditComponent}
+  {path:'edit-project/:id', component:ProjectEditComponent},
+  {path:'reports', component:ReportsComponent},
+  {path:'specification', component:EquipmentSpecificationComponent},
+  {path:'brand', component:EquipmentBrandComponent},
+  {path:'reports-by-package', component:ReportsByPackageComponent},
+  {path:'template-department', component:TemplateDepartmentComponent},
+  {path:'edit-admin-user', component:EditAdminUserComponent},
+
 
 
 
