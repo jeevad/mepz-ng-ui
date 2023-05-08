@@ -5,6 +5,8 @@ import * as $ from 'jquery'
 // import 'datatables.net-responsive';
 import { DepartmentService } from 'src/app/service/department/department.service'
 import { HttpClient } from '@angular/common/http';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-department',
@@ -12,12 +14,17 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./department.component.css']
 })
 export class DepartmentComponent implements OnInit {
-  departmentData: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count : number = 0;
+  departmentData: any[] = [];
 
   constructor(private department: DepartmentService, private http: HttpClient) {
     this.Load();
   }
   ngOnInit() {
+    this.Load();
 
     // $(function () {
     //   $('.example').DataTable({
@@ -30,9 +37,12 @@ export class DepartmentComponent implements OnInit {
   }
 
   Load() {
-    this.department.Load().subscribe(data => {
-      // console.log(data);
-      this.departmentData = data;
+    this.skip = this.limit*(this.page-1)
+    this.department.Load(this.skip, this.limit).subscribe((data : any) => {
+      console.log(data);
+      this.departmentData = data.results;
+      this.count = data.count;
+
     });
   }
   delete(id: any) {

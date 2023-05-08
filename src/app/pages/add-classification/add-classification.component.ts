@@ -9,7 +9,7 @@ import {ClassificationService} from 'src/app/service/classification/classificati
   styleUrls: ['./add-classification.component.css']
 })
 export class AddClassificationComponent implements OnInit{
-  data:any;
+  classificationdata:any;
   active:any = ['Active','Inactive']
   isEdit:boolean = false;
   deptid:any;
@@ -49,7 +49,7 @@ export class AddClassificationComponent implements OnInit{
     }else if(this.isEdit){
       this.submitted = true;
       if(this.addClassification.valid){
-        this.service.update(this.deptid,this.addClassification.value).subscribe(data =>{
+        this.service.update(this.deptid,this.addClassification.value).subscribe(classificationdata =>{
           this.isEdit=false;
           this.router.navigate(['/hospital-data']);
         })

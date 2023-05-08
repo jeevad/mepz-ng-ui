@@ -14,6 +14,7 @@
                  <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                        <tr>
+                        <th>S.No</th>
                           <th>Code</th>
                           <th>Project Name</th>
                           <th>Project Type</th>
@@ -23,6 +24,7 @@
                     </thead>
                     <tfoot>
                        <tr>
+                        <th>S.No</th>
                           <th>Code</th>
                           <th>Project Name</th>
                           <th>Project Type</th>
@@ -31,21 +33,22 @@
                        </tr>
                     </tfoot>
                     <tbody onload="passVariable()">
-                     <tr role="row" class="even" *ngFor= "let item of departmentData; let i=index;">
+                     <tr role="row" class="odd" *ngFor= "let item of departmentData; let i=index;">
+                         <td>{{ skip + i+1 }}</td>
                          <td>{{item.code}}</td>
                          <td  class="sorting_1">{{item.projectname}}</td>
                          <td>{{item.projecttype}}</td>
                          <td>{{item.company}}</td>
-
                          <td class="projects-button">
+
                           <button
                           type="button"
                           class="btn btn-sm"
                           data-toggle="modal"
                           data-target="#myModal2"
-                        >
-                        <i class="fa fa-cog"> </i>
-                        </button>
+                          >
+                          <i class="fa fa-cog"> </i>
+                          </button>
 
                                <!-- <a routerLink="/equipment-allocation" title="Equipment Allocation" class="btn btn-sm btn-info">Equipment Allocation</a>
                                <a routerLink="/equipment-summary" title="Summary" class="btn btn-sm btn-warning">Summary</a>
@@ -64,6 +67,14 @@
                          </td>
                      </tr>
                  </tbody>
+                 <tfoot>
+                  <tr>
+                    <td colspan="5">
+                      <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination"></ngb-pagination>
+                    <pre>Current page: {{page}}</pre>
+                    </td>
+                  </tr>
+                </tfoot>
                  </table>
               </div>
            </div>

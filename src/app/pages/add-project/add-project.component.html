@@ -25,13 +25,13 @@
                       <label class="form-label">Project Name</label>
                       <input type="text" class="form-control" name="projectname" placeholder="Project Name" formControlName="projectname"
                              [ngClass]="{'is-invalid':submitted && addDepartment.controls['projectname'].errors}"/>
-                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['projectname'].errors?.['required']">Project Name is required</div>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['projectname'].errors?.['required']">Project name is required</div>
                     </div>
                     <div class="col-md-6">
                       <label class="form-label">Full Project Name</label>
                       <input type="text" class="form-control" name="fullProjectName" placeholder="Full Project Name" formControlName="fullProjectName"
                              [ngClass]="{'is-invalid':submitted && addDepartment.controls['fullProjectName'].errors}"/>
-                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['fullProjectName'].errors?.['required']">Full Project Name is required</div>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['fullProjectName'].errors?.['required']">Full project name is required</div>
                     </div>
                      <div class="col-md-6">
                       <label class="form-label">Client/Owner</label>
@@ -41,13 +41,15 @@
                     </div>
                     <div class="col-md-6">
                       <label class="form-label">Contract No</label>
-                      <input type="text" class="form-control" name="contractNo" placeholder="Contract No" formControlName="contractNo"/>
+                      <input type="text" class="form-control" name="contractNo" placeholder="Contract No" formControlName="contractNo"
+                      [ngClass]="{'is-invalid':submitted && addDepartment.controls['contractNo'].errors}"/>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['contractNo'].errors?.['required']">Contract number is required</div>
                     </div>
                     <div class="col-md-6">
                       <label class="form-label">No. of Beds</label>
                       <input type="text" class="form-control" name="noofBeds" placeholder="Beds" formControlName="noofBeds"
                              [ngClass]="{'is-invalid':submitted && addDepartment.controls['noofBeds'].errors}"/>
-                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofBeds'].errors?.['required']">No. of Beds is required</div>
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofBeds'].errors?.['required']">No. of beds is required</div>
                   </div>
                   <div class="col-md-6">
                       <label class="form-label">Classification</label>
@@ -121,14 +123,11 @@
                       <div class="text-danger" *ngIf="submitted && addDepartment.controls['signature2'].errors?.['required']">Signature 2 is required</div>
                   </div>
                   <div class="col-md-12 text-center mt-3">
-                      <button type="submit" class="btn btn-primary px-4 me-3" [disabled]="addDepartment.invalid">Save</button>
-                      <a class="btn btn-secondary px-5" href="">Cancel</a>
+                      <!-- <button type="submit" class="btn btn-primary px-4 me-3" [disabled]="addDepartment.invalid">Save</button> -->
+                      <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+                      <!-- <a class="btn btn-secondary px-5" href="">Cancel</a> -->
+                      <a routerLink="/project"><i class="material-icon">Cancel</i></a>
                   </div>
-
-
-
-
-
                   </form>
 
                </div>

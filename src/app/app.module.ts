@@ -22,6 +22,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { DeletedialogComponent } from './pages/deletedialog/deletedialog.component';
+import { ReportsComponent } from './pages/reports/reports.component';
+
 
 
 
@@ -39,7 +41,8 @@ import { DeletedialogComponent } from './pages/deletedialog/deletedialog.compone
     DepartmentTransactionComponent,
     PastTransactionComponent,
     ProjectEditComponent,
-    DeletedialogComponent
+    DeletedialogComponent,
+    ReportsComponent,
 
 ],
   imports: [
@@ -58,7 +61,7 @@ import { DeletedialogComponent } from './pages/deletedialog/deletedialog.compone
     MatDialogModule,
     MatInputModule,
     CollapseModule.forRoot(),
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ import {ActivatedRoute} from '@angular/router'
 
 export class AddEquipmentComponent implements OnInit{
 
-  departmentdata:any;
+  equipmentdata:any;
   active:any = ['Active','Inactive']
   message='';
   messageclass ='';
@@ -21,7 +21,7 @@ export class AddEquipmentComponent implements OnInit{
   deptid:any;
   editdata:any;
   submitted:boolean = false;
-  addDepartment!:FormGroup;
+  addEquipment!:FormGroup;
 
   constructor(private department:EquipmentService,private router:Router,private route:ActivatedRoute,private formBuilder:FormBuilder) {}
 
@@ -34,35 +34,35 @@ export class AddEquipmentComponent implements OnInit{
         console.log("Param >> ",param['id']);
         this.department.LoadbyID(param['id']).subscribe(resp=>{
           this.isEdit = true;
-          this.addDepartment.patchValue(resp);
+          this.addEquipment.patchValue(resp);
         })
       }
     })
-    this.addDepartment = this.formBuilder.group({
-     
-      "equipmentCode": [""],
-      "equipmentName": [""],
-      "cost": [""],
-      "markUp": [""],
-      "heatDissipation": [""],
-      "ictPort": [""],
-      "bssPort": [""],
+    this.addEquipment = this.formBuilder.group({
+
+      "equipmentCode": ['',Validators.required],
+      "equipmentName": ['',Validators.required],
+      "cost": ['',Validators.required],
+      "markUp": ['',Validators.required],
+      "heatDissipation": ['',Validators.required],
+      "ictPort": ['',Validators.required],
+      "bssPort": ['',Validators.required],
     })
   }
 
   SaveData(){
     if(!this.isEdit){
       this.submitted = true;
-      if(this.addDepartment.valid){
-        this.department.SaveData(this.addDepartment.value).subscribe(result => {
+      if(this.addEquipment.valid){
+        this.department.SaveData(this.addEquipment.value).subscribe(result => {
           console.log("result",result);
           this.router.navigate(['/equipment-data']);
         });
       }
     }else if(this.isEdit){
       this.submitted = true;
-      if(this.addDepartment.valid){
-        this.department.update(this.deptid,this.addDepartment.value).subscribe(data =>{
+      if(this.addEquipment.valid){
+        this.department.update(this.deptid,this.addEquipment.value).subscribe(data =>{
           this.isEdit=false;
           this.router.navigate(['/equipment-data']);
         })

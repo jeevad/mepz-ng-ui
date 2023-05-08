@@ -21,7 +21,11 @@ export interface DialogData {
   styleUrls: ['./project.component.css'],
 })
 export class ProjectComponent implements OnInit {
-  departmentData: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count: number = 0;
+  departmentData: any[] = [];
   animal!: string;
   name!: string;
 
@@ -46,8 +50,11 @@ export class ProjectComponent implements OnInit {
   }
 
   Load() {
-    this.department.Load().subscribe((data) => {
-      this.departmentData = data;
+    this.skip = this.limit * (this.page - 1);
+    this.department.Load(this.skip, this.limit).subscribe((data : any) => {
+      this.departmentData = data.results;
+      console.log(data);
+      this.count = data.count;
     });
   }
 

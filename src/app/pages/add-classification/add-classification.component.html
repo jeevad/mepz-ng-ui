@@ -11,24 +11,24 @@
                 <div class="ms-auto"><a routerLink="/hospital-data" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
                     <i class="bx bx-table"></i>Manage Classification</a></div>
              </div>
-            
-            
+
+
                     <div class="card border-top border-0 border-4 border-primary">
                         <div class="card-body p-4">
-                          
-                            
+
+
                             <form  [formGroup] = "addClassification" (ngSubmit)="SaveData()">
                                 <div class="col-md-6 mt-0" >
                                     <label for="inputCode" class="form-label">Classification Code</label>
                                     <input type="text" class="form-control" id="inputCode" placeholder="Enter Classification code"
                                      formControlName="code" autocomplete="off" [ngClass]="{'is-invalid':submitted && addClassification.controls['code'].errors}" />
-                                     <div class="text-danger" *ngIf="submitted && addClassification.controls['code'].errors && addClassification.controls['code'].errors?.['required']">Classification Code is Required</div>
+                                     <div class="text-danger" *ngIf="submitted && addClassification.controls['code'].errors && addClassification.controls['code'].errors?.['required']">Classification code is required</div>
 
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="inputName" class="form-label">Classification Name</label>
                                     <input type="text"  class="form-control" id="inputName" placeholder="Enter Classification name"formControlName="name" autocomplete="off" [ngClass]="{'is-invalid':submitted && addClassification.controls['name'].errors}" />
-                                    <div class="text-danger" *ngIf="submitted && addClassification.controls['name'].errors && addClassification.controls['name'].errors?.['required']">Classification name is Required</div>
+                                    <div class="text-danger" *ngIf="submitted && addClassification.controls['name'].errors && addClassification.controls['name'].errors?.['required']">Classification name is required</div>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="inputState" class="form-label">Active</label>
@@ -47,5 +47,5 @@
                 </div>
    </div>
    </div>
-   
+
    </section>

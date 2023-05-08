@@ -28,14 +28,14 @@
                                       <label for="inputFirstName" class="form-label">Department Code</label>
                                       <input type="text" class=" form-control" id="inputFirstName" placeholder="Enter Department code" formControlName="departmentcode" autocomplete="off"
                                       [ngClass]="{'is-invalid':submitted && addDepartment.controls['departmentcode'].errors}"/>
-                                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['departmentcode'].errors && addDepartment.controls['departmentcode'].errors?.['required']">departmentcode is Required</div>
+                                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['departmentcode'].errors && addDepartment.controls['departmentcode'].errors?.['required']">Department code is required</div>
                                   </div>
                                   <div class="col-md-6 mt-3">
                                       <label for="inputLastName" class="form-label">Department Name</label>
                                       <input type="text"  class="form-control" id="inputLastName" placeholder="Enter Department name" formControlName="departmentname" autocomplete="off"
                                       [ngClass]="{'is-invalid':submitted && addDepartment.controls['departmentname'].
                                       errors}"/>
-                                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['departmentname'].errors && addDepartment.controls['departmentname'].errors?.['required']">departmentname is Required</div>
+                                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['departmentname'].errors && addDepartment.controls['departmentname'].errors?.['required']">Department name is required</div>
                                   </div>
                                   <div class="col-6 mt-3">
                                       <label for="inputState" class="form-label">Active</label>

@@ -9,7 +9,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./project-template.component.css'],
 })
 export class ProjectTemplateComponent implements OnInit {
-  departmentData: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count: number = 0;
+  projectTempData: any[] = [];
 
   constructor(
     private department: ProjecttemplateService,
@@ -18,16 +22,16 @@ export class ProjectTemplateComponent implements OnInit {
     this.Load();
   }
   ngOnInit() {
-    $(function () {
-      $('.example').DataTable({
-        responsive: true,
-        // columnDefs: [{ responsivePriority: 2, targets: -1 }],
-      });
-    });
+    this.Load();
   }
   Load() {
-    this.department.Load().subscribe((data) => {
-      this.departmentData = data;
+    this.skip = this.limit * (this.page - 1);
+    this.department.Load(this.skip, this.limit).subscribe((data : any) => {
+      this.projectTempData = data.results;
+      console.log(data);
+      this.count = data.count;
+
+
     });
   }
   delete(id: any) {
