@@ -1,14 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery'
+import * as $ from 'jquery';
 import { UsermodelService } from 'src/app/service/usermodel/usermodel.service';
-// import 'datatables.net';
-// import 'datatables.net-responsive-bs5';
-// import 'datatables.net-responsive';
 @Component({
   selector: 'app-admin-user',
   templateUrl: './admin-user.component.html',
-  styleUrls: ['./admin-user.component.css']
+  styleUrls: ['./admin-user.component.css'],
 })
 export class AdminUserComponent implements OnInit {
   page = 1;
@@ -27,10 +24,8 @@ export class AdminUserComponent implements OnInit {
   find() {
     this.skip = this.limit * (this.page - 1);
     this.service.Find(this.skip, this.limit).subscribe((data: any) => {
-      // console.log(data);
       this.userdata = data.results;
       this.count = data.count;
-      // console.log(data.count);
     });
   }
 

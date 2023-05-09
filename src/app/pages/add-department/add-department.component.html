@@ -1,57 +1,57 @@
-
-
 <section class="section">
 
   <div class="container">
-      <div class="row page-content">
+    <div class="row page-content">
+      <div class="col-md-12">
+        <div class="d-lg-flex align-items-center mb-4 gap-3">
+          <h4 class="mb-0 text-primary">Add Department </h4>
+          <div class="ms-auto"><a routerLink="/department" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i
+                class="bx bx-table"></i>Manage Department</a></div>
+        </div>
+        <div class="card border-top border-0 border-4 border-primary">
+          <div class="card-body p-5">
+            <div class="col">
+              <div class="offset-lg-3 col-lg-6">
+                <div class="mb-3" *ngIf="isEdit">
+                  <input name="_id" type="hidden" class="form-control">
+                </div>
+              </div>
+            </div>
+            <form [formGroup]="addDepartment" (ngSubmit)="SaveData()">
+              <div class="col-md-6  mt-0">
+                <label for="inputFirstName" class="form-label">Department Code</label>
+                <input type="text" class=" form-control" id="inputFirstName" placeholder="Enter Department code"
+                  formControlName="departmentcode" autocomplete="off"
+                  [ngClass]="{'is-invalid':submitted && addDepartment.controls['departmentcode'].errors}" />
+                <div class="text-danger"
+                  *ngIf="submitted && addDepartment.controls['departmentcode'].errors && addDepartment.controls['departmentcode'].errors?.['required']">
+                  Department code is required</div>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="inputLastName" class="form-label">Department Name</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="Enter Department name"
+                  formControlName="departmentname" autocomplete="off" [ngClass]="{'is-invalid':submitted && addDepartment.controls['departmentname'].
+                                      errors}" />
+                <div class="text-danger"
+                  *ngIf="submitted && addDepartment.controls['departmentname'].errors && addDepartment.controls['departmentname'].errors?.['required']">
+                  Department name is required</div>
+              </div>
+              <div class="col-6 mt-3">
+                <label for="inputState" class="form-label">Active</label>
+                <select class="custom-select form-select" class="form-control form-select" (change)="change($event)"
+                  formControlName="active">
+                  <option *ngFor="let list of active" [ngValue]="list">{{list}}</option>
+                </select>
+              </div>
+              <div class="col-md-6 text-center mt-3">
+                <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+                <a routerLink="/department"><i class="material-icon">Cancel</i></a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <div class="col-md-12">
-
-          <div class="d-lg-flex align-items-center mb-4 gap-3">
-              <h4 class="mb-0 text-primary">Add Department </h4>
-              <div class="ms-auto"><a routerLink="/department" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i class="bx bx-table"></i>Manage Department</a></div>
-           </div>
-
-           <div class="card border-top border-0 border-4 border-primary">
-              <div class="card-body p-5">
-
-
-                              <div class="col">
-                                  <div class="offset-lg-3 col-lg-6">
-                                    <div class="mb-3" *ngIf="isEdit">
-                                      <input  name="_id" type="hidden" class="form-control">
-                                  </div>
-                                  </div>
-                              </div>
-                              <form [formGroup] = "addDepartment" (ngSubmit)="SaveData()">
-                                  <div class="col-md-6  mt-0">
-                                      <label for="inputFirstName" class="form-label">Department Code</label>
-                                      <input type="text" class=" form-control" id="inputFirstName" placeholder="Enter Department code" formControlName="departmentcode" autocomplete="off"
-                                      [ngClass]="{'is-invalid':submitted && addDepartment.controls['departmentcode'].errors}"/>
-                                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['departmentcode'].errors && addDepartment.controls['departmentcode'].errors?.['required']">Department code is required</div>
-                                  </div>
-                                  <div class="col-md-6 mt-3">
-                                      <label for="inputLastName" class="form-label">Department Name</label>
-                                      <input type="text"  class="form-control" id="inputLastName" placeholder="Enter Department name" formControlName="departmentname" autocomplete="off"
-                                      [ngClass]="{'is-invalid':submitted && addDepartment.controls['departmentname'].
-                                      errors}"/>
-                                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['departmentname'].errors && addDepartment.controls['departmentname'].errors?.['required']">Department name is required</div>
-                                  </div>
-                                  <div class="col-6 mt-3">
-                                      <label for="inputState" class="form-label">Active</label>
-                                      <select class="custom-select form-select"  class="form-control form-select" (change)="change($event)" formControlName="active">
-                                          <option *ngFor="let list of active" [ngValue]="list">{{list}}</option>
-                                        </select>
-                                  </div>
-                                  <div class="col-md-6 text-center mt-3">
-                                      <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
-                                      <a routerLink="/department"><i class="material-icon">Cancel</i></a>
-                                  </div>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-                  </div>
-           </div>
-
-           </section>
+</section>

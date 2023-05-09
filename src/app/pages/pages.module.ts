@@ -8,8 +8,6 @@ import { ReportsByPackageComponent } from './reports-by-package/reports-by-packa
 import { TemplateDepartmentComponent } from './template-department/template-department.component';
 import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
 
-
-
 @NgModule({
   declarations: [
     EquipmentSpecificationComponent,
@@ -18,9 +16,6 @@ import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.compon
     TemplateDepartmentComponent,
     EditAdminUserComponent,
   ],
-  imports: [
-    CommonModule,
-    PagesRoutingModule
-  ]
+  imports: [CommonModule, PagesRoutingModule],
 })
-export class PagesModule { }
+export class PagesModule {}

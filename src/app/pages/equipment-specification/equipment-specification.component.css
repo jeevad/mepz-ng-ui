@@ -1,15 +1,15 @@
-.table-responsive{
-    width: 100%;
+.table-responsive {
+  width: 100%;
 }
-.form-control{
-    border-radius: 0px;
+.form-control {
+  border-radius: 0px;
 }
 
 .make-left td {
-    font-size: 14px;
-    padding-left: 10px;
+  font-size: 14px;
+  padding-left: 10px;
 }
 
-textarea.form-control{
-    margin-top: 5px;;
+textarea.form-control {
+  margin-top: 5px;
 }

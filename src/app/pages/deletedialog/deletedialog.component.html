@@ -1,17 +1,13 @@
 <h1 mat-dialog-title>Password Verification {{data.name}}</h1>
 <mat-dialog-content class="mat-typography">
-  
+
   <mat-form-field appearance="fill">
     <mat-label>Enter Password</mat-label>
     <input matInput [(ngModel)]="data.animal">
   </mat-form-field>
 </mat-dialog-content>
 
-
-
-<div mat-dialog-actions align="center"> 
-  <button mat-button  (click)="onNoClick()">Cancel</button>
+<div mat-dialog-actions align="center">
+  <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-button color="warn" [mat-dialog-close]="data.animal" cdkFocusInitial>Confirm Delete</button>
 </div>
-
-

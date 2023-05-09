@@ -1,93 +1,84 @@
 <section class="section">
-    <div class="container">
-       <div class="row page-content">
-          <div class="col-md-12">
-             <div class="d-lg-flex align-items-center mb-4 gap-3">
-                <h4 class="mb-0 text-primary">User Edit </h4>
-             </div>
-             <div class="card border-top border-0 border-4 border-primary">
-                <div class="card-body p-4">
-                   <form class="form-horizontal row" method="post">
-                      <div class="col-md-6">
-                         <label class="form-label">Username</label>
-                        
-                            <input type="text" class="form-control" name="user_name" placeholder="Username" value="admin" fdprocessedid="4misno">
-                        
-                      </div>
-                      <div class="col-md-6">
-                         <label class="form-label">Staff ID</label>
-                        
-                            <input type="text" class="form-control" name="staff_id" placeholder="Staff ID" value="1001" fdprocessedid="o9bomg">
-                         
-                      </div>
-                      <div class="col-md-6">
-                         <label class="form-label">Admin</label>
-                         
-                            <select class="form-select form-control" name="is_admin" fdprocessedid="lb89kd">
-                               <option value="0">No</option>
-                               <option value="1" selected="">Yes</option>
-                            </select>
-                        
-                      </div>
-                      <div class="col-md-6">
-                         <label class="form-label">Active</label>
-                         
-                            <select class="form-select form-control" name="is_active" fdprocessedid="ydfimd">
-                               <option value="0">No</option>
-                               <option value="1" selected="">Yes</option>
-                            </select>
-                         
-                      </div>
-                      <div class="col-md-6">
-                         <label class="form-label">Valid Until</label>
-                        
-                            <input type="text" id="datetimepicker" class="form-control" name="expire_dt" placeholder="Valid Until" value="2020-01-01" fdprocessedid="0k68na">
-                         </div>
+  <div class="container">
+    <div class="row page-content">
+      <div class="col-md-12">
+        <div class="d-lg-flex align-items-center mb-4 gap-3">
+          <h4 class="mb-0 text-primary">User Edit </h4>
+        </div>
+        <div class="card border-top border-0 border-4 border-primary">
+          <div class="card-body p-4">
+            <form class="form-horizontal row" method="post">
+              <div class="col-md-6">
+                <label class="form-label">Username</label>
 
-                         <div class="col-md-6">
-                            <label class="form-label">Group</label>
-                           
-                               <select class="form-select form-control" name="grp_id" fdprocessedid="7obva">
-                                  <option value="1" selected="">Admin</option>
-                                  <option value="2">Staffs</option>
-                                  <option value="9">testing group new</option>
-                                  <option value="10">CLIENT</option>
-                               </select>
-                           
-                         </div>
-                     
-                      <div class="col-md-6">
-                         <label class="form-label">Remarks</label>
-                        
-                            <textarea class="form-control" name="remarks" placeholder="Remarks"></textarea>
-                         </div>
-                     
-                      
-                      <h4 class="mt-4">Change Password</h4>
-                      <hr>
-                      <div class="col-md-6">
-                         <label class="form-label">Password</label>
-                        
-                            <input type="password" class="form-control" name="password" placeholder="Password" fdprocessedid="vsjhkn">
-                         </div>
-                      
-                      <div class="col-md-6">
-                         <label class="form-label">Reenter Password</label>
-                        
-                            <input type="password" class="form-control" name="password_confirm" placeholder="Reenter Password" fdprocessedid="0nquxi">
-                         </div>
-                     
-                      <div class="col-md-6 mt-4">
-                         <div class="col-sm-offset-2 col-sm-10">
-                           
-                            <button type="submit" class="btn btn-primary m-3" fdprocessedid="wrgtcp">Save</button>
-                            <a class="btn btn-warning" routerLink="">Cancel</a>
-                         </div>
-                      </div>
-                   </form>
+                <input type="text" class="form-control" name="user_name" placeholder="Username" value="admin"
+                  fdprocessedid="4misno">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Staff ID</label>
+                <input type="text" class="form-control" name="staff_id" placeholder="Staff ID" value="1001"
+                  fdprocessedid="o9bomg">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Admin</label>
+
+                <select class="form-select form-control" name="is_admin" fdprocessedid="lb89kd">
+                  <option value="0">No</option>
+                  <option value="1" selected="">Yes</option>
+                </select>
+
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Active</label>
+
+                <select class="form-select form-control" name="is_active" fdprocessedid="ydfimd">
+                  <option value="0">No</option>
+                  <option value="1" selected="">Yes</option>
+                </select>
+
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Valid Until</label>
+
+                <input type="text" id="datetimepicker" class="form-control" name="expire_dt" placeholder="Valid Until"
+                  value="2020-01-01" fdprocessedid="0k68na">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Group</label>
+                <select class="form-select form-control" name="grp_id" fdprocessedid="7obva">
+                  <option value="1" selected="">Admin</option>
+                  <option value="2">Staffs</option>
+                  <option value="9">testing group new</option>
+                  <option value="10">CLIENT</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Remarks</label>
+                <textarea class="form-control" name="remarks" placeholder="Remarks"></textarea>
+              </div>
+              <h4 class="mt-4">Change Password</h4>
+              <hr>
+              <div class="col-md-6">
+                <label class="form-label">Password</label>
+
+                <input type="password" class="form-control" name="password" placeholder="Password"
+                  fdprocessedid="vsjhkn">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Reenter Password</label>
+                <input type="password" class="form-control" name="password_confirm" placeholder="Reenter Password"
+                  fdprocessedid="0nquxi">
+              </div>
+              <div class="col-md-6 mt-4">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary m-3" fdprocessedid="wrgtcp">Save</button>
+                  <a class="btn btn-warning" routerLink="">Cancel</a>
                 </div>
-             </div>
+              </div>
+            </form>
           </div>
-       </div>
+        </div>
+      </div>
     </div>
- </section>
+  </div>
+</section>

@@ -1,8 +1,9 @@
-h6{
+h6 {
   color: #ffa000;
 }
 
-.dataTable tr, td {
+.dataTable tr,
+td {
   font-size: 13px;
 }
 
@@ -19,7 +20,7 @@ h6{
   border-radius: 0.25em;
 }
 
-.fa-sm{
+.fa-sm {
   font-size: 1rem;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -27,15 +28,13 @@ h6{
   vertical-align: initial;
 }
 
-
-.btn-xs, .btn-group-xs > .btn {
+.btn-xs,
+.btn-group-xs > .btn {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
 }
-
-
 
 /*******************************
 * MODAL AS RIGHT SIDEBAR
@@ -89,25 +88,21 @@ h6{
 
 /* ----- v CAN BE DELETED v ----- */
 
-
-
-
 .btn-demo {
   /* margin: 15px; */
   padding: 4px 5px;
   border-radius: 0;
   font-size: 16px;
-  background-color: #102d8b;;
+  background-color: #102d8b;
 }
 
 /* .btn-demo:focus {
   outline: 0;
 } */
 
-label{
+label {
   font-weight: bold;
 }
-
 
 .fade.in {
   opacity: 1;
