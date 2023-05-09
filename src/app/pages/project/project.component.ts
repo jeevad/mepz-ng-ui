@@ -36,7 +36,7 @@ export class ProjectComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadDataTable();
+    // this.loadDataTable();
     this.Load();
   }
 
