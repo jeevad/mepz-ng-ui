@@ -1,0 +1,256 @@
+
+<section class="section">
+    <div class="container">
+       <div class="row page-content">
+          <div class="col-md-12">
+             <div class="d-lg-flex align-items-center mb-4 gap-3">
+                <h4 class="mb-0 text-primary">Room Transaction </h4>
+             </div>
+          </div>
+          <div class="col-sm-12">
+             <table id="table-info" class="table table-condensed">
+                <tbody>
+                   <tr>
+                      <td>
+                         <h6>Project Info</h6>
+                      </td>
+                      <td colspan="2"><strong>Code: </strong>ASM</td>
+                      <td><strong>Project Name: </strong>ARUNAMARI SPECIALIST MEDICAL CENTRE</td>
+                      <td><strong>Department Code: </strong>AD</td>
+                      <td><strong>Department Alias: </strong>ADMINISTRATION (L4)</td>
+                   </tr>
+                </tbody>
+             </table>
+          </div>
+          <div>
+             <div>
+                <div class="float-start d-lg-flex gap-3">
+                   <a class="btn btn-sm btn-danger" routerLink=""> <i class="fa-solid fa-chevron-left fa-sm"></i> Back </a>
+                </div>
+  
+                <div class="float-end d-lg-flex gap-3">
+                   <button title="Add Room"
+                      type="button"
+                      class="btn btn-sm btn-primary"
+                      data-toggle="modal"
+                      data-target="#myModal2"
+                      >
+                   <i class="fal fa-file-plus"> </i>
+                   </button>
+  
+  
+                 <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i class='bx bxs-copy'></i></button>
+                 <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE" ><i class='bx bxs-trash'></i></button>
+
+                 <button type="button" class="btn btn-info" id="disable_room">Disable/Enable Room</button>
+
+                 <button type="button" class="btn btn-warning" id="view_eq">View Equipment</button>
+
+                 <a class="btn btn-primary" href="">All Equipment Allocation</a>
+  
+         </div>
+             </div>
+          </div>
+          <div class="col-md-12 mt-4">
+             <div class="card p-3">
+                <div class="card-body">
+                   <table id="example" class="display" cellspacing="0" width="100%">
+                      <thead>
+  
+                         <tr>
+                             <th></th>
+                            <th >Room</th>
+                            <th >Size</th>
+                            <th >Code</th>
+                            <th >Room Alias</th>
+                            
+  
+                         </tr>
+                      </thead>
+  
+                      <tbody>
+  
+  
+                         <tr >
+                             <td><input type="checkbox" name="h_dep_id" value="947"></td>
+                             <td>WAITING AREA</td>
+                             
+                             <td ></td>
+                             <td>AD102</td>
+                            
+                             <td >	WAITING</td>
+                             
+                         </tr>
+  
+                         <tr >
+                            <td><input type="checkbox" name="h_dep_id" value="947"></td>
+                            <td>WAITING AREA</td>
+                            
+                            <td ></td>
+                            <td>AD102</td>
+                           
+                            <td >	WAITING</td>
+                            
+                        </tr>
+ 
+  
+  
+  
+                        <tr >
+                            <td><input type="checkbox" name="h_dep_id" value="947"></td>
+                            <td>WAITING AREA</td>
+                            
+                            <td ></td>
+                            <td>AD102</td>
+                           
+                            <td >	WAITING</td>
+                            
+                        </tr>
+ 
+  
+  
+  
+                        <tr >
+                            <td><input type="checkbox" name="h_dep_id" value="947"></td>
+                            <td>WAITING AREA</td>
+                            
+                            <td ></td>
+                            <td>AD102</td>
+                           
+                            <td >	WAITING</td>
+                            
+                        </tr>
+ 
+  
+  
+  
+  
+                 </tbody>
+  
+  
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+  </section>
+  
+  
+  <!-- modal -->
+  <div class="container demo">
+    <!-- Modal -->
+    <div
+       class="modal right fade"
+       id="myModal2"
+       tabindex="-1"
+       role="dialog"
+       aria-labelledby="myModalLabel2"
+       >
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-header">
+                <button
+                   type="button"
+                   class="close"
+                   data-dismiss="modal"
+                   aria-label="Close"
+                   >
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
+             </div>
+  
+  
+             <div class="modal-body">
+  
+                <div class="d-flex justify-content-center align-items-center bg-light">
+                <div class="card p-3 shadow">
+  
+                   <h4>Add Room</h4>
+                   <table id="example1" class="display" cellspacing="0" width="100%">
+                      <thead>
+  
+                         <tr role="row">
+                            <th >Qty</th>
+                            <th >Room</th>
+                            <th >Code</th>
+  
+  
+                         </tr>
+                      </thead>
+  
+                      <tbody>
+  
+                      <tr>
+                         <td><select data-id="521" name="rm_code" fdprocessedid="c8ea2k">
+                            <option value="521::0::ABLUTION COMMON">0</option>
+                            <option value="521::1::ABLUTION COMMON">1</option>
+                            <option value="521::2::ABLUTION COMMON">2</option>
+                            <option value="521::3::ABLUTION COMMON">3</option>
+                            <option value="521::4::ABLUTION COMMON">4</option>
+                            <option value="521::5::ABLUTION COMMON">5</option>
+                            <option value="521::6::ABLUTION COMMON">6</option>
+                            <option value="521::7::ABLUTION COMMON">7</option>
+                            <option value="521::8::ABLUTION COMMON">8</option>
+                            <option value="521::9::ABLUTION COMMON">9</option>
+                            <option value="521::10::ABLUTION COMMON">10</option>
+                            <option value="521::11::ABLUTION COMMON">11</option>
+                            <option value="521::12::ABLUTION COMMON">12</option>
+                            <option value="521::13::ABLUTION COMMON">13</option>
+                            <option value="521::14::ABLUTION COMMON">14</option>
+                            <option value="521::15::ABLUTION COMMON">15</option>
+                            <option value="521::16::ABLUTION COMMON">16</option>
+                            <option value="521::17::ABLUTION COMMON">17</option>
+                            <option value="521::18::ABLUTION COMMON">18</option>
+                            <option value="521::19::ABLUTION COMMON">19</option>
+                            <option value="521::20::ABLUTION COMMON">20</option>
+                    </select></td>
+                         <td >ACADEMIC OFFICE</td>
+  
+                         <td>234</td>
+  
+                     </tr>
+  
+                     <tr>
+                      <td><input  class="checkbox" type="checkbox" name="" value=""></td>
+                         <td >ADMINISTRATION DEPARTMENT</td>
+                         <td>2</td>
+  
+                     </tr>
+  
+  
+                     <tr>
+                      <td><input  class="checkbox" type="checkbox" name="" value=""></td>
+                         <td >ADMINISTRATION MEDICAL</td>
+                         <td>3</td>
+  
+                     </tr>
+                 </tbody>
+  
+  
+                   </table>
+  
+                   <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" id="add_department">Add</button>
+                      <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+  
+                  </div>
+  
+                </div>
+  
+                </div>
+             </div>
+          </div>
+          <!-- modal-content -->
+  
+  
+  
+  
+       </div>
+       <!-- modal-dialog -->
+    </div>
+    <!-- modal -->
+  </div>
+  <!-- container -->
+  

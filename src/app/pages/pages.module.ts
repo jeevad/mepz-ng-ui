@@ -7,6 +7,7 @@ import { EquipmentBrandComponent } from './equipment-brand/equipment-brand.compo
 import { ReportsByPackageComponent } from './reports-by-package/reports-by-package.component';
 import { TemplateDepartmentComponent } from './template-department/template-department.component';
 import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
+import { ViewRoomsComponent } from './view-rooms/view-rooms.component';
 
 
 
@@ -17,6 +18,7 @@ import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.compon
     ReportsByPackageComponent,
     TemplateDepartmentComponent,
     EditAdminUserComponent,
+    ViewRoomsComponent,
   ],
   imports: [
     CommonModule,
