@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class UtilityService {
-  // apiUrl="http://13.232.11.217/api/utility";
+
 
   constructor(private http:HttpClient) { }
   Find(skip: number, limit: number){
@@ -18,8 +18,6 @@ export class UtilityService {
     return this.http.get(environment.apiUrl + '/utility/' + id)
   }
   update(id:any,utilitydata:any){
-    console.log("update id",id);
-    console.log("update data",utilitydata);
     return this.http.patch(environment.apiUrl+'/utility/'+ id,utilitydata);
   }
 

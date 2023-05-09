@@ -17,8 +17,8 @@
   color: #2b2a2a;
 }
 
-.form-control{
-  margin-bottom: 10px;;
+.form-control {
+  margin-bottom: 10px;
 }
 
 .modal.right .modal-dialog {
@@ -68,25 +68,21 @@
 
 /* ----- v CAN BE DELETED v ----- */
 
-
-
-
 .btn-demo {
   /* margin: 15px; */
   padding: 4px 5px;
   border-radius: 0;
   font-size: 16px;
-  background-color: #102d8b;;
+  background-color: #102d8b;
 }
 
 /* .btn-demo:focus {
   outline: 0;
 } */
 
-label{
+label {
   font-weight: bold;
 }
-
 
 .fade.in {
   opacity: 1;
@@ -96,6 +92,6 @@ label{
   opacity: 1;
 }
 
-#nav-tab{
+#nav-tab {
   display: grid;
 }

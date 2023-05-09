@@ -1,50 +1,53 @@
-
 <section class="section">
 
-    <div class="container">
-        <div class="row page-content">
+  <div class="container">
+    <div class="row page-content">
+      <div class="col-md-12">
+        <div class="d-lg-flex align-items-center mb-4 gap-3">
+          <h4 class="mb-0 text-primary">Add Currency </h4>
+          <div class="ms-auto"><a routerLink="/currency" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
+              <i class="bx bx-table"></i>Manage Currency</a></div>
+        </div>
+        <div class="card border-top border-0 border-4 border-primary">
+          <div class="card-body p-5">
 
-            <div class="col-md-12">
+            <form class=" g-0" [formGroup]="addCurrency" (ngSubmit)="SaveData()">
+              <div class="col-md-6  mt-0">
+                <label for="CurrencyCode" class="form-label">Currency Code</label>
+                <input type="text" class="form-control" id="CurrencyCode" placeholder="Enter Currency code"
+                  formControlName="code" autocomplete="off"
+                  [ngClass]="{'is-invalid':submitted && addCurrency.controls['code'].errors}" />
+                <div class="text-danger"
+                  *ngIf="submitted && addCurrency.controls['code'].errors && addCurrency.controls['code'].errors?.['required']">
+                  Currency code is required</div>
 
-            <div class="d-lg-flex align-items-center mb-4 gap-3">
-                <h4 class="mb-0 text-primary">Add Currency </h4>
-                <div class="ms-auto"><a routerLink="/currency" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
-                    <i class="bx bx-table"></i>Manage Currency</a></div>
-             </div>
-
-
-                    <div class="card border-top border-0 border-4 border-primary">
-                        <div class="card-body p-5">
-
-                            <form class=" g-0" [formGroup] = "addCurrency" (ngSubmit)="SaveData()">
-                                <div class="col-md-6  mt-0">
-                                    <label for="CurrencyCode" class="form-label">Currency Code</label>
-                                    <input type="text" class="form-control" id="CurrencyCode" placeholder="Enter Currency code" formControlName="code" autocomplete="off"
-                                    [ngClass]="{'is-invalid':submitted && addCurrency.controls['code'].errors}"/>
-                                    <div class="text-danger" *ngIf="submitted && addCurrency.controls['code'].errors && addCurrency.controls['code'].errors?.['required']">Currency code is required</div>
-
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="CurrencyName" class="form-label">Currency Name</label>
-                                    <input type="text" class="form-control" id="CurrencyName" placeholder="Enter Currency name" formControlName="name" autocomplete="off"
-                                    [ngClass]="{'is-invalid':submitted && addCurrency.controls['name'].errors}"/>
-                                    <div class="text-danger" *ngIf="submitted && addCurrency.controls['name'].errors && addCurrency.controls['name'].errors?.['required']">Currency name is required</div>
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <label for="Symbol" class="form-label">Symbol</label>
-                                    <input type="text" class="form-control"id="Symbol" placeholder="Enter Symbol" formControlName="symbol" autocomplete="off"
-                                    [ngClass]="{'is-invalid':submitted && addCurrency.controls['symbol'].errors}"/>
-                                    <div class="text-danger" *ngIf="submitted && addCurrency.controls['symbol'].errors && addCurrency.controls['symbol'].errors?.['required']" > Symbol is required </div>
-                                </div>
-                                <div class="col-md-6 text-center mt-3">
-                                    <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
-                                    <a routerLink="/department"><i class="material-icon">Cancel</i></a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="CurrencyName" class="form-label">Currency Name</label>
+                <input type="text" class="form-control" id="CurrencyName" placeholder="Enter Currency name"
+                  formControlName="name" autocomplete="off"
+                  [ngClass]="{'is-invalid':submitted && addCurrency.controls['name'].errors}" />
+                <div class="text-danger"
+                  *ngIf="submitted && addCurrency.controls['name'].errors && addCurrency.controls['name'].errors?.['required']">
+                  Currency name is required</div>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="Symbol" class="form-label">Symbol</label>
+                <input type="text" class="form-control" id="Symbol" placeholder="Enter Symbol" formControlName="symbol"
+                  autocomplete="off" [ngClass]="{'is-invalid':submitted && addCurrency.controls['symbol'].errors}" />
+                <div class="text-danger"
+                  *ngIf="submitted && addCurrency.controls['symbol'].errors && addCurrency.controls['symbol'].errors?.['required']">
+                  Symbol is required </div>
+              </div>
+              <div class="col-md-6 text-center mt-3">
+                <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+                <a routerLink="/department"><i class="material-icon">Cancel</i></a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
 
-    </section>
+</section>

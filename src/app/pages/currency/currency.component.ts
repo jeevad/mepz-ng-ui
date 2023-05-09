@@ -12,7 +12,6 @@ export class CurrencyComponent implements OnInit {
   limit = 10;
   skip = 0;
   count: number = 0;
-  // currencyData: any;
   currencyData: any[] = [];
   newData: any;
 
@@ -25,10 +24,8 @@ export class CurrencyComponent implements OnInit {
   find() {
     this.skip = this.limit * (this.page - 1);
     this.service.Find(this.skip, this.limit).subscribe((data: any) => {
-      // console.log(data);
       this.currencyData = data.results;
       this.count = data.count;
-      // console.log(data.count);
     });
   }
 

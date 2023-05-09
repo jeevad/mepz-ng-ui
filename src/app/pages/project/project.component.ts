@@ -9,7 +9,6 @@ import { ProjectService } from 'src/app/service/project/project.service';
 import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 
-
 export interface DialogData {
   animal: string;
   name: string;
@@ -36,7 +35,6 @@ export class ProjectComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.loadDataTable();
     this.Load();
   }
 
@@ -44,16 +42,14 @@ export class ProjectComponent implements OnInit {
     $(function () {
       $('#example').DataTable({
         responsive: true,
-        // columnDefs: [{ responsivePriority: 2, targets: -1 }],
       });
     });
   }
 
   Load() {
     this.skip = this.limit * (this.page - 1);
-    this.department.Load(this.skip, this.limit).subscribe((data : any) => {
+    this.department.Load(this.skip, this.limit).subscribe((data: any) => {
       this.departmentData = data.results;
-      console.log(data);
       this.count = data.count;
     });
   }
@@ -72,28 +68,25 @@ export class ProjectComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+
       this.animal = result;
     });
   }
 
   buttonInRowClick(event: any): void {
     event.stopPropagation();
-    console.log('Button in the row clicked.');
+
   }
 
   wholeRowClick(): void {
-    console.log('Whole row clicked.');
+
   }
 
   nextButtonClickEvent(): void {
-    //do next particular records like  101 - 200 rows.
-    //we are calling to api
-    console.log('next clicked');
+
   }
 
   previousButtonClickEvent(): void {
-    //do previous particular the records like  0 - 100 rows.
-    //we are calling to API
+
   }
 }

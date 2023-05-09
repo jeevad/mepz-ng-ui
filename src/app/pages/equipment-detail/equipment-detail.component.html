@@ -3,15 +3,12 @@
   <div class="container">
     <div class="row page-content">
       <div class="col-md-12">
-
         <div class="d-lg-flex align-items-center mb-4 gap-3">
           <h4 class="mb-0 text-primary">Equipment </h4>
           <div class="ms-auto"><a routerLink="/add-equipment" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
               <i class="bx bxs-plus-square"></i>Add add-equipment</a></div>
         </div>
-
         <div class="row page-content">
-
           <div class="col-md-12">
             <div class="card p-3">
               <div class="card-body">
@@ -30,15 +27,11 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let item of equipmentdata; let i = index">
-
                       <td>{{ skip + i+1 }}</td>
                       <td>{{ item.equipmentCode }}</td>
-                      <!-- <td><span class="hiddentxt">AIRWAY GUEDEL VARIOUS SIZES</span><span class="hiddenimg"><img src="assets/images/equipment/1.jpg" class="img-fluid" alt="equipment" /></span></td> -->
                       <td>{{ item.equipmentName }}</td>
-
                       <td>{{ item.cost }}</td>
                       <td>{{ item.markUp }}</td>
-
                       <td>{{item.heatDissipation}}</td>
                       <td></td>
                       <td>
@@ -56,8 +49,9 @@
                   <tfoot>
                     <tr>
                       <td colspan="5">
-                        <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination"></ngb-pagination>
-                      <pre>Current page: {{page}}</pre>
+                        <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()"
+                          aria-label="Default pagination"></ngb-pagination>
+                        <pre>Current page: {{page}}</pre>
                       </td>
                     </tr>
                   </tfoot>

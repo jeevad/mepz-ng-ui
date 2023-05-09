@@ -1,114 +1,115 @@
- 
- 
- 
- <div class="wrapper">
-   <!--sidebar wrapper -->
-    <div class="sidebar-wrapper" data-simplebar="true">
-        <div class="sidebar-header">
-            <div>
-                <img src="assets/images/logo.png" class="img-fluid" width="120" alt="logo">
-            </div>
-            <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
-            </div>
-        </div>
-        <!--navigation-->
-        <ul class="metismenu" id="menu">
-            <li>
-                <a routerLink="/dashboard" routerLinkActive="active">
-                    <div class="parent-icon"><i class="fal fa-home"></i>
-                    </div>
-                    <div class="menu-title">Home</div>
-                </a>
-            </li>
-            <li>
-                <a routerLink="/project" routerLinkActive="active">
-                    <div class="parent-icon"><i class="fal fa-file-chart-line"></i>
-                    </div>
-                    <div class="menu-title">Project</div>
-                </a>
-            </li>
-            <li>
-                <a routerLink="/project-template" routerLinkActive="active">
-                    <div class="parent-icon"><i class="fal fa-file-invoice"></i>
-                    </div>
-                    <div class="menu-title">Project Template</div>
-                </a>
-            </li>
-            <li class="master-file">
-                <a class="has-arrow" routerLinkActive="active">
-                    <div class="parent-icon"><i class="fal fa-files-medical"></i>
-                    </div>
-                    <div class="menu-title">Master file</div>
-                </a>
-                <ul class="dropdown">
-                    <li> <a routerLink="/company"><i class="bx bx-right-arrow-alt" ></i>Company</a></li>
-                    <li> <a routerLink="/department"><i class="bx bx-right-arrow-alt"></i>Department</a></li>
-                    <li> <a routerLink="/room-detail"><i class="bx bx-right-arrow-alt"></i>Rooms</a></li>
-                    <li> <a routerLink="/group-detail"><i class="bx bx-right-arrow-alt"></i>Group</a></li>
-                    <li> <a routerLink="/utility-detail"><i class="bx bx-right-arrow-alt"></i>Utility</a></li>
-                    <li> <a routerLink="/equipment-data"><i class="bx bx-right-arrow-alt"></i>Equipment data</a></li>
-                    <li> <a routerLink="/package"><i class="bx bx-right-arrow-alt"></i>Package</a></li>
-                    <li> <a routerLink="/hospital-data"><i class="bx bx-right-arrow-alt"></i>Hospital classification</a></li>
-                    <li> <a routerLink="/currency"><i class="bx bx-right-arrow-alt"></i>Currency</a></li>
-                </ul>
-            </li>
-            <li >
-                <a  class="has-arrow">
-                    <div class="parent-icon"><i class="fal fa-user-cog"></i>
-                    </div>
-                    <div class="menu-title">Administrator</div>
-                </a>
-                <ul class="administrator">
-                    <li class="dropdown-item"> <a routerLink="/admin-user"><i class="bx bx-right-arrow-alt"></i>User</a></li>
-                    <li class="dropdown-item"> <a routerLink="/admin-group"><i class="bx bx-right-arrow-alt"></i>Group</a></li>
-                    <li class="dropdown-item"> <a routerLink="/access-level"><i class="bx bx-right-arrow-alt"></i>User access level</a></li>
-                    <li class="dropdown-item"> <a routerLink="/activity-log"><i class="bx bx-right-arrow-alt"></i>Activities log</a></li>
-                </ul>
-            </li>
-
-            <li >
-                <a routerLink="/reports">
-                    <div class="parent-icon"><i class="fal fa-bar-chart"></i>
-                    </div>
-                    <div class="menu-title">Reports</div>
-                </a>
-                
-            </li>
-
-            <li >
-                <a routerLink="/reports-by-package">
-                    <div class="parent-icon"><i class="fal fa-box"></i>
-                    </div>
-                    <div class="menu-title">Reports By Package</div>
-                </a>
-                
-            </li>
-        </ul>
+<div class="wrapper">
+  <!--sidebar wrapper -->
+  <div class="sidebar-wrapper" data-simplebar="true">
+    <div class="sidebar-header">
+      <div>
+        <img src="assets/images/logo.png" class="img-fluid" width="120" alt="logo">
+      </div>
+      <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
+      </div>
     </div>
+    <!--navigation-->
+    <ul class="metismenu" id="menu">
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="active">
+          <div class="parent-icon"><i class="fal fa-home"></i>
+          </div>
+          <div class="menu-title">Home</div>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/project" routerLinkActive="active">
+          <div class="parent-icon"><i class="fal fa-file-chart-line"></i>
+          </div>
+          <div class="menu-title">Project</div>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/project-template" routerLinkActive="active">
+          <div class="parent-icon"><i class="fal fa-file-invoice"></i>
+          </div>
+          <div class="menu-title">Project Template</div>
+        </a>
+      </li>
+      <li class="master-file">
+        <a class="has-arrow" routerLinkActive="active">
+          <div class="parent-icon"><i class="fal fa-files-medical"></i>
+          </div>
+          <div class="menu-title">Master file</div>
+        </a>
+        <ul class="dropdown">
+          <li> <a routerLink="/company"><i class="bx bx-right-arrow-alt"></i>Company</a></li>
+          <li> <a routerLink="/department"><i class="bx bx-right-arrow-alt"></i>Department</a></li>
+          <li> <a routerLink="/room-detail"><i class="bx bx-right-arrow-alt"></i>Rooms</a></li>
+          <li> <a routerLink="/group-detail"><i class="bx bx-right-arrow-alt"></i>Group</a></li>
+          <li> <a routerLink="/utility-detail"><i class="bx bx-right-arrow-alt"></i>Utility</a></li>
+          <li> <a routerLink="/equipment-data"><i class="bx bx-right-arrow-alt"></i>Equipment data</a></li>
+          <li> <a routerLink="/package"><i class="bx bx-right-arrow-alt"></i>Package</a></li>
+          <li> <a routerLink="/hospital-data"><i class="bx bx-right-arrow-alt"></i>Hospital classification</a></li>
+          <li> <a routerLink="/currency"><i class="bx bx-right-arrow-alt"></i>Currency</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="has-arrow">
+          <div class="parent-icon"><i class="fal fa-user-cog"></i>
+          </div>
+          <div class="menu-title">Administrator</div>
+        </a>
+        <ul class="administrator">
+          <li class="dropdown-item"> <a routerLink="/admin-user"><i class="bx bx-right-arrow-alt"></i>User</a></li>
+          <li class="dropdown-item"> <a routerLink="/admin-group"><i class="bx bx-right-arrow-alt"></i>Group</a></li>
+          <li class="dropdown-item"> <a routerLink="/access-level"><i class="bx bx-right-arrow-alt"></i>User access
+              level</a></li>
+          <li class="dropdown-item"> <a routerLink="/activity-log"><i class="bx bx-right-arrow-alt"></i>Activities
+              log</a></li>
+        </ul>
+      </li>
 
-    <!-- <div class="page-wrapper"> 
+      <li>
+        <a routerLink="/reports">
+          <div class="parent-icon"><i class="fal fa-bar-chart"></i>
+          </div>
+          <div class="menu-title">Reports</div>
+        </a>
+
+      </li>
+
+      <li>
+        <a routerLink="/reports-by-package">
+          <div class="parent-icon"><i class="fal fa-box"></i>
+          </div>
+          <div class="menu-title">Reports By Package</div>
+        </a>
+
+      </li>
+    </ul>
+  </div>
+
+  <!-- <div class="page-wrapper">
       <div class="page-content">
       <header> -->
-      <div class="topbar d-flex align-items-center">
-          <nav class="navbar navbar-expand">
-              <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
-              </div>
-              <div class="main-menu-right ms-auto user-box dropdown">
-                 <div ngbDropdown class="d-flex align-items-center ms-3">
-                   <a  class="nav-link text-white" id="dropdownBasic1" ngbDropdownToggle><img src="assets/images/avatars/avatar-1.png" class="img-fluid rounded-circle me-3" alt="user" width="40">
-                    Hi Admin
-                   </a>
-                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1" id="dropdown-menu">
-                     <ul class="user-inf mb-0">
-                     <!-- <li><a class="dropdown-item" routerLink="/"><i class="bx bx-user"></i><span>Profile</span></a></li> -->
-                      <li><a class="dropdown-item" routerLink="/"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li> 
-                       
-                    </ul>
-                   </div>
-                 </div>
-               </div>
-          </nav>
+  <div class="topbar d-flex align-items-center">
+    <nav class="navbar navbar-expand">
+      <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
       </div>
+      <div class="main-menu-right ms-auto user-box dropdown">
+        <div ngbDropdown class="d-flex align-items-center ms-3">
+          <a class="nav-link text-white" id="dropdownBasic1" ngbDropdownToggle><img
+              src="assets/images/avatars/avatar-1.png" class="img-fluid rounded-circle me-3" alt="user" width="40">
+            Hi Admin
+          </a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1" id="dropdown-menu">
+            <ul class="user-inf mb-0">
+              <!-- <li><a class="dropdown-item" routerLink="/"><i class="bx bx-user"></i><span>Profile</span></a></li> -->
+              <li><a class="dropdown-item" routerLink="/"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
   <!-- </header> -->
 
 
@@ -116,28 +117,28 @@
 
 </div>
 <!-- </div> -->
-    
-    <div class="overlay toggle-icon"></div>
+
+<div class="overlay toggle-icon"></div>
 <!-- </div> -->
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- <!-- ======= Header Start ======= -->
- <!-- <header class="header header--software header--transparrent d-lg-block">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======= Header Start ======= -->
+<!-- <header class="header header--software header--transparrent d-lg-block">
    <div id="navbar-wrap" class="header-bottom container-custom navbar-wrap">
-     
+
       <div class="container">
          <div class="header-bottom__row header-bottom__software_row">
-           
+
             <div class="header-bottom__col">
                <div class="main-menu">
 
@@ -145,11 +146,11 @@
                    <a href="index.html" class="logo__link navbar-brand">
                        <h2>MEPS</h2>
                       </a>
-                  
+
                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
                       <span class="navbar-toggler-icon"></span>
                       </button>
-                    
+
                       <div class="collapse navbar-collapse" id="navbarColor03" [ngbCollapse]="isCollapsed">
                          <ul class="navbar-nav mr-auto" routerLinkActive="active">
                             <li class="nav-item">
@@ -161,45 +162,45 @@
                             <li class="nav-item dropdown submenu list" routerLinkActive="active">
                                <a href="javascript:void(0)" class=" nav-link dropdown-toggle animation" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master file</a>
                                <ul class="dropdown-menu myself main-menu__dropdown">
-                                  
-                                     
-                                   <li> <a routerLink="/company" >Company</a></li> 
+
+
+                                   <li> <a routerLink="/company" >Company</a></li>
                                    <li> <a routerLink="/department">Department</a></li>
-                                    <li> <a routerLink="/room-detail">Rooms</a></li> 
+                                    <li> <a routerLink="/room-detail">Rooms</a></li>
                                    <li> <a routerLink="/group-detail">Group</a></li>
                                    <li> <a routerLink="/utility-detail">Utility</a></li>
                                    <li> <a routerLink="/equipment-data">Equipment data</a></li>
                                    <li> <a routerLink="/package">Package</a></li>
                                   <li> <a routerLink="/hospital-data">Hospital classification</a></li>
                                   <li> <a routerLink="/currency">Currency</a></li>
-                                     
-                                  
-                                  
+
+
+
                                </ul>
                             </li>
 
                             <li class="nav-item dropdown submenu list">
                                <a href="javascript:void(0)" class=" nav-link dropdown-toggle animation" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator</a>
                                <ul class="dropdown-menu myself main-menu__dropdown">
-                                  
-                                     
-                                   <li> <a routerLink="/">User</a></li> 
+
+
+                                   <li> <a routerLink="/">User</a></li>
                                    <li> <a routerLink="/">Group</a></li>
-                                    <li> <a routerLink="/">User access level</a></li> 
+                                    <li> <a routerLink="/">User access level</a></li>
                                    <li> <a routerLink="/">Activities Log</a></li>
-                                   
-                                     
-                                  
-                                  
+
+
+
+
                                </ul>
                             </li>
-                           
-                           
-                           
-                           
-                           
 
-                          
+
+
+
+
+
+
                          </ul>
                          <div ngbDropdown class="d-flex align-items-center ms-3">
                            <a  class="nav-link myself" id="dropdownBasic1" ngbDropdownToggle><img src="assets/images/admin.png" class="img-fluid rounded-circle me-3" alt="user" width="40">
@@ -207,15 +208,15 @@
                            </a>
                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" id="dropdown-menu">
                              <ul class="user-inf mb-0">
-                              <li><a class="dropdown-item" routerLink="/"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li> 
-                               
+                              <li><a class="dropdown-item" routerLink="/"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li>
+
                             </ul>
                            </div>
                          </div>
                       </div>
 
-                      
-                   
+
+
                 </nav>
 
 
@@ -228,12 +229,3 @@
 </header> -->
 
 <!-- ======= Header End ======= -->
-
- 
- 
- 
- 
- 
-
-
-         

@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery'
-// import 'datatables.net';
-// import 'datatables.net-responsive-bs5';
-// import 'datatables.net-responsive';
-import { UtilityService } from 'src/app/service/utility/utility.service'
+import * as $ from 'jquery';
+import { UtilityService } from 'src/app/service/utility/utility.service';
 import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-utility-detail',
   templateUrl: './utility-detail.component.html',
-  styleUrls: ['./utility-detail.component.css']
+  styleUrls: ['./utility-detail.component.css'],
 })
 export class UtilityDetailComponent implements OnInit {
   page = 1;
@@ -24,19 +21,16 @@ export class UtilityDetailComponent implements OnInit {
   }
   Find() {
     this.skip = this.limit * (this.page - 1);
-    this.utility.Find(this.skip, this.limit).subscribe((data : any) => {
+    this.utility.Find(this.skip, this.limit).subscribe((data: any) => {
       this.utilityData = data.results;
-      console.log(data);
       this.count = data.count;
     });
   }
   delete(id: any) {
     if (confirm('delete?')) {
-      this.utility.Removedata(id).subscribe(data => {
+      this.utility.Removedata(id).subscribe((data) => {
         this.Find();
       });
     }
-
   }
-
 }

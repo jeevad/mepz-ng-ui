@@ -28,7 +28,6 @@ export class ProjectTemplateComponent implements OnInit {
     this.skip = this.limit * (this.page - 1);
     this.department.Load(this.skip, this.limit).subscribe((data: any) => {
       this.projectTempData = data.results;
-      console.log(data);
       this.count = data.count;
     });
   }

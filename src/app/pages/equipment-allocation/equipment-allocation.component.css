@@ -1,24 +1,25 @@
-h6{
+h6 {
   color: #ffa000;
 }
 
 .new-eq {
-  border: #A3CBF3 solid 1px;
+  border: #a3cbf3 solid 1px;
   color: #555555;
   margin-left: 10px;
 }
-.dataTables_length label{
-display: none !important;
-border: dotted !important;
+.dataTables_length label {
+  display: none !important;
+  border: dotted !important;
 }
-h5, .h5 {
-font-size: 14px;
-color: #317eac;
+h5,
+.h5 {
+  font-size: 14px;
+  color: #317eac;
 }
 
-h4{
-font-size: 18px;
-color: #317eac;
+h4 {
+  font-size: 18px;
+  color: #317eac;
 }
 
 .label {
@@ -34,7 +35,7 @@ color: #317eac;
   border-radius: 0.25em;
 }
 
-.fa-sm{
+.fa-sm {
   font-size: 1rem;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -43,12 +44,13 @@ color: #317eac;
 }
 
 .replace-eq {
-  border: #AA9EC7 solid 1px;
+  border: #aa9ec7 solid 1px;
   margin-left: 10px;
   color: #555555;
 }
 
-.btn-xs, .btn-group-xs > .btn {
+.btn-xs,
+.btn-group-xs > .btn {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -107,25 +109,21 @@ color: #317eac;
 
 /* ----- v CAN BE DELETED v ----- */
 
-
-
-
 .btn-demo {
   /* margin: 15px; */
   padding: 4px 5px;
   border-radius: 0;
   font-size: 16px;
-  background-color: #102d8b;;
+  background-color: #102d8b;
 }
 
 /* .btn-demo:focus {
   outline: 0;
 } */
 
-label{
+label {
   font-weight: bold;
 }
-
 
 .fade.in {
   opacity: 1;
@@ -135,10 +133,6 @@ label{
   opacity: 1;
 }
 
-#nav-tab{
+#nav-tab {
   display: grid;
 }
-
-
-
-  

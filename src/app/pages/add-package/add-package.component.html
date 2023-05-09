@@ -11,13 +11,10 @@
                 <div class="ms-auto"><a routerLink="/package" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
                     <i class="bx bx-table"></i>Manage Package</a></div>
              </div>
-
-                    <div class="card border-top border-0 border-4 border-primary">
+                  <div class="card border-top border-0 border-4 border-primary">
                         <div class="card-body p-4">
-
-
-                            <form class="" [formGroup] = "addPackage" (ngSubmit)="SaveData()">
-                                <div class="col-md-6">
+                          <form class="" [formGroup] = "addPackage" (ngSubmit)="SaveData()">
+                              <div class="col-md-6">
                                     <label for="inputCode" class="form-label">Package Code</label>
                                     <input type="text" class="form-control" id="inputCode" placeholder="Enter Package code" formControlName="packagecode" autocomplete="off"
                                     [ngClass]="{'is-invalid':submitted && addPackage.controls['packagecode'].errors}" />
@@ -38,7 +35,7 @@
                                 </div>
                                 <div class="col-md-6 text-center mt-3">
                                     <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
-                                        <!-- <a routerLink="/package" class="btn btn-secondary px-5">Cancel</a> -->
+
                                         <a routerLink="/package" ><i class="material-icon">Cancel</i></a>
                                 </div>
                             </form>

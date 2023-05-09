@@ -24,10 +24,6 @@ import {MatInputModule} from '@angular/material/input';
 import { DeletedialogComponent } from './pages/deletedialog/deletedialog.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +39,6 @@ import { ReportsComponent } from './pages/reports/reports.component';
     ProjectEditComponent,
     DeletedialogComponent,
     ReportsComponent,
-
-
 ],
   imports: [
     BrowserModule,

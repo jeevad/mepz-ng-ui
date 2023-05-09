@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'app';
@@ -14,41 +14,21 @@ export class AppComponent {
 
   blankUrl = '';
   currentUrl: string | undefined;
-  checkoutUrls = ['/login','/'];
+  checkoutUrls = ['/login', '/'];
   constructor(private router: Router) {
-    // router.events.subscribe((val) => {
-    //   // see also 
-    //   console.log(val instanceof NavigationEnd)
-    // });
-    // router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)  
-    // ).subscribe((event: NavigationEnd) => {
-    //   console.log(event.url);
-    // });
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        // Show loading indicator
       }
 
       if (event instanceof NavigationEnd) {
         this.currentUrl = event.url;
-        console.log('this.currentUrl',this.currentUrl);
-        
+        console.log('this.currentUrl', this.currentUrl);
+
         setTimeout(() => {
           window.scrollTo(0, 0);
-        }, 100)
+        }, 100);
       }
-
-
     });
-
-    // router.events.pipe(filter(e => e instanceof NavigationEnd))
-
-    //   // router.events.filter((e: any) => e instanceof NavigationEnd)
-    //   .subscribe((e: NavigationEnd) => {
-        
-    //   });
-
   }
   isCheckoutRoute() {
     if (!this.currentUrl) {

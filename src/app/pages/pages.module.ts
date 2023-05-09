@@ -9,8 +9,6 @@ import { TemplateDepartmentComponent } from './template-department/template-depa
 import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
 import { ViewRoomsComponent } from './view-rooms/view-rooms.component';
 
-
-
 @NgModule({
   declarations: [
     EquipmentSpecificationComponent,
@@ -20,9 +18,6 @@ import { ViewRoomsComponent } from './view-rooms/view-rooms.component';
     EditAdminUserComponent,
     ViewRoomsComponent,
   ],
-  imports: [
-    CommonModule,
-    PagesRoutingModule
-  ]
+  imports: [CommonModule, PagesRoutingModule],
 })
-export class PagesModule { }
+export class PagesModule {}

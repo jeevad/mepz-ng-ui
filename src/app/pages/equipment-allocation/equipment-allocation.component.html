@@ -1,463 +1,455 @@
-
 <section class="section">
-   <div class="container">
-      <div class="row page-content">
-         <div class="col-md-12">
-            <div class="d-lg-flex align-items-center mb-4 gap-3">
-               <h4 class="mb-0 text-primary">Equipment Allocation </h4>
-            </div>
-         </div>
-         <div class="col-sm-12">
-            <table id="table-info" class="table table-condensed">
-               <tbody>
-                  <tr>
-                     <td>
-                        <h6>Project Info</h6>
-                     </td>
-                     <td colspan="2"><strong>Code: </strong>ASM</td>
-                     <td><strong>Project Name: </strong>ARUNAMARI SPECIALIST MEDICAL CENTRE</td>
-                     <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span> <span class="label label-primary replace-eq">Replaced Equipment</span></td>
-                  </tr>
-               </tbody>
-            </table>
-         </div>
-         <div>
-            <div>
-               <div class="float-start d-lg-flex gap-3">
-                  <a class="btn btn-sm btn-success" routerLink="/Project" title="Back"><i class="fa-solid fa-chevron-left fa-sm"></i> </a>
-                  <a class="btn btn-sm btn-danger" routerLink="#" title="Cancel"><i class="fa-solid fa-cancel fa-sm"></i> </a>
-                  <a class="btn btn-sm btn-primary" routerLink="/equipment-summary" title="Summary"><i class="fa-solid fa-list-alt fa-sm"></i> </a>
-               </div>
-               <div class="float-end d-lg-flex gap-3">
-                  <button type="button" class="btn btn-primary btn-xs" title=" All Equipments"> <i class='fal fa-list'></i></button>
-                  <!-- <button type="button" class="btn btn-primary btn-xs" title=" No Equipments"><i class='fal fa-list'></i></button> -->
-                  <button type="button" class="btn btn-sm btn-primary" title="Filter"><i class='fal fa-filter'></i></button>
-                  <button title="Add Equipment"
-                     type="button"
-                     class="btn btn-sm btn-primary"
-                     data-toggle="modal"
-                     data-target="#myModal2"
-                     >
-                  <i class="fal fa-file-plus"> </i>
-                  </button>
-                  <!-- <button type="button" class="btn btn-sm btn-primary"  title="Add Equipment" ><i class='fal fa-file-plus'></i></button> -->
-                  <button title="Replace"
-                  type="button"
-                  class="btn btn-sm btn-primary"
-                  data-toggle="modal"
-                  data-target="#myModal3" type="button" class="btn btn-sm btn-primary"   ><i class='fal fa-exchange'></i></button>
-                  <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE" ><i class='bx bxs-trash'></i></button>
-                  <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i class='bx bxs-copy'></i></button>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-12 mt-4">
-            <div class="card p-3">
-               <div class="card-body">
-                  <table id="example" class="display" cellspacing="0" width="100%">
-                     <thead>
-                        <tr role="row">
-                           <th>Department</th>
-                           <th>Room</th>
-                           <th>Equipment</th>
-                           <th>APQ</th>
-                           <th>FPQ</th>
-                           <th>QTY</th>
-                        </tr>
-                     </thead>
-                     <thead>
-                        <tr>
-                           <th><input type="text" placeholder="Search Department" fdprocessedid="6ij23s"></th>
-                           <th><input type="text" placeholder="Search Room" fdprocessedid="tvivm"></th>
-                           <th><input type="text" placeholder="Search Equipment" fdprocessedid="aw57a6"></th>
-                           <th></th>
-                           <th></th>
-                           <th></th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr role="row" class="odd">
-                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
-                           <td >
-                              <div data-dep="AD - ADMINISTRATION (L4)" data-room="AD101 - RECEPTION" data-room_code="27278"><strong>AD101</strong> - RECEPTION </div>
-                           </td>
-                           <td>
-                              <div class="checkbox  " style="margin: 0px;">
-                                 <label>
-                                 <input type="checkbox" name="eq_id" value="174731" >
-                                 <strong>HOF120/002</strong> - BOARD COMBINATION 1200X900MM
-                                 </label>
-                              </div>
-                           </td>
-                           <td class=" editablex">
-                              <div    data-id="174731">1</div>
-                           </td>
-                           <td class=" editablex">
-                              <div    data-id="174731">0</div>
-                           </td>
-                           <td class=" editablex">
-                              <div   data-id="174731">1</div>
-                           </td>
-                        </tr>
-                        <tr role="row" class="even">
-                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
-                           <td >
-                              <div><strong>AD101</strong> - RECEPTION </div>
-                           </td>
-                           <td>
-                              <div class="checkbox  " style="margin: 0px;">
-                                 <label>
-                                 <input type="checkbox" name="eq_id" value="174727">
-                                 <strong>HOF120/010</strong> - CLOCK WALL BATTERY OPERATED
-                                 </label>
-                              </div>
-                           </td>
-                           <td class=" editablex">
-                              <div >1</div>
-                           </td>
-                           <td class=" editablex">
-                              <div>0</div>
-                           </td>
-                           <td class=" editablex">
-                              <div>1</div>
-                           </td>
-                        </tr>
-                        <tr role="row" class="odd first-item">
-                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
-                           <td >
-                              <div><strong>AD102</strong> - WAITING </div>
-                           </td>
-                           <td>
-                              <div class="checkbox  " style="margin: 0px;">
-                                 <label>
-                                 <input type="checkbox" name="eq_id" value="174904" data-eq="HOF120/010" data-desc="CLOCK WALL BATTERY OPERATED">
-                                 <strong>HOF120/010</strong> - CLOCK WALL BATTERY OPERATED
-                                 </label>
-                              </div>
-                           </td>
-                           <td class=" editablex">
-                              <div    >1</div>
-                           </td>
-                           <td class=" editablex">
-                              <div    >0</div>
-                           </td>
-                           <td class=" editablex">
-                              <div   >1</div>
-                           </td>
-                        </tr>
-                        <tr role="row" >
-                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
-                           <td >
-                              <div ><strong>AD103</strong> - CONFERENCE ROOM (25 PAX) </div>
-                           </td>
-                           <td>
-                              <div class="checkbox  " style="margin: 0px;">
-                                 <label>
-                                 <input type="checkbox" name="eq_id" value="177522">
-                                 <strong>HOF120/069</strong> -
-                                 </label>
-                              </div>
-                           </td>
-                           <td class="editablex">
-                              <div>1</div>
-                           </td>
-                           <td class="editablex">
-                              <div>0</div>
-                           </td>
-                           <td class="editablex">
-                              <div>1</div>
-                           </td>
-                        </tr>
-                        <tr role="row" class="odd">
-                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
-                           <td >
-                              <div data-dep="AD - ADMINISTRATION (L4)"><strong>AD103</strong> - CONFERENCE ROOM (25 PAX) </div>
-                           </td>
-                           <td>
-                              <div class="checkbox  " style="margin: 0px;">
-                                 <label>
-                                 <input type="checkbox" name="eq_id" value="177517">
-                                 <strong>HOF120/017</strong> - BOARD WHITE 900MMX1200MM MAGNETIC BASE
-                                 </label>
-                              </div>
-                           </td>
-                           <td class=" editablex">
-                              <div >1</div>
-                           </td>
-                           <td class=" editablex">
-                              <div >0</div>
-                           </td>
-                           <td class=" editablex">
-                              <div >1</div>
-                           </td>
-                        </tr>
-                        <tr role="row" class="even">
-                           <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
-                           <td >
-                              <div data-dep="AD - ADMINISTRATION (L4)"><strong>AD103</strong> - CONFERENCE ROOM (25 PAX) </div>
-                           </td>
-                           <td>
-                              <div class="checkbox  " style="margin: 0px;">
-                                 <label>
-                                 <input type="checkbox" name="eq_id" value="177520">
-                                 <strong>HOF120/010</strong> - CLOCK WALL BATTERY OPERATED
-                                 </label>
-                              </div>
-                           </td>
-                           <td class=" editablex">
-                              <div >1</div>
-                           </td>
-                           <td class=" editablex">
-                              <div >0</div>
-                           </td>
-                           <td class=" editablex">
-                              <div>1</div>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
+  <div class="container">
+    <div class="row page-content">
+      <div class="col-md-12">
+        <div class="d-lg-flex align-items-center mb-4 gap-3">
+          <h4 class="mb-0 text-primary">Equipment Allocation </h4>
+        </div>
       </div>
-   </div>
+      <div class="col-sm-12">
+        <table id="table-info" class="table table-condensed">
+          <tbody>
+            <tr>
+              <td>
+                <h6>Project Info</h6>
+              </td>
+              <td colspan="2"><strong>Code: </strong>ASM</td>
+              <td><strong>Project Name: </strong>ARUNAMARI SPECIALIST MEDICAL CENTRE</td>
+              <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span> <span
+                  class="label label-primary replace-eq">Replaced Equipment</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div>
+          <div class="float-start d-lg-flex gap-3">
+            <a class="btn btn-sm btn-success" routerLink="/Project" title="Back"><i
+                class="fa-solid fa-chevron-left fa-sm"></i> </a>
+            <a class="btn btn-sm btn-danger" routerLink="#" title="Cancel"><i class="fa-solid fa-cancel fa-sm"></i> </a>
+            <a class="btn btn-sm btn-primary" routerLink="/equipment-summary" title="Summary"><i
+                class="fa-solid fa-list-alt fa-sm"></i> </a>
+          </div>
+          <div class="float-end d-lg-flex gap-3">
+            <button type="button" class="btn btn-primary btn-xs" title=" All Equipments"> <i
+                class='fal fa-list'></i></button>
+            <button type="button" class="btn btn-sm btn-primary" title="Filter"><i class='fal fa-filter'></i></button>
+            <button title="Add Equipment" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+              data-target="#myModal2">
+              <i class="fal fa-file-plus"> </i>
+            </button>
+            <button title="Replace" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+              data-target="#myModal3" type="button" class="btn btn-sm btn-primary"><i
+                class='fal fa-exchange'></i></button>
+            <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE"><i
+                class='bx bxs-trash'></i></button>
+            <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i
+                class='bx bxs-copy'></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mt-4">
+        <div class="card p-3">
+          <div class="card-body">
+            <table id="example" class="display" cellspacing="0" width="100%">
+              <thead>
+                <tr role="row">
+                  <th>Department</th>
+                  <th>Room</th>
+                  <th>Equipment</th>
+                  <th>APQ</th>
+                  <th>FPQ</th>
+                  <th>QTY</th>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th><input type="text" placeholder="Search Department" fdprocessedid="6ij23s"></th>
+                  <th><input type="text" placeholder="Search Room" fdprocessedid="tvivm"></th>
+                  <th><input type="text" placeholder="Search Equipment" fdprocessedid="aw57a6"></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr role="row" class="odd">
+                  <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                  <td>
+                    <div data-dep="AD - ADMINISTRATION (L4)" data-room="AD101 - RECEPTION" data-room_code="27278">
+                      <strong>AD101</strong> - RECEPTION </div>
+                  </td>
+                  <td>
+                    <div class="checkbox  " style="margin: 0px;">
+                      <label>
+                        <input type="checkbox" name="eq_id" value="174731">
+                        <strong>HOF120/002</strong> - BOARD COMBINATION 1200X900MM
+                      </label>
+                    </div>
+                  </td>
+                  <td class=" editablex">
+                    <div data-id="174731">1</div>
+                  </td>
+                  <td class=" editablex">
+                    <div data-id="174731">0</div>
+                  </td>
+                  <td class=" editablex">
+                    <div data-id="174731">1</div>
+                  </td>
+                </tr>
+                <tr role="row" class="even">
+                  <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                  <td>
+                    <div><strong>AD101</strong> - RECEPTION </div>
+                  </td>
+                  <td>
+                    <div class="checkbox  " style="margin: 0px;">
+                      <label>
+                        <input type="checkbox" name="eq_id" value="174727">
+                        <strong>HOF120/010</strong> - CLOCK WALL BATTERY OPERATED
+                      </label>
+                    </div>
+                  </td>
+                  <td class=" editablex">
+                    <div>1</div>
+                  </td>
+                  <td class=" editablex">
+                    <div>0</div>
+                  </td>
+                  <td class=" editablex">
+                    <div>1</div>
+                  </td>
+                </tr>
+                <tr role="row" class="odd first-item">
+                  <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                  <td>
+                    <div><strong>AD102</strong> - WAITING </div>
+                  </td>
+                  <td>
+                    <div class="checkbox  " style="margin: 0px;">
+                      <label>
+                        <input type="checkbox" name="eq_id" value="174904" data-eq="HOF120/010"
+                          data-desc="CLOCK WALL BATTERY OPERATED">
+                        <strong>HOF120/010</strong> - CLOCK WALL BATTERY OPERATED
+                      </label>
+                    </div>
+                  </td>
+                  <td class=" editablex">
+                    <div>1</div>
+                  </td>
+                  <td class=" editablex">
+                    <div>0</div>
+                  </td>
+                  <td class=" editablex">
+                    <div>1</div>
+                  </td>
+                </tr>
+                <tr role="row">
+                  <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                  <td>
+                    <div><strong>AD103</strong> - CONFERENCE ROOM (25 PAX) </div>
+                  </td>
+                  <td>
+                    <div class="checkbox  " style="margin: 0px;">
+                      <label>
+                        <input type="checkbox" name="eq_id" value="177522">
+                        <strong>HOF120/069</strong> -
+                      </label>
+                    </div>
+                  </td>
+                  <td class="editablex">
+                    <div>1</div>
+                  </td>
+                  <td class="editablex">
+                    <div>0</div>
+                  </td>
+                  <td class="editablex">
+                    <div>1</div>
+                  </td>
+                </tr>
+                <tr role="row" class="odd">
+                  <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                  <td>
+                    <div data-dep="AD - ADMINISTRATION (L4)"><strong>AD103</strong> - CONFERENCE ROOM (25 PAX) </div>
+                  </td>
+                  <td>
+                    <div class="checkbox  " style="margin: 0px;">
+                      <label>
+                        <input type="checkbox" name="eq_id" value="177517">
+                        <strong>HOF120/017</strong> - BOARD WHITE 900MMX1200MM MAGNETIC BASE
+                      </label>
+                    </div>
+                  </td>
+                  <td class=" editablex">
+                    <div>1</div>
+                  </td>
+                  <td class=" editablex">
+                    <div>0</div>
+                  </td>
+                  <td class=" editablex">
+                    <div>1</div>
+                  </td>
+                </tr>
+                <tr role="row" class="even">
+                  <td><strong>AD</strong> - ADMINISTRATION (L4) </td>
+                  <td>
+                    <div data-dep="AD - ADMINISTRATION (L4)"><strong>AD103</strong> - CONFERENCE ROOM (25 PAX) </div>
+                  </td>
+                  <td>
+                    <div class="checkbox  " style="margin: 0px;">
+                      <label>
+                        <input type="checkbox" name="eq_id" value="177520">
+                        <strong>HOF120/010</strong> - CLOCK WALL BATTERY OPERATED
+                      </label>
+                    </div>
+                  </td>
+                  <td class=" editablex">
+                    <div>1</div>
+                  </td>
+                  <td class=" editablex">
+                    <div>0</div>
+                  </td>
+                  <td class=" editablex">
+                    <div>1</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- modal -->
 <div class="container demo">
   <!-- Modal -->
-  <div
-     class="modal right fade"
-     id="myModal2"
-     tabindex="-1"
-     role="dialog"
-     aria-labelledby="myModalLabel2"
-     >
-     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-           <div class="modal-header">
-              <button
-                 type="button"
-                 class="close"
-                 data-dismiss="modal"
-                 aria-label="Close"
-                 >
-              <span aria-hidden="true">&times;</span>
-              </button>
-              <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
-           </div>
-           <div class="modal-body">
-
-              <div class="d-flex justify-content-center align-items-center bg-light">
-              <div class="card p-3 shadow">
-                 <nav>
-                    <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-                       <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Add Equipment from Master</button>
-                       <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Add Equipment from Existing Project</button>
-                    </div>
-                 </nav>
-                 <div class="tab-content p-3 border bg-light" id="nav-tabContent">
-                    <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                       <div class="col-sm-12">
-                          <div class="form-group">
-                             <label>Department: </label>
-                             <span id="master_dep">AD - ADMINISTRATION (L4)</span>
-
-                          </div>
-                          <div class="form-group">
-                             <label>Room: </label>
-                             <span id="master_room">AD101 - RECEPTION</span>
-
-
-
-
-                          </div>
-                          <div class="form-group">
-                             <label>Equipment List:</label>
-
-
-                             <table id="example1" class="display" cellspacing="0" width="100%">
-                                <thead>
-
-                                   <tr role="row">
-                                      <th ></th>
-                                      <th >Equipment</th>
-                                      <th >Code</th>
-
-
-                                   </tr>
-                                </thead>
-
-                                <tbody>
-
-                                <tr>
-                                   <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                   <td >IMPRESSION TRAY (PAEDS)</td>
-
-                                   <td>HID066/037A</td>
-
-                               </tr>
-
-                               <tr>
-                                <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                   <td >IMPRESSION TRAY (PAEDS)</td>
-                                   <td>HID066/037A</td>
-
-                               </tr>
-
-
-                               <tr>
-                                <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                   <td >IMPRESSION TRAY (PAEDS)</td>
-                                   <td>HID066/037A</td>
-
-                               </tr>
-                           </tbody>
-
-
-                             </table>
-
-
-                          </div>
-
-                          <div class="col-md-12 text-center mt-3">
-
-                          <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Add</button>
-                          <a class="btn btn-secondary px-5" href="">Close</a>
-                       </div>
-                       </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                       <div class="col-sm-12">
-                          <div class="form-group">
-                             <label>Department: </label>
-                             <span id="master_dep">AD - ADMINISTRATION (L4)</span>
-
-                          </div>
-                          <div class="form-group">
-                             <label>Room: </label>
-                             <span id="master_room">AD101 - RECEPTION</span>
-
-                          </div>
-
-                          <hr>
-
-                          <h5>Select from Existing Project</h5>
-
-                          <form class="form-horizontal row" method="post">
-
-
-
-                             <div class="col-md-12">
-                                <label class=" form-label">Project</label>
-
-                                   <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
-                                      <option value="">-Select Project-</option>
-                                      <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
-                                      <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
-
-                                      <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
-
-                                      <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
-
-
-                                   </select>
-                                </div>
-
-                                <div class="col-md-12">
-                                   <label class=" form-label">Department</label>
-
-                                   <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
-                                      <option value="">-Select Department-</option>
-
-
-
-                                   </select>
-                                </div>
-
-                                <div class="col-md-12">
-                                   <label class=" form-label">Room</label>
-
-                                   <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
-                                      <option value="">-Select Room-</option>
-
-
-
-                                   </select>
-                                </div>
-
-
-
-                          </form>
-
-
-                          <div class="form-group mt-4">
-                             <label>Equipment List:</label>
-
-
-                             <table id="example2" class="display mt-2" cellspacing="0" width="100%">
-                                <thead>
-
-                                   <tr role="row">
-                                      <th ></th>
-                                      <th >Equipment</th>
-                                      <th >Code</th>
-                                      <th >Quantity</th>
-
-
-                                   </tr>
-                                </thead>
-
-                                <tbody>
-
-                                <tr>
-                                   <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                   <td >IMPRESSION TRAY (PAEDS)</td>
-
-                                   <td>HID066/037A</td>
-                                   <td>15</td>
-
-                               </tr>
-
-                               <tr>
-                                <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                   <td >IMPRESSION TRAY (PAEDS)</td>
-                                   <td>HID066/037A</td>
-                                   <td>33</td>
-
-                               </tr>
-
-
-                               <tr>
-                                <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                   <td >IMPRESSION TRAY (PAEDS)</td>
-                                   <td>HID066/037A</td>
-                                   <td>45</td>
-
-                               </tr>
-                           </tbody>
-
-
-                             </table>
-
-
-                          </div>
-
-                          <div class="col-md-12 text-center mt-3">
-
-                          <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Add</button>
-                          <a class="btn btn-secondary px-5" href="">Close</a>
-                       </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-
-              </div>
-           </div>
+  <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
         </div>
-        <!-- modal-content -->
-     </div>
-     <!-- modal-dialog -->
+        <div class="modal-body">
+
+          <div class="d-flex justify-content-center align-items-center bg-light">
+            <div class="card p-3 shadow">
+              <nav>
+                <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Add Equipment from
+                    Master</button>
+                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Add Equipment from
+                    Existing Project</button>
+                </div>
+              </nav>
+              <div class="tab-content p-3 border bg-light" id="nav-tabContent">
+                <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Department: </label>
+                      <span id="master_dep">AD - ADMINISTRATION (L4)</span>
+
+                    </div>
+                    <div class="form-group">
+                      <label>Room: </label>
+                      <span id="master_room">AD101 - RECEPTION</span>
+
+
+
+
+                    </div>
+                    <div class="form-group">
+                      <label>Equipment List:</label>
+
+
+                      <table id="example1" class="display" cellspacing="0" width="100%">
+                        <thead>
+
+                          <tr role="row">
+                            <th></th>
+                            <th>Equipment</th>
+                            <th>Code</th>
+
+
+                          </tr>
+                        </thead>
+
+                        <tbody>
+
+                          <tr>
+                            <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                            <td>IMPRESSION TRAY (PAEDS)</td>
+
+                            <td>HID066/037A</td>
+
+                          </tr>
+
+                          <tr>
+                            <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                            <td>IMPRESSION TRAY (PAEDS)</td>
+                            <td>HID066/037A</td>
+
+                          </tr>
+
+
+                          <tr>
+                            <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                            <td>IMPRESSION TRAY (PAEDS)</td>
+                            <td>HID066/037A</td>
+
+                          </tr>
+                        </tbody>
+
+
+                      </table>
+
+
+                    </div>
+
+                    <div class="col-md-12 text-center mt-3">
+
+                      <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Add</button>
+                      <a class="btn btn-secondary px-5" href="">Close</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Department: </label>
+                      <span id="master_dep">AD - ADMINISTRATION (L4)</span>
+
+                    </div>
+                    <div class="form-group">
+                      <label>Room: </label>
+                      <span id="master_room">AD101 - RECEPTION</span>
+
+                    </div>
+
+                    <hr>
+
+                    <h5>Select from Existing Project</h5>
+
+                    <form class="form-horizontal row" method="post">
+
+
+
+                      <div class="col-md-12">
+                        <label class=" form-label">Project</label>
+
+                        <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
+                          <option value="">-Select Project-</option>
+                          <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+                          <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+
+                          <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+
+                          <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+
+
+                        </select>
+                      </div>
+
+                      <div class="col-md-12">
+                        <label class=" form-label">Department</label>
+
+                        <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
+                          <option value="">-Select Department-</option>
+
+
+
+                        </select>
+                      </div>
+
+                      <div class="col-md-12">
+                        <label class=" form-label">Room</label>
+
+                        <select class="form-control" name="com_code" fdprocessedid="k7rd9e">
+                          <option value="">-Select Room-</option>
+
+
+
+                        </select>
+                      </div>
+
+
+
+                    </form>
+
+
+                    <div class="form-group mt-4">
+                      <label>Equipment List:</label>
+
+
+                      <table id="example2" class="display mt-2" cellspacing="0" width="100%">
+                        <thead>
+
+                          <tr role="row">
+                            <th></th>
+                            <th>Equipment</th>
+                            <th>Code</th>
+                            <th>Quantity</th>
+
+
+                          </tr>
+                        </thead>
+
+                        <tbody>
+
+                          <tr>
+                            <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                            <td>IMPRESSION TRAY (PAEDS)</td>
+
+                            <td>HID066/037A</td>
+                            <td>15</td>
+
+                          </tr>
+
+                          <tr>
+                            <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                            <td>IMPRESSION TRAY (PAEDS)</td>
+                            <td>HID066/037A</td>
+                            <td>33</td>
+
+                          </tr>
+
+
+                          <tr>
+                            <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                            <td>IMPRESSION TRAY (PAEDS)</td>
+                            <td>HID066/037A</td>
+                            <td>45</td>
+
+                          </tr>
+                        </tbody>
+
+
+                      </table>
+
+
+                    </div>
+
+                    <div class="col-md-12 text-center mt-3">
+
+                      <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Add</button>
+                      <a class="btn btn-secondary px-5" href="">Close</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- modal-content -->
+    </div>
+    <!-- modal-dialog -->
   </div>
   <!-- modal -->
 </div>
@@ -467,109 +459,100 @@
 <!-- modal -->
 <div class="container demo">
   <!-- Modal -->
-  <div
-     class="modal right fade"
-     id="myModal3"
-     tabindex="-1"
-     role="dialog"
-     aria-labelledby="myModalLabel3"
-     >
-     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-           <div class="modal-header">
-              <button
-                 type="button"
-                 class="close"
-                 data-dismiss="modal"
-                 aria-label="Close"
-                 >
-              <span aria-hidden="true">&times;</span>
-              </button>
-              <h4 class="modal-title" id="myModalLabel3">Sidebar</h4>
-           </div>
-           <div class="modal-body">
-
-              <h4>Replace Equipment</h4>
-
-              <div class="d-flex justify-content-center align-items-center bg-light">
-              <div class="card p-3 shadow">
-
-
-
-
-                       <div class="col-sm-12">
-
-                          <div class="form-group">
-                             <label>Selected Equipment(s) to be Replaced:</label>
-                             <select name="room" class="form-control" multiple="" size="10" fdprocessedid="0a4vep"><option selected="">HCS130/182 -  AUTOCLAVE  20CUFT SINGLE DOOR W ACCESS. (FUTURE)</option></select>
-                             <small>Above list shows unique Equipment</small>
-                         </div>
-
-                          <div class="form-group mt-2">
-                          <h4 class="mb-4">Select New Equipment:</h4>
-
-
-
-
-                             <table id="example3" class="display" cellspacing="0" width="100%">
-                                <thead>
-
-                                   <tr role="row">
-                                      <th ></th>
-                                      <th >Equipment</th>
-
-
-
-                                   </tr>
-                                </thead>
-
-                                <tbody>
-
-                                <tr>
-                                   <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                   <td >SPO/014 -  WATER JET</td>
-
-
-
-                               </tr>
-
-                               <tr>
-                                <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                   <td >SPO/020 -  VACUUM PUMP WITHOUT TANK</td>
-
-
-                               </tr>
-
-
-                               <tr>
-                                <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                   <td >SPO/027 -  VACUUM FORMING WORKSTATION WITH INTEGRATED TANK</td>
-
-
-                               </tr>
-                           </tbody>
-
-
-                             </table>
-
-
-                          </div>
-
-                          <div class="col-md-12 text-center mt-3">
-
-                          <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Ok</button>
-                          <a class="btn btn-secondary px-5" href="">Close</a>
-                       </div>
-                       </div>
-
-              </div>
-
-              </div>
-           </div>
+  <div class="modal right fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel3">Sidebar</h4>
         </div>
-        <!-- modal-content -->
-     </div>
-     <!-- modal-dialog -->
+        <div class="modal-body">
+
+          <h4>Replace Equipment</h4>
+
+          <div class="d-flex justify-content-center align-items-center bg-light">
+            <div class="card p-3 shadow">
+
+
+
+
+              <div class="col-sm-12">
+
+                <div class="form-group">
+                  <label>Selected Equipment(s) to be Replaced:</label>
+                  <select name="room" class="form-control" multiple="" size="10" fdprocessedid="0a4vep">
+                    <option selected="">HCS130/182 - AUTOCLAVE 20CUFT SINGLE DOOR W ACCESS. (FUTURE)</option>
+                  </select>
+                  <small>Above list shows unique Equipment</small>
+                </div>
+
+                <div class="form-group mt-2">
+                  <h4 class="mb-4">Select New Equipment:</h4>
+
+
+
+
+                  <table id="example3" class="display" cellspacing="0" width="100%">
+                    <thead>
+
+                      <tr role="row">
+                        <th></th>
+                        <th>Equipment</th>
+
+
+
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <tr>
+                        <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                        <td>SPO/014 - WATER JET</td>
+
+
+
+                      </tr>
+
+                      <tr>
+                        <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                        <td>SPO/020 - VACUUM PUMP WITHOUT TANK</td>
+
+
+                      </tr>
+
+
+                      <tr>
+                        <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                        <td>SPO/027 - VACUUM FORMING WORKSTATION WITH INTEGRATED TANK</td>
+
+
+                      </tr>
+                    </tbody>
+
+
+                  </table>
+
+
+                </div>
+
+                <div class="col-md-12 text-center mt-3">
+
+                  <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Ok</button>
+                  <a class="btn btn-secondary px-5" href="">Close</a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- modal-content -->
+    </div>
+    <!-- modal-dialog -->
   </div>
   <!-- modal -->
 </div>
@@ -580,112 +563,102 @@
 
 <!-- modal -->
 <div class="container demo">
-   <!-- Modal -->
-   <div
-      class="modal right fade"
-      id="myModal3"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myModalLabel3"
-      >
-      <div class="modal-dialog" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  >
-               <span aria-hidden="true">&times;</span>
-               </button>
-               <h4 class="modal-title" id="myModalLabel3">Sidebar</h4>
+  <!-- Modal -->
+  <div class="modal right fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel3">Sidebar</h4>
+        </div>
+        <div class="modal-body">
+
+          <h4>Replace Equipment</h4>
+
+          <div class="d-flex justify-content-center align-items-center bg-light">
+            <div class="card p-3 shadow">
+
+
+
+
+              <div class="col-sm-12">
+
+                <div class="form-group">
+                  <label>Selected Equipment(s) to be Replaced:</label>
+                  <select name="room" class="form-control" multiple="" size="10" fdprocessedid="0a4vep">
+                    <option selected="">HCS130/182 - AUTOCLAVE 20CUFT SINGLE DOOR W ACCESS. (FUTURE)</option>
+                  </select>
+                  <small>Above list shows unique Equipment</small>
+                </div>
+
+                <div class="form-group mt-2">
+                  <h4 class="mb-4">Select New Equipment:</h4>
+
+
+
+
+                  <table id="example3" class="display" cellspacing="0" width="100%">
+                    <thead>
+
+                      <tr role="row">
+                        <th></th>
+                        <th>Equipment</th>
+
+
+
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <tr>
+                        <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                        <td>SPO/014 - WATER JET</td>
+
+
+
+                      </tr>
+
+                      <tr>
+                        <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                        <td>SPO/020 - VACUUM PUMP WITHOUT TANK</td>
+
+
+                      </tr>
+
+
+                      <tr>
+                        <td><input class="checkbox" type="checkbox" name="" value=""></td>
+                        <td>SPO/027 - VACUUM FORMING WORKSTATION WITH INTEGRATED TANK</td>
+
+
+                      </tr>
+                    </tbody>
+
+
+                  </table>
+
+
+                </div>
+
+                <div class="col-md-12 text-center mt-3">
+
+                  <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Ok</button>
+                  <a class="btn btn-secondary px-5" href="">Close</a>
+                </div>
+              </div>
+
             </div>
-            <div class="modal-body">
 
-               <h4>Replace Equipment</h4>
-
-               <div class="d-flex justify-content-center align-items-center bg-light">
-               <div class="card p-3 shadow">
-
-                 
-                  
-                  
-                        <div class="col-sm-12">
-
-                           <div class="form-group">
-                              <label>Selected Equipment(s) to be Replaced:</label>
-                              <select name="room" class="form-control" multiple="" size="10" fdprocessedid="0a4vep"><option selected="">HCS130/182 -  AUTOCLAVE  20CUFT SINGLE DOOR W ACCESS. (FUTURE)</option></select>
-                              <small>Above list shows unique Equipment</small>
-                          </div>
-                          
-                           <div class="form-group mt-2">
-                           <h4 class="mb-4">Select New Equipment:</h4>  
-
-                              
-                              
-
-                              <table id="example3" class="display" cellspacing="0" width="100%">
-                                 <thead>
-                                  
-                                    <tr role="row">
-                                       <th ></th>
-                                       <th >Equipment</th>
-                                       
-                                      
-                                       
-                                    </tr>
-                                 </thead>
-            
-                                 <tbody>
-            
-                                 <tr>
-                                    <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                    <td >SPO/014 -  WATER JET</td>
-
-                                  
-                                    
-                                </tr>
-            
-                                <tr>
-                                 <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                    <td >SPO/020 -  VACUUM PUMP WITHOUT TANK</td>
-                                   
-                                 
-                                </tr>
-            
-            
-                                <tr>
-                                 <td><input  class="checkbox" type="checkbox" name="" value=""></td>
-                                    <td >SPO/027 -  VACUUM FORMING WORKSTATION WITH INTEGRATED TANK</td>
-                                    
-                                 
-                                </tr>
-                            </tbody>
-            
-            
-                              </table>
-
-                              
-                           </div>
-
-                           <div class="col-md-12 text-center mt-3">
-
-                           <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Ok</button>	
-                           <a class="btn btn-secondary px-5" href="">Close</a>
-                        </div>
-                        </div>
-                    
-               </div>
-
-               </div>
-            </div>
-         </div>
-         <!-- modal-content -->
+          </div>
+        </div>
       </div>
-      <!-- modal-dialog -->
-   </div>
-   <!-- modal -->
+      <!-- modal-content -->
+    </div>
+    <!-- modal-dialog -->
+  </div>
+  <!-- modal -->
 </div>
 <!-- container -->
-
