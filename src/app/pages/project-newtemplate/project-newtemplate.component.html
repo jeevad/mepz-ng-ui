@@ -1,3 +1,4 @@
+
 <!-- <p>project-newtemplate works!</p> -->
 <app-header></app-header>
 
@@ -13,6 +14,7 @@
                             <div class="card-title d-flex align-items-center">
                                 <h5 class="mb-0 text-primary">New Template</h5>
                             </div>
+
                             <form [formGroup] = "addDepartment" (ngSubmit)="SaveData()">
                               <div class="col-md-6 mt-0">
                                 <label for="inputFirstName" class="form-label">Name</label>
@@ -24,32 +26,75 @@
                                 <label for="inputLastName" class="form-label">No of Beds</label>
                                 <input type="text" class="form-control" id="inputLastName" placeholder="Enter No of Beds" formControlName="noofbeds"
                                   [ngClass]="{'is-invalid': submitted && addDepartment.controls['noofbeds'].errors}">
-                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofbeds'].errors?.['required']">No of beds is required</div>
+                                <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofbeds'].errors?.['required']">No of Beds is required</div>
                               </div>
 
-                             <div class="col-md-6">
+                            <div class="col-md-6">
                               <label for="inputState" class="form-label">Classification</label>
                               <select id="inputState" class="form-select" formControlName="classification">
                                 <option *ngFor="let classification of classifications" [value]="classification.value">{{ classification.label }}</option>
                               </select>
-                             </div>
-                              <div class="col-md-6">
+                            </div>
+
+
+
+
+                            <div class="col-md-6">
                               <label for="inputState" class="form-label">Project Type</label>
                               <select id="inputState" class="form-select" formControlName="projecttype">
-                                <option *ngFor="let projecttype of projecttypes" [value]="projecttype.value">{{ projecttype.label }}</option>
+                                <option *ngFor="let projecttype of classifications" [value]="projecttype.value">{{ projecttype.label }}</option>
                               </select>
-                             </div>
+                            </div>
+
                               <div class="col-md-12">
                                 <label for="inputAddress" class="form-label">Remarks</label>
                                 <textarea class="form-control" id="inputAddress" placeholder="Remarks..." formControlName="remarks" rows="2"
                                   [ngClass]="{'is-invalid': submitted && addDepartment.controls['remarks'].errors}"></textarea>
                                 <div class="text-danger" *ngIf="submitted && addDepartment.controls['remarks'].errors?.['required']">Remarks is required</div>
                               </div>
+
+
                               <div class="col-md-6 text-center mt-3">
                                   <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
                                   <a routerLink="/project-template"><i class="material-icon">Cancel</i></a>
                               </div>
                           </form>
+
+
+
+
+                          <!-- <form [formGroup]="addDepartment" (ngSubmit)="SaveData()">
+                            <div class="col-md-6 mt-0">
+                              <label for="inputFirstName" class="form-label">Name</label>
+                              <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Name" formControlName="name" autocomplete="off"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['name'].errors}">
+                              <div class="text-danger" *ngIf="submitted && addDepartment.controls['name'].errors?.['required']">Name is required</div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="inputLastName" class="form-label">No of Beds</label>
+                              <input type="text" class="form-control" id="inputLastName" placeholder="Enter No of Beds" formControlName="noofbeds"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['noofbeds'].errors}">
+                              <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofbeds'].errors?.['required']">No of Beds is required</div>
+                            </div>
+                            <div class="col-md-12">
+                              <label for="inputAddress" class="form-label">Remarks</label>
+                              <textarea class="form-control" id="inputAddress" placeholder="Remarks..." formControlName="remarks" rows="2"
+                                [ngClass]="{'is-invalid': submitted && addDepartment.controls['remarks'].errors}"></textarea>
+                              <div class="text-danger" *ngIf="submitted && addDepartment.controls['remarks'].errors?.['required']">Remarks is required</div>
+                            </div>
+
+
+                              <div class="col-12 text-center">
+
+                                <a routerLink="/project-template" class="btn btn-primary px-5 me-3">{{ isEdit ? 'Update' : 'Save'}}</a>
+
+                                <a routerLink="/project-template" class="btn btn-secondary px-5">Cancel</a>
+                              </div>
+
+                          </form> -->
+
+
+
                         </div>
                     </div>
                 </div>

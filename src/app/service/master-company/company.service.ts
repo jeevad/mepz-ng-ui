@@ -1,28 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
+  // environment.apiUrl="http://localhost:3000/company";
 
-  // apiUrl="http://13.232.11.217/api/company";
   constructor(private http:HttpClient) { }
-  Find(skip: number, limit: number){
-        return this.http.get(environment.apiUrl + '/company', {params:{skip, limit}});
+  Load(skip: number, limit: number){
+    return this.http.get(environment.apiUrl + '/company', {params:{skip, limit}});
    }
-  SaveData(data:any){
-      return this.http.post(environment.apiUrl + '/company',data)
-  }
- FindbyID(id:any){
+   SaveData(departmentdata:any){
+    return this.http.post(environment.apiUrl + '/company',departmentdata)
+   }
+   LoadbyID(id:any){
     return this.http.get(environment.apiUrl + '/company/' + id)
   }
-  update(id:any,data:any){
+  update(id:any,departmentdata:any){
     console.log("update id",id);
-    console.log("update data",data);
-    return this.http.patch(environment.apiUrl+'/company/'+ id,data);
+    console.log("update departmentdata",departmentdata);
+    return this.http.patch(environment.apiUrl+'/company/'+ id,departmentdata);
   }
+  // update(departmentdata:any){
+  //   return this.http.patch(this.environment.apiUrl+'/'+ departmentdata.id,departmentdata);
+  // }
   Removedata(id:any){
-     return this.http.delete(environment.apiUrl + '/company/' + id);
+    return this.http.delete(environment.apiUrl + '/company/' + id);
   }
 }
+
+

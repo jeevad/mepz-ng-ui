@@ -22,6 +22,8 @@ export class ProjecttemplateService {
     console.log("update data",projectTempData);
     return this.http.patch(environment.apiUrl+'/projecttemplate/'+ id,projectTempData);
   }
+
+
   Removedata(id:any){
     return this.http.delete(environment.apiUrl + '/projecttemplate/' + id);
   }

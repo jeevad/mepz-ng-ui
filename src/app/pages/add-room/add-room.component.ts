@@ -77,15 +77,15 @@ constructor(private room : RoomService,private router:Router,private route:Activ
     //   } else if(this.isEdit){
     //   console.log(this.isEdit);
     //   console.log(this.roomid,this.editdata);
-    //     this.updateRecord(this.roomid,this.editdata);  
+    //     this.updateRecord(this.roomid,this.editdata);
     //     this.router.navigate(['/room-detail']);
     //   }
     //    else {
     //      this.message="please enter valid data"
     //       this.messageclass = "error"
     // }
-     
-    // }  
+
+    // }
 
     SaveData(){
       if(!this.isEdit){
@@ -106,7 +106,7 @@ constructor(private room : RoomService,private router:Router,private route:Activ
         }
       }
     }
-  
+
   change(e: any) {
     this.active?.setValue(e.target.value, {
       onlySelf: true,

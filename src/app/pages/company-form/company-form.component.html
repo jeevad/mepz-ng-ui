@@ -1,48 +1,46 @@
 <app-header></app-header>
 
 <section class="section">
-
     <div class="container">
         <div class="row page-content">
-
-
                 <div class="col-md-12">
-
                     <div class="d-lg-flex align-items-center mb-4 gap-3">
                         <h4 class="mb-0 text-primary">Add Company </h4>
                         <div class="ms-auto"><a routerLink="/company" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i class="bx bx-table"></i>Manage Company</a></div>
                      </div>
-
-
-
                     <div class="card border-top border-0 border-4 border-primary">
                         <div class="card-body p-5">
 
-                            <div class="row">
 
 
-                            <div class="col-md-4">
-                                <label for="formFile" class="form-label">Setup logo 1</label>
-                                <input class="form-control" type="file" id="formFile" formControlName="logo1">
-                                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show1">
-                                <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="formFile" class="form-label">Setup logo 2</label>
-                                <input class="form-control" type="file" id="formFile" formControlName="logo2">
-                                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show2">
-                                <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="formFile" class="form-label">Setup logo 3</label>
-                                <input class="form-control" type="file" id="formFile" formControlName="logo3">
-                                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show3">
-                                <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
-                            </div>
 
-                        </div>
+
+
+
+
+
 
                            <form class="row g-3 mt-4" [formGroup] = "addCompany" (ngSubmit)="SaveData()">
+
+                            <div class="row">
+                              <ng-container *ngFor="let i of [1, 2, 3]">
+                                <div class="col-md-4">
+
+                                  <input class="form-control" type="file" [id]="'formFile' + i" [formControlName]="'logo' + i"
+                                    [ngClass]="{'is-invalid': addCompany.get('logo' + i)?.invalid && addCompany.get('logo' + i)?.touched}">
+                                  <input class="form-check-input" type="checkbox" [id]="'gridCheck' + i" [formControlName]="'show' + i"
+                                    [ngClass]="{'is-invalid': addCompany.get('show' + i)?.invalid && addCompany.get('show' + i)?.touched}">
+                                  <label class="form-check-label ms-2" [for]="'gridCheck' + i">Do not show</label>
+                                  <div class="invalid-feedback" *ngIf="addCompany.get('logo' + i)?.invalid && addCompany.get('logo' + i)?.touched">
+                                    Logo {{ i }} is required
+                                  </div>
+                                  <div class="invalid-feedback" *ngIf="addCompany.get('show' + i)?.invalid && addCompany.get('show' + i)?.touched">
+                                    Show {{ i }}
+                                  </div>
+                                </div>
+                              </ng-container>
+                            </div>
+
                                 <div class="col-md-6">
                                     <label for="inputCode" class="form-label">Company Code</label>
                                     <input type="text" class="form-control" id="inputCode" placeholder="Enter Company code"formControlName="code" autocomplete="off"
@@ -100,28 +98,6 @@
                                     [ngClass]="{'is-invalid':submitted && addCompany.controls['country'].errors}" />
                                     <div class="text-danger" *ngIf="submitted && addCompany.controls['country'].errors && addCompany.controls['country'].errors?.['required']">Country is Required</div>
                                 </div>
-                                <!-- <div class="col-md-4">
-                                    <label for="formFile" class="form-label">Setup logo 1</label>
-                                    <input class="form-control" type="file" id="formFile" formControlName="logo1">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show1">
-                                    <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
-                                </div> -->
-                                <!-- <div class="col-md-4">
-                                    <label for="formFile" class="form-label">Setup logo 2</label>
-                                    <input class="form-control" type="file" id="formFile" formControlName="logo2">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show2">
-                                    <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="formFile" class="form-label">Setup logo 3</label>
-                                    <input class="form-control" type="file" id="formFile" formControlName="logo3">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="show3">
-                                    <label class="form-check-label ms-2" for="gridCheck">Do no Show</label>
-                                </div> -->
-                                <!-- <div class="form-check mt-2">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="inactive">
-                                    <label class="form-check-label" for="gridCheck">Do no Show</label>
-                                </div> -->
                                 <div class="card-title d-flex align-items-center mt-4">
                                     <h5 class="mb-0 text-primary">Contact Details</h5>
                                 </div>
@@ -165,7 +141,6 @@
                     </div>
                 </div>
             </div>
-
             </div>
             </section>
 

@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl,FormGroup,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -37,11 +39,11 @@ export class ProjectNewtemplateComponent {
       }
     })
     this.addDepartment = this.formBuilder.group({
-      'name':['',Validators.required],
-      'noofbeds':['',Validators.required],
+      'name':[''],
+      'noofbeds':[''],
       'remarks':[''],
       'classification':[''],
-      'projecttype':['',Validators.required],
+      'projecttype':[''],
 
     })
   }

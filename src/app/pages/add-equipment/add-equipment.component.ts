@@ -40,32 +40,52 @@ export class AddEquipmentComponent implements OnInit{
     })
     this.addEquipment = this.formBuilder.group({
 
-      "equipmentCode": ['',Validators.required],
-      "equipmentName": ['',Validators.required],
-      "cost": ['',Validators.required],
-      "markUp": ['',Validators.required],
-      "heatDissipation": ['',Validators.required],
-      "ictPort": ['',Validators.required],
-      "bssPort": ['',Validators.required],
+      "equipmentCode": ['', Validators.required],
+      "equipmentName": ['', Validators.required],
+      "cost": ['', Validators.required],
+      "markUp": ['', Validators.required],
+      "heatDissipation": ['', Validators.required],
+      "ictPort": ['', Validators.required],
+      "bssPort": ['', Validators.required],
+
+
     })
   }
 
-  SaveData(){
-    if(!this.isEdit){
-      this.submitted = true;
-      if(this.addEquipment.valid){
+  // SaveData(){
+  //   if(!this.isEdit){
+  //     this.submitted = true;
+  //     if(this.addEquipment.valid){
+  //       this.department.SaveData(this.addEquipment.value).subscribe(result => {
+  //         console.log("result",result);
+  //         this.router.navigate(['/equipment-data']);
+  //       });
+  //     }
+  //   }else if(this.isEdit){
+  //     this.submitted = true;
+  //     if(this.addEquipment.valid){
+  //       this.department.update(this.deptid,this.addEquipment.value).subscribe(data =>{
+  //         this.isEdit=false;
+  //         this.router.navigate(['/equipment-data']);
+  //       })
+  //     }
+  //   }
+  // }
+
+
+  SaveData() {
+    this.submitted = true;
+    if (this.addEquipment.valid) {
+      if (!this.isEdit) {
         this.department.SaveData(this.addEquipment.value).subscribe(result => {
           console.log("result",result);
           this.router.navigate(['/equipment-data']);
         });
-      }
-    }else if(this.isEdit){
-      this.submitted = true;
-      if(this.addEquipment.valid){
-        this.department.update(this.deptid,this.addEquipment.value).subscribe(data =>{
-          this.isEdit=false;
+      } else {
+        this.department.update(this.deptid, this.addEquipment.value).subscribe(data => {
+          this.isEdit = false;
           this.router.navigate(['/equipment-data']);
-        })
+        });
       }
     }
   }

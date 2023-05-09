@@ -43,6 +43,19 @@
 
                                 <div class="text-danger" *ngIf="submitted && addEquipment.controls['markUp'].errors && addEquipment.controls['markUp'].errors?.['required']">Mark up is required</div>
                             </div>
+                            <!-- <div class="col-md-6 mt-3">
+                              <label for="inputLastName" class="form-label">Cost</label>
+                              <input type="text" class="form-control" id="inputLastName" placeholder="Enter Cost" formControlName="cost"
+                                  [ngClass]="{'is-invalid': submitted && addEquipment.controls['cost'].errors}">
+                              <div class="text-danger" *ngIf="submitted && addEquipment.controls['cost'].errors && addEquipment.controls['cost'].errors?.['required']">Cost is required</div>
+                          </div>
+                          <div class="col-md-6 mt-3">
+                              <label for="inputLastName" class="form-label">Mark Up (%)</label>
+                              <input type="text" class="form-control" id="inputLastName" placeholder="Enter Mark Up (%)" formControlName="markUp"
+                                  [ngClass]="{'is-invalid': submitted && addEquipment.controls['markUp'].errors}">
+                              <div class="text-danger" *ngIf="submitted && addEquipment.controls['markUp'].errors && addEquipment.controls['markUp'].errors?.['required']">Mark up is required</div>
+                          </div> -->
+
                             <div class="col-md-6 mt-3">
                                 <label for="inputLastName" class="form-label">HEAT DISSIPATION (kw)(each)</label>
                                 <input type="text" class="form-control" id="inputLastName" placeholder="Enter HEAT DISSIPATION" formControlName="heatDissipation"
