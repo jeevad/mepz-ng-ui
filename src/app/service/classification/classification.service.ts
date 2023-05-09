@@ -1,25 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClassificationService {
-  apiUrl="http://13.232.11.217/api/classification";
+  // apiUrl="http://13.232.11.217/api/classification";
   constructor(private http:HttpClient) { }
-  Find(){
-    return this.http.get(this.apiUrl + '/getall');
+  Find(skip: number, limit: number){
+    return this.http.get(environment.apiUrl + '/classification', {params:{skip, limit}});
    }
-   SaveData(data:any){
-    return this.http.post(this.apiUrl + '/add',data)
+   SaveData(classificationdata:any){
+    return this.http.post(environment.apiUrl + '/classification',classificationdata)
    }
    FindbyID(id:any){
-    return this.http.get(this.apiUrl + '/' + id)
+    return this.http.get(environment.apiUrl + '/classification/' + id)
   }
-  update(id:any,data:any){
-    return this.http.put(this.apiUrl+'/'+ id,data);
+  update(id:any,classificationdata:any){
+    console.log("update id",id);
+    console.log("update classificationdata",classificationdata);
+    return this.http.patch(environment.apiUrl+'/classification/'+ id,classificationdata);
   }
   Removedata(id:any){
-    return this.http.delete(this.apiUrl + '/' + id);
+    return this.http.delete(environment.apiUrl + '/classification/' + id);
   }
 }

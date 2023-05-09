@@ -12,7 +12,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./companydetail.component.css']
 })
 export class CompanydetailComponent implements OnInit {
-  data: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count: number = 0;
+  data: any[] = [];
 
   constructor(private service: CompanyService, private http: HttpClient) {
     this.find();
@@ -20,20 +24,16 @@ export class CompanydetailComponent implements OnInit {
 
 
   ngOnInit() {
-    // $(function () {
-    //   $('.example').DataTable({
-    //     responsive: true,
-    //     "paging": false,
-    //     columnDefs: [
-    //       { responsivePriority: 2, targets: -1, }
-    //     ]
-    //   });
-    // });
+    this.find();
+
   }
   find() {
-    this.service.Find().subscribe(result => {
+    this.skip = this.limit * (this.page - 1);
+    this.service.Load(this.skip, this.limit).subscribe((result : any) => {
       console.log(result);
-      this.data = result;
+      this.data = result.results;
+      this.count = result.count;
+
     });
   }
   delete(id: any) {

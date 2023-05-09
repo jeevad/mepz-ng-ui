@@ -9,6 +9,7 @@ import { TemplateDepartmentComponent } from './template-department/template-depa
 import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
 
 
+
 @NgModule({
   declarations: [
     EquipmentSpecificationComponent,

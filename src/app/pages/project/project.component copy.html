@@ -1,0 +1,121 @@
+
+<div class="container">
+  <div class="row page-content">
+     <div class="col-md-12">
+        <div class="d-lg-flex align-items-center mb-4 gap-3">
+           <h4 class="mb-0 text-primary">Projects </h4>
+           <div class="ms-auto"><a routerLink="/add-project" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add Project</a></div>
+        </div>
+     </div>
+     <div class="col-md-12">
+        <div class="card p-3">
+           <div class="card-body">
+              <div>
+                 <table id="example" class="display" cellspacing="0" width="100%">
+                    <thead>
+                       <tr>
+                          <th>Code</th>
+                          <th>Project Name</th>
+                          <th>Project Type</th>
+                          <th>Company</th>
+                          <th>Action</th>
+                       </tr>
+                    </thead>
+                    <tfoot>
+                       <tr>
+                          <th>Code</th>
+                          <th>Project Name</th>
+                          <th>Project Type</th>
+                          <th>Company</th>
+                          <th>Action</th>
+                       </tr>
+                    </tfoot>
+                    <tbody onload="passVariable()">
+                     <tr role="row" class="odd" *ngFor= "let item of departmentData; let i=index;">
+                         <td>{{ skip + i+1 }}</td>
+                         <td>{{item.code}}</td>
+                         <td  class="sorting_1">{{item.projectname}}</td>
+                         <td>{{item.projecttype}}</td>
+                         <td>{{item.company}}</td>
+                         <td class="projects-button">
+
+                          <button
+                          type="button"
+                          class="btn btn-sm"
+                          data-toggle="modal"
+                          data-target="#myModal2"
+                          >
+                          <i class="fa fa-cog"> </i>
+                          </button>
+                               <a routerLink="/edit-project/{{ item._id }}" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                               <a href="javascript:;" class="btn btn-sm btn-danger btn_delete" data-bs-toggle="tooltip" title="Delete" (click)="delete(item._id)"><i class='fa fa-trash'></i></a>
+                               <a title="Reports" data-code="ASM" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"><i class="fa fa-print"> </i></a>
+                               <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
+                         </td>
+                     </tr>
+                 </tbody>
+                </table>
+                 <tfoot>
+                  <tr>
+                    <td colspan="5">
+                      <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination"></ngb-pagination>
+                    <pre>Current page: {{page}}</pre>
+                    </td>
+                  </tr>
+                </tfoot>
+
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+
+
+
+<!-- modal -->
+
+<div class="container demo">
+
+  <!-- Modal -->
+  <div
+    class="modal right fade"
+    id="myModal2"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel2"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
+        </div>
+
+        <div class="modal-body">
+           <ul><li><a routerLink="/equipment-allocation" title="Equipment Allocation" class=" mb-4">Equipment Allocation</a></li>
+              <li><a routerLink="/equipment-summary" title="Summary" class=" mb-4">Summary</a>	</li>
+              <li> <a routerLink="/department-transaction" title="Current Transaction" class=" mb-4">Current Transaction</a></li>
+
+                 <li><a routerLink="/past-transaction" title="Past Transaction" class=" btn-warning mb-4">Past Transaction</a>
+                 </li></ul>
+
+        </div>
+      </div>
+      <!-- modal-content -->
+    </div>
+    <!-- modal-dialog -->
+  </div>
+  <!-- modal -->
+</div>
+<!-- container -->
+
+
+

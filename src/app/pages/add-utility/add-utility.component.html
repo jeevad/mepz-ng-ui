@@ -12,20 +12,20 @@
 
                     <div class="card border-top border-0 border-4 border-primary">
                         <div class="card-body p-5">
-                           
+
                             <form  [formGroup]="addUtility" (ngSubmit)="SaveData()">
                                 <div class="col-md-6">
                                     <label for="inputFirstName" class="form-label">Utility Code</label>
                                     <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Utility code" formControlName="utilitycode" autocomplete="off"
                                     [ngClass]="{'is-invalid':submitted && addUtility.controls['utilitycode'].errors}" />
-                                    <div class="text-danger" *ngIf="submitted && addUtility.controls['utilitycode'].errors && addUtility.controls['utilitycode'].errors?.['required']">utilitycode is Required</div>
+                                    <div class="text-danger" *ngIf="submitted && addUtility.controls['utilitycode'].errors && addUtility.controls['utilitycode'].errors?.['required']">Utility code is required</div>
 
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="inputLastName" class="form-label">Utility Name</label>
                                     <input type="text" class="form-control" id="inputLastName" placeholder="Enter Utility name" formControlName="utilityname" autocomplete="off"
                                     [ngClass]="{'is-invalid':submitted && addUtility.controls['utilitycode'].errors}">
-                                    <div class="text-danger" *ngIf="submitted && addUtility.controls['utilityname'].errors && addUtility.controls['utilityname'].errors?.['required']">utilityname is Required</div>
+                                    <div class="text-danger" *ngIf="submitted && addUtility.controls['utilityname'].errors && addUtility.controls['utilityname'].errors?.['required']">Utility name is required</div>
 
                                 </div>
                                 <div class="col-md-6 text-center mt-3">
@@ -40,4 +40,3 @@
    </div>
    </div>
    </section>
-   

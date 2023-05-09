@@ -27,6 +27,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
     ProjectEditComponent,
     DeletedialogComponent,
     ReportsComponent,
-    
+
 
 ],
   imports: [
@@ -61,7 +62,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
     MatDialogModule,
     MatInputModule,
     CollapseModule.forRoot(),
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

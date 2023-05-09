@@ -1,231 +1,86 @@
 
 <div class="container">
-   <div class="row page-content">
-      <div class="col-md-12">
-         <div class="d-lg-flex align-items-center mb-4 gap-3">
-            <h4 class="mb-0 text-primary">Projects </h4>
-            <div class="ms-auto"><a routerLink="/add-project" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add Project</a></div>
-         </div>
-      </div>
+  <div class="row page-content">
+     <div class="col-md-12">
+        <div class="d-lg-flex align-items-center mb-4 gap-3">
+           <h4 class="mb-0 text-primary">Projects </h4>
+           <div class="ms-auto"><a routerLink="/add-project" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add Project</a></div>
+        </div>
+     </div>
+     <div class="col-md-12">
+        <div class="card p-3">
+           <div class="card-body">
+              <div>
+                 <table id="example" class="display" cellspacing="0" width="100%">
+                    <thead>
+                       <tr>
+                        <th>S.No</th>
+                          <th>Code</th>
+                          <th>Project Name</th>
+                          <th>Project Type</th>
+                          <th>Company</th>
+                          <th>Action</th>
+                       </tr>
+                    </thead>
+                    <tfoot>
+                       <tr>
+                        <th>S.No</th>
+                          <th>Code</th>
+                          <th>Project Name</th>
+                          <th>Project Type</th>
+                          <th>Company</th>
+                          <th>Action</th>
+                       </tr>
+                    </tfoot>
+                    <tbody onload="passVariable()">
+                     <tr role="row" class="odd" *ngFor= "let item of departmentData; let i=index;">
+                         <td>{{ skip + i+1 }}</td>
+                         <td>{{item.code}}</td>
+                         <td  class="sorting_1">{{item.projectname}}</td>
+                         <td>{{item.projecttype}}</td>
+                         <td>{{item.company}}</td>
+                         <td class="projects-button">
+
+                          <button
+                          type="button"
+                          class="btn btn-sm"
+                          data-toggle="modal"
+                          data-target="#myModal2"
+                          >
+                          <i class="fa fa-cog"> </i>
+                          </button>
+
+                               <!-- <a routerLink="/equipment-allocation" title="Equipment Allocation" class="btn btn-sm btn-info">Equipment Allocation</a>
+                               <a routerLink="/equipment-summary" title="Summary" class="btn btn-sm btn-warning">Summary</a>
+                               <a routerLink="/department-transaction" title="Current Transaction" class="btn btn-sm btn-primary">Current Transaction</a>
+                               <a routerLink="/past-transaction" title="Past Transaction" class="btn btn-sm btn-warning">Past Transaction</a> -->
 
 
-      
 
-
-
-
-
-      <div class="col-md-12">
-         <div class="card p-3">
-            <div class="card-body">
-               <div>
-                  <table id="example" class="display" cellspacing="0" width="100%">
-                     <thead>
-                        <tr>
-                           <th>Code</th>
-                           <th>Project Name</th>
-                           <th>Project Type</th>
-                           <th>Company</th>
-                           <th>Action</th>
-                        </tr>
-                     </thead>
-                     <tfoot>
-                        <tr>
-                           <th>Code</th>
-                           <th>Project Name</th>
-                           <th>Project Type</th>
-                           <th>Company</th>
-                           <th>Action</th>
-                        </tr>
-                     </tfoot>
-                     <tbody onload="passVariable()">
-                        <tr role="row" class="odd">
-                           <td>ASM</td>
-                           <td title="CADANGAN MEMBINA SEBUAH HOSPITAL PAKAR (150 KATIL) 5 TINGKAT DENGAN 2 TINGKAT TEMPAT LETAK KERETA, 1 UNIT PONDOK PENGAWAL, DI LOT 83211, PEKAN PANDAMARAN, DAERAH KLANG. UNTUK TETUAN ARUNAMARI SPECIALIST MEDICAL CENTRE
-                              " class="sorting_1">ARUNAMARI SPECIALIST MEDICAL CENTRE</td>
-                           <!--td>CADANGAN MEMBINA SEBUAH HOSPITAL PAKAR (150 KATIL) 5 TINGKAT DENGAN 2 TINGKAT TEMPAT LETAK KERETA, 1 UNIT PONDOK PENGAWAL, DI LOT 83211, PEKAN PANDAMARAN, DAERAH KLANG. UNTUK TETUAN ARUNAMARI SPECIALIST MEDICAL CENTRE
-                              </td-->
-                           <!-- <td>MANIPAL</td>
-                              <td></td>
-                              <td>150</td>
-                              <td>GEN</td> -->
-                           <td>PRIVATE</td>
-                           <td>MNE</td>
-                           <td class="projects-button ">
-
-                              <button
-                              type="button"
-                              class="btn btn-sm"
-                              data-toggle="modal"
-                              data-target="#myModal2"
-                            >
-                            <i class="fa fa-cog"> </i>
-                            </button>
-
-
-                             
-                              <a routerLink="/edit-project" title="Edit" class="btn btn-sm btn-success"> <i class="fa fa-edit"> </i> </a>
-                              <!--<a routerLink="delete/ASM" title="Delete" class="btn btn-xs btn-danger" onclick="return confirm_delete()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>-->
-                              <a (click)="openDialog()" title="Delete"  class="btn btn-sm btn-danger btn_delete"> <i class="fa fa-trash"> </i> </a>
-                              <a title="Reports" data-code="ASM" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"><i class="fa fa-print"> </i> </a>
-                              <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
-                              <!--button class="btn btn-info" data-toggle="modal" data-target="#reportModal">Reports</button-->
-                           </td>
-                        </tr>
-                        <tr role="row" class="even">
-                           <td>KPWHPP-01</td>
-                           <td title="BLOK KLINIK PAKAR DAN WAD HOSPITAL PULAU PINANG (REKA DAN BINA)" class="sorting_1">BLOK KLINIK PAKAR DAN WAD HOSPITAL PULAU PINANG (REKA DAN BINA) </td>
-                           <!--td>BLOK KLINIK PAKAR DAN WAD HOSPITAL PULAU PINANG (REKA DAN BINA)</td-->
-                           <!-- <td>KKM</td>
-                              <td></td>
-                              <td>216</td>
-                              <td> </td> -->
-                           <td>GOVERNMENT</td>
-                           <td>WCT</td>
-                           <td class="projects-button">
-                              <button
-                              type="button"
-                              class="btn btn-sm"
-                              data-toggle="modal"
-                              data-target="#myModal2"
-                            >
-                            <i class="fa fa-cog"> </i>
-                            </button>
-
-                              <a routerLink="" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"> </i> </a>
-                              <!--<a routerLink="delete/KPWHPP-01" title="Delete" class="btn btn-xs btn-danger" onclick="return confirm_delete()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>-->
-                              <a title="Delete" data-code="KPWHPP-01" class="btn btn-sm btn-danger btn_delete"><i class="fa fa-trash"> </i>  </a>
-                              <a title="Reports" data-code="KPWHPP-01" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"> <i class="fa fa-print"> </i> </a>
-                              <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
-                              <!--button class="btn btn-info" data-toggle="modal" data-target="#reportModal">Reports</button-->
-                           </td>
-                        </tr>
-                        <tr role="row" class="odd">
-                           <td>CYB</td>
-                           <td title="PROPOSED DEVELOPMENT OF CYBERJAYA HOSPITAL" class="sorting_1">CYBERJAYA HOSPITAL</td>
-                           <!--td>PROPOSED DEVELOPMENT OF CYBERJAYA HOSPITAL</td-->
-                           <!-- <td>CYBERVIEW SDN BHD</td>
-                              <td>CYBERJAYAHOSPITAL/010/2016</td>
-                              <td>288</td>
-                              <td>GEN</td> -->
-                           <td>GOVERNMENT</td>
-                           <td>GESB</td>
-                           <td class="projects-button">
-                              <button
-                              type="button"
-                              class="btn btn-sm"
-                              data-toggle="modal"
-                              data-target="#myModal2"
-                            >
-                            <i class="fa fa-cog"> </i>
-                            </button>
-
-                            <a routerLink="" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"> </i> </a>
-                            <!--<a routerLink="delete/CYB2" title="Delete" class="btn btn-xs btn-danger" onclick="return confirm_delete()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>-->
-                            <a title="Delete" data-code="CYB2" class="btn btn-sm btn-danger btn_delete"><i class="fa fa-trash"> </i>  </a>
-                            <a title="Reports" data-code="CYB2" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"><i class="fa fa-print"> </i> </a>
-                            <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
-
-                            
-
-                              <!--<a routerLink="delete/CYB" title="Delete" class="btn btn-xs btn-danger" onclick="return confirm_delete()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>-->
-                           </td>
-                        </tr>
-                        <tr role="row" class="even">
-                           <td>CYB2</td>
-                           <td title="CYBERJAYA HOSPITAL 2" class="sorting_1">CYBERJAYA HOSPITAL 2</td>
-                           <!--td>CYBERJAYA HOSPITAL 2</td-->
-                           <!-- <td>CYBERVIEW</td>
-                              <td></td>
-                              <td>288</td>
-                              <td>GEN</td> -->
-                           <td>GOVERNMENT</td>
-                           <td>GESB</td>
-                           <td class="projects-button">
-                              <button
-                              type="button"
-                              class="btn btn-sm"
-                              data-toggle="modal"
-                              data-target="#myModal2"
-                            >
-                            <i class="fa fa-cog"> </i>
-                            </button>
-
-                              <a routerLink="" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"> </i> </a>
-                              <!--<a routerLink="delete/CYB2" title="Delete" class="btn btn-xs btn-danger" onclick="return confirm_delete()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>-->
-                              <a title="Delete" data-code="CYB2" class="btn btn-sm btn-danger btn_delete"><i class="fa fa-trash"> </i>  </a>
-                              <a title="Reports" data-code="CYB2" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"><i class="fa fa-print"> </i> </a>
-                              <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
-                              <!--button class="btn btn-info" data-toggle="modal" data-target="#reportModal">Reports</button-->
-                           </td>
-                        </tr>
-                        <tr role="row" class="odd">
-                           <td>CYBR</td>
-                           <td title="CYBERJAYA NON MEDICAL BLOCK" class="sorting_1">CYBERJAYA NON MEDICAL BLOCK</td>
-                           <!--td>CYBERJAYA NON MEDICAL BLOCK</td-->
-                           <!-- <td>GADANG</td>
-                              <td> </td>
-                              <td>0</td>
-                              <td>GEN</td> -->
-                           <td>GOVERNMENT</td>
-                           <td>GESB</td>
-                           <td class="projects-button">
-                              <button
-                              type="button"
-                              class="btn btn-sm"
-                              data-toggle="modal"
-                              data-target="#myModal2"
-                            >
-                            <i class="fa fa-cog"> </i>
-                            </button>
-
-                              <a routerLink="" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"> </i> </a>
-                              <!--<a routerLink="delete/CYBR" title="Delete" class="btn btn-xs btn-danger" onclick="return confirm_delete()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>-->
-                              <a title="Delete" data-code="CYBR" class="btn btn-sm btn-danger btn_delete"> <i class="fa fa-trash"> </i>  </a>
-                              <a title="Reports" data-code="CYBR" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"> <i class="fa fa-print"> </i> </a>
-                              <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
-                              <!--button class="btn btn-info" data-toggle="modal" data-target="#reportModal">Reports</button-->
-                           </td>
-                        </tr>
-                        
-                      
-                       
-                       
-                        <tr role="row" class="even">
-                           <td>WCHP01</td>
-                           <td title="WOMEN AND CHILDREN HOSPITAL  PULAU PINANG " class="sorting_1">WOMEN AND CHILDREN HOSPITAL </td>
-                           <!--td>WOMEN AND CHILDREN HOSPITAL  PULAU PINANG </td-->
-                           <!-- <td>JABATAN KERJA RAYA MALAYSIA </td>
-                              <td>WCH</td>
-                              <td>329</td>
-                              <td>CHI</td> -->
-                           <td>GOVERNMENT</td>
-                           <td>HMED</td>
-                           <td class="projects-button">
-                              <button
-                              type="button"
-                              class="btn btn-sm"
-                              data-toggle="modal"
-                              data-target="#myModal2"
-                            >
-                            <i class="fa fa-cog"> </i>
-                            </button>
-
-                              <a routerLink="" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"> </i> </a>
-                              <!--<a routerLink="delete/WCHP01" title="Delete" class="btn btn-xs btn-danger" onclick="return confirm_delete()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>-->
-                              <a title="Delete" data-code="WCHP01" class="btn btn-sm btn-danger btn_delete"> <i class="fa fa-trash"> </i>  </a>
-                              <a title="Reports" data-code="WCHP01" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"> <i class="fa fa-print"> </i> </a>
-                              <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
-                              <!--button class="btn btn-info" data-toggle="modal" data-target="#reportModal">Reports</button-->
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+                               <a routerLink="/edit-project/{{ item._id }}" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                               <!-- <a routerLink="" title="Edit" class="btn btn-sm btn-success"><i class="fa fa-edit"> </i> Edit</a> -->
+                               <!-- <a href="javascript:;"class="text-danger me-2"data-bs-toggle="tooltip"title="Delete"(click)="delete(item._id)"><i class="bx bxs-trash"></i></a> -->
+                               <!-- <a (click)="openDialog()" title="Delete"  class="btn btn-sm btn-danger btn_delete"> <i class="fa fa-trash"> </i> Delete</a> -->
+                               <a href="javascript:;" class="btn btn-sm btn-danger btn_delete" data-bs-toggle="tooltip" title="Delete" (click)="delete(item._id)"><i class='fa fa-trash'></i></a>
+                               <a title="Reports" data-code="ASM" id="btn_report" class="btn btn-sm btn-info btn_report" data-target="#reportModal"><i class="fa fa-print"> </i></a>
+                               <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
+                         </td>
+                     </tr>
+                 </tbody>
+                 <tfoot>
+                  <tr>
+                    <td colspan="5">
+                      <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination"></ngb-pagination>
+                    <pre>Current page: {{page}}</pre>
+                    </td>
+                  </tr>
+                </tfoot>
+                 </table>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
 </div>
 
 
@@ -233,46 +88,46 @@
 <!-- modal -->
 
 <div class="container demo">
-  
-   <!-- Modal -->
-   <div
-     class="modal right fade"
-     id="myModal2"
-     tabindex="-1"
-     role="dialog"
-     aria-labelledby="myModalLabel2"
-   >
-     <div class="modal-dialog" role="document">
-       <div class="modal-content">
-         <div class="modal-header">
-           <button
-             type="button"
-             class="close"
-             data-dismiss="modal"
-             aria-label="Close"
-           >
-             <span aria-hidden="true">&times;</span>
-           </button>
-           <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
-         </div>
- 
-         <div class="modal-body">
-            <ul><li><a routerLink="/equipment-allocation" title="Equipment Allocation" class=" mb-4">Equipment Allocation</a></li>
-               <li><a routerLink="/equipment-summary" title="Summary" class=" mb-4">Summary</a>	</li>					
-               <li> <a routerLink="/department-transaction" title="Current Transaction" class=" mb-4">Current Transaction</a></li>
-              
-                  <li><a routerLink="/past-transaction" title="Past Transaction" class=" btn-warning mb-4">Past Transaction</a>
-                  </li></ul>
-            
-         </div>
-       </div>
-       <!-- modal-content -->
-     </div>
-     <!-- modal-dialog -->
-   </div>
-   <!-- modal -->
- </div>
- <!-- container -->
- 
+
+  <!-- Modal -->
+  <div
+    class="modal right fade"
+    id="myModal2"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel2"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
+        </div>
+
+        <div class="modal-body">
+           <ul><li><a routerLink="/equipment-allocation" title="Equipment Allocation" class=" mb-4">Equipment Allocation</a></li>
+              <li><a routerLink="/equipment-summary" title="Summary" class=" mb-4">Summary</a>	</li>
+              <li> <a routerLink="/department-transaction" title="Current Transaction" class=" mb-4">Current Transaction</a></li>
+
+                 <li><a routerLink="/past-transaction" title="Past Transaction" class=" btn-warning mb-4">Past Transaction</a>
+                 </li></ul>
+
+        </div>
+      </div>
+      <!-- modal-content -->
+    </div>
+    <!-- modal-dialog -->
+  </div>
+  <!-- modal -->
+</div>
+<!-- container -->
+
 
 

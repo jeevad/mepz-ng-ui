@@ -11,14 +11,20 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./admin-group.component.css']
 })
 export class AdminGroupComponent implements OnInit {
-  groupdata: any;
+  page = 1;
+  limit = 10;
+  skip = 0;
+  count: number = 0;
+  groupdata: any[] = [];
   constructor(private group: AdminGroupService, private http: HttpClient) {
     this.LoadGroupData();
   }
   LoadGroupData() {
-    this.group.LoadGroupData().subscribe(data => {
-      // console.log(data);
-      this.groupdata = data;
+    this.skip = this.limit * (this.page - 1);
+    this.group.LoadGroupData(this.skip, this.limit).subscribe((data : any)=> {
+      console.log(data);
+      this.groupdata = data.results;
+      this.count = data.count;
     });
   }
   delete(id: any) {
@@ -29,20 +35,8 @@ export class AdminGroupComponent implements OnInit {
     }
 
   }
+ ngOnInit() {
+    this.LoadGroupData();
 
-
-  ngOnInit() {
-    // $(function () {
-    //   $('.example').DataTable({
-    //     responsive: true,
-    //     columnDefs: [
-    //       { responsivePriority: 2, targets: -1 }
-    //     ]
-    //   });
-    // });
   }
-
-
-
-
 }
