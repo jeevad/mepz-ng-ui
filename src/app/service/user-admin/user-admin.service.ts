@@ -5,23 +5,24 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class UsermodelService {
+export class UserAdminService {
   constructor(private http: HttpClient) {}
-  find(skip: number, limit: number) {
+  LoadFormData(skip: number, limit: number) {
     return this.http.get(environment.apiUrl + '/usermodel', {
       params: { skip, limit },
     });
   }
-  SaveData(userdata: any) {
-    return this.http.post(environment.apiUrl + '/usermodel', userdata);
-  }
-  FindbyID(id: any) {
-    return this.http.get(environment.apiUrl + '/usermodel/' + id);
-  }
-  update(id: any, userdata: any) {
-    return this.http.patch(environment.apiUrl + '/usermodel/' + id, userdata);
+
+  SaveUserData(formData: any) {
+    return this.http.post(environment.apiUrl + '/usermodel', formData);
   }
 
+  LoadbyID(id: any) {
+    return this.http.get(environment.apiUrl + '/usermodel/' + id);
+  }
+  update(id: any, formData: any) {
+    return this.http.patch(environment.apiUrl + '/usermodel/' + id, formData);
+  }
   Removedata(id: any) {
     return this.http.delete(environment.apiUrl + '/usermodel/' + id);
   }

@@ -55,6 +55,7 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent},
   {path:'admin-user',component:AdminUserComponent},
   { path: 'add-admin-user' , component:UserFormComponent},
+  { path: 'add-admin-user/:id' , component:UserFormComponent},
   { path: 'admin-group', component:AdminGroupComponent},
   { path:'admin-group-form/:id', component:AdminGroupFormComponent},
   { path:'admin-group-form', component:AdminGroupFormComponent},

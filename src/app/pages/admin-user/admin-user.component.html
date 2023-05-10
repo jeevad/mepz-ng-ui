@@ -26,6 +26,8 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
+
+
                 <tbody>
                   <tr *ngFor="let item of userdata; let i = index">
                     <td>{{ skip + i+1 }}</td>
@@ -35,17 +37,19 @@
                     <td>{{ item.active ? 'Yes' : 'No' }}</td>
                     <td>{{ item.group }}</td>
                     <td>{{ item.valid }}</td>
-                    <td></td>
+                    <td>{{item.remarks}}</td>
                     <td>
                       <div class="d-flex order-actions">
-                        <a routerLink="/edit-user/{{ item.id }}" title="Edit" class="text-success me-2"><i
-                            class="fa fa-edit"> </i> </a>
-                        <a href="javascript:;" (click)="delete(item.id)" title="Delete" class="text-danger me-2"><i
-                            class="fa fa-trash"> </i> </a>
+                        <a routerLink="/add-admin-user/{{item._id}}" class="btn text-success"><i
+                            class='bx bxs-edit'></i></a>
+                            <a (click)="delete(item._id)" class="btn text-danger ms-3"><i
+                            class='bx bxs-trash'></i></a>
                       </div>
                     </td>
                   </tr>
                 </tbody>
+
+
                 <tfoot>
                   <tr>
                     <td colspan="5">

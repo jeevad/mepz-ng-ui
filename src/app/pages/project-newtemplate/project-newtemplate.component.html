@@ -1,4 +1,3 @@
-<!-- <p>project-newtemplate works!</p> -->
 <app-header></app-header>
 
 <div class="full-width">
@@ -30,7 +29,6 @@
                   <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofbeds'].errors?.['required']">
                     No of Beds is required</div>
                 </div>
-
                 <div class="col-md-6">
                   <label for="inputState" class="form-label">Classification</label>
                   <select id="inputState" class="form-select" formControlName="classification">
@@ -41,7 +39,7 @@
                 <div class="col-md-6">
                   <label for="inputState" class="form-label">Project Type</label>
                   <select id="inputState" class="form-select" formControlName="projecttype">
-                    <option *ngFor="let projecttype of classifications" [value]="projecttype.value">{{ projecttype.label
+                    <option *ngFor="let projecttype of projecttypes" [value]="projecttype.value">{{ projecttype.label
                       }}</option>
                   </select>
                 </div>
@@ -58,6 +56,7 @@
                   <a routerLink="/project-template"><i class="material-icon">Cancel</i></a>
                 </div>
               </form>
+
             </div>
           </div>
         </div>
