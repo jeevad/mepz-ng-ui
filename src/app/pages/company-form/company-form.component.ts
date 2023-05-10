@@ -29,59 +29,71 @@ export class CompanyFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('ngOnint');
     this.companyid = this.route.snapshot.paramMap.get('id');
-
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
-        this.service.LoadbyID(param['id']).subscribe((resp) => {
+          this.service.LoadbyID(param['id']).subscribe((resp) => {
           this.isEdit = true;
           this.addCompany.patchValue(resp);
         });
       }
     });
     this.addCompany = this.formBuilder.group({
-      contact: ['', Validators.required],
-      phone: ['', Validators.required],
-      fax: ['', Validators.required],
-      mobile: ['', Validators.required],
-      email: ['', Validators.required],
-      code: ['', Validators.required],
-      inactive: 'false',
-      name: ['', Validators.required],
-      address1: ['', Validators.required],
-      address2: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      postal: ['', Validators.required],
-      country: ['', Validators.required],
-      logo1: [''],
-      show1: 'false',
-      logo2: [''],
-      show2: 'false',
-      logo3: [''],
-      show3: 'false',
+      'code':['',Validators.required],
+      'inactive' : false,
+      'name':['',Validators.required],
+      'address1' : ['',Validators.required],
+      'address2' : [''],
+      'city' :  ['',Validators.required],
+      'state' : ['',Validators.required],
+      'postal':['',Validators.required],
+      'country' : ['',Validators.required],
+      'logo1' : [''],
+      'show1':false,
+      'logo2' : [''],
+      'show2':false,
+      'logo3' : [''],
+      'show3':false,
+      'contact' : ['',Validators.compose([Validators.maxLength(10),Validators.required])],
+      'phone' : ['',Validators.compose([Validators.maxLength(10),Validators.required])],
+      'fax': ['',Validators.required],
+      'mobile': ['',Validators.compose([Validators.maxLength(10),Validators.required])],
+      'email' :['',Validators.compose([Validators.email,Validators.required])]
     });
   }
   SaveData() {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addCompany.valid) {
-        this.service
-          .SaveData(this.addCompany.value)
-          .subscribe((result: any) => {
-            this.router.navigate(['/company']);
-          });
+        const data = {
+          ...this.addCompany.value,
+          inactive: this.addCompany.value.inactive.toString(),
+          show1: this.addCompany.value.show1.toString(),
+          show2: this.addCompany.value.show2.toString(),
+          show3: this.addCompany.value.show3.toString(),
+        };
+        this.service.SaveData(data).subscribe((result: any) => {
+
+          this.router.navigate(['/company']);
+        });
       }
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.addCompany.valid) {
-        this.service
-          .update(this.companyid, this.addCompany.value)
-          .subscribe((data: any) => {
-            this.isEdit = false;
-            this.router.navigate(['/company']);
-          });
+        const data = {
+          ...this.addCompany.value,
+          inactive: this.addCompany.value.inactive.toString(),
+          show1: this.addCompany.value.show1.toString(),
+          show2: this.addCompany.value.show2.toString(),
+          show3: this.addCompany.value.show3.toString(),
+        };
+        this.service.update(this.companyid, data).subscribe((data: any) => {
+          this.isEdit = false;
+          this.router.navigate(['/company']);
+        });
       }
     }
   }
+
 }
