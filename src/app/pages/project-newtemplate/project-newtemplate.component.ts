@@ -32,17 +32,17 @@ export class ProjectNewtemplateComponent {
     private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit(): void {
-    this.deptid = this.route.snapshot.paramMap.get('id');
+    ngOnInit(): void {
+      this.deptid = this.route.snapshot.paramMap.get('id');
+      this.route.params.subscribe(param=>{
+        if(param && param['id']){
 
-    this.route.params.subscribe((param) => {
-      if (param && param['id']) {
-        this.department.LoadbyID(param['id']).subscribe((resp) => {
-          this.isEdit = true;
-          this.addDepartment.patchValue(resp);
-        });
-      }
-    });
+          this.department.LoadbyID(param['id']).subscribe(resp=>{
+            this.isEdit = true;
+            this.addDepartment.patchValue(resp);
+          })
+        }
+      })
     this.addDepartment = this.formBuilder.group({
       name: [''],
       noofbeds: [''],
