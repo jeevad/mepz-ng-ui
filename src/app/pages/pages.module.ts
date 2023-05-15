@@ -8,6 +8,7 @@ import { ReportsByPackageComponent } from './reports-by-package/reports-by-packa
 import { TemplateDepartmentComponent } from './template-department/template-department.component';
 import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
 import { ViewRoomsComponent } from './view-rooms/view-rooms.component';
+import { TransactionViewComponent } from './transaction-view/transaction-view.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ViewRoomsComponent } from './view-rooms/view-rooms.component';
     TemplateDepartmentComponent,
     EditAdminUserComponent,
     ViewRoomsComponent,
+    TransactionViewComponent,
   ],
   imports: [CommonModule, PagesRoutingModule],
 })
