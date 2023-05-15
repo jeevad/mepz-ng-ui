@@ -23,6 +23,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { DeletedialogComponent } from './pages/deletedialog/deletedialog.component';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { FilterRoomsPipe } from './pipes/filter-rooms.pipe';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
     ProjectEditComponent,
     DeletedialogComponent,
     ReportsComponent,
+    FilterRoomsPipe
 ],
   imports: [
     BrowserModule,

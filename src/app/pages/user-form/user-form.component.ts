@@ -7,7 +7,8 @@ import { UserAdminService } from 'src/app/service/user-admin/user-admin.service'
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css'],
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnInit {
+  groupNames: string[] = [];
   formData: any;
   active: any = ['Active', 'Inactive'];
   message = '';
@@ -18,6 +19,7 @@ export class UserFormComponent {
   editdata: any;
   submitted: boolean = false;
   userForm!: FormGroup;
+  groupname: string[] = [];
 
   constructor(
     private group: UserAdminService,
@@ -27,7 +29,16 @@ export class UserFormComponent {
   ) {
   }
 
+
   ngOnInit(): void {
+    this.group.fetchGroupNames().subscribe(
+      (groupNames: string[]) => {
+        this.groupNames = groupNames;
+      },
+      (error) => {
+        console.error('Error fetching group names:', error);
+      }
+    );
     console.log("ngOnint");
     this.roomid = this.route.snapshot.paramMap.get('id');
     console.log(this.roomid);
@@ -51,8 +62,8 @@ export class UserFormComponent {
       password: ['', Validators.required],
       reEnterPassword: ['', Validators.required],
     }, {validator: this.passwordMatchValidator});
-  }
-
+    this.groupname = this.group.groupname;
+}
 
 admin1= [
     { value: 'Yes', label: 'Yes' },
@@ -65,11 +76,9 @@ admin1= [
     { value: 'No', label: 'No' },
   ];
 
-  group1 = [
-    { value: 'Admin', label: 'Admin' },
-    { value: 'Staff', label: 'Staff' },
-    { value: 'Client', label: 'Client' },
-  ];
+  updategroupname(names: string[]) {
+    this.groupname = names;
+  }
 
   SaveUserData() {
     if (!this.isEdit) {

@@ -15,8 +15,7 @@
                   <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Username"
                     formControlName="username" autocomplete="off"
                     [ngClass]="{'is-invalid': submitted && userForm.controls['username'].errors}" />
-                  <div class="text-danger"
-                    *ngIf="submitted && userForm.controls['username'].errors?.['required']">
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['username'].errors?.['required']">
                     Username is required</div>
                 </div>
                 <div class="col-md-6">
@@ -24,8 +23,7 @@
                   <input type="text" class="form-control" id="inputLastName" placeholder="Enter Staff ID"
                     formControlName="staffid" autocomplete="off"
                     [ngClass]="{'is-invalid': submitted && userForm.controls['staffid'].errors}" />
-                  <div class="text-danger"
-                    *ngIf="submitted && userForm.controls['staffid'].errors?.['required']">
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['staffid'].errors?.['required']">
                     Staff ID is required</div>
                 </div>
                 <div class="col-md-6">
@@ -45,8 +43,7 @@
                 <div class="col-md-6">
                   <label for="inputState" class="form-label">group</label>
                   <select id="inputState" class="form-select" formControlName="group">
-                    <option *ngFor="let group of group1" [value]="group.value">{{
-                      group.label }}</option>
+                    <option *ngFor="let groupName of groupNames" [value]="groupName">{{ groupName }}</option>
                   </select>
                 </div>
                 <div class="col-md-6">
@@ -54,8 +51,7 @@
                   <input type="text" class="form-control" id="inputCity" placeholder="Enter Valid Until"
                     formControlName="valid" autocomplete="off"
                     [ngClass]="{'is-invalid': submitted && userForm.controls['valid'].errors}" />
-                  <div class="text-danger"
-                    *ngIf="submitted && userForm.controls['valid'].errors?.['required']">
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['valid'].errors?.['required']">
                     Valid Until is required</div>
                 </div>
                 <div class="col-md-6">
@@ -79,8 +75,7 @@
                   <input type="password" class="form-control" id="Contact" placeholder="Enter Password"
                     formControlName="password" autocomplete="off"
                     [ngClass]="{'is-invalid':submitted && userForm.controls['password'].errors}" />
-                  <div class="text-danger"
-                    *ngIf="submitted && userForm.controls['password'].errors?.['required']">
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['password'].errors?.['required']">
                     Password is required</div>
                 </div>
 
@@ -97,10 +92,9 @@
                     Password and Confirm Password should match</div>
                 </div>
 
-                <div class="text-danger"
-                *ngIf="userForm.hasError('passwordMismatch')">
-                Passwords must match
-              </div>
+                <div class="text-danger" *ngIf="userForm.hasError('passwordMismatch')">
+                  Passwords must match
+                </div>
                 <div class="col-12 text-center">
                   <button type="submit" class="btn btn-primary px-5 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
                   <a routerLink="/admin-user" class="btn btn-secondary px-5">Cancel</a>
