@@ -45,6 +45,7 @@ import { ReportsByPackageComponent } from './pages/reports-by-package/reports-by
 import { TemplateDepartmentComponent } from './pages/template-department/template-department.component';
 import { EditAdminUserComponent } from './pages/edit-admin-user/edit-admin-user.component';
 import { ViewRoomsComponent } from './pages/view-rooms/view-rooms.component';
+import { TransactionViewComponent } from './pages/transaction-view/transaction-view.component';
 
 
 const routes: Routes = [
@@ -107,7 +108,8 @@ const routes: Routes = [
   {path:'reports-by-package', component:ReportsByPackageComponent},
   {path:'template-department', component:TemplateDepartmentComponent},
   {path:'edit-admin-user', component:EditAdminUserComponent},
-  {path:'view-rooms', component:ViewRoomsComponent}
+  {path:'view-rooms', component:ViewRoomsComponent},
+  {path:'transaction-view', component:TransactionViewComponent}
 
 
 

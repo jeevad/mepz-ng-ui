@@ -133,6 +133,11 @@ label {
   opacity: 1;
 }
 
+.badge-primary {
+  color: #fff;
+  background-color: #007bff;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
