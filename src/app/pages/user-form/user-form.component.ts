@@ -65,16 +65,15 @@ export class UserFormComponent implements OnInit {
     this.groupname = this.group.groupname;
 }
 
-admin1= [
-    { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' },
+admin1 = [
+  { value: true, label: 'Yes' },
+  { value: false, label: 'No' },
+];
 
-  ];
-
-  active1 = [
-    { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' },
-  ];
+active1 = [
+  { value: true, label: 'Yes' },
+  { value: false, label: 'No' },
+];
 
   updategroupname(names: string[]) {
     this.groupname = names;

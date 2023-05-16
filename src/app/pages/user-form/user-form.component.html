@@ -26,7 +26,7 @@
                   <div class="text-danger" *ngIf="submitted && userForm.controls['staffid'].errors?.['required']">
                     Staff ID is required</div>
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                   <label for="inputState" class="form-label">Admin</label>
                   <select id="inputState" class="form-select" formControlName="admin">
                     <option *ngFor="let admin of admin1" [value]="admin.value">{{
@@ -39,8 +39,21 @@
                     <option *ngFor="let active of active1" [value]="active.value">{{
                       active.label }}</option>
                   </select>
+                </div> -->
+
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Admin</label>
+                  <select id="inputState" class="form-select" formControlName="admin">
+                    <option *ngFor="let admin of admin1" [value]="admin.value">{{ admin.label }}</option>
+                  </select>
                 </div>
                 <div class="col-md-6">
+                  <label for="inputState" class="form-label">Active</label>
+                  <select id="inputState" class="form-select" formControlName="active">
+                    <option *ngFor="let active of active1" [value]="active.value">{{ active.label }}</option>
+                  </select>
+                </div>
+               <div class="col-md-6">
                   <label for="inputState" class="form-label">group</label>
                   <select id="inputState" class="form-select" formControlName="group">
                     <option *ngFor="let groupName of groupNames" [value]="groupName">{{ groupName }}</option>

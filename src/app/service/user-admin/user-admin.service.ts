@@ -18,22 +18,22 @@ export class UserAdminService {
   }
 
   LoadFormData(skip: number, limit: number) {
-    return this.http.get(environment.apiUrl + '/usermodel', {
+    return this.http.get(environment.apiUrl + '/users', {
       params: { skip, limit },
     });
   }
 
   SaveUserData(formData: any) {
-    return this.http.post(environment.apiUrl + '/usermodel', formData);
+    return this.http.post(environment.apiUrl + '/users', formData);
   }
 
   LoadbyID(id: any) {
-    return this.http.get(environment.apiUrl + '/usermodel/' + id);
+    return this.http.get(environment.apiUrl + '/users/' + id);
   }
   update(id: any, formData: any) {
-    return this.http.patch(environment.apiUrl + '/usermodel/' + id, formData);
+    return this.http.patch(environment.apiUrl + '/users/' + id, formData);
   }
   Removedata(id: any) {
-    return this.http.delete(environment.apiUrl + '/usermodel/' + id);
+    return this.http.delete(environment.apiUrl + '/users/' + id);
   }
 }

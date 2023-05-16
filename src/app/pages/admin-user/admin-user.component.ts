@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery'
-import { UsermodelService } from 'src/app/service/usermodel/usermodel.service';
+import { UsermodelService } from 'src/app/service/users/users.service';
 
 @Component({
   selector: 'app-admin-user',
