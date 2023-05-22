@@ -113,24 +113,19 @@ const routes: Routes = [
         path: 'equipment-summary/:projectId',
         component: EquipmentSummaryComponent,
       },
+      {
+        path: 'past-transaction/:projectId',
+        component: PastTransactionComponent,
+      },
+      {
+        path: 'past-transaction/:projectId/transaction-view',
+        component: PastTransactionComponent,
+      },
     ],
   },
   
-  { path: 'equipment-allocation', component: EquipmentAllocationComponent },
-  { path: 'equipment-summary', component: EquipmentSummaryComponent },
-  {
-    path: 'project/:projectId/department-transaction/projectId/view-rooms',
-    component: DepartmentTransactionComponent,
-  },
-  { path: 'past-transaction', component: PastTransactionComponent },
-  {
-    path: 'project/:projectId/past-transaction',
-    component: PastTransactionComponent,
-  },
-  {
-    path: 'project/:projectId/past-transaction/projectId/transaction-view',
-    component: PastTransactionComponent,
-  },
+  
+  
   
   { path: 'reports', component: ReportsComponent },
   { path: 'specification', component: EquipmentSpecificationComponent },
