@@ -51,7 +51,47 @@
                     <a title="Reports" data-code="ASM" id="btn_report" class="btn btn-sm btn-info btn_report"
                       data-target="#reportModal"><i class="fa fa-print"> </i></a>
                     <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
+                    <!-- <a routerLink="/project/{{ item._id }}/department-transaction" title="Current Transaction"
+                      class="btn btn-sm btn-info btn_report">
+                      Current Transaction
+                    </a> -->
+
                   </td>
+                  <!-- modal -->
+                  <div class="container demo">
+                    <!-- Modal -->
+                    <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog"
+                      aria-labelledby="myModalLabel2">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
+                          </div>
+                          <div class="modal-body">
+                            <ul>
+                              <li><a routerLink="/project/{{ item._id }}/equipment-allocation" title="Equipment Allocation"
+                                  class=" mb-4">Equipment
+                                  Allocation</a></li>
+                              <li><a routerLink="/project/{{ item._id }}/equipment-summary" title="Summary" class=" mb-4">Summary</a> </li>
+                                  <li><a routerLink="/project/{{ item._id }}/department-transaction" title="Current Transaction" class=" mb-4">Current Transaction</a></li>
+                              <li><a routerLink="/project/{{ item._id }}/past-transaction" title="Past Transaction"
+                                  class=" btn-warning mb-4">Past
+                                  Transaction</a>
+                              </li>
+
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- modal-content -->
+                      </div>
+                      <!-- modal-dialog -->
+                    </div>
+                    <!-- modal -->
+                  </div>
+                  <!-- container -->
                 </tr>
               </tbody>
               <tfoot>
@@ -70,43 +110,3 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- modal -->
-
-<div class="container demo">
-
-  <!-- Modal -->
-  <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
-        </div>
-
-        <div class="modal-body">
-          <ul>
-            <li><a routerLink="/equipment-allocation" title="Equipment Allocation" class=" mb-4">Equipment
-                Allocation</a></li>
-            <li><a routerLink="/equipment-summary" title="Summary" class=" mb-4">Summary</a> </li>
-            <li> <a routerLink="/department-transaction" title="Current Transaction" class=" mb-4">Current
-                Transaction</a></li>
-
-            <li><a routerLink="/past-transaction" title="Past Transaction" class=" btn-warning mb-4">Past
-                Transaction</a>
-            </li>
-          </ul>
-
-        </div>
-      </div>
-      <!-- modal-content -->
-    </div>
-    <!-- modal-dialog -->
-  </div>
-  <!-- modal -->
-</div>
-<!-- container -->

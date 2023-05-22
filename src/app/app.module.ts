@@ -26,6 +26,7 @@ import { ReportsComponent } from './pages/reports/reports.component';
 import { FilterRoomsPipe } from './pipes/filter-rooms.pipe';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

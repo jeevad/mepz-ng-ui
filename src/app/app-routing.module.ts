@@ -93,13 +93,18 @@ const routes: Routes = [
   {path:'project-template', component:ProjectTemplateComponent},
   {path:'Project-newtemplate', component:ProjectNewtemplateComponent},
   {path:'Project-newtemplate/:id', component:ProjectNewtemplateComponent},
-
   {path:'project', component:ProjectComponent},
   {path:'add-project', component:AddProjectComponent},
   {path:'equipment-allocation', component: EquipmentAllocationComponent},
+  {path:'project/:projectId/equipment-allocation', component: EquipmentAllocationComponent},
   {path:'equipment-summary', component:EquipmentSummaryComponent},
+  {path:'project/:projectId/equipment-summary', component:EquipmentSummaryComponent},
   {path:'department-transaction', component:DepartmentTransactionComponent},
+  {path:'project/:projectId/department-transaction', component: DepartmentTransactionComponent },
+  {path:'project/:projectId/department-transaction/projectId/view-rooms', component: DepartmentTransactionComponent },
   {path:'past-transaction', component:PastTransactionComponent},
+  {path:'project/:projectId/past-transaction', component: PastTransactionComponent },
+  {path:'project/:projectId/past-transaction/projectId/transaction-view', component: PastTransactionComponent },
   {path:'edit-project', component:ProjectEditComponent},
   {path:'edit-project/:id', component:ProjectEditComponent},
   {path:'reports', component:ReportsComponent},
@@ -110,10 +115,6 @@ const routes: Routes = [
   {path:'edit-admin-user', component:EditAdminUserComponent},
   {path:'view-rooms', component:ViewRoomsComponent},
   {path:'transaction-view', component:TransactionViewComponent}
-
-
-
-
 ];
 
 @NgModule({

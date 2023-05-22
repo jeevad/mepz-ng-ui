@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 export interface DialogData {
   animal: string;
   name: string;
+
 }
 
 @Component({

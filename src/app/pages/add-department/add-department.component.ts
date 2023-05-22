@@ -16,7 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddDepartmentComponent implements OnInit {
   departmentdata: any;
-  active: any = ['Active', 'Inactive'];
+  active: string[] = ['Active', 'Inactive'];
+  selectedActive: string;
   message = '';
   messageclass = '';
   error: boolean = false;
@@ -31,7 +32,9 @@ export class AddDepartmentComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    this.selectedActive = '';
+  }
 
   ngOnInit(): void {
     this.deptid = this.route.snapshot.paramMap.get('id');
@@ -74,7 +77,10 @@ export class AddDepartmentComponent implements OnInit {
     }
   }
 
+  // change(e: any) {
+  //   this.active = e.target.value;
+  // }
   change(e: any) {
-    this.active = e.target.value;
+    this.selectedActive = e.target.value;
   }
 }

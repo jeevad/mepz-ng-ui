@@ -5,32 +5,37 @@
     <div class="row page-content">
       <div class="col-md-12">
         <div class="d-lg-flex align-items-center mb-4 gap-3">
-          <h4 class="mb-0 text-primary">Add Company </h4>
-          <div class="ms-auto"><a routerLink="/company" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i
-                class="bx bx-table"></i>Manage Company</a></div>
+          <h4 class="mb-0 text-primary">Add Company</h4>
+          <div class="ms-auto">
+            <a routerLink="/company" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
+              <i class="bx bx-table"></i>Manage Company
+            </a>
+          </div>
         </div>
         <div class="card border-top border-0 border-4 border-primary">
           <div class="card-body p-5">
-            <form class="row g-3 mt-4" [formGroup]="addCompany" (ngSubmit)="SaveData()">
+            <!-- <form class="row g-3 mt-4" [formGroup]="addCompany" (ngSubmit)="SaveData()"> -->
+              <form [formGroup]="addCompany" (ngSubmit)="SaveData()" enctype="multipart/form-data">
+
               <div class="row">
                 <ng-container *ngFor="let i of [1, 2, 3]">
                   <div class="col-md-4">
-
-                    <input class="form-control" type="file" [id]="'formFile' + i" [formControlName]="'logo' + i"
-                      [ngClass]="{'is-invalid': addCompany.get('logo' + i)?.invalid && addCompany.get('logo' + i)?.touched}">
+                    <input class="form-control" type="file" [id]="'formFile' + i" [formControlName]="'file' + i"
+                      [ngClass]="{'is-invalid': addCompany.get('file' + i)?.invalid && addCompany.get('file' + i)?.touched}">
                     <input class="form-check-input" type="checkbox" [id]="'gridCheck' + i"
                       [formControlName]="'show' + i"
                       [ngClass]="{'is-invalid': addCompany.get('show' + i)?.invalid && addCompany.get('show' + i)?.touched}">
                     <label class="form-check-label ms-2" [for]="'gridCheck' + i">Do not show</label>
                     <div class="invalid-feedback"
-                      *ngIf="addCompany.get('logo' + i)?.invalid && addCompany.get('logo' + i)?.touched">
-                      Logo {{ i }} is required
+                      *ngIf="addCompany.get('file' + i)?.invalid && addCompany.get('file' + i)?.touched">
+                      File {{ i }} is required
                     </div>
                     <div class="invalid-feedback"
                       *ngIf="addCompany.get('show' + i)?.invalid && addCompany.get('show' + i)?.touched">
                       Show {{ i }}
                     </div>
                   </div>
+
                 </ng-container>
               </div>
               <div class="col-md-6">
@@ -156,7 +161,8 @@
                   Email is Required</div>
               </div>
               <div class="col-12 text-center">
-                <button type="submit" class="btn btn-primary px-5 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+
+                <button type="submit" class="btn btn-primary px-5 me-3">{{ isEdit ? 'Update' : 'Save' }}</button>
                 <a routerLink="/company" class="btn btn-secondary px-5">Cancel</a>
               </div>
             </form>

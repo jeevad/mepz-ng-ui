@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./department-transaction.component.css'],
 })
 export class DepartmentTransactionComponent {
+  item: any[] = [];
+
   ngOnInit() {
     let table = $('#example').DataTable({
       drawCallback: () => {
