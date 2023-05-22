@@ -29,12 +29,10 @@ import { AddCurrencyComponent } from './add-currency/add-currency.component';
 import { ProjectTemplateComponent } from './project-template/project-template.component';
 import { ProjectNewtemplateComponent } from './project-newtemplate/project-newtemplate.component';
 import { ProjectComponent } from './project/project.component';
-import { AddProjectComponent } from './add-project/add-project.component';
 import { EquipmentAllocationComponent } from './equipment-allocation/equipment-allocation.component';
 import { EquipmentSummaryComponent } from './equipment-summary/equipment-summary.component';
 import { DepartmentTransactionComponent } from './department-transaction/department-transaction.component';
 import { PastTransactionComponent } from './past-transaction/past-transaction.component';
-import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { ReportsComponent } from './reports/reports.component';
 import { EquipmentSpecificationComponent } from './equipment-specification/equipment-specification.component';
 import { EquipmentBrandComponent } from './equipment-brand/equipment-brand.component';
@@ -45,6 +43,8 @@ import { ViewRoomsComponent } from './view-rooms/view-rooms.component';
 import { TransactionViewComponent } from './transaction-view/transaction-view.component';
 import { DeletedialogComponent } from './deletedialog/deletedialog.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
+import { ProjectEditComponent } from './project/project-edit/project-edit.component';
+import { AddProjectComponent } from './project/add-project/add-project.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -95,6 +95,8 @@ const routes: Routes = [
         path: '',
         component: ProjectListComponent,
       },
+      { path: 'add', component: AddProjectComponent },
+      { path: 'edit/:id', component: ProjectEditComponent },
       {
         path: 'department-transaction/:projectId',
         component: DepartmentTransactionComponent,
@@ -113,7 +115,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'add-project', component: AddProjectComponent },
+  
   { path: 'equipment-allocation', component: EquipmentAllocationComponent },
   { path: 'equipment-summary', component: EquipmentSummaryComponent },
   {
@@ -129,8 +131,7 @@ const routes: Routes = [
     path: 'project/:projectId/past-transaction/projectId/transaction-view',
     component: PastTransactionComponent,
   },
-  { path: 'edit-project', component: ProjectEditComponent },
-  { path: 'edit-project/:id', component: ProjectEditComponent },
+  
   { path: 'reports', component: ReportsComponent },
   { path: 'specification', component: EquipmentSpecificationComponent },
   { path: 'brand', component: EquipmentBrandComponent },

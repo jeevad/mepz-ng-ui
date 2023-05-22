@@ -3,7 +3,7 @@
       <div class="col-md-12">
         <div class="d-lg-flex align-items-center mb-4 gap-3">
           <h4 class="mb-0 text-primary">Projects </h4>
-          <div class="ms-auto"><a routerLink="/pages/add-project" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i
+          <div class="ms-auto"><a routerLink="/pages/projects/add" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i
                 class="bx bxs-plus-square"></i>Add Project</a></div>
         </div>
       </div>
@@ -44,7 +44,7 @@
                       <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal2">
                         <i class="fa fa-cog"> </i>
                       </button>
-                      <a routerLink="/pages/edit-project/{{ item._id }}" title="Edit" class="btn btn-sm btn-success"><i
+                      <a routerLink="/pages/projects/edit/{{ item._id }}" title="Edit" class="btn btn-sm btn-success"><i
                           class="fa fa-edit"></i></a>
                       <a href="javascript:;" class="btn btn-sm btn-danger btn_delete" data-bs-toggle="tooltip"
                         title="Delete" (click)="delete(item._id)"><i class='fa fa-trash'></i></a>
