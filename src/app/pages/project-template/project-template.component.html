@@ -5,7 +5,7 @@
         <div class="col-md-12">
           <div class="d-lg-flex align-items-center mb-4 gap-3">
             <h4 class="mb-0 text-primary">Project Template </h4>
-            <div class="ms-auto"><a routerLink="/Project-newtemplate" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i
+            <div class="ms-auto"><a routerLink="/pages/Project-newtemplate" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i
                   class="bx bxs-plus-square"></i>New Template</a></div>
          </div>
         </div>
@@ -33,9 +33,9 @@
                       <td>{{ item.projecttype }}</td>
                       <td>
                         <div class="d-flex order-actions">
-                          <a routerLink="/add-project" class="text-primary me-2" data-bs-toggle="tooltip"
+                          <a routerLink="/pages/add-project" class="text-primary me-2" data-bs-toggle="tooltip"
                             title="Create Project"><i class="fal fa-file-plus"></i></a>
-                          <a routerLink="/Project-newtemplate/{{ item._id }}" class="text-success me-2"
+                          <a routerLink="/pages/Project-newtemplate/{{ item._id }}" class="text-success me-2"
                             data-bs-toggle="tooltip" title="View/Edit"><i class="bx bxs-edit"></i></a>
                           <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"
                             (click)="delete(item._id)"><i class="bx bxs-trash"></i></a>
