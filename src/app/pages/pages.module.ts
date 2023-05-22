@@ -1,25 +1,42 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PagesRoutingModule } from './pages-routing.module';
-import { EquipmentSpecificationComponent } from './equipment-specification/equipment-specification.component';
-import { EquipmentBrandComponent } from './equipment-brand/equipment-brand.component';
-import { ReportsByPackageComponent } from './reports-by-package/reports-by-package.component';
-import { TemplateDepartmentComponent } from './template-department/template-department.component';
-import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
-import { ViewRoomsComponent } from './view-rooms/view-rooms.component';
-import { TransactionViewComponent } from './transaction-view/transaction-view.component';
+import { PagesRoutingModule, routingcomponents } from './pages-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    EquipmentSpecificationComponent,
-    EquipmentBrandComponent,
-    ReportsByPackageComponent,
-    TemplateDepartmentComponent,
-    EditAdminUserComponent,
-    ViewRoomsComponent,
-    TransactionViewComponent,
+    routingcomponents,
+    // EquipmentSpecificationComponent,
+    // EquipmentBrandComponent,
+    // ReportsByPackageComponent,
+    // TemplateDepartmentComponent,
+    // EditAdminUserComponent,
+    // ViewRoomsComponent,
+    // TransactionViewComponent,
   ],
-  imports: [CommonModule, PagesRoutingModule],
+  imports: [
+    CommonModule,
+    NgbModule,
+    FormsModule,
+    // NgbCollapseModule,
+    // HttpClientModule,
+    // DataTablesModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    PagesRoutingModule,
+  ],
 })
 export class PagesModule {}
