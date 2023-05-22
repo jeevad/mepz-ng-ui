@@ -1,4 +1,5 @@
 <app-header *ngIf="blankUrl || !isCheckoutRoute()"></app-header>
+<br>
 <section class="section main-content" [class.body-width]="blankUrl || !isCheckoutRoute()">
   <router-outlet></router-outlet>
 </section>

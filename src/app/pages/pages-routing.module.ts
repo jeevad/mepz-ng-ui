@@ -44,6 +44,7 @@ import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.compon
 import { ViewRoomsComponent } from './view-rooms/view-rooms.component';
 import { TransactionViewComponent } from './transaction-view/transaction-view.component';
 import { DeletedialogComponent } from './deletedialog/deletedialog.component';
+import { ProjectListComponent } from './project/project-list/project-list.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -86,23 +87,35 @@ const routes: Routes = [
   { path: 'project-template', component: ProjectTemplateComponent },
   { path: 'Project-newtemplate', component: ProjectNewtemplateComponent },
   { path: 'Project-newtemplate/:id', component: ProjectNewtemplateComponent },
-  { path: 'project', component: ProjectComponent },
+  {
+    path: 'projects',
+    component: ProjectComponent,
+    children: [
+      {
+        path: '',
+        component: ProjectListComponent,
+      },
+      {
+        path: 'department-transaction/:projectId',
+        component: DepartmentTransactionComponent,
+      },
+      {
+        path: 'view-rooms/:projectId/:departmentId/',
+        component: DepartmentTransactionComponent,
+      },
+      {
+        path: 'equipment-allocation/:projectId/:departmentId/:roomId',
+        component: EquipmentAllocationComponent,
+      },
+      {
+        path: 'equipment-summary/:projectId',
+        component: EquipmentSummaryComponent,
+      },
+    ],
+  },
   { path: 'add-project', component: AddProjectComponent },
   { path: 'equipment-allocation', component: EquipmentAllocationComponent },
-  {
-    path: 'project/:projectId/equipment-allocation',
-    component: EquipmentAllocationComponent,
-  },
   { path: 'equipment-summary', component: EquipmentSummaryComponent },
-  {
-    path: 'project/:projectId/equipment-summary',
-    component: EquipmentSummaryComponent,
-  },
-  { path: 'department-transaction', component: DepartmentTransactionComponent },
-  {
-    path: 'project/:projectId/department-transaction',
-    component: DepartmentTransactionComponent,
-  },
   {
     path: 'project/:projectId/department-transaction/projectId/view-rooms',
     component: DepartmentTransactionComponent,
@@ -135,21 +148,42 @@ const routes: Routes = [
 export class PagesRoutingModule {}
 
 export const routingcomponents = [
-  AdminUserComponent,UserFormComponent, AdminGroupComponent, AdminGroupFormComponent, AccessLevelComponent,
-  ActivityLogComponent,CompanydetailComponent,CompanyFormComponent, DepartmentComponent,
-  AddDepartmentComponent,GroupDetailComponent, AddGroupComponent, RoomDetailComponent, AddRoomComponent,
-  DashboardComponent,UtilityDetailComponent, AddUtilityComponent, EquipmentDetailComponent,AddEquipmentComponent,
-  PackageComponent , AddPackageComponent, HospitalClassificationComponent,AddClassificationComponent, CurrencyComponent,
-  AddCurrencyComponent, ProjectTemplateComponent, ProjectNewtemplateComponent,
+  AdminUserComponent,
+  UserFormComponent,
+  AdminGroupComponent,
+  AdminGroupFormComponent,
+  AccessLevelComponent,
+  ActivityLogComponent,
+  CompanydetailComponent,
+  CompanyFormComponent,
+  DepartmentComponent,
+  AddDepartmentComponent,
+  GroupDetailComponent,
+  AddGroupComponent,
+  RoomDetailComponent,
+  AddRoomComponent,
+  DashboardComponent,
+  UtilityDetailComponent,
+  AddUtilityComponent,
+  EquipmentDetailComponent,
+  AddEquipmentComponent,
+  PackageComponent,
+  AddPackageComponent,
+  HospitalClassificationComponent,
+  AddClassificationComponent,
+  CurrencyComponent,
+  AddCurrencyComponent,
+  ProjectTemplateComponent,
+  ProjectNewtemplateComponent,
   DeletedialogComponent,
   ReportsComponent,
   ProjectTemplateComponent,
-    ProjectNewtemplateComponent,
-    ProjectComponent,
-    AddProjectComponent,
-    EquipmentAllocationComponent,
-    EquipmentSummaryComponent,
-    DepartmentTransactionComponent,
-    PastTransactionComponent,
-    ProjectEditComponent,
-]
+  ProjectNewtemplateComponent,
+  ProjectComponent,
+  AddProjectComponent,
+  EquipmentAllocationComponent,
+  EquipmentSummaryComponent,
+  DepartmentTransactionComponent,
+  PastTransactionComponent,
+  ProjectEditComponent,
+];
