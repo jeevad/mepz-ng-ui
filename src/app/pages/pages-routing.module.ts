@@ -113,8 +113,17 @@ const routes: Routes = [
         path: 'equipment-summary/:projectId',
         component: EquipmentSummaryComponent,
       },
+      {
+        path: 'past-transaction/:projectId',
+        component: PastTransactionComponent,
+      },
+      {
+        path: 'past-transaction/:projectId/transaction-view',
+        component: PastTransactionComponent,
+      },
     ],
   },
+
 
   { path: 'equipment-allocation', component: EquipmentAllocationComponent },
   { path: 'equipment-summary', component: EquipmentSummaryComponent },
@@ -131,6 +140,7 @@ const routes: Routes = [
     path: 'project/:projectId/past-transaction/projectId/transaction-view',
     component: PastTransactionComponent,
   },
+
 
   { path: 'reports', component: ReportsComponent },
   { path: 'specification', component: EquipmentSpecificationComponent },
