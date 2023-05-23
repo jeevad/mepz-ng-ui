@@ -67,7 +67,7 @@ export class ProjectEditComponent {
         this.department
           .SaveData(this.addDepartment.value)
           .subscribe((result) => {
-            this.router.navigate(['/project']);
+            this.router.navigate(['pages/projects']);
           });
       }
     } else if (this.isEdit) {
@@ -77,7 +77,7 @@ export class ProjectEditComponent {
           .update(this.deptid, this.addDepartment.value)
           .subscribe((data) => {
             this.isEdit = false;
-            this.router.navigate(['/project']);
+            this.router.navigate(['pages/projects']);
           });
       }
     }
