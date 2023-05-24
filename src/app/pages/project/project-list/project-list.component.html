@@ -36,8 +36,8 @@
                 <tr role="row" class="odd" *ngFor="let item of departmentData; let i=index;">
                   <td>{{ skip + i+1 }}</td>
                   <td>{{item.code}}</td>
-                  <td class="sorting_1">{{item.projectname}}</td>
-                  <td>{{item.projecttype}}</td>
+                  <td class="sorting_1">{{item.name}}</td>
+                  <td>{{item.type}}</td>
                   <td>{{item.company}}</td>
                   <td class="projects-button">
                     <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal2">

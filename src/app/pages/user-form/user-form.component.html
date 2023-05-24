@@ -13,17 +13,17 @@
                 <div class="col-md-6">
                   <label for="inputFirstName" class="form-label">Username</label>
                   <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Username"
-                    formControlName="username" autocomplete="off"
-                    [ngClass]="{'is-invalid': submitted && userForm.controls['username'].errors}" />
-                  <div class="text-danger" *ngIf="submitted && userForm.controls['username'].errors?.['required']">
+                    formControlName="userName" autocomplete="off"
+                    [ngClass]="{'is-invalid': submitted && userForm.controls['userName'].errors}" />
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['userName'].errors?.['required']">
                     Username is required</div>
                 </div>
                 <div class="col-md-6">
                   <label for="inputLastName" class="form-label">Staff ID</label>
                   <input type="text" class="form-control" id="inputLastName" placeholder="Enter Staff ID"
-                    formControlName="staffid" autocomplete="off"
-                    [ngClass]="{'is-invalid': submitted && userForm.controls['staffid'].errors}" />
-                  <div class="text-danger" *ngIf="submitted && userForm.controls['staffid'].errors?.['required']">
+                    formControlName="staffId" autocomplete="off"
+                    [ngClass]="{'is-invalid': submitted && userForm.controls['staffId'].errors}" />
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['staffId'].errors?.['required']">
                     Staff ID is required</div>
                 </div>
                 <!-- <div class="col-md-6">

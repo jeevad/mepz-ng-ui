@@ -23,9 +23,9 @@
                 <div class="col-md-6">
                   <label for="inputLastName" class="form-label">No of Beds</label>
                   <input type="text" class="form-control" id="inputLastName" placeholder="Enter No of Beds"
-                    formControlName="noofbeds"
-                    [ngClass]="{'is-invalid': submitted && addDepartment.controls['noofbeds'].errors}">
-                  <div class="text-danger" *ngIf="submitted && addDepartment.controls['noofbeds'].errors?.['required']">
+                    formControlName="noOfBeds"
+                    [ngClass]="{'is-invalid': submitted && addDepartment.controls['noOfBeds'].errors}">
+                  <div class="text-danger" *ngIf="submitted && addDepartment.controls['noOfBeds'].errors?.['required']">
                     No of Beds is required</div>
                 </div>
                 <div class="col-md-6">
@@ -37,8 +37,8 @@
                 </div>
                 <div class="col-md-6">
                   <label for="inputState" class="form-label">Project Type</label>
-                  <select id="inputState" class="form-select" formControlName="projecttype">
-                    <option *ngFor="let projecttype of projecttypes" [value]="projecttype.value">{{ projecttype.label
+                  <select id="inputState" class="form-select" formControlName="type">
+                    <option *ngFor="let type of projecttypes" [value]="type.value">{{ type.label
                       }}</option>
                   </select>
                 </div>

@@ -45,8 +45,8 @@ export class AddEquipmentComponent implements OnInit {
       }
     });
     this.addEquipment = this.formBuilder.group({
-      equipmentCode: ['', Validators.required],
-      equipmentName: ['', Validators.required],
+      code: ['', Validators.required],
+      name: ['', Validators.required],
       cost: ['', Validators.required],
       markUp: ['', Validators.required],
       heatDissipation: ['', Validators.required],

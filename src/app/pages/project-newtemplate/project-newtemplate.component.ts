@@ -45,10 +45,10 @@ export class ProjectNewtemplateComponent {
       })
     this.addDepartment = this.formBuilder.group({
       name: [''],
-      noofbeds: [''],
+      noOfBeds: [''],
       remarks: [''],
       classification: [''],
-      projecttype: [''],
+      type: [''],
     });
   }
 

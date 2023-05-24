@@ -18,21 +18,21 @@
               <div class="col-md-6 mt-0">
                 <label for="inputFirstName" class="form-label">Equipment Code</label>
                 <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Equipment code"
-                  formControlName="equipmentCode"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.controls['equipmentCode'].errors}">
+                  formControlName="code"
+                  [ngClass]="{'is-invalid': submitted && addEquipment.controls['code'].errors}">
 
                 <div class="text-danger"
-                  *ngIf="submitted && addEquipment.controls['equipmentCode'].errors && addEquipment.controls['equipmentCode'].errors?.['required']">
+                  *ngIf="submitted && addEquipment.controls['code'].errors && addEquipment.controls['code'].errors?.['required']">
                   Equipment code is required</div>
               </div>
               <div class="col-md-6 mt-3">
                 <label for="inputLastName" class="form-label">Equipment Name</label>
                 <input type="text" class="form-control" id="inputLastName" placeholder="Enter Equipment name"
-                  formControlName="equipmentName"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.controls['equipmentName'].errors}">
+                  formControlName="name"
+                  [ngClass]="{'is-invalid': submitted && addEquipment.controls['name'].errors}">
 
                 <div class="text-danger"
-                  *ngIf="submitted && addEquipment.controls['equipmentName'].errors && addEquipment.controls['equipmentName'].errors?.['required']">
+                  *ngIf="submitted && addEquipment.controls['name'].errors && addEquipment.controls['name'].errors?.['required']">
                   Equipment name is required</div>
               </div>
               <div class="col-md-6 mt-3">

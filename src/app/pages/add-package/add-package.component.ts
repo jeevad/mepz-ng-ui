@@ -40,8 +40,8 @@ export class AddPackageComponent implements OnInit {
       }
     });
     this.addPackage = this.formBuilder.group({
-      packagecode: ['', Validators.required],
-      packagename: ['', Validators.required],
+      code: ['', Validators.required],
+      name: ['', Validators.required],
       active: [''],
     });
   }

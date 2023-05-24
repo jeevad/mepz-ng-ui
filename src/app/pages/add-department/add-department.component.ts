@@ -48,8 +48,8 @@ export class AddDepartmentComponent implements OnInit {
       }
     });
     this.addDepartment = this.formBuilder.group({
-      departmentcode: ['', Validators.required],
-      departmentname: ['', Validators.required],
+      code: ['', Validators.required],
+      name: ['', Validators.required],
       active: [''],
     });
   }

@@ -40,8 +40,8 @@ export class AddUtilityComponent implements OnInit {
       }
     });
     this.addUtility = this.formBuilder.group({
-      utilitycode: ['', Validators.required],
-      utilityname: ['', Validators.required],
+      code: ['', Validators.required],
+      name: ['', Validators.required],
     });
   }
   SaveData() {

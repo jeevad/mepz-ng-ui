@@ -13,19 +13,19 @@
               <div class="col-md-6">
                 <label for="inputFirstName" class="form-label">Utility Code</label>
                 <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Utility code"
-                  formControlName="utilitycode" autocomplete="off"
-                  [ngClass]="{'is-invalid':submitted && addUtility.controls['utilitycode'].errors}" />
+                  formControlName="code" autocomplete="off"
+                  [ngClass]="{'is-invalid':submitted && addUtility.controls['code'].errors}" />
                 <div class="text-danger"
-                  *ngIf="submitted && addUtility.controls['utilitycode'].errors && addUtility.controls['utilitycode'].errors?.['required']">
+                  *ngIf="submitted && addUtility.controls['code'].errors && addUtility.controls['code'].errors?.['required']">
                   Utility code is required</div>
               </div>
               <div class="col-md-6 mt-3">
                 <label for="inputLastName" class="form-label">Utility Name</label>
                 <input type="text" class="form-control" id="inputLastName" placeholder="Enter Utility name"
-                  formControlName="utilityname" autocomplete="off"
-                  [ngClass]="{'is-invalid':submitted && addUtility.controls['utilitycode'].errors}">
+                  formControlName="name" autocomplete="off"
+                  [ngClass]="{'is-invalid':submitted && addUtility.controls['code'].errors}">
                 <div class="text-danger"
-                  *ngIf="submitted && addUtility.controls['utilityname'].errors && addUtility.controls['utilityname'].errors?.['required']">
+                  *ngIf="submitted && addUtility.controls['name'].errors && addUtility.controls['name'].errors?.['required']">
                   Utility name is required</div>
               </div>
               <div class="col-md-6 text-center mt-3">

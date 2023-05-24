@@ -31,7 +31,7 @@ export class AdminGroupFormComponent implements OnInit {
   ngOnInit(): void {}
 
   addgroup = new FormGroup({
-    groupname: new FormControl('', Validators.required),
+    groupName: new FormControl('', Validators.required),
   });
 
   SaveGroupData() {
@@ -54,7 +54,7 @@ export class AdminGroupFormComponent implements OnInit {
   }
   Cleardata() {
     this.addgroup = new FormGroup({
-      groupname: new FormControl(''),
+      groupName: new FormControl(''),
     });
   }
 
@@ -63,7 +63,7 @@ export class AdminGroupFormComponent implements OnInit {
       this.editdata = data;
 
       this.addgroup = new FormGroup({
-        groupname: new FormControl(this.editdata.groupname),
+        groupName: new FormControl(this.editdata.groupName),
       });
     });
   }

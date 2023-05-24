@@ -46,17 +46,17 @@ export class ProjectEditComponent {
     });
     this.addDepartment = this.formBuilder.group({
       code: ['', Validators.required],
-      projectname: ['', Validators.required],
-      fullProjectName: ['', Validators.required],
+      name: ['', Validators.required],
+      fullName: ['', Validators.required],
       clientOwner: ['', Validators.required],
       contractNo: ['', Validators.required],
       classification: ['', Validators.required],
-      projecttype: ['', Validators.required],
+      type: ['', Validators.required],
       company: ['', Validators.required],
       signature1: ['', Validators.required],
       signature2: ['', Validators.required],
       remarks: ['', Validators.required],
-      noofBeds: ['', Validators.required],
+      noOfBeds: ['', Validators.required],
     });
   }
 

@@ -16,19 +16,19 @@
               <div class="col-md-6 mt-0">
                 <label for="inputFirstName" class="form-label">Group Code</label>
                 <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Group code"
-                  formControlName="groupcode" autocomplete="off"
-                  [ngClass]="{'is-invalid':submitted && addGroups.controls['groupcode'].errors}" />
+                  formControlName="code" autocomplete="off"
+                  [ngClass]="{'is-invalid':submitted && addGroups.controls['code'].errors}" />
                 <div class="text-danger"
-                  *ngIf="submitted && addGroups.controls['groupcode'].errors && addGroups.controls['groupcode'].errors?.['required']">
+                  *ngIf="submitted && addGroups.controls['code'].errors && addGroups.controls['code'].errors?.['required']">
                   Group code is required</div>
               </div>
               <div class="col-md-6 mt-3">
                 <label for="inputLastName" class="form-label">Group Name</label>
                 <input type="text" class="form-control" id="inputLastName" placeholder="Enter Group name"
-                  formControlName="groupname" autocomplete="o
-                                    " [ngClass]="{'is-invalid':submitted && addGroups.controls['groupname'].errors}" />
+                  formControlName="groupName" autocomplete="o
+                                    " [ngClass]="{'is-invalid':submitted && addGroups.controls['groupName'].errors}" />
                 <div class="text-danger"
-                  *ngIf="submitted && addGroups.controls['groupname'].errors && addGroups.controls['groupname'].errors?.['required']">
+                  *ngIf="submitted && addGroups.controls['groupName'].errors && addGroups.controls['groupName'].errors?.['required']">
                   Group name is required</div>
               </div>
               <div class="col-md-6 text-center mt-3">

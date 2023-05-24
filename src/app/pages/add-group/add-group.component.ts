@@ -43,8 +43,8 @@ export class AddGroupComponent implements OnInit {
       }
     });
     this.addGroups = this.formBuilder.group({
-      groupcode: ['', Validators.required],
-      groupname: ['', Validators.required],
+      code: ['', Validators.required],
+      groupName: ['', Validators.required],
     });
   }
   SaveData() {

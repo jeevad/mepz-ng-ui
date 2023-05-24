@@ -22,20 +22,20 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">Project Name</label>
-                <input type="text" class="form-control" name="projectname" formControlName="projectname"
+                <input type="text" class="form-control" name="name" formControlName="name"
                   autocomplete="off"
-                  [ngClass]="{'is-invalid': addDepartment.controls['projectname'].errors && addDepartment.controls['projectname'].touched}">
+                  [ngClass]="{'is-invalid': addDepartment.controls['name'].errors && addDepartment.controls['name'].touched}">
                 <div class="text-danger"
-                  *ngIf="addDepartment.controls['projectname'].errors?.['required'] && addDepartment.controls['projectname'].touched">
+                  *ngIf="addDepartment.controls['name'].errors?.['required'] && addDepartment.controls['name'].touched">
                   Project name is required</div>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Full Project Name</label>
-                <input type="text" class="form-control" name="fullProjectName" formControlName="fullProjectName"
+                <input type="text" class="form-control" name="fullName" formControlName="fullName"
                   autocomplete="off"
-                  [ngClass]="{'is-invalid': addDepartment.controls['fullProjectName'].errors && addDepartment.controls['fullProjectName'].touched}">
+                  [ngClass]="{'is-invalid': addDepartment.controls['fullName'].errors && addDepartment.controls['fullName'].touched}">
                 <div class="text-danger"
-                  *ngIf="addDepartment.controls['fullProjectName'].errors?.['required'] && addDepartment.controls['fullProjectName'].touched">
+                  *ngIf="addDepartment.controls['fullName'].errors?.['required'] && addDepartment.controls['fullName'].touched">
                   Full project name is required</div>
               </div>
               <div class="col-md-6">
@@ -58,8 +58,8 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">No. of Beds</label>
-                <input type="text" class="form-control" name="noofBeds" formControlName="noofBeds" autocomplete="off"
-                  [ngClass]="{'is-invalid': addDepartment.controls['noofBeds'].errors && addDepartment.controls['noofBeds'].touched}">
+                <input type="text" class="form-control" name="noOfBeds" formControlName="noOfBeds" autocomplete="off"
+                  [ngClass]="{'is-invalid': addDepartment.controls['noOfBeds'].errors && addDepartment.controls['noOfBeds'].touched}">
                 <div class="invalid-feedback">
                   Please enter a valid number of beds.
                 </div>
@@ -75,9 +75,9 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">Project Type</label>
-                <input type="text" class="form-control" name="projecttype" formControlName="projecttype"
+                <input type="text" class="form-control" name="type" formControlName="type"
                   autocomplete="off"
-                  [ngClass]="{'is-invalid': addDepartment.controls['projecttype'].errors && addDepartment.controls['projecttype'].touched}">
+                  [ngClass]="{'is-invalid': addDepartment.controls['type'].errors && addDepartment.controls['type'].touched}">
                 <div class="invalid-feedback">
                   Please enter a valid project type.
                 </div>

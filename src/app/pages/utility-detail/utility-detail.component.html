@@ -24,8 +24,8 @@
                   <tbody>
                     <tr *ngFor="let item of utilityData; let i=index">
                       <td>{{ skip + i+1 }}</td>
-                      <td>{{item.utilitycode}}</td>
-                      <td>{{item.utilityname}}</td>
+                      <td>{{item.code}}</td>
+                      <td>{{item.name}}</td>
                       <td>
                         <div class="d-flex order-actions">
                           <a routerLink="/pages/add-utility/{{item._id}}" title="Edit" class="text-success me-2"><i

@@ -16,16 +16,16 @@
                           <form class="" [formGroup] = "addPackage" (ngSubmit)="SaveData()">
                               <div class="col-md-6">
                                     <label for="inputCode" class="form-label">Package Code</label>
-                                    <input type="text" class="form-control" id="inputCode" placeholder="Enter Package code" formControlName="packagecode" autocomplete="off"
-                                    [ngClass]="{'is-invalid':submitted && addPackage.controls['packagecode'].errors}" />
-                                    <div class="text-danger" *ngIf="submitted && addPackage.controls['packagecode'].errors && addPackage.controls['packagecode'].errors?.['required']">Package code is required</div>
+                                    <input type="text" class="form-control" id="inputCode" placeholder="Enter Package code" formControlName="code" autocomplete="off"
+                                    [ngClass]="{'is-invalid':submitted && addPackage.controls['code'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addPackage.controls['code'].errors && addPackage.controls['code'].errors?.['required']">Package code is required</div>
 
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="inputName" class="form-label">Package Name</label>
-                                    <input type="text" class="form-control" id="inputName" placeholder="Enter Package name" formControlName="packagename" autocomplete="off"
-                                    [ngClass]="{'is-invalid':submitted && addPackage.controls['packagename'].errors}" />
-                                    <div class="text-danger" *ngIf="submitted && addPackage.controls['packagename'].errors && addPackage.controls['packagename'].errors?.['required']">Package name is required</div>
+                                    <input type="text" class="form-control" id="inputName" placeholder="Enter Package name" formControlName="name" autocomplete="off"
+                                    [ngClass]="{'is-invalid':submitted && addPackage.controls['name'].errors}" />
+                                    <div class="text-danger" *ngIf="submitted && addPackage.controls['name'].errors && addPackage.controls['name'].errors?.['required']">Package name is required</div>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="inputState" class="form-label">Active</label>
