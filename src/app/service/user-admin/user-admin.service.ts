@@ -7,14 +7,16 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UserAdminService {
-  groupName: string[] = [];
- groupNames: string[] = [];
+  name: string[] = [];
+  groupNames: string[] = [];
   constructor(private http: HttpClient) {}
 
   fetchGroupNames() {
-    return this.http.get(environment.apiUrl + '/admingroup').pipe(
-      map((response: any) => response.results.map((item: any) => item.groupName))
-    );
+    return this.http
+      .get(environment.apiUrl + '/admingroup')
+      .pipe(
+        map((response: any) => response.results.map((item: any) => item.name))
+      );
   }
 
   LoadFormData(skip: number, limit: number) {

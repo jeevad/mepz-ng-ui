@@ -49,7 +49,7 @@ export class AddUtilityComponent implements OnInit {
       this.submitted = true;
       if (this.addUtility.valid) {
         this.utility.SaveData(this.addUtility.value).subscribe((result) => {
-          this.router.navigate(['/utility-detail']);
+          this.router.navigate(['pages/utility-detail']);
         });
       }
     } else if (this.isEdit) {
@@ -59,7 +59,7 @@ export class AddUtilityComponent implements OnInit {
           .update(this.utilityid, this.addUtility.value)
           .subscribe((data) => {
             this.isEdit = false;
-            this.router.navigate(['/utility-detail']);
+            this.router.navigate(['pages/utility-detail']);
           });
       }
     }

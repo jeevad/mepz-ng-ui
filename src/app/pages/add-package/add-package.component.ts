@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class AddPackageComponent implements OnInit {
   packagedata: any;
-  active: any = ['Active', 'Inactive'];
+  active: boolean = false; 
   isEdit: boolean = false;
   packageid: any;
   submitted: boolean = false;
@@ -50,7 +50,7 @@ export class AddPackageComponent implements OnInit {
       this.submitted = true;
       if (this.addPackage.valid) {
         this.service.SaveData(this.addPackage.value).subscribe((result) => {
-          this.router.navigate(['/package']);
+          this.router.navigate(['pages/package']);
         });
       }
     } else if (this.isEdit) {
@@ -60,13 +60,14 @@ export class AddPackageComponent implements OnInit {
           .update(this.packageid, this.addPackage.value)
           .subscribe((data) => {
             this.isEdit = false;
-            this.router.navigate(['/package']);
+            this.router.navigate(['pages/package']);
           });
       }
     }
   }
 
   change(e: any) {
-    this.active = e.target.value;
+    this.active = e.target.value === 'Active';
   }
+
 }

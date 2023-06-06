@@ -33,10 +33,10 @@
                       <td>{{ item.type }}</td>
                       <td>
                         <div class="d-flex order-actions">
+                          <a routerLink="/pages/projects-newtemplate/{{ item._id }}" class="text-success me-2"
+                          data-bs-toggle="tooltip" title="View/Edit"><i class="bx bxs-edit"></i></a>
                           <a routerLink="/pages/projects/add" class="text-primary me-2" data-bs-toggle="tooltip"
                             title="Create Project"><i class="fal fa-file-plus"></i></a>
-                          <a routerLink="/pages/projects-newtemplate/{{ item._id }}" class="text-success me-2"
-                            data-bs-toggle="tooltip" title="View/Edit"><i class="bx bxs-edit"></i></a>
                           <a href="javascript:;" class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"
                             (click)="delete(item._id)"><i class="bx bxs-trash"></i></a>
                         </div>

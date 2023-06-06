@@ -16,7 +16,7 @@ export class AdminGroupComponent implements OnInit {
   skip = 0;
   count: number = 0;
   groupdata: any[] = [];
-  groupName: any;
+  name: any;
   constructor(private group: AdminGroupService, private http: HttpClient) {
     this.LoadGroupData();
   }
@@ -26,8 +26,8 @@ export class AdminGroupComponent implements OnInit {
     this.group.LoadGroupData(this.skip, this.limit).subscribe((data: any) => {
       this.groupdata = data.results;
       this.count = data.count;
-      this.groupName = data.results.map((item: any) => item.groupName);
-      this.userFormComponent.updategroupname(this.groupName);
+      this.name = data.results.map((item: any) => item.name);
+      this.userFormComponent.updategroupname(this.name);
     });
   }
 

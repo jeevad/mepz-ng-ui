@@ -40,9 +40,9 @@
 
               <div class="col-6 mt-3">
                 <label for="inputState" class="form-label">Active</label>
-                <select class="custom-select form-select" class="form-control form-select" (change)="change($event)"
-                  formControlName="active">
-                  <option *ngFor="let option of active" [value]="option">{{ option }}</option>
+                <select class="custom-select form-select form-control" (change)="change($event)" formControlName="active">
+                  <option [ngValue]="true">Active</option>
+                  <option [ngValue]="false">Inactive</option>
                 </select>
               </div>
 

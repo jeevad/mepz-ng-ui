@@ -14,13 +14,25 @@ export class RoomDetailComponent implements OnInit {
   skip = 0;
   count: number = 0;
   roomData: any[] = [];
+
   constructor(private room: RoomService, private http: HttpClient) {
     this.Load();
   }
 
   ngOnInit() {
     this.Load();
+    this.loadRoomData();
   }
+
+  // Load room data from the server
+  loadRoomData(): void {
+    this.room.Load(0, 10).subscribe((data: any) => {
+      this.roomData = data.results;
+      console.log(data.results);
+    });
+  }
+
+  // Load rooms based on pagination settings
   Load() {
     this.skip = this.limit * (this.page - 1);
     this.room.Load(this.skip, this.limit).subscribe((data: any) => {
@@ -28,8 +40,10 @@ export class RoomDetailComponent implements OnInit {
       this.count = data.count;
     });
   }
+
+  // Delete room by ID
   delete(id: any) {
-    if (confirm('delete?')) {
+    if (confirm('Delete?')) {
       this.room.Removedata(id).subscribe((data) => {
         this.Load();
       });

@@ -7,11 +7,14 @@ import { environment } from '../../../environments/environment';
 })
 export class EquipmentService {
   constructor(private http: HttpClient) {}
+
+  //use this load method to list Equipment data in sidebar
   Load(skip: number, limit: number) {
     return this.http.get(environment.apiUrl + '/equipment', {
       params: { skip, limit },
     });
   }
+
   SaveData(equipmentdata: any) {
     return this.http.post(environment.apiUrl + '/equipment', equipmentdata);
   }

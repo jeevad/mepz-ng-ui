@@ -13,14 +13,24 @@ export class EquipmentDetailComponent implements OnInit {
   limit = 10;
   skip = 0;
   count: number = 0;
-  equipmentdata: any[] = [];
+  equipmentdata: any[] = []; //Equipment data list in sidebar
 
-  constructor(private department: EquipmentService, private http: HttpClient) {
+  constructor(private department: EquipmentService, private equipmentService: EquipmentService, private http: HttpClient) {
     this.Load();
   }
   ngOnInit() {
     this.Load();
+    this.loadEquipmentData() //Equipment data list in sidebar
   }
+
+    // Load equipmentdata from the server | List in Sidebar
+    loadEquipmentData(): void {
+      this.equipmentService.Load(0, 10).subscribe((data: any) => {
+        this.equipmentdata = data.results;
+      });
+    }
+
+
   Load() {
     this.skip = this.limit * (this.page - 1);
     this.department.Load(this.skip, this.limit).subscribe((data: any) => {

@@ -19,7 +19,7 @@ export class UserFormComponent implements OnInit {
   editdata: any;
   submitted: boolean = false;
   userForm!: FormGroup;
-  groupName: string[] = [];
+  name: string[] = [];
 
   constructor(
     private group: UserAdminService,
@@ -62,7 +62,7 @@ export class UserFormComponent implements OnInit {
       password: ['', Validators.required],
       reEnterPassword: ['', Validators.required],
     }, {validator: this.passwordMatchValidator});
-    this.groupName = this.group.groupName;
+    this.name = this.group.name;
 }
 
 admin1 = [
@@ -76,7 +76,7 @@ active1 = [
 ];
 
   updategroupname(names: string[]) {
-    this.groupName = names;
+    this.name = names;
   }
 
   SaveUserData() {
@@ -118,7 +118,7 @@ active1 = [
 
 Cleardata() {
   this.userForm = new FormGroup({
-    groupName: new FormControl(''),
+    name: new FormControl(''),
   });
 }
 
@@ -127,7 +127,7 @@ Updatedata(Id: any) {
     this.editdata = data;
 
     this.userForm = new FormGroup({
-      groupName: new FormControl(this.editdata.groupName),
+      name: new FormControl(this.editdata.name),
     });
   });
 }

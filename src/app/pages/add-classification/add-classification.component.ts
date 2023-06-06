@@ -10,7 +10,7 @@ import { ClassificationService } from 'src/app/service/classification/classifica
 })
 export class AddClassificationComponent implements OnInit {
   classificationdata: any;
-  active: any = ['Active', 'Inactive'];
+  active: boolean = false;
   isEdit: boolean = false;
   deptid: any;
   editdata: any;
@@ -48,7 +48,7 @@ export class AddClassificationComponent implements OnInit {
         this.service
           .SaveData(this.addClassification.value)
           .subscribe((result) => {
-            this.router.navigate(['/hospital-data']);
+            this.router.navigate(['pages/hospital-data']);
           });
       }
     } else if (this.isEdit) {
@@ -58,13 +58,13 @@ export class AddClassificationComponent implements OnInit {
           .update(this.deptid, this.addClassification.value)
           .subscribe((classificationdata) => {
             this.isEdit = false;
-            this.router.navigate(['/hospital-data']);
+            this.router.navigate(['pages/hospital-data']);
           });
       }
     }
   }
 
   change(e: any) {
-    this.active = e.target.value;
+    this.active = e.target.value === 'Active';
   }
 }

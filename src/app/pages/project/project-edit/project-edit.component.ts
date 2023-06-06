@@ -53,10 +53,16 @@ export class ProjectEditComponent {
       classification: ['', Validators.required],
       type: ['', Validators.required],
       company: ['', Validators.required],
-      signature1: ['', Validators.required],
-      signature2: ['', Validators.required],
-      remarks: ['', Validators.required],
-      noOfBeds: ['', Validators.required],
+      signature1:  [''],
+      signature2: [''],
+      remarks: [''],
+      noOfBeds: [''],
+      addr1: [''],
+      addr2: [''],
+      city: [''],
+      postal: [''],
+      state: [''],
+      country: [''],
     });
   }
 

@@ -11,11 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { ProjectListComponent } from './project/project-list/project-list.component';
+import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
 
 @NgModule({
   declarations: [
     routingcomponents,
     ProjectListComponent,
+    ProjectTemplateEquipmentComponent,
     // EquipmentSpecificationComponent,
     // EquipmentBrandComponent,
     // ReportsByPackageComponent,
@@ -25,6 +27,7 @@ import { ProjectListComponent } from './project/project-list/project-list.compon
     // TransactionViewComponent,
   ],
   imports: [
+
     CommonModule,
     NgbModule,
     FormsModule,

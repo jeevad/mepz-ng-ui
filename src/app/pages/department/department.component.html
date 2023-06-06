@@ -27,7 +27,7 @@
                     <td>{{ skip + i+1 }}</td>
                     <td>{{item.code}}</td>
                     <td>{{item.name | uppercase}}</td>
-                    <td>{{item.active}}</td>
+                    <td>{{ item.active ? 'Active' : 'Inactive' }}</td>
                     <td>
                       <div class="d-flex order-actions">
                         <a routerLink="/pages/department-form/{{item._id}}" title="Edit" class="text-success me-2"><i

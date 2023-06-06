@@ -13,10 +13,13 @@ export class PackageComponent implements OnInit {
   skip = 0;
   count: number = 0;
   packagedata: any[] = [];
+
   constructor(private http: HttpClient, private service: PackageService) {
     this.Find();
   }
+
   ngOnInit() {}
+
   Find() {
     this.skip = this.limit * (this.page - 1);
     this.service.Find(this.skip, this.limit).subscribe((data: any) => {
@@ -24,6 +27,7 @@ export class PackageComponent implements OnInit {
       this.count = data.count;
     });
   }
+  
   delete(id: any) {
     if (confirm('delete?')) {
       this.service.Removedata(id).subscribe((data) => {

@@ -31,7 +31,7 @@ export class AdminGroupFormComponent implements OnInit {
   ngOnInit(): void {}
 
   addgroup = new FormGroup({
-    groupName: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
   });
 
   SaveGroupData() {
@@ -41,12 +41,12 @@ export class AdminGroupFormComponent implements OnInit {
           this.message = 'data saves';
           this.messageclass = 'success';
           this.Cleardata();
-          this.router.navigate(['/admin-group']); // router redirect
+          this.router.navigate(['pages/admin-group']);
         }
       });
     } else if (this.isEdit) {
       this.updateRecord(this.groupid, this.editdata);
-      this.router.navigate(['/admin-group']);
+      this.router.navigate(['pages/admin-group']);
     } else {
       this.message = 'please enter valid data';
       this.messageclass = 'error';
@@ -54,7 +54,7 @@ export class AdminGroupFormComponent implements OnInit {
   }
   Cleardata() {
     this.addgroup = new FormGroup({
-      groupName: new FormControl(''),
+      name: new FormControl(''),
     });
   }
 
@@ -63,7 +63,7 @@ export class AdminGroupFormComponent implements OnInit {
       this.editdata = data;
 
       this.addgroup = new FormGroup({
-        groupName: new FormControl(this.editdata.groupName),
+        name: new FormControl(this.editdata.name),
       });
     });
   }

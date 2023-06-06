@@ -44,6 +44,7 @@ import { DeletedialogComponent } from './deletedialog/deletedialog.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { ProjectEditComponent } from './project/project-edit/project-edit.component';
 import { AddProjectComponent } from './project/add-project/add-project.component';
+import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -92,6 +93,7 @@ const routes: Routes = [
   { path: 'reports-by-package', component: ReportsByPackageComponent },
   { path: 'template-department', component: TemplateDepartmentComponent },
   { path: 'edit-admin-user', component: EditAdminUserComponent },
+
   {
     path: 'projects',
     component: ProjectComponent,
@@ -105,11 +107,17 @@ const routes: Routes = [
       { path: ':projectId/past-transaction', component: PastTransactionComponent},
       { path: ':projectId/department-transaction', component: DepartmentTransactionComponent},
       { path: 'equipment-allocation', component: EquipmentAllocationComponent },
+      { path: 'project-template-equipment-allocation', component: ProjectTemplateEquipmentComponent },
+      { path: ':projectId/project-template-equipment-allocation', component: ProjectTemplateEquipmentComponent },
       { path: ':projectId/equipment-allocation', component: EquipmentAllocationComponent },
       { path: 'transaction-view', component: TransactionViewComponent },
       { path: 'department-transaction', component: DepartmentTransactionComponent},
       { path: 'department-transaction/view-rooms', component: ViewRoomsComponent },
-  ],
+      { path: ':projectId/department-transaction/view-rooms', component: ViewRoomsComponent },
+      { path: ':projectId/department-transaction/:projectIdNew/view-rooms', component: ViewRoomsComponent },
+      { path: '64735b04ef112ca4b26872ca/department-transaction/64735c1def112ca4b268730e/view-rooms', component: ViewRoomsComponent },
+      { path: '64735b04ef112ca4b26872ca/department-transaction/64735c1def112ca4b268730e/view-rooms/647443dccdce2fe2106eefc3', component: ViewRoomsComponent },
+    ],
   },
 ];
 
@@ -157,5 +165,7 @@ export const routingcomponents = [
   EquipmentAllocationComponent,
   EquipmentSummaryComponent,
   DepartmentTransactionComponent,
-  PastTransactionComponent
+  PastTransactionComponent,
+  ViewRoomsComponent,
+  ProjectTemplateEquipmentComponent
 ];

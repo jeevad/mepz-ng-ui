@@ -18,9 +18,11 @@ export class CurrencyComponent implements OnInit {
   constructor(private service: CurrencyService, private http: HttpClient) {
     this.find();
   }
+
   ngOnInit() {
     this.find();
   }
+
   find() {
     this.skip = this.limit * (this.page - 1);
     this.service.Find(this.skip, this.limit).subscribe((data: any) => {

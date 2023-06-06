@@ -1,65 +1,172 @@
-
-<div class="full-width">
+<!-- <div class="full-width"> -->
   <section class="section">
     <div class="container">
-      <div class="row">
+      <div class="row page-content">
         <div class="col-md-12">
+          <div class="d-lg-flex align-items-center mb-4 gap-3">
+            <h4 class="mb-0 text-primary">Template - Department & Room Information </h4>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <table id="table-info" class="table table-condensed">
+            <tbody>
+              <tr>
+                <td>
+                  <h6><strong>Name: </strong>NATIONAL CENTRE FOR DISEASE CONTROL</h6>
+                </td>
+                <td colspan="2"><strong> No of Beds: </strong>100</td>
+                <td><strong>Classification: </strong>SPECIALIZED HOSPITAL</td>
+                <td><strong>Project Type: </strong>GOVERNMENT
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div>
+            <div class="float-start d-lg-flex gap-3">
+              <a class="btn btn-primary" href="/pages/project-template">Template List</a>
+              <a class="btn btn btn-secondary" routerLink="/pages/projects/equipment-allocation"> Department and Room Info
+              </a>
+              <a class="btn btn btn-success" routerLink="/pages/projects/project-template-equipment-allocation"> Equipment Allocation </a>
 
-          <div class="card border-top border-0 border-4 border-primary">
-            <div class="card-body p-5">
-              <div class="card-title d-flex align-items-center">
-                <h5 class="mb-0 text-primary">New Template</h5>
-              </div>
-
-              <form [formGroup]="addDepartment" (ngSubmit)="SaveData()">
-                <div class="col-md-6 mt-0">
-                  <label for="inputFirstName" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Name"
-                    formControlName="name" autocomplete="off"
-                    [ngClass]="{'is-invalid': submitted && addDepartment.controls['name'].errors}">
-                  <div class="text-danger" *ngIf="submitted && addDepartment.controls['name'].errors?.['required']">Name
-                    is required</div>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputLastName" class="form-label">No of Beds</label>
-                  <input type="text" class="form-control" id="inputLastName" placeholder="Enter No of Beds"
-                    formControlName="noOfBeds"
-                    [ngClass]="{'is-invalid': submitted && addDepartment.controls['noOfBeds'].errors}">
-                  <div class="text-danger" *ngIf="submitted && addDepartment.controls['noOfBeds'].errors?.['required']">
-                    No of Beds is required</div>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputState" class="form-label">Classification</label>
-                  <select id="inputState" class="form-select" formControlName="classification">
-                    <option *ngFor="let classification of classifications" [value]="classification.value">{{
-                      classification.label }}</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputState" class="form-label">Project Type</label>
-                  <select id="inputState" class="form-select" formControlName="type">
-                    <option *ngFor="let type of projecttypes" [value]="type.value">{{ type.label
-                      }}</option>
-                  </select>
-                </div>
-                <div class="col-md-12">
-                  <label for="inputAddress" class="form-label">Remarks</label>
-                  <textarea class="form-control" id="inputAddress" placeholder="Remarks..." formControlName="remarks"
-                    rows="2"
-                    [ngClass]="{'is-invalid': submitted && addDepartment.controls['remarks'].errors}"></textarea>
-                  <div class="text-danger" *ngIf="submitted && addDepartment.controls['remarks'].errors?.['required']">
-                    Remarks is required</div>
-                </div>
-                <div class="col-md-6 text-center mt-3">
-                  <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
-                  <a routerLink="/pages/project-template"><i class="material-icon">Cancel</i></a>
-                </div>
-              </form>
-
+            </div>
+            <div class="float-end d-lg-flex gap-3">
+              <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i
+                  class='bx bxs-copy'></i></button>
+              <!-- <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE"><i
+                    class='bx bxs-trash'></i>Delete Department</button> -->
+              <button type="button" class="btn btn btn-danger" id="delete_eq" title="DELETE"><i class=''></i>Delete
+                Department</button>
+              <button type="button" class="btn btn btn-danger" id="delete_eq" title="DELETE"><i class=''></i>Delete
+                Room</button>
             </div>
           </div>
         </div>
+
+        <!-- Department -->
+        <div class="col-md-6 mt-4">
+          <div class="card p-3">
+            <div class="card-body">
+              <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Department</th>
+                    <th>Code</th>
+                    <th>Department Alias</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let department of selectedDepartments let i = index">
+                    <!-- <td>{{ skip + i + 1 }}</td> -->
+                    <td>
+                      <input type="checkbox" [(ngModel)]="department.selected">
+                    </td>
+                    <td>{{ department.name }}</td>
+                    <td>{{ department.code }}</td>
+                    <td>{{ department.departmentalias }}</td>
+                  </tr>
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rooms -->
+        <div class="col-md-6 mt-4">
+          <div class="card p-3">
+            <div class="card-body">
+              <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Room</th>
+                    <th>Code</th>
+                    <th>Room Alias</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let room of selectedRooms">
+                    <td><input type="checkbox" name="h_dep_id" value="947"></td>
+                    <td>{{ room.name }}</td>
+                    <td>{{ room.code }}</td>
+                    <td></td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project-newtemplate-edit -->
+        <div class="col-md-12 mt-4">
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="card border-top border-0 border-4 border-primary">
+                <div class="card-body p-5">
+                  <div class="card-title d-flex align-items-center">
+                    <h5 class="mb-0 text-primary">New Template</h5>
+                  </div>
+
+                  <form [formGroup]="addDepartment" (ngSubmit)="SaveData()">
+                    <div class="col-md-6 mt-0">
+                      <label for="inputFirstName" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Name"
+                        formControlName="name" autocomplete="off"
+                        [ngClass]="{'is-invalid': submitted && addDepartment.controls['name'].errors}">
+                      <div class="text-danger" *ngIf="submitted && addDepartment.controls['name'].errors?.['required']">
+                        Name
+                        is required</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputLastName" class="form-label">No of Beds</label>
+                      <input type="text" class="form-control" id="inputLastName" placeholder="Enter No of Beds"
+                        formControlName="noOfBeds"
+                        [ngClass]="{'is-invalid': submitted && addDepartment.controls['noOfBeds'].errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addDepartment.controls['noOfBeds'].errors?.['required']">
+                        No of Beds is required</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputState" class="form-label">Classification</label>
+                      <select id="inputState" class="form-select" formControlName="classification">
+                        <option *ngFor="let classification of classifications" [value]="classification.value">{{
+                          classification.label }}</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputState" class="form-label">Project Type</label>
+                      <select id="inputState" class="form-select" formControlName="type">
+                        <option *ngFor="let type of projecttypes" [value]="type.value">{{ type.label
+                          }}</option>
+                      </select>
+                    </div>
+                    <div class="col-md-12">
+                      <label for="inputAddress" class="form-label">Remarks</label>
+                      <textarea class="form-control" id="inputAddress" placeholder="Remarks..." formControlName="remarks"
+                        rows="2"
+                        [ngClass]="{'is-invalid': submitted && addDepartment.controls['remarks'].errors}"></textarea>
+                      <div class="text-danger"
+                        *ngIf="submitted && addDepartment.controls['remarks'].errors?.['required']">
+                        Remarks is required</div>
+                    </div>
+                    <div class="col-md-6 text-center mt-3">
+                      <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+                      <a routerLink="/pages/project-template"><i class="material-icon">Cancel</i></a>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
-</div>
+  <!-- </div> -->

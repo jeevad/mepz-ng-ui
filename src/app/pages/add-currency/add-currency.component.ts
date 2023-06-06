@@ -49,7 +49,7 @@ export class AddCurrencyComponent implements OnInit {
       this.submitted = true;
       if (this.addCurrency.valid) {
         this.service.SaveData(this.addCurrency.value).subscribe((result) => {
-          this.router.navigate(['/currency']);
+          this.router.navigate(['pages/currency']);
         });
       }
     } else if (this.isEdit) {
@@ -59,7 +59,7 @@ export class AddCurrencyComponent implements OnInit {
           .update(this.currencyid, this.addCurrency.value)
           .subscribe((currencyData) => {
             this.isEdit = false;
-            this.router.navigate(['/currency']);
+            this.router.navigate(['pages/currency']);
           });
       }
     }
