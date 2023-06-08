@@ -15,8 +15,10 @@ export class DepartmentTransactionComponent {
   limit = 10;
   skip = 0;
   count: number = 0;
-  projectId = '64735b04ef112ca4b26872ca';
-  projectIdNew = '64735c1def112ca4b268730e';
+  // projectId = '64735b04ef112ca4b26872ca';
+  projectId = '647099f81d7513b34418f744';
+  projectIdNew = '64709a2d1d7513b34418f748';
+  // projectIdNew = '64735c1def112ca4b268730e';
   selectedDepartmentsRooms: any;
 
   constructor(
@@ -29,29 +31,29 @@ export class DepartmentTransactionComponent {
 
   ngOnInit() {
     // Initialize DataTables and set up event listeners
-    // let table = $('#example').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
+    let table = $('#example').DataTable({
+      drawCallback: () => {
+        $('.paginate_button.next').on('click', () => {
+          this.nextButtonClickEvent();
+        });
+      },
+    });
 
-    // let table1 = $('#example1').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
+    let table1 = $('#example1').DataTable({
+      drawCallback: () => {
+        $('.paginate_button.next').on('click', () => {
+          this.nextButtonClickEvent();
+        });
+      },
+    });
 
-    // let table2 = $('#example2').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
+    let table2 = $('#example2').DataTable({
+      drawCallback: () => {
+        $('.paginate_button.next').on('click', () => {
+          this.nextButtonClickEvent();
+        });
+      },
+    });
 
     // Load department data and selected departments
     this.loadDepartmentData();

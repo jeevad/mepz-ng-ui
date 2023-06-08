@@ -40,7 +40,8 @@ export class DepartmentService {
 
   // Save departments for a project
   saveDepartments(departmentData: any) {
-    const projectId = '64735b04ef112ca4b26872ca';
+    // const projectId = '64735b04ef112ca4b26872ca';
+    const projectId = '647099f81d7513b34418f744';
     const departments = departmentData.departments;
     return this.http.post(
       environment.apiUrl + '/project/addDepartment/' + projectId,
@@ -50,7 +51,8 @@ export class DepartmentService {
 
    // Get selected departments for a project | Listing
    getSelectedDepartments(skip: number, limit: number) {
-    const projectId = '64735b04ef112ca4b26872ca';
+    const projectId = '647099f81d7513b34418f744';
+    // const projectId = '64735b04ef112ca4b26872ca';
     return this.http.get(environment.apiUrl + '/project/getDepartments/' + projectId, {params: { skip, limit }, });
   }
 

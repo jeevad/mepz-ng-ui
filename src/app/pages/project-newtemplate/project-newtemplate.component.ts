@@ -37,8 +37,10 @@ export class ProjectNewtemplateComponent {
   limit = 10;
   skip = 0;
   count: number = 0;
-  projectId = '64735b04ef112ca4b26872ca';
-  projectIdNew = '64735c1def112ca4b268730e';
+  // projectId = '64735b04ef112ca4b26872ca';
+  projectId = '647099f81d7513b34418f744';
+  // projectIdNew = '64735c1def112ca4b268730e';
+  projectIdNew = '64709a2d1d7513b34418f748';
   selectedDepartmentsRooms: any;
   //Rooms
   roomData: any[] = [];
