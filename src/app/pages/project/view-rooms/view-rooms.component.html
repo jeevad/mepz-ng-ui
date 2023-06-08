@@ -68,12 +68,19 @@
                   <td></td>
                   <td>{{ room.code }}</td>
                   <td></td>
-
-                  <td> <a title="Add Equipment" class="btn btn-xs btn-primary" data-toggle="modal"
-                      data-target="#myModal4">Add Equipments
-                    </a> </td>
+                  <td>
+                    <a
+                      title="Add Equipment"
+                      class="btn btn-xs btn-primary"
+                      data-toggle="modal"
+                      data-target="#myModal4"
+                    >
+                      Add Equipments
+                    </a>
+                  </td>
                 </tr>
               </tbody>
+
             </table>
 
           </div>
@@ -170,18 +177,22 @@
                   <div class="col-md-6">
                     <div class="form-group  border px-2 py-2">
                       <h4 class="mb-3">Equipment List:</h4>
-                      <div class="list-container">
 
+
+                      <div class="list-container">
                       <ul class="list-group" *ngFor="let item of equipmentdata">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                           <span>{{ item.name }}</span>
                           <button class="badge badge-primary badge-pill" (click)="selectEquipment(item)">+</button>
                         </li>
                       </ul>
+                    </div>
+
 
                     </div>
-                    </div>
                   </div>
+
+                  
                   <div class="col-md-6">
                     <div class="form-group border px-2 py-2">
                       <h4 class="mb-3">Equipment in Room:</h4>

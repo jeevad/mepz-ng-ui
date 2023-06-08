@@ -99,11 +99,14 @@ export class ViewRoomsComponent {
           console.log('roomData:', roomDataObject);
           this.room.saveRoomData(roomDataObject).subscribe((response: any) => {
             console.log('Data saved successfully:', response);
+
+            this.selectedRooms.push(roomDataObject);
           });
         }
       }
     }
   }
+
 
   // Function to save equipment data
   saveEquipmentData(): void {
@@ -114,11 +117,10 @@ export class ViewRoomsComponent {
         name: this.selectedEquipment[i].name,
       };
       console.log('equipmentdata:', roomDataObject1);
-      this.room
-        .saveEquipmentData(roomDataObject1)
-        .subscribe((response: any) => {
-          console.log('Data saved successfully:', response);
-        });
+      this.room.saveEquipmentData(roomDataObject1).subscribe((response: any) => {
+        console.log('Data saved successfully:', response);
+        this.selectedEquipments.push(roomDataObject1); // Add the selected equipment to the array immediately
+      });
     }
     // Clear the selected equipment array
     this.selectedEquipment = [];
@@ -136,6 +138,7 @@ export class ViewRoomsComponent {
       this.selectedEquipment.push(item);
     }
   }
+
 
   // Function to load room list
   loadSelectedRooms(): void {
