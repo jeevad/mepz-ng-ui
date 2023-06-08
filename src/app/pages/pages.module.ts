@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule, routingcomponents } from './pages-routing.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -30,6 +30,7 @@ import { ProjectTemplateEquipmentComponent } from './project-template-equipment/
 
     CommonModule,
     NgbModule,
+    NgbDropdownModule,
     FormsModule,
     // NgbCollapseModule,
     // HttpClientModule,

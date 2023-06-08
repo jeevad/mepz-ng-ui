@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EquipmentService } from 'src/app/service/equipment/equipment.service';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NgbActiveModal, NgbModal, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoomService } from 'src/app/service/room/room.service';
-import { EquipmentAllocationModalComponent } from './equipment-allocation-modal/equipment-allocation-modal.component';
+import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 
 @Component({
-  selector: 'app-view-rooms',
-  templateUrl: './view-rooms.component.html',
-  styleUrls: ['./view-rooms.component.css'],
+  selector: 'app-equipment-allocation-modal',
+  standalone: true,
+  imports: [CommonModule, NgbNavModule],
+  templateUrl: './equipment-allocation-modal.component.html',
+  styleUrls: ['./equipment-allocation-modal.component.css'],
 })
-export class ViewRoomsComponent {
+export class EquipmentAllocationModalComponent {
+  @Input() name: any;
+
+  activeTab = 1;
+
   roomData: any[] = [];
   selectedQuantity: number = 0;
   selectedQuantity1: number = 0;
@@ -24,6 +30,7 @@ export class ViewRoomsComponent {
     private room: RoomService,
     private equipmentService: EquipmentService,
     private modalService: NgbModal,
+    public activeModal: NgbActiveModal
   ) {
     // For Qty dropdown: Creating options from 1 to 20
     for (let i = 1; i <= 20; i++) {
@@ -64,7 +71,7 @@ export class ViewRoomsComponent {
   }
 
   openEquipmentAllocationModal() {
-		const modalRef = this.modalService.open(EquipmentAllocationModalComponent, { size: 'xl' });
+		const modalRef = this.modalService.open(EquipmentAllocationModalComponent);
 		modalRef.componentInstance.name = 'World';
 	}
 
@@ -169,4 +176,5 @@ export class ViewRoomsComponent {
       console.log(data.results);
     });
   }
+
 }

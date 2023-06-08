@@ -69,12 +69,10 @@
                   <td>{{ room.code }}</td>
                   <td></td>
                   <td>
-                    <a
-                      title="Add Equipment"
-                      class="btn btn-xs btn-primary"
-                      data-toggle="modal"
-                      data-target="#myModal4"
-                    >
+                    <a title="Add Equipment" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal4">
+                      Add Equipments
+                    </a>
+                    <a title="Add Equipment" class="btn btn-xs btn-primary" (click)="openEquipmentAllocationModal()">
                       Add Equipments
                     </a>
                   </td>
@@ -180,25 +178,26 @@
 
 
                       <div class="list-container">
-                      <ul class="list-group" *ngFor="let item of equipmentdata">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                          <span>{{ item.name }}</span>
-                          <button class="badge badge-primary badge-pill" (click)="selectEquipment(item)">+</button>
-                        </li>
-                      </ul>
-                    </div>
+                        <ul class="list-group" *ngFor="let item of equipmentdata">
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ item.name }}</span>
+                            <button class="badge badge-primary badge-pill" (click)="selectEquipment(item)">+</button>
+                          </li>
+                        </ul>
+                      </div>
 
 
                     </div>
                   </div>
 
-                  
+
                   <div class="col-md-6">
                     <div class="form-group border px-2 py-2">
                       <h4 class="mb-3">Equipment in Room:</h4>
                       <div class="list-container">
                         <ul class="list-group" *ngFor="let item of selectedEquipments; let i=index;">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">{{item.name}}</li>
+                          <li class="list-group-item d-flex justify-content-between align-items-center">{{item.name}}
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -206,7 +205,8 @@
 
                 </div>
                 <div class="col-md-12 text-center mt-3">
-                  <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp" id="add_department" (click)="saveEquipmentData()">
+                  <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp" id="add_department"
+                    (click)="saveEquipmentData()">
                     Save
                   </button>
                   <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>

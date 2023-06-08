@@ -43,6 +43,37 @@
                     <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal2">
                       <i class="fa fa-cog"> </i>
                     </button>
+                    <div ngbDropdown class="d-inline-block">
+                      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        Actions
+                      </button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <!-- <li><a routerLink="/pages/projects/{{ item._id }}/equipment-allocation"
+                          title="Equipment Allocation" class=" mb-4">Equipment
+                          Allocation</a></li>
+                      <li><a routerLink="/pages/projects/{{ item._id }}/equipment-summary" title="Summary"
+                          class=" mb-4">Summary</a> </li>
+                      <li><a routerLink="/pages/projects/{{ item._id }}/department-transaction"
+                          title="Current Transaction" class=" mb-4">Current Transaction</a></li>
+                      <li><a routerLink="/pages/projects/{{ item._id }}/past-transaction"
+                          title="Past Transaction" class=" btn-warning mb-4">Past
+                          Transaction</a>
+                      </li> -->
+                      <!-- <a ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/equipment-allocation"
+                          title="Equipment Allocation">Equipment
+                          Allocation</a> -->
+                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/equipment-allocation"
+                        title="Equipment Allocation">Equipment
+                        Allocation</button>
+                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/equipment-summary" title="Summary"
+                        >Summary</button>
+                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/department-transaction"
+                        title="Current Transaction">Current Transaction</button>
+                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/past-transaction"
+                        title="Past Transaction">Past
+                        Transaction</button>
+                      </div>
+                    </div>
                     <a routerLink="/pages/projects/edit/{{ item._id }}" title="Edit" class="btn btn-sm btn-success"><i
                         class="fa fa-edit"></i></a>
                     <a href="javascript:;" class="btn btn-sm btn-danger btn_delete" data-bs-toggle="tooltip"
