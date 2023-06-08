@@ -44,7 +44,7 @@ export class RoomService {
     // const projectId = '64735b04ef112ca4b26872ca';
     const projectId = '647099f81d7513b34418f744';
     // const departmentId = '64735c1def112ca4b268730e';
-    const departmentId = '64709a2d1d7513b34418f748';
+    const departmentId = '6481b8f4bcf2bf4cfef8d313';
     const url = environment.apiUrl + `/project/addRoom/${projectId}/${departmentId}`;
     return this.http.post(url, roomData);
   }
@@ -54,8 +54,8 @@ export class RoomService {
     const projectId = '647099f81d7513b34418f744';
     // const projectId = '64735b04ef112ca4b26872ca';
     // const departmentId = '64735c1def112ca4b268730e';
-    const departmentId = '64709a2d1d7513b34418f748';
-    const roomId = '64709a851d7513b34418f74a';
+    const departmentId = '6481b8f4bcf2bf4cfef8d313';
+    const roomId = '6481bc21bcf2bf4cfef8d94d';
     // const roomId = '647443dccdce2fe2106eefc3';
     const url = environment.apiUrl + `/project/addRoomEquipment/${projectId}/${departmentId}/${roomId}`;
     return this.http.post(url, roomData);

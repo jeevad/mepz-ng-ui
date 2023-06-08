@@ -17,7 +17,7 @@ export class DepartmentTransactionComponent {
   count: number = 0;
   // projectId = '64735b04ef112ca4b26872ca';
   projectId = '647099f81d7513b34418f744';
-  projectIdNew = '64709a2d1d7513b34418f748';
+  projectIdNew = '6481b8f4bcf2bf4cfef8d313';
   // projectIdNew = '64735c1def112ca4b268730e';
   selectedDepartmentsRooms: any;
 

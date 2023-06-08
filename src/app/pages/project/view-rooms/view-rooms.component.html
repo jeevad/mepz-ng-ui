@@ -42,7 +42,7 @@
             <button type="button" class="btn btn-info" id="disable_room">Disable/Enable Room</button>
             <button type="button" class="btn btn-warning" id="view_eq">View Equipment</button>
 
-            
+
             <a class="btn btn-primary" href="">All Equipment Allocation</a>
           </div>
         </div>
@@ -170,6 +170,7 @@
                   <div class="col-md-6">
                     <div class="form-group  border px-2 py-2">
                       <h4 class="mb-3">Equipment List:</h4>
+                      <div class="list-container">
 
                       <ul class="list-group" *ngFor="let item of equipmentdata">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -179,16 +180,19 @@
                       </ul>
 
                     </div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group border px-2 py-2">
                       <h4 class="mb-3">Equipment in Room:</h4>
-                      <ul class="list-group" *ngFor="let item of selectedEquipments; let i=index;">
-                        <li class="list-group-item d-flex justify-content-between align-items-center"> {{item.name}}
-                        </li>
-                      </ul>
+                      <div class="list-container">
+                        <ul class="list-group" *ngFor="let item of selectedEquipments; let i=index;">
+                          <li class="list-group-item d-flex justify-content-between align-items-center">{{item.name}}</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
+
                 </div>
                 <div class="col-md-12 text-center mt-3">
                   <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp" id="add_department" (click)="saveEquipmentData()">

@@ -17,7 +17,7 @@ export class ViewRoomsComponent {
   selectedEquipments: any[] = [];
   equipmentdata: any[] = []; //Equipment data list in sidebar
   selectedEquipment: any[] = [];
-  
+
   constructor(
     private room: RoomService,
     private equipmentService: EquipmentService
