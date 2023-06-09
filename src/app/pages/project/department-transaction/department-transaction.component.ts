@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DepartmentService } from 'src/app/service/department/department.service';
 
 @Component({
@@ -16,44 +17,47 @@ export class DepartmentTransactionComponent {
   skip = 0;
   count: number = 0;
   // projectId = '64735b04ef112ca4b26872ca';
-  projectId = '647099f81d7513b34418f744';
+  // projectId = '647099f81d7513b34418f744';
   projectIdNew = '6481b8f4bcf2bf4cfef8d313';
   // projectIdNew = '64735c1def112ca4b268730e';
   selectedDepartmentsRooms: any;
+  projectId: any;
 
   constructor(
     private departmentService: DepartmentService,
-    private http: HttpClient
+    private http: HttpClient,
+    private route: ActivatedRoute,
   ) {
-    this.loadSelectedDepartments();
-    this.loadDepartmentData();
+    // this.loadSelectedDepartments();
+    // this.loadDepartmentData();
   }
 
   ngOnInit() {
+    this.projectId = this.route.snapshot.paramMap.get('projectId');
     // Initialize DataTables and set up event listeners
-    let table = $('#example').DataTable({
-      drawCallback: () => {
-        $('.paginate_button.next').on('click', () => {
-          this.nextButtonClickEvent();
-        });
-      },
-    });
+    // let table = $('#example').DataTable({
+    //   drawCallback: () => {
+    //     $('.paginate_button.next').on('click', () => {
+    //       this.nextButtonClickEvent();
+    //     });
+    //   },
+    // });
 
-    let table1 = $('#example1').DataTable({
-      drawCallback: () => {
-        $('.paginate_button.next').on('click', () => {
-          this.nextButtonClickEvent();
-        });
-      },
-    });
+    // let table1 = $('#example1').DataTable({
+    //   drawCallback: () => {
+    //     $('.paginate_button.next').on('click', () => {
+    //       this.nextButtonClickEvent();
+    //     });
+    //   },
+    // });
 
-    let table2 = $('#example2').DataTable({
-      drawCallback: () => {
-        $('.paginate_button.next').on('click', () => {
-          this.nextButtonClickEvent();
-        });
-      },
-    });
+    // let table2 = $('#example2').DataTable({
+    //   drawCallback: () => {
+    //     $('.paginate_button.next').on('click', () => {
+    //       this.nextButtonClickEvent();
+    //     });
+    //   },
+    // });
 
     // Load department data and selected departments
     this.loadDepartmentData();
@@ -94,7 +98,7 @@ export class DepartmentTransactionComponent {
   loadSelectedDepartments(): void {
     this.skip = this.limit * (this.page - 1);
     this.departmentService
-      .getSelectedDepartments(this.skip, this.limit)
+      .getSelectedDepartments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
         this.selectedDepartments = data.departments;
         this.count = data.count;

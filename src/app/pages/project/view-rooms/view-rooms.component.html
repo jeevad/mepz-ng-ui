@@ -72,7 +72,7 @@
                     <a title="Add Equipment" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal4">
                       Add Equipments
                     </a>
-                    <a title="Add Equipment" class="btn btn-xs btn-primary" (click)="openEquipmentAllocationModal()">
+                    <a title="Add Equipment" class="btn btn-xs btn-primary" (click)="openEquipmentAllocationModal(room._id)">
                       Add Equipments
                     </a>
                   </td>
@@ -143,84 +143,3 @@
   <!-- modal -->
 </div>
 <!-- container -->
-
-
-<!-- Sidebar Equipment List -->
-
-<!-- modal -->
-<div class="container demo">
-  <!-- Modal -->
-  <div class="modal right fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4">
-    <div class="" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title" id="myModalLabel4">Sidebar</h4>
-        </div>
-        <div class="modal-body">
-          <div class="d-flex justify-content-center align-items-center bg-light">
-            <div class="card p-3 shadow w-100 h-100">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label>Department: </label>
-                  <span id="master_dep">AD - ADMINISTRATION (L4)</span>
-                </div>
-                <div class="form-group">
-                  <label>Room: </label>
-                  <span id="master_room">AD101 - RECEPTION</span>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group  border px-2 py-2">
-                      <h4 class="mb-3">Equipment List:</h4>
-
-
-                      <div class="list-container">
-                        <ul class="list-group" *ngFor="let item of equipmentdata">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>{{ item.name }}</span>
-                            <button class="badge badge-primary badge-pill" (click)="selectEquipment(item)">+</button>
-                          </li>
-                        </ul>
-                      </div>
-
-
-                    </div>
-                  </div>
-
-
-                  <div class="col-md-6">
-                    <div class="form-group border px-2 py-2">
-                      <h4 class="mb-3">Equipment in Room:</h4>
-                      <div class="list-container">
-                        <ul class="list-group" *ngFor="let item of selectedEquipments; let i=index;">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">{{item.name}}
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-md-12 text-center mt-3">
-                  <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp" id="add_department"
-                    (click)="saveEquipmentData()">
-                    Save
-                  </button>
-                  <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                </div>
-                <!-- </form> -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- modal-content -->
-    </div>
-    <!-- modal-dialog -->
-  </div>
-  <!-- modal -->
-  <!-- </div> -->
-  <!-- container -->

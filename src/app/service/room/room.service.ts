@@ -62,9 +62,9 @@ export class RoomService {
   }
 
   // Function to get selected rooms for a project
-  getSelectedRooms() {
+  getSelectedRooms(projectId:string) {
     // const projectId = '64735b04ef112ca4b26872ca';
-    const projectId = '647099f81d7513b34418f744';
+    // const projectId = '647099f81d7513b34418f744';
     return this.http.get(environment.apiUrl + '/project/getRooms/' + projectId);
   }
 

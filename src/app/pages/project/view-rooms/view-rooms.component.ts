@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { RoomService } from 'src/app/service/room/room.service';
 import { EquipmentAllocationModalComponent } from './equipment-allocation-modal/equipment-allocation-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-rooms',
@@ -19,11 +20,15 @@ export class ViewRoomsComponent {
   selectedEquipments: any[] = [];
   equipmentdata: any[] = []; //Equipment data list in sidebar
   selectedEquipment: any[] = [];
+  projectId!: any;
+  deptId!: any;
+  roomId: any;
 
   constructor(
     private room: RoomService,
     private equipmentService: EquipmentService,
     private modalService: NgbModal,
+    private route: ActivatedRoute,
   ) {
     // For Qty dropdown: Creating options from 1 to 20
     for (let i = 1; i <= 20; i++) {
@@ -32,6 +37,8 @@ export class ViewRoomsComponent {
   }
 
   ngOnInit() {
+    this.projectId = this.route.snapshot.paramMap.get('projectId');
+    this.deptId = this.route.snapshot.paramMap.get('deptId');
     // Initializing DataTables and setting up callbacks
     // let table = $('#example').DataTable({
     //   drawCallback: () => {
@@ -63,9 +70,11 @@ export class ViewRoomsComponent {
     this.loadSelectedEquipments();
   }
 
-  openEquipmentAllocationModal() {
+  openEquipmentAllocationModal(roomId:string) {
 		const modalRef = this.modalService.open(EquipmentAllocationModalComponent, { size: 'xl' });
-		modalRef.componentInstance.name = 'World';
+		modalRef.componentInstance.projectId = this.projectId;
+		modalRef.componentInstance.deptId = this.deptId;
+		modalRef.componentInstance.roomId = roomId;
 	}
 
   // Load equipment data from the service  | List in Sidebar
@@ -150,7 +159,7 @@ export class ViewRoomsComponent {
 
   // Function to load room list
   loadSelectedRooms(): void {
-    this.room.getSelectedRooms().subscribe((data: any) => {
+    this.room.getSelectedRooms(this.projectId).subscribe((data: any) => {
       this.selectedRooms = data.rooms;
     });
   }

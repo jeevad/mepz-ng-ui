@@ -33,7 +33,7 @@ limit = 10;
 skip = 0;
 count: number = 0;
 // projectId = '64735b04ef112ca4b26872ca';
-projectId = '647099f81d7513b34418f744';
+projectId:any;
 projectIdNew = '6481b8f4bcf2bf4cfef8d313';
 // projectIdNew = '64735c1def112ca4b268730e';
 selectedDepartmentsRooms: any;
@@ -58,8 +58,8 @@ constructor(
   private route: ActivatedRoute,
   private formBuilder: FormBuilder
 ) {
-  this.loadSelectedDepartments();
-  this.loadDepartmentData();
+  // this.loadSelectedDepartments();
+  // this.loadDepartmentData();
   this.loadRoomData(); // Loading room data
   this.loadSelectedRooms();
   this.loadEquipmentData(); //Equipment data list in sidebar
@@ -67,6 +67,7 @@ constructor(
 }
 
 ngOnInit(): void {
+  this.projectId = this.route.snapshot.paramMap.get('projectId');
   this.loadDepartmentData();
   this.loadSelectedDepartments();
   this.deptid = this.route.snapshot.paramMap.get('id');
@@ -195,7 +196,7 @@ SaveData() {
   loadSelectedDepartments(): void {
     this.skip = this.limit * (this.page - 1);
     this.departmentService
-      .getSelectedDepartments(this.skip, this.limit)
+      .getSelectedDepartments(this.projectId,this.skip, this.limit)
       .subscribe((data: any) => {
         this.selectedDepartments = data.departments;
         this.count = data.count;
@@ -274,7 +275,7 @@ selectEquipment(item: any): void {
 
 // Function to load room list
 loadSelectedRooms(): void {
-  this.room.getSelectedRooms().subscribe((data: any) => {
+  this.room.getSelectedRooms(this.projectId).subscribe((data: any) => {
     this.selectedRooms = data.rooms;
   });
 }

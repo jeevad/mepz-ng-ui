@@ -114,7 +114,7 @@ const routes: Routes = [
       { path: 'department-transaction', component: DepartmentTransactionComponent },
       { path: 'department-transaction/view-rooms', component: ViewRoomsComponent },
       { path: ':projectId/department-transaction/view-rooms', component: ViewRoomsComponent },
-      { path: ':projectId/department-transaction/:projectIdNew/view-rooms', component: ViewRoomsComponent },
+      { path: ':projectId/department-transaction/:deptId/view-rooms', component: ViewRoomsComponent },
       { path: '647099f81d7513b34418f744/department-transaction/6481b8f4bcf2bf4cfef8d313/view-rooms', component: ViewRoomsComponent },
       // { path: '64735b04ef112ca4b26872ca/department-transaction/64735c1def112ca4b268730e/view-rooms', component: ViewRoomsComponent },
       { path: '647099f81d7513b34418f744/department-transaction/6481b8f4bcf2bf4cfef8d313/view-rooms/6481bc21bcf2bf4cfef8d94d', component: ViewRoomsComponent },

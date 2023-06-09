@@ -25,6 +25,9 @@ export class EquipmentAllocationModalComponent {
   selectedEquipments: any[] = [];
   equipmentdata: any[] = []; //Equipment data list in sidebar
   selectedEquipment: any[] = [];
+  @Input() projectId!: any;
+  @Input() deptId!: any;
+  @Input() roomId!: any;
 
   constructor(
     private room: RoomService,
@@ -157,7 +160,7 @@ export class EquipmentAllocationModalComponent {
 
   // Function to load room list
   loadSelectedRooms(): void {
-    this.room.getSelectedRooms().subscribe((data: any) => {
+    this.room.getSelectedRooms(this.projectId).subscribe((data: any) => {
       this.selectedRooms = data.rooms;
     });
   }
