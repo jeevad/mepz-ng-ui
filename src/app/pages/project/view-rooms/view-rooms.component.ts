@@ -40,29 +40,29 @@ export class ViewRoomsComponent {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.deptId = this.route.snapshot.paramMap.get('deptId');
     // Initializing DataTables and setting up callbacks
-    // let table = $('#example').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
+    let table = $('#example').DataTable({
+      drawCallback: () => {
+        $('.paginate_button.next').on('click', () => {
+          this.nextButtonClickEvent();
+        });
+      },
+    });
 
-    // let table1 = $('#example1').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
+    let table1 = $('#example1').DataTable({
+      drawCallback: () => {
+        $('.paginate_button.next').on('click', () => {
+          this.nextButtonClickEvent();
+        });
+      },
+    });
 
-    // let table2 = $('#example2').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
+    let table2 = $('#example2').DataTable({
+      drawCallback: () => {
+        $('.paginate_button.next').on('click', () => {
+          this.nextButtonClickEvent();
+        });
+      },
+    });
 
     this.loadRoomData(); // Loading room data
     this.loadSelectedRooms();

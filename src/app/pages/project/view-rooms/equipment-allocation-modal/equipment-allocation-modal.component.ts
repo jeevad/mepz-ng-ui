@@ -3,19 +3,22 @@ import { CommonModule } from '@angular/common';
 import { NgbActiveModal, NgbModal, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoomService } from 'src/app/service/room/room.service';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-equipment-allocation-modal',
   standalone: true,
-  imports: [CommonModule, NgbNavModule],
+  imports: [CommonModule, FormsModule, NgbNavModule],
   templateUrl: './equipment-allocation-modal.component.html',
   styleUrls: ['./equipment-allocation-modal.component.css'],
 })
 export class EquipmentAllocationModalComponent {
   @Input() name: any;
+  @Input() projectId!: any;
+  @Input() deptId!: any;
+  @Input() roomId!: any;
 
   activeTab = 1;
-
   roomData: any[] = [];
   selectedQuantity: number = 0;
   selectedQuantity1: number = 0;
@@ -25,9 +28,8 @@ export class EquipmentAllocationModalComponent {
   selectedEquipments: any[] = [];
   equipmentdata: any[] = []; //Equipment data list in sidebar
   selectedEquipment: any[] = [];
-  @Input() projectId!: any;
-  @Input() deptId!: any;
-  @Input() roomId!: any;
+  searchText: string = '';
+  filteredEquipmentData: any[] = [];
 
   constructor(
     private room: RoomService,
@@ -82,8 +84,21 @@ export class EquipmentAllocationModalComponent {
   loadEquipmentData(): void {
     this.equipmentService.Load(0, 10).subscribe((data: any) => {
       this.equipmentdata = data.results;
+      this.filteredEquipmentData = this.equipmentdata.slice();
     });
   }
+
+    //Search Bar function
+    searchEquipment(): void {
+      if (this.searchText.trim() !== '') {
+        this.filteredEquipmentData = this.equipmentdata.filter((item: any) =>
+          item.name.toLowerCase().includes(this.searchText.toLowerCase())
+        );
+      } else {
+        this.filteredEquipmentData = this.equipmentdata.slice();
+      }
+    }
+
   // Event handler for button click in a row
   buttonInRowClick(event: any): void {
     event.stopPropagation();
