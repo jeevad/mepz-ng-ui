@@ -1,0 +1,164 @@
+<!-- <div class="modal-header">
+    <h4 class="modal-title">Hi there!</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <p>Hello, {{ name }}!</p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div> -->
+<div class="modal-body">
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label>Department: </label>
+        <span id="master_dep">AD - ADMINISTRATION (L4)</span>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label>Room: </label>
+        </div>
+        <div class="col-auto">
+          <select class="form-control" name="com_code">
+            <option value="">-Select Room-</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs mt-3">
+    <li [ngbNavItem]="1">
+      <button ngbNavLink>Add Equipment from
+        Master</button>
+      <ng-template ngbNavContent>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <button ngbNavLink>Add Equipment from
+        Existing Project</button>
+      <ng-template ngbNavContent>
+
+        <div class="row">
+          <div class="col-12">
+            <hr>
+            <h5>Select from Existing Project</h5>
+            <form class="form-horizontal row" method="post">
+              <div class="col-md-6">
+                <label class=" form-label">Project</label>
+                <select class="form-control" name="project[]" multiple>
+                  <option value="">-Select Project-</option>
+                  <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+                  <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+                  <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+                  <option value="100001">ASM - ARUNAMARI SPECIALIST MEDICAL CENTRE</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <div class="col-md-12">
+                  <label class="form-label">Department</label>
+                  <select class="form-control" name="com_code">
+                    <option value="">-Select Department-</option>
+                  </select>
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label">Room</label>
+                  <select class="form-control" name="com_code">
+                    <option value="">-Select Room-</option>
+                  </select>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  <!-- <pre>Active: {{ activeTab }}</pre> -->
+  <div class="row mt-3">
+    <div class="col-md-6 border px-2 py-2">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+          <h5>Master Equipment List:</h5>
+          <!-- <label for="inputPassword6" class="col-form-label">Master Equipment List:</label> -->
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText"
+            (input)="searchEquipment()">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <!-- <label>
+          <h5>Master Equipment List:</h5>
+        </label>
+        <div class="d-flex align-items-center"></div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText"
+            (input)="searchEquipment()">
+        </div> -->
+          <!-- <div class="list-container"> -->
+          <table id="example1" class="display table">
+            <thead>
+              <tr role="row">
+                <th></th>
+                <th>Equipment</th>
+                <th>Code</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of filteredEquipmentData">
+                <td><input class="checkbox" type="checkbox" name="" value="" (click)="selectEquipment(item)"></td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.code }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- </div> -->
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div class="form-group border px-2 py-2">
+        <div class="row mt-2">
+          <div class="col">
+            <h5 class="mb-3">Equipments in Room:</h5>
+            <!-- <div class="list-container"> -->
+            <div class="tableFixHead">
+              <table id="example1" class="table">
+                <thead>
+                  <tr role="row">
+                    <th>#</th>
+                    <th>Equipment</th>
+                    <th>Code</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of selectedEquipments; let i = index">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.code }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-md-12 text-center mt-3">
+      <!-- <button type="submit" class="btn btn-primary px-4 me-3 m" fdprocessedid="hipqpp">Add</button> -->
+      <button type="submit" class="btn btn-primary px-4 me-3 m" id="add_department" (click)="saveEquipmentData()">
+        Add
+      </button>
+      <!-- <a class="btn btn-secondary px-3" href="">Close</a> -->
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+  </div>
+</div>

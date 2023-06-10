@@ -1,0 +1,84 @@
+.fade.in {
+  opacity: 1;
+}
+
+.fade:not(.show) {
+  opacity: 1;
+}
+
+.badge-primary {
+  color: #fff;
+  background-color: #007bff;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1cabb1;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1cabb1;
+}
+
+.overflow-auto {
+  height: 240px;
+  overflow-y: scroll;
+  list-style-type: decimal;
+
+}
+
+.overflow-auto li {
+  margin-bottom: 0px;
+  ;
+}
+
+.no-border-radius {
+  border-radius: 0;
+}
+
+.tableFixHead          { overflow: auto; height: 280px; }
+.tableFixHead thead th { position: sticky; top: 0; z-index: 1; }
+
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; }
+th     { background:#eee; }
+
+
+.table-fixed {
+  width: 100%;
+  background-color: #f3f3f3;
+}
+.table-fixed tbody {
+  height: 200px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+  display: block;
+}
+.table-fixed tbody td {
+  float: left;
+}
+.table-fixed thead tr th {
+  float: left;
+  background-color: #f39c12;
+  border-color: #e67e22;
+}
