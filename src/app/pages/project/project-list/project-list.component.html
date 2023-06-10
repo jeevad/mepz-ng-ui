@@ -10,6 +10,11 @@
     <div class="col-md-12">
       <div class="card p-3">
         <div class="card-body">
+          <!-- For search bar -->
+          <div class="input-group mb-3" style="width: 300px; float: right;">
+            <input type="text" class="form-control form-control-sm" placeholder="Search" [(ngModel)]="searchTerm"
+              (input)="filterData()">
+          </div>
           <div>
             <table id="example" class="display" cellspacing="0" width="100%">
               <thead>
@@ -22,18 +27,8 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tfoot>
-                <tr>
-                  <th>S.No</th>
-                  <th>Code</th>
-                  <th>Project Name</th>
-                  <th>Project Type</th>
-                  <th>Company</th>
-                  <th>Action</th>
-                </tr>
-              </tfoot>
               <tbody onload="passVariable()">
-                <tr role="row" class="odd" *ngFor="let item of departmentData; let i=index;">
+                <tr role="row" class="odd" *ngFor="let item of filteredData; let i=index;"> <!-- For search bar -->
                   <td>{{ skip + i+1 }}</td>
                   <td>{{item.code}}</td>
                   <td class="sorting_1">{{item.name}}</td>
@@ -43,6 +38,23 @@
                     <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal2">
                       <i class="fa fa-cog"> </i>
                     </button>
+                    <div ngbDropdown class="d-inline-block">
+                      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        Actions
+                      </button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/equipment-allocation"
+                          title="Equipment Allocation">Equipment
+                          Allocation</button>
+                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/equipment-summary"
+                          title="Summary">Summary</button>
+                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/department-transaction"
+                          title="Current Transaction">Current Transaction</button>
+                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/past-transaction"
+                          title="Past Transaction">Past
+                          Transaction</button>
+                      </div>
+                    </div>
                     <a routerLink="/pages/projects/edit/{{ item._id }}" title="Edit" class="btn btn-sm btn-success"><i
                         class="fa fa-edit"></i></a>
                     <a href="javascript:;" class="btn btn-sm btn-danger btn_delete" data-bs-toggle="tooltip"
@@ -51,6 +63,7 @@
                       data-target="#reportModal"><i class="fa fa-print"> </i></a>
                     <a routerLink="" title="Test Commissioning" class="btn btn-sm btn-info">T&amp;C</a>
                   </td>
+
                   <!-- modal -->
                   <div class="container demo">
                     <!-- Modal -->

@@ -1,16 +1,24 @@
-import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EquipmentService } from 'src/app/service/equipment/equipment.service';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NgbActiveModal, NgbModal, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoomService } from 'src/app/service/room/room.service';
-import { EquipmentAllocationModalComponent } from './equipment-allocation-modal/equipment-allocation-modal.component';
-import { ActivatedRoute } from '@angular/router';
+import { EquipmentService } from 'src/app/service/equipment/equipment.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-view-rooms',
-  templateUrl: './view-rooms.component.html',
-  styleUrls: ['./view-rooms.component.css'],
+  selector: 'app-equipment-allocation-modal',
+  standalone: true,
+  imports: [CommonModule, FormsModule, NgbNavModule],
+  templateUrl: './equipment-allocation-modal.component.html',
+  styleUrls: ['./equipment-allocation-modal.component.css'],
 })
-export class ViewRoomsComponent {
+export class EquipmentAllocationModalComponent {
+  @Input() name: any;
+  @Input() projectId!: any;
+  @Input() deptId!: any;
+  @Input() roomId!: any;
+
+  activeTab = 1;
   roomData: any[] = [];
   selectedQuantity: number = 0;
   selectedQuantity1: number = 0;
@@ -20,17 +28,14 @@ export class ViewRoomsComponent {
   selectedEquipments: any[] = [];
   equipmentdata: any[] = []; //Equipment data list in sidebar
   selectedEquipment: any[] = [];
-  projectId!: any;
-  deptId!: any;
-  roomId: any;
-  searchTerm: string = ''; // For search bar
-  filteredData: any[] = []; // For search bar
+  searchText: string = ''; // For search bar
+  filteredEquipmentData: any[] = []; // For search bar
 
   constructor(
     private room: RoomService,
     private equipmentService: EquipmentService,
     private modalService: NgbModal,
-    private route: ActivatedRoute,
+    public activeModal: NgbActiveModal
   ) {
     // For Qty dropdown: Creating options from 1 to 20
     for (let i = 1; i <= 20; i++) {
@@ -39,13 +44,6 @@ export class ViewRoomsComponent {
   }
 
   ngOnInit() {
-    this.projectId = this.route.snapshot.paramMap.get('projectId');
-    this.deptId = this.route.snapshot.paramMap.get('deptId');
-    this.loadRoomData(); // Loading room data
-    this.loadSelectedRooms();
-    this.loadEquipmentData(); //Equipment data list in sidebar
-    this.loadSelectedEquipments();
-
     // Initializing DataTables and setting up callbacks
     // let table = $('#example').DataTable({
     //   drawCallback: () => {
@@ -55,13 +53,13 @@ export class ViewRoomsComponent {
     //   },
     // });
 
-    let table1 = $('#example1').DataTable({
-      drawCallback: () => {
-        $('.paginate_button.next').on('click', () => {
-          this.nextButtonClickEvent();
-        });
-      },
-    });
+    // let table1 = $('#example1').DataTable({
+    //   drawCallback: () => {
+    //     $('.paginate_button.next').on('click', () => {
+    //       this.nextButtonClickEvent();
+    //     });
+    //   },
+    // });
 
     // let table2 = $('#example2').DataTable({
     //   drawCallback: () => {
@@ -70,49 +68,35 @@ export class ViewRoomsComponent {
     //     });
     //   },
     // });
+
+    this.loadRoomData(); // Loading room data
+    this.loadSelectedRooms();
+    this.loadEquipmentData(); //Equipment data list in sidebar
+    this.loadSelectedEquipments();
   }
 
-  openEquipmentAllocationModal(roomId: string) {
-    const modalRef = this.modalService.open(EquipmentAllocationModalComponent, { size: 'xl' });
-    modalRef.componentInstance.projectId = this.projectId;
-    modalRef.componentInstance.deptId = this.deptId;
-    modalRef.componentInstance.roomId = roomId;
+  openEquipmentAllocationModal() {
+    const modalRef = this.modalService.open(EquipmentAllocationModalComponent);
+    modalRef.componentInstance.name = 'World';
   }
 
   // Load equipment data from the service  | List in Sidebar
   loadEquipmentData(): void {
     this.equipmentService.Load(0, 10).subscribe((data: any) => {
       this.equipmentdata = data.results;
-      this.filteredData = this.equipmentdata; //For search bar
-
+      this.filteredEquipmentData = this.equipmentdata.slice(); // For search bar
     });
   }
 
-  // For search bar | Filters the data based on the search term
-  filterData() {
-    if (!this.searchTerm) {
-      this.filteredData = this.equipmentdata;
-    } else {
-      this.filteredData = this.equipmentdata.filter((room) =>
-        this.matchesSearchTerm(room)
+  //Search Bar function
+  searchEquipment(): void {
+    if (this.searchText.trim() !== '') {
+      this.filteredEquipmentData = this.equipmentdata.filter((item: any) =>
+        item.name.toLowerCase().includes(this.searchText.toLowerCase())
       );
+    } else {
+      this.filteredEquipmentData = this.equipmentdata.slice();
     }
-  }
-
-  // For search bar | Checks if an item matches the search term
-  matchesSearchTerm(room: any): boolean {
-    const searchFields = [
-      room.code,
-      room.name,
-    ];
-
-    for (const field of searchFields) {
-      if (field && field.toLowerCase().includes(this.searchTerm.toLowerCase())) {
-        return true;
-      }
-    }
-
-    return false;
   }
 
   // Function to save room data
@@ -151,7 +135,8 @@ export class ViewRoomsComponent {
         this.selectedEquipments.push(roomDataObject1); // Add the selected equipment to the array immediately
       });
     }
-    this.selectedEquipment = []; // Clear the selected equipment array
+    // Clear the selected equipment array
+    this.selectedEquipment = [];
   }
 
   // Function to add selected equipment to the array | SAVED ONLY ONE TIME
@@ -190,14 +175,16 @@ export class ViewRoomsComponent {
     console.log('Button in the row clicked.');
   }
 
+  // Event handler for whole row click
   wholeRowClick(): void {
     console.log('Whole row clicked.');
   }
 
+  // Event handler for next button click
   nextButtonClickEvent(): void {
     console.log('Next clicked');
   }
 
+  // Event handler for previous button click
   previousButtonClickEvent(): void { }
-
 }

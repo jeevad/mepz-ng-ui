@@ -40,7 +40,12 @@
       <div class="col-md-12 mt-4">
         <div class="card p-3">
           <div class="card-body">
-            <table id="example"   class = 'example table dt-responsive nowrap' class="display" cellspacing="0" width="100%">
+            <!-- For search bar -->
+            <div class="input-group mb-3" style="width: 300px; float: right;">
+              <input type="text" class="form-control form-control-sm" placeholder="Search" [(ngModel)]="searchTerm"
+                (input)="filterData()">
+            </div>
+            <table id="example" class="display table" cellspacing="0" width="100%">
               <thead>
                 <tr>
                   <th></th>
@@ -52,7 +57,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let department of selectedDepartments">
+                <tr role="row" class="odd" *ngFor="let department of filteredData; let i=index;">   <!-- For search bar -->
                   <td>
                     <input type="checkbox" [(ngModel)]="department.selected">
                   </td>
@@ -61,7 +66,7 @@
                   <td>{{ department.departmentalias }}</td>
                   <td>{{ department.level }}</td>
                   <td>
-                    <a routerLink="/pages/projects/{{projectId}}/department-transaction/{{projectIdNew}}/view-rooms"
+                    <a routerLink="/pages/projects/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
                       class="btn btn-xs btn-primary">View Rooms</a>
                   </td>
                 </tr>
@@ -75,6 +80,7 @@
   </div>
 </section>
 
+<!-- Modal -->
 <div class="container demo">
   <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
     <div class="modal-dialog" role="document">
@@ -83,13 +89,12 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title" id="myModalLabel2">Sidebar</h4>
+          <h4 class="modal-title" id="myModalLabel2">Add Department</h4>
         </div>
         <div class="modal-body">
           <div class="d-flex justify-content-center align-items-center bg-light">
             <div class="card p-3 shadow">
-              <h4>Add Department</h4>
-              <table id="example1" class ="example table dt-responsive nowrap" class="display" cellspacing="0" width="100%">
+              <table id="example1" class ="example table dt-responsive nowrap display" cellspacing="0" width="100%">
                 <thead>
                   <tr role="row">
                     <th></th>
@@ -97,22 +102,6 @@
                     <th>Code</th>
                   </tr>
                 </thead>
-                <!-- <tbody>
-                  <tr *ngFor="let item of departmentData; let i=index;">
-                    <td>{{ skip + i+1 }}</td>
-                    <td>{{item.code}}</td>
-                    <td>{{item.name | uppercase}}</td>
-                    <td>{{ item.active ? 'Active' : 'Inactive' }}</td>
-                    <td>
-                      <div class="d-flex order-actions">
-                        <a routerLink="/pages/department-form/{{item._id}}" title="Edit" class="text-success me-2"><i
-                            class="fa fa-edit"> </i> </a>
-                        <a href="javascript:;" (click)="delete(item._id)" title="Delete" class="text-danger me-2"><i
-                            class="fa fa-trash"> </i> </a>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody> -->
                 <tbody>
                   <tr *ngFor="let item of departmentData; let i=index;">
                     <td>
@@ -131,7 +120,7 @@
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </div>

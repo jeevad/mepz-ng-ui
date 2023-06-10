@@ -204,16 +204,31 @@ label {
 
 
 
+
+
+
 .list-container {
+  /* overflow: auto;
+
+  overflow:hidden; */
   /* background-color: #6c757d; */
   list-style-type: decimal;
   max-height: 280px;
   overflow-y: scroll;
+  /* border-radius: 10px; */
   align-content: flex-start;
+  /* box-shadow: 0 0 0 5px #fff; */
+  /* display: flex;
+  flex-wrap: wrap;
+  /*
+
+*/
+
 }
 
 .list-container .list-group {
   border-radius: 0;
+
 }
 
 .list-container .list-group .list-group-item {
