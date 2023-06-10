@@ -46,6 +46,7 @@ export class EquipmentAllocationModalComponent {
   ngOnInit() {
     console.log('this.projectId,this.deptId, this.roomId',this.projectId,this.deptId, this.roomId);
 
+
     // Initializing DataTables and setting up callbacks
     // let table = $('#example').DataTable({
     //   drawCallback: () => {
@@ -98,6 +99,7 @@ export class EquipmentAllocationModalComponent {
         );
       } else {
         this.filteredEquipmentData = this.equipmentdata.slice();
+
       }
     }
 
@@ -166,6 +168,11 @@ export class EquipmentAllocationModalComponent {
   //   this.selectedEquipment.push(item);
   // }
 
+  // // Function to add the selected equipment to the array | SAVED MANY TIMES BASED ON CLICKING
+  // selectEquipment(item: any): void {
+  //   this.selectedEquipment.push(item);
+  // }
+
   // Function to add selected equipment to the array | SAVED ONLY ONE TIME
   selectEquipment(item: any): void {
     const isItemSelected = this.selectedEquipment.includes(item);
@@ -195,6 +202,6 @@ export class EquipmentAllocationModalComponent {
       this.roomData = data.results;
       console.log(data.results);
     });
-  }
 
-}
+  }
+      }

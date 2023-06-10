@@ -3,7 +3,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { RoomService } from 'src/app/service/room/room.service';
 import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal/equipment-allocation-modal.component';
+
 import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-view-rooms',
