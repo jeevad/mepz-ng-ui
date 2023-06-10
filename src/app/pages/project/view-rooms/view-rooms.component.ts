@@ -58,13 +58,13 @@ export class ViewRoomsComponent {
     //   },
     // });
 
-    let table1 = $('#example1').DataTable({
-      drawCallback: () => {
-        $('.paginate_button.next').on('click', () => {
-          this.nextButtonClickEvent();
-        });
-      },
-    });
+    // let table1 = $('#example1').DataTable({
+    //   drawCallback: () => {
+    //     $('.paginate_button.next').on('click', () => {
+    //       this.nextButtonClickEvent();
+    //     });
+    //   },
+    // });
 
     // let table2 = $('#example2').DataTable({
     //   drawCallback: () => {

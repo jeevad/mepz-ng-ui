@@ -8,58 +8,27 @@ import { DepartmentService } from 'src/app/service/department/department.service
   styleUrls: ['./department-transaction.component.css'],
 })
 export class DepartmentTransactionComponent {
-  item: any[] = [];
-  department: any[] = [];
   departmentData: any[] = [];
   selectedDepartments: any[] = [];
   page = 1;
   limit = 10;
   skip = 0;
   count: number = 0;
-  projectIdNew = '6481b8f4bcf2bf4cfef8d313';
-  selectedDepartmentsRooms: any;
   projectId: any;
   searchText: string = ''; // For search bar
   filteredDepartmentData: any[] = []; // For search bar
+  projectDepartments: any;
 
   constructor(
     private departmentService: DepartmentService,
-    private http: HttpClient,
-    private route: ActivatedRoute,
-  ) {
-    // this.loadSelectedDepartments();
-    // this.loadDepartmentData();
-  }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.loadDepartmentData();
-    this.loadSelectedDepartments();
-
-    // Initialize DataTables and set up event listeners
-    // let table = $('#example').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
-
-    // let table1 = $('#example1').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
-
-    // let table2 = $('#example2').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
+    // this.loadSelectedDepartments();
+    this.loadProjectDepartments();
   }
 
   // Add selected departments
@@ -68,54 +37,59 @@ export class DepartmentTransactionComponent {
 
     const departmentData = {
       departments: selectedItems.map((item) => ({
+        departmentId: item._id,
         name: item.name,
         code: item.code,
       })),
     };
-    this.departmentService.saveDepartments(this.projectId, departmentData).subscribe({
-      next: (response) => {
-        console.log('Departments saved successfully', response);
-        this.loadSelectedDepartments();
-        this.loadDepartmentData();
-      },
-      error: (error) => {
-        console.error('Failed to save departments', error);
-      },
-    });
+    this.departmentService
+      .saveDepartments(this.projectId, departmentData)
+      .subscribe({
+        next: (response) => {
+          console.log('Departments saved successfully', response);
+          this.loadProjectDepartments();
+        },
+        error: (error) => {
+          console.error('Failed to save departments', error);
+        },
+      });
   }
 
   // Load department data from the service  | Sidebar
   loadDepartmentData(): void {
     this.departmentService.Load(0, 10).subscribe((data: any) => {
+      // this.selectedDepartments = data.departments;
       this.departmentData = data.results;
-      this.filteredDepartmentData = this.departmentData.slice();  //For search bar
+      // this.filteredDepartmentData = this.departmentData.slice();  //For search bar
     });
   }
 
- //Search Bar function
- searchDepartmentList(): void {
-  if (this.searchText.trim() !== '') {
-    this.filteredDepartmentData = this.departmentData.filter((department: any) =>
-      department.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      department.code.toLowerCase().includes(this.searchText.toLowerCase())
-    );
-  } else {
-    this.filteredDepartmentData = this.departmentData.slice();
+  //Search Bar function
+  searchDepartmentList(): void {
+    if (this.searchText.trim() !== '') {
+      this.filteredDepartmentData = this.projectDepartments.filter(
+        (department: any) =>
+          department.name
+            .toLowerCase()
+            .includes(this.searchText.toLowerCase()) ||
+          department.code.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    } else {
+      this.filteredDepartmentData = this.projectDepartments.slice();
+    }
   }
-}
 
-  // Load selected departments List
-  loadSelectedDepartments(): void {
+  // Load project departments List
+  loadProjectDepartments(): void {
     this.skip = this.limit * (this.page - 1);
     this.departmentService
       .getSelectedDepartments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
-        this.selectedDepartments = data.departments;
-        this.count = data.count;
-        console.log(this.selectedDepartments[0].rooms);
+        this.projectDepartments = data.results[0].departments;
+        this.filteredDepartmentData = this.projectDepartments.slice(); //For search bar
+        // this.count = data.count;
       });
   }
-
 
   // Toggle selection of a department
   toggleSelection(index: number): void {
@@ -126,10 +100,4 @@ export class DepartmentTransactionComponent {
   buttonInRowClick(event: any): void {
     event.stopPropagation();
   }
-
-  wholeRowClick(): void { }
-
-  nextButtonClickEvent(): void { }
-
-  previousButtonClickEvent(): void { }
 }
