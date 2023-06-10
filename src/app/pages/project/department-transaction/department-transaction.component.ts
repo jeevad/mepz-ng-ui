@@ -72,7 +72,7 @@ export class DepartmentTransactionComponent {
         code: item.code,
       })),
     };
-    this.departmentService.saveDepartments(departmentData).subscribe({
+    this.departmentService.saveDepartments(this.projectId, departmentData).subscribe({
       next: (response) => {
         console.log('Departments saved successfully', response);
         this.loadSelectedDepartments();
@@ -132,6 +132,7 @@ export class DepartmentTransactionComponent {
         console.log(this.selectedDepartments[0].rooms);
       });
   }
+
 
   // Toggle selection of a department
   toggleSelection(index: number): void {

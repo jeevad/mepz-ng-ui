@@ -57,7 +57,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr role="row" class="odd" *ngFor="let department of filteredData; let i=index;">   <!-- For search bar -->
+                <tr role="row" class="odd" *ngFor="let department of selectedDepartments; let i=index;">   <!-- For search bar -->
                   <td>
                     <input type="checkbox" [(ngModel)]="department.selected">
                   </td>

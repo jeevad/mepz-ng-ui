@@ -65,7 +65,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr role="row" class="odd" *ngFor="let room of filteredData; let i=index;"> <!-- For search bar -->
+                <tr role="row" class="odd" *ngFor="let room of selectedRooms; let i=index;"> <!-- For search bar -->
                   <td><input type="checkbox" name="h_dep_id" value="947"></td>
                   <td>{{ room.name }}</td>
                   <td></td>

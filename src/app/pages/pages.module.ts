@@ -12,12 +12,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
+import { DepartmentTransactionComponent } from './project/department-transaction/department-transaction.component';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 @NgModule({
   declarations: [
     routingcomponents,
     ProjectListComponent,
     ProjectTemplateEquipmentComponent,
+    DepartmentTransactionComponent,
+    FilterPipe
     // EquipmentSpecificationComponent,
     // EquipmentBrandComponent,
     // ReportsByPackageComponent,

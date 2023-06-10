@@ -16,8 +16,9 @@ import { DeletedialogComponent } from './pages/deletedialog/deletedialog.compone
 import { ReportsComponent } from './pages/reports/reports.component';
 import { FilterRoomsPipe } from './pipes/filter-rooms.pipe';
 
+
 @NgModule({
-  declarations: [AppComponent, routingcomponents, FilterRoomsPipe],
+  declarations: [AppComponent, routingcomponents, FilterRoomsPipe, ],
   imports: [
     BrowserModule,
     AppRoutingModule,

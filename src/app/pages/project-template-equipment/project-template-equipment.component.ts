@@ -21,6 +21,7 @@ messageclass = '';
 error: boolean = false;
 isEdit: boolean = false;
 deptid: any;
+roomId: any;
 editdata: any;
 submitted: boolean = false;
 addDepartment!: FormGroup;
@@ -173,7 +174,8 @@ SaveData() {
       })),
     };
 
-    this.departmentService.saveDepartments(departmentData).subscribe({
+    this.departmentService.saveDepartments(this.projectId, departmentData).subscribe({
+
       next: (response) => {
         console.log('Departments saved successfully', response);
         this.loadSelectedDepartments();
@@ -233,7 +235,7 @@ saveRoomData(): void {
           code: this.roomData[i].code,
         };
         console.log('roomData:', roomDataObject);
-        this.room.saveRoomData(roomDataObject).subscribe((response: any) => {
+        this.room.saveRoomData(this.projectId, this.deptid,  roomDataObject).subscribe((response: any) => {
           console.log('Data saved successfully:', response);
         });
       }
@@ -251,7 +253,7 @@ saveEquipmentData(): void {
     };
     console.log('equipmentdata:', roomDataObject1);
     this.room
-      .saveEquipmentData(roomDataObject1)
+      .saveEquipmentData(this.projectId, this.deptid, this.roomId, roomDataObject1) // Add the roomId argument
       .subscribe((response: any) => {
         console.log('Data saved successfully:', response);
       });
@@ -259,6 +261,7 @@ saveEquipmentData(): void {
   // Clear the selected equipment array
   this.selectedEquipment = [];
 }
+
 
 // // Function to add the selected equipment to the array | SAVED MANY TIMES BASED ON CLICKING
 // selectEquipment(item: any): void {
@@ -282,7 +285,7 @@ loadSelectedRooms(): void {
 
 // Function to load equipment list
 loadSelectedEquipments(): void {
-  this.room.getSelectedEquipments().subscribe((data: any) => {
+  this.room.getSelectedEquipments(this.projectId).subscribe((data: any) => {
     this.selectedEquipments = data.equipments;
   });
 }

@@ -28,8 +28,8 @@ export class EquipmentAllocationModalComponent {
   selectedEquipments: any[] = [];
   equipmentdata: any[] = []; //Equipment data list in sidebar
   selectedEquipment: any[] = [];
-  searchText: string = ''; // For search bar
-  filteredEquipmentData: any[] = []; // For search bar
+  searchText: string = '';
+  filteredEquipmentData: any[] = [];
 
   constructor(
     private room: RoomService,
@@ -44,6 +44,8 @@ export class EquipmentAllocationModalComponent {
   }
 
   ngOnInit() {
+    console.log('this.projectId,this.deptId, this.roomId',this.projectId,this.deptId, this.roomId);
+
     // Initializing DataTables and setting up callbacks
     // let table = $('#example').DataTable({
     //   drawCallback: () => {
@@ -76,98 +78,28 @@ export class EquipmentAllocationModalComponent {
   }
 
   openEquipmentAllocationModal() {
-    const modalRef = this.modalService.open(EquipmentAllocationModalComponent);
-    modalRef.componentInstance.name = 'World';
-  }
+		const modalRef = this.modalService.open(EquipmentAllocationModalComponent);
+		modalRef.componentInstance.name = 'World';
+	}
 
   // Load equipment data from the service  | List in Sidebar
   loadEquipmentData(): void {
     this.equipmentService.Load(0, 10).subscribe((data: any) => {
       this.equipmentdata = data.results;
-      this.filteredEquipmentData = this.equipmentdata.slice(); // For search bar
+      this.filteredEquipmentData = this.equipmentdata.slice();
     });
   }
 
-  //Search Bar function
-  searchEquipment(): void {
-    if (this.searchText.trim() !== '') {
-      this.filteredEquipmentData = this.equipmentdata.filter((item: any) =>
-        item.name.toLowerCase().includes(this.searchText.toLowerCase())
-      );
-    } else {
-      this.filteredEquipmentData = this.equipmentdata.slice();
-    }
-  }
-
-  // Function to save room data
-  saveRoomData(): void {
-    console.log('Save data method called');
-    for (let i = 0; i < this.roomData.length; i++) {
-      const selectedQuantity = this.roomData[i].selectedQuantity;
-      if (selectedQuantity > 0) {
-        for (let j = 0; j < selectedQuantity; j++) {
-          const roomDataObject = {
-            name: this.roomData[i].name,
-            code: this.roomData[i].code,
-          };
-          console.log('roomData:', roomDataObject);
-          this.room.saveRoomData(roomDataObject).subscribe((response: any) => {
-            console.log('Data saved successfully:', response);
-
-            this.selectedRooms.push(roomDataObject);
-          });
-        }
+    //Search Bar function
+    searchEquipment(): void {
+      if (this.searchText.trim() !== '') {
+        this.filteredEquipmentData = this.equipmentdata.filter((item: any) =>
+          item.name.toLowerCase().includes(this.searchText.toLowerCase())
+        );
+      } else {
+        this.filteredEquipmentData = this.equipmentdata.slice();
       }
     }
-  }
-
-  // Function to save equipment data
-  saveEquipmentData(): void {
-    console.log('Save data method called');
-
-    for (let i = 0; i < this.selectedEquipment.length; i++) {
-      const roomDataObject1 = {
-        name: this.selectedEquipment[i].name,
-      };
-      console.log('equipmentdata:', roomDataObject1);
-      this.room.saveEquipmentData(roomDataObject1).subscribe((response: any) => {
-        console.log('Data saved successfully:', response);
-        this.selectedEquipments.push(roomDataObject1); // Add the selected equipment to the array immediately
-      });
-    }
-    // Clear the selected equipment array
-    this.selectedEquipment = [];
-  }
-
-  // Function to add selected equipment to the array | SAVED ONLY ONE TIME
-  selectEquipment(item: any): void {
-    const isItemSelected = this.selectedEquipment.includes(item);
-    if (!isItemSelected) {
-      this.selectedEquipment.push(item);
-    }
-  }
-
-  // Function to load room list
-  loadSelectedRooms(): void {
-    this.room.getSelectedRooms(this.projectId).subscribe((data: any) => {
-      this.selectedRooms = data.rooms;
-    });
-  }
-
-  // Function to load equipment list
-  loadSelectedEquipments(): void {
-    this.room.getSelectedEquipments().subscribe((data: any) => {
-      this.selectedEquipments = data.equipments;
-    });
-  }
-
-  // Function to load room data
-  loadRoomData(): void {
-    this.room.Load(0, 10).subscribe((data: any) => {
-      this.roomData = data.results;
-      console.log(data.results);
-    });
-  }
 
   // Event handler for button click in a row
   buttonInRowClick(event: any): void {
@@ -186,5 +118,83 @@ export class EquipmentAllocationModalComponent {
   }
 
   // Event handler for previous button click
-  previousButtonClickEvent(): void { }
+  previousButtonClickEvent(): void {}
+
+  // Function to save room data
+  saveRoomData(): void {
+    console.log('Save data method called');
+    for (let i = 0; i < this.roomData.length; i++) {
+      const selectedQuantity = this.roomData[i].selectedQuantity;
+      if (selectedQuantity > 0) {
+        for (let j = 0; j < selectedQuantity; j++) {
+          const roomDataObject = {
+            name: this.roomData[i].name,
+            code: this.roomData[i].code,
+          };
+          console.log('roomData:', roomDataObject);
+          this.room.saveRoomData(this.projectId, this.deptId, roomDataObject).subscribe((response: any) => {
+            console.log('Data saved successfully:', response);
+
+            this.selectedRooms.push(roomDataObject);
+          });
+        }
+      }
+    }
+  }
+
+
+  // Function to save equipment data
+  saveEquipmentData(): void {
+    console.log('Save data method called');
+
+    for (let i = 0; i < this.selectedEquipment.length; i++) {
+      const roomDataObject1 = {
+        name: this.selectedEquipment[i].name,
+      };
+      console.log('equipmentdata:', roomDataObject1);
+      this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1).subscribe((response: any) => {
+        console.log('Data saved successfully:', response);
+        this.selectedEquipments.push(roomDataObject1); // Add the selected equipment to the array immediately
+      });
+    }
+    // Clear the selected equipment array
+    this.selectedEquipment = [];
+  }
+
+  // // Function to add the selected equipment to the array | SAVED MANY TIMES BASED ON CLICKING
+  // selectEquipment(item: any): void {
+  //   this.selectedEquipment.push(item);
+  // }
+
+  // Function to add selected equipment to the array | SAVED ONLY ONE TIME
+  selectEquipment(item: any): void {
+    const isItemSelected = this.selectedEquipment.includes(item);
+    if (!isItemSelected) {
+      this.selectedEquipment.push(item);
+    }
+  }
+
+
+  // Function to load room list
+  loadSelectedRooms(): void {
+    this.room.getSelectedRooms(this.projectId).subscribe((data: any) => {
+      this.selectedRooms = data.rooms;
+    });
+  }
+
+  // Function to load equipment list
+  loadSelectedEquipments(): void {
+    this.room.getSelectedEquipments(this.projectId).subscribe((data: any) => {
+      this.selectedEquipments = data.equipments;
+    });
+  }
+
+  // Function to load room data
+  loadRoomData(): void {
+    this.room.Load(0, 10).subscribe((data: any) => {
+      this.roomData = data.results;
+      console.log(data.results);
+    });
+  }
+
 }

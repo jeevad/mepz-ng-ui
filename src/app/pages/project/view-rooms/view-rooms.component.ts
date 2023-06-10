@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { RoomService } from 'src/app/service/room/room.service';
-import { EquipmentAllocationModalComponent } from './equipment-allocation-modal/equipment-allocation-modal.component';
+import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal/equipment-allocation-modal.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -127,7 +127,7 @@ export class ViewRoomsComponent {
             code: this.roomData[i].code,
           };
           console.log('roomData:', roomDataObject);
-          this.room.saveRoomData(roomDataObject).subscribe((response: any) => {
+          this.room.saveRoomData(this.projectId, this.deptId, roomDataObject).subscribe((response: any) => {
             console.log('Data saved successfully:', response);
 
             this.selectedRooms.push(roomDataObject);
@@ -137,7 +137,6 @@ export class ViewRoomsComponent {
     }
   }
 
-  // Function to save equipment data
   saveEquipmentData(): void {
     console.log('Save data method called');
 
@@ -146,12 +145,14 @@ export class ViewRoomsComponent {
         name: this.selectedEquipment[i].name,
       };
       console.log('equipmentdata:', roomDataObject1);
-      this.room.saveEquipmentData(roomDataObject1).subscribe((response: any) => {
-        console.log('Data saved successfully:', response);
-        this.selectedEquipments.push(roomDataObject1); // Add the selected equipment to the array immediately
-      });
+      this.room
+        .saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1)
+        .subscribe((response: any) => {
+          console.log('Data saved successfully:', response);
+        });
     }
-    this.selectedEquipment = []; // Clear the selected equipment array
+    // Clear the selected equipment array
+    this.selectedEquipment = [];
   }
 
   // Function to add selected equipment to the array | SAVED ONLY ONE TIME
@@ -171,7 +172,8 @@ export class ViewRoomsComponent {
 
   // Function to load equipment list
   loadSelectedEquipments(): void {
-    this.room.getSelectedEquipments().subscribe((data: any) => {
+    this.room.getSelectedEquipments(this.projectId).subscribe((data: any) => {
+
       this.selectedEquipments = data.equipments;
     });
   }
