@@ -19,8 +19,8 @@ export class DepartmentTransactionComponent {
   projectIdNew = '6481b8f4bcf2bf4cfef8d313';
   selectedDepartmentsRooms: any;
   projectId: any;
-  searchTerm: string = ''; // For search bar
-  filteredData: any[] = []; // For search bar
+  searchText: string = ''; // For search bar
+  filteredDepartmentData: any[] = []; // For search bar
 
   constructor(
     private departmentService: DepartmentService,
@@ -88,38 +88,21 @@ export class DepartmentTransactionComponent {
   loadDepartmentData(): void {
     this.departmentService.Load(0, 10).subscribe((data: any) => {
       this.departmentData = data.results;
-      this.filteredData = this.departmentData; //For search bar
+      this.filteredDepartmentData = this.departmentData.slice();  //For search bar
     });
   }
 
-  // For search bar | Filters the data based on the search term
-  filterData() {
-    if (!this.searchTerm) {
-      this.filteredData = this.departmentData;
-    } else {
-      this.filteredData = this.departmentData.filter((department) =>
-        this.matchesSearchTerm(department)
-      );
-    }
+ //Search Bar function
+ searchDepartmentList(): void {
+  if (this.searchText.trim() !== '') {
+    this.filteredDepartmentData = this.departmentData.filter((department: any) =>
+      department.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      department.code.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  } else {
+    this.filteredDepartmentData = this.departmentData.slice();
   }
-
-  // For search bar | Checks if an item matches the search term
-  matchesSearchTerm(department: any): boolean {
-    const searchFields = [
-      department.code,
-      department.name,
-      department.type,
-      department.company
-    ];
-
-    for (const field of searchFields) {
-      if (field && field.toLowerCase().includes(this.searchTerm.toLowerCase())) {
-        return true;
-      }
-    }
-
-    return false;
-  }
+}
 
   // Load selected departments List
   loadSelectedDepartments(): void {

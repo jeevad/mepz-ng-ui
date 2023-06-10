@@ -12,8 +12,8 @@
         <div class="card-body">
           <!-- For search bar -->
           <div class="input-group mb-3" style="width: 300px; float: right;">
-            <input type="text" class="form-control form-control-sm" placeholder="Search" [(ngModel)]="searchTerm"
-              (input)="filterData()">
+            <input type="text" class="form-control form-control" placeholder="Search" [(ngModel)]="searchText"
+              (input)="searchProjectList()">
           </div>
           <div>
             <table id="example" class="display" cellspacing="0" width="100%">
@@ -28,7 +28,7 @@
                 </tr>
               </thead>
               <tbody onload="passVariable()">
-                <tr role="row" class="odd" *ngFor="let item of filteredData; let i=index;"> <!-- For search bar -->
+                <tr role="row" class="odd" *ngFor="let item of filteredEquipmentData; let i=index;"> <!-- For search bar -->
                   <td>{{ skip + i+1 }}</td>
                   <td>{{item.code}}</td>
                   <td class="sorting_1">{{item.name}}</td>

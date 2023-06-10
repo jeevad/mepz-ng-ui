@@ -25,8 +25,8 @@ export class ViewRoomsComponent {
   projectId!: any;
   deptId!: any;
   roomId!: any;
-  searchTerm: string = ''; // For search bar
-  filteredData: any[] = []; // For search bar
+  searchText: string = ''; // For search bar
+  filteredRoomData: any[] = []; // For search bar
 
   constructor(
     private room: RoomService,
@@ -86,36 +86,20 @@ export class ViewRoomsComponent {
   loadEquipmentData(): void {
     this.equipmentService.Load(0, 10).subscribe((data: any) => {
       this.equipmentdata = data.results;
-      this.filteredData = this.equipmentdata; //For search bar
-
+      this.filteredRoomData = this.roomData.slice();   //For search bar
     });
   }
 
-  // For search bar | Filters the data based on the search term
-  filterData() {
-    if (!this.searchTerm) {
-      this.filteredData = this.equipmentdata;
-    } else {
-      this.filteredData = this.equipmentdata.filter((room) =>
-        this.matchesSearchTerm(room)
+  //Search Bar function
+  searchRoomList(): void {
+    if (this.searchText.trim() !== '') {
+      this.filteredRoomData = this.roomData.filter((room: any) =>
+        room.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        room.code.toLowerCase().includes(this.searchText.toLowerCase())
       );
+    } else {
+      this.filteredRoomData = this.roomData.slice();
     }
-  }
-
-  // For search bar | Checks if an item matches the search term
-  matchesSearchTerm(room: any): boolean {
-    const searchFields = [
-      room.code,
-      room.name,
-    ];
-
-    for (const field of searchFields) {
-      if (field && field.toLowerCase().includes(this.searchTerm.toLowerCase())) {
-        return true;
-      }
-    }
-
-    return false;
   }
 
   // Function to save room data

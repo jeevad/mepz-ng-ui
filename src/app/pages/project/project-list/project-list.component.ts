@@ -28,8 +28,8 @@ export class ProjectListComponent implements OnInit {
   departmentData: any[] = [];
   animal!: string;
   name!: string;
-  searchTerm: string = ''; // For search bar
-  filteredData: any[] = []; // For search bar
+  searchText: string = ''; // For search bar
+  filteredEquipmentData: any[] = []; // For search bar
 
   constructor(
     public dialog: MatDialog,
@@ -55,37 +55,22 @@ export class ProjectListComponent implements OnInit {
     this.department.Load(this.skip, this.limit).subscribe((data: any) => {
       this.departmentData = data.results;
       this.count = data.count;
-      this.filteredData = this.departmentData; //For search bar
+      this.filteredEquipmentData = this.departmentData.slice();   //For search bar
     });
   }
 
-  // For search bar | Filters the data based on the search term
-  filterData() {
-    if (!this.searchTerm) {
-      this.filteredData = this.departmentData;
-    } else {
-      this.filteredData = this.departmentData.filter((item) =>
-        this.matchesSearchTerm(item)
+  //Search Bar function
+  searchProjectList(): void {
+    if (this.searchText.trim() !== '') {
+      this.filteredEquipmentData = this.departmentData.filter((item: any) =>
+        item.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        item.code.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        item.type.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        item.company.toLowerCase().includes(this.searchText.toLowerCase())
       );
+    } else {
+      this.filteredEquipmentData = this.departmentData.slice();
     }
-  }
-
-  // For search bar | Checks if an item matches the search term
-  matchesSearchTerm(item: any): boolean {
-    const searchFields = [
-      item.code,
-      item.name,
-      item.type,
-      item.company
-    ];
-
-    for (const field of searchFields) {
-      if (field && field.toLowerCase().includes(this.searchTerm.toLowerCase())) {
-        return true;
-      }
-    }
-
-    return false;
   }
 
   // Deletes an item
