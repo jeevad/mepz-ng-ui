@@ -24,7 +24,7 @@ export class ViewRoomsComponent {
   selectedEquipment: any[] = [];
   projectId!: any;
   deptId!: any;
-  roomId: any;
+  roomId!: any;
   searchTerm: string = ''; // For search bar
   filteredData: any[] = []; // For search bar
 
@@ -43,6 +43,7 @@ export class ViewRoomsComponent {
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.deptId = this.route.snapshot.paramMap.get('deptId');
+
     this.loadRoomData(); // Loading room data
     this.loadSelectedRooms();
     this.loadEquipmentData(); //Equipment data list in sidebar
@@ -139,6 +140,30 @@ export class ViewRoomsComponent {
     }
   }
 
+  // Function to save equipment data
+  // saveEquipmentData(): void {
+  //   console.log('Save data method called');
+
+  //   for (let i = 0; i < this.selectedEquipment.length; i++) {
+  //     const roomDataObject1 = {
+  //       name: this.selectedEquipment[i].name,
+  //     };
+  //     console.log('equipmentdata:', roomDataObject1);
+  //         console.log('roomId:', this.roomId);
+
+  //     this.room
+  //       .saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1)
+
+  //       .subscribe((response: any) => {
+
+  //         console.log('Data saved successfully:', response);
+  //       });
+  //   }
+  //   // Clear the selected equipment array
+  //   this.selectedEquipment = [];
+  // }
+
+  //Static room id for equipment
   saveEquipmentData(): void {
     console.log('Save data method called');
 
@@ -147,14 +172,12 @@ export class ViewRoomsComponent {
         name: this.selectedEquipment[i].name,
       };
       console.log('equipmentdata:', roomDataObject1);
-      this.room
-        .saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1)
-        .subscribe((response: any) => {
-          console.log('Data saved successfully:', response);
-        });
+      this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1).subscribe((response: any) => {
+        console.log('Data saved successfully:', response);
+        this.selectedEquipments.push(roomDataObject1);
+      });
     }
-    // Clear the selected equipment array
-    this.selectedEquipment = [];
+    this.selectedEquipment = []; // Clear the selected equipment array
   }
 
   // Function to add selected equipment to the array | SAVED ONLY ONE TIME

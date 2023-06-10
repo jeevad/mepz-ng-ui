@@ -44,7 +44,7 @@ export class EquipmentAllocationModalComponent {
   }
 
   ngOnInit() {
-    console.log('this.projectId,this.deptId, this.roomId',this.projectId,this.deptId, this.roomId);
+    console.log('this.projectId,this.deptId, this.roomId', this.projectId, this.deptId, this.roomId);
 
 
     // Initializing DataTables and setting up callbacks
@@ -79,9 +79,9 @@ export class EquipmentAllocationModalComponent {
   }
 
   openEquipmentAllocationModal() {
-		const modalRef = this.modalService.open(EquipmentAllocationModalComponent);
-		modalRef.componentInstance.name = 'World';
-	}
+    const modalRef = this.modalService.open(EquipmentAllocationModalComponent);
+    modalRef.componentInstance.name = 'World';
+  }
 
   // Load equipment data from the service  | List in Sidebar
   loadEquipmentData(): void {
@@ -91,17 +91,17 @@ export class EquipmentAllocationModalComponent {
     });
   }
 
-    //Search Bar function
-    searchEquipment(): void {
-      if (this.searchText.trim() !== '') {
-        this.filteredEquipmentData = this.equipmentdata.filter((item: any) =>
-          item.name.toLowerCase().includes(this.searchText.toLowerCase())
-        );
-      } else {
-        this.filteredEquipmentData = this.equipmentdata.slice();
+  //Search Bar function
+  searchEquipment(): void {
+    if (this.searchText.trim() !== '') {
+      this.filteredEquipmentData = this.equipmentdata.filter((item: any) =>
+        item.name.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    } else {
+      this.filteredEquipmentData = this.equipmentdata.slice();
 
-      }
     }
+  }
 
   // Event handler for button click in a row
   buttonInRowClick(event: any): void {
@@ -120,7 +120,7 @@ export class EquipmentAllocationModalComponent {
   }
 
   // Event handler for previous button click
-  previousButtonClickEvent(): void {}
+  previousButtonClickEvent(): void { }
 
   // Function to save room data
   saveRoomData(): void {
@@ -144,7 +144,6 @@ export class EquipmentAllocationModalComponent {
     }
   }
 
-
   // Function to save equipment data
   saveEquipmentData(): void {
     console.log('Save data method called');
@@ -156,22 +155,11 @@ export class EquipmentAllocationModalComponent {
       console.log('equipmentdata:', roomDataObject1);
       this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1).subscribe((response: any) => {
         console.log('Data saved successfully:', response);
-        this.selectedEquipments.push(roomDataObject1); // Add the selected equipment to the array immediately
+        this.selectedEquipments.push(roomDataObject1);
       });
     }
-    // Clear the selected equipment array
-    this.selectedEquipment = [];
+    this.selectedEquipment = []; // Clear the selected equipment array
   }
-
-  // // Function to add the selected equipment to the array | SAVED MANY TIMES BASED ON CLICKING
-  // selectEquipment(item: any): void {
-  //   this.selectedEquipment.push(item);
-  // }
-
-  // // Function to add the selected equipment to the array | SAVED MANY TIMES BASED ON CLICKING
-  // selectEquipment(item: any): void {
-  //   this.selectedEquipment.push(item);
-  // }
 
   // Function to add selected equipment to the array | SAVED ONLY ONE TIME
   selectEquipment(item: any): void {
@@ -204,4 +192,4 @@ export class EquipmentAllocationModalComponent {
     });
 
   }
-      }
+}

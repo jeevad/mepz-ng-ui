@@ -49,13 +49,13 @@ export class RoomService {
     return this.http.get(environment.apiUrl + '/project/getRooms/' + projectId);
   }
 
-  // Function to add room equipment with additional project, department & room IDs
   // Save equipment data for a room
-  saveEquipmentData(projectId: string, deptId: string, roomId: string, roomData: any) {
-    const url = environment.apiUrl + `/project/addEquipmentData/${projectId}/${deptId}/${roomId}`;
+  saveEquipmentData(projectId: string, deptId: string, roomId: string | null | any, roomData: any) {
+    const staticRoomId = "64844548bcf2bf4cfefb13f8";
+    roomId = roomId || staticRoomId;
+    const url = environment.apiUrl + `/project/addRoomEquipment/${projectId}/${deptId}/${roomId}`;
     return this.http.post(url, roomData);
   }
-
 
   // Function to get selected equipments for a project
   getSelectedEquipments(projectId: string) {
