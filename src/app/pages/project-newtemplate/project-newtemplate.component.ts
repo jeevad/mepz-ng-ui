@@ -242,14 +242,14 @@ saveEquipmentData(): void {
 
   // Function to load room list
   loadSelectedRooms(): void {
-    this.room.getSelectedRooms(this.projectId).subscribe((data: any) => {
+    this.room.getSelectedRooms(this.projectId, this.deptid).subscribe((data: any) => {
       this.selectedRooms = data.rooms;
     });
   }
 
   // Function to load equipment list
   loadSelectedEquipments(): void {
-    this.room.getSelectedEquipments(this.projectId).subscribe((data: any) => {
+    this.room.getSelectedEquipments(this.projectId, this.deptid, this.roomId).subscribe((data: any) => {
       this.selectedEquipments = data.equipments;
     });
   }

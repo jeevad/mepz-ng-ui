@@ -44,21 +44,21 @@ export class RoomService {
     return this.http.post(url, roomData);
   }
 
-  // Function to get selected rooms for a project
-  getSelectedRooms(projectId: string) {
-    return this.http.get(environment.apiUrl + '/project/getRooms/' + projectId);
+   // Function to get selected rooms for a project
+   getSelectedRooms(projectId: string, deptId: string) {
+    const url = environment.apiUrl + `/project/getRooms/${projectId}/${deptId}`;
+    return this.http.get(url);
   }
 
   // Save equipment data for a room
-  saveEquipmentData(projectId: string, deptId: string, roomId: string | null | any, roomData: any) {
-    const staticRoomId = "64844548bcf2bf4cfefb13f8";
-    roomId = roomId || staticRoomId;
+  saveEquipmentData(projectId: string, deptId: string, roomId: string, roomData: any) {
     const url = environment.apiUrl + `/project/addRoomEquipment/${projectId}/${deptId}/${roomId}`;
     return this.http.post(url, roomData);
   }
 
   // Function to get selected equipments for a project
-  getSelectedEquipments(projectId: string) {
-    return this.http.get(environment.apiUrl + '/project/getEquipments/' + projectId);
+  getSelectedEquipments(projectId: string, deptId: string, roomId: string,) {
+    const url = environment.apiUrl + `/project/getEquipments/${projectId}/${deptId}/${roomId}`;
+    return this.http.get(url);
   }
 }

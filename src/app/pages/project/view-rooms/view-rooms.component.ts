@@ -3,10 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { RoomService } from 'src/app/service/room/room.service';
 import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal/equipment-allocation-modal.component';
-
 import { ActivatedRoute } from '@angular/router';
-
-
 @Component({
   selector: 'app-view-rooms',
   templateUrl: './view-rooms.component.html',
@@ -18,11 +15,11 @@ export class ViewRoomsComponent {
   selectedQuantity1: number = 0;
   item: any[] = [];
   selectOptions: any[] = [];
-  selectedRooms: any[] = [];
+  selectedRooms: any;
   selectedEquipments: any[] = [];
   equipmentdata: any[] = []; //Equipment data list in sidebar
-  selectedEquipment: any[] = [];
-  projectId!: any;
+  projectEquipments: any[] = [];
+  projectId: any;
   deptId!: any;
   roomId!: any;
   searchText: string = ''; // For search bar
@@ -43,11 +40,13 @@ export class ViewRoomsComponent {
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.deptId = this.route.snapshot.paramMap.get('deptId');
-
+    // console.log('projectId:', this.projectId);
+    // console.log('deptId0876:', this.deptId);
     this.loadRoomData(); // Loading room data
     this.loadSelectedRooms();
-    this.loadEquipmentData(); //Equipment data list in sidebar
-    this.loadSelectedEquipments();
+
+    // this.loadEquipmentData(); //Equipment data list in sidebar
+    // this.loadSelectedEquipments();
 
     // Initializing DataTables and setting up callbacks
     // let table = $('#example').DataTable({
@@ -82,26 +81,6 @@ export class ViewRoomsComponent {
     modalRef.componentInstance.roomId = roomId;
   }
 
-  // Load equipment data from the service  | List in Sidebar
-  loadEquipmentData(): void {
-    this.equipmentService.Load(0, 10).subscribe((data: any) => {
-      this.equipmentdata = data.results;
-      this.filteredRoomData = this.roomData.slice();   //For search bar
-    });
-  }
-
-  //Search Bar function
-  searchRoomList(): void {
-    if (this.searchText.trim() !== '') {
-      this.filteredRoomData = this.roomData.filter((room: any) =>
-        room.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        room.code.toLowerCase().includes(this.searchText.toLowerCase())
-      );
-    } else {
-      this.filteredRoomData = this.roomData.slice();
-    }
-  }
-
   // Function to save room data
   saveRoomData(): void {
     console.log('Save data method called');
@@ -110,6 +89,8 @@ export class ViewRoomsComponent {
       if (selectedQuantity > 0) {
         for (let j = 0; j < selectedQuantity; j++) {
           const roomDataObject = {
+
+            roomId: this.roomData[i]._id,
             name: this.roomData[i].name,
             code: this.roomData[i].code,
           };
@@ -118,19 +99,48 @@ export class ViewRoomsComponent {
             console.log('Data saved successfully:', response);
 
             this.selectedRooms.push(roomDataObject);
+            this.loadSelectedRooms(); //real-time listing
           });
         }
       }
     }
   }
 
+  // Function to load room data
+  loadRoomData(): void {
+    this.room.Load(0, 10).subscribe((data: any) => {
+      this.roomData = data.results;
+      console.log(data.results);
+    });
+  }
+
+  //Search Bar function
+  searchRoomList(): void {
+    if (this.searchText.trim() !== '') {
+      this.filteredRoomData = this.selectedRooms.filter((room: any) =>
+        room.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        room.code.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    } else {
+      this.filteredRoomData = this.selectedRooms.slice();
+    }
+  }
+
+  // Function to load room list
+  loadSelectedRooms(): void {
+    this.room.getSelectedRooms(this.projectId, this.deptId).subscribe((data: any) => {
+      this.selectedRooms = data.results[0].departments.rooms;
+      this.filteredRoomData = this.selectedRooms.slice(); //For search bar
+    });
+  }
+
   // Function to save equipment data
   // saveEquipmentData(): void {
   //   console.log('Save data method called');
 
-  //   for (let i = 0; i < this.selectedEquipment.length; i++) {
+  //   for (let i = 0; i < this.projectEquipments.length; i++) {
   //     const roomDataObject1 = {
-  //       name: this.selectedEquipment[i].name,
+  //       name: this.projectEquipments[i].name,
   //     };
   //     console.log('equipmentdata:', roomDataObject1);
   //         console.log('roomId:', this.roomId);
@@ -144,54 +154,48 @@ export class ViewRoomsComponent {
   //       });
   //   }
   //   // Clear the selected equipment array
-  //   this.selectedEquipment = [];
+  //   this.projectEquipments = [];
   // }
 
   //Static room id for equipment
   saveEquipmentData(): void {
     console.log('Save data method called');
 
-    for (let i = 0; i < this.selectedEquipment.length; i++) {
+    for (let i = 0; i < this.projectEquipments.length; i++) {
       const roomDataObject1 = {
-        name: this.selectedEquipment[i].name,
+        name: this.projectEquipments[i].name,
       };
       console.log('equipmentdata:', roomDataObject1);
       this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1).subscribe((response: any) => {
+
         console.log('Data saved successfully:', response);
         this.selectedEquipments.push(roomDataObject1);
       });
     }
-    this.selectedEquipment = []; // Clear the selected equipment array
+    this.projectEquipments = []; // Clear the selected equipment array
+  }
+
+  // Load equipment data from the service  | List in Sidebar
+  loadEquipmentData(): void {
+    this.equipmentService.Load(0, 10).subscribe((data: any) => {
+      this.equipmentdata = data.results;
+      this.filteredRoomData = this.roomData.slice();   //For search bar
+    });
   }
 
   // Function to add selected equipment to the array | SAVED ONLY ONE TIME
   selectEquipment(item: any): void {
-    const isItemSelected = this.selectedEquipment.includes(item);
+    const isItemSelected = this.projectEquipments.includes(item);
     if (!isItemSelected) {
-      this.selectedEquipment.push(item);
+      this.projectEquipments.push(item);
     }
-  }
-
-  // Function to load room list
-  loadSelectedRooms(): void {
-    this.room.getSelectedRooms(this.projectId).subscribe((data: any) => {
-      this.selectedRooms = data.rooms;
-    });
   }
 
   // Function to load equipment list
   loadSelectedEquipments(): void {
-    this.room.getSelectedEquipments(this.projectId).subscribe((data: any) => {
+    this.room.getSelectedEquipments(this.projectId, this.deptId, this.roomId).subscribe((data: any) => {
 
       this.selectedEquipments = data.equipments;
-    });
-  }
-
-  // Function to load room data
-  loadRoomData(): void {
-    this.room.Load(0, 10).subscribe((data: any) => {
-      this.roomData = data.results;
-      console.log(data.results);
     });
   }
 

@@ -17,7 +17,7 @@ export class DepartmentTransactionComponent {
   projectId: any;
   searchText: string = ''; // For search bar
   filteredDepartmentData: any[] = []; // For search bar
-  projectDepartments: any;
+  projectDepartments: any;  //selectedDepartments old
 
   constructor(
     private departmentService: DepartmentService,
