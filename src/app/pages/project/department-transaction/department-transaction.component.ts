@@ -40,6 +40,7 @@ export class DepartmentTransactionComponent {
       departments: selectedItems.map((item) => ({
         departmentId: item._id,
         name: item.name,
+        alias: item.name,
         code: item.code,
       })),
     };
