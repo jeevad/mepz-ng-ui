@@ -53,39 +53,12 @@ export class EquipmentAllocationModalComponent {
     this.loadProjectEquipments();
   }
 
-    this.loadProjectEquipments();
-  }
-
   //Project list in equipment modal
   loadProjectData() {
     this.projectService.Load(0, 10).subscribe((data: any) => {
       this.projectData = data.results;
     });
   }
-
-  // Function to save room data
-  saveRoomData(): void {
-    console.log('Save data method called');
-    for (let i = 0; i < this.roomData.length; i++) {
-      const selectedQuantity = this.roomData[i].selectedQuantity;
-      if (selectedQuantity > 0) {
-        for (let j = 0; j < selectedQuantity; j++) {
-          const roomDataObject = {
-            roomId: this.roomData[i]._id,
-            name: this.roomData[i].name,
-            code: this.roomData[i].code,
-          };
-          console.log('roomData:', roomDataObject);
-          this.room.saveRoomData(this.projectId, this.deptId, roomDataObject).subscribe((response: any) => {
-            console.log('Data saved successfully:', response);
-
-            this.selectedRooms.push(roomDataObject);
-          });
-        }
-      }
-    }
-  }
-
 
   // Function to save equipment data
   saveEquipmentData(): void {
@@ -98,12 +71,8 @@ export class EquipmentAllocationModalComponent {
       console.log('equipmentData:', roomDataObject1);
       this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1).subscribe((response: any) => {
         console.log('Data saved successfully:', response);
-
-        this.selectedEquipments.push(roomDataObject1); //real-time listing
-
         this.projectEquipments.push(roomDataObject1);
         //  this.loadSelectedRooms(); //real-time listing
-
       });
     }
     this.projectEquipment = []; // Clear the projectEquipments equipment array
