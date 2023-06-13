@@ -161,7 +161,7 @@ export class ProjectNewtemplateComponent {
     loadSelectedDepartments(): void {
       this.skip = this.limit * (this.page - 1);
       this.departmentService
-        .getSelectedDepartments(this.projectId,this.skip, this.limit)
+        .getProjectDepartments(this.projectId,this.skip, this.limit)
         .subscribe((data: any) => {
           this.selectedDepartments = data.departments;
           this.count = data.count;
