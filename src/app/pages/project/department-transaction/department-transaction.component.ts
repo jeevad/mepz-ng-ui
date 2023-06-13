@@ -18,6 +18,7 @@ export class DepartmentTransactionComponent {
   searchText: string = ''; // For search bar
   filteredDepartmentData: any[] = []; // For search bar
   projectDepartments: any;  //selectedDepartments old
+  project: any;
 
   constructor(
     private departmentService: DepartmentService,
@@ -84,6 +85,7 @@ export class DepartmentTransactionComponent {
     this.skip = this.limit * (this.page - 1);
     this.departmentService.getSelectedDepartments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
+        this.project = data.results[0];
         this.projectDepartments = data.results[0].departments;
         this.filteredDepartmentData = this.projectDepartments.slice(); // For search bar
       });
