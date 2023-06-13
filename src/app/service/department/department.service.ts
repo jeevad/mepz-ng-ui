@@ -49,11 +49,10 @@ saveDepartments(projectId: string, departmentData: any) {
 }
 
 // Get selected departments for a project | Listing
-getSelectedDepartments(projectId: string, skip: number, limit: number) {
+getProjectDepartments(projectId: string, skip: number, limit: number) {
   return this.http.get(
     environment.apiUrl + '/project/getDepartments/' + projectId,
     { params: { skip: skip.toString(), limit: limit.toString() } }
   );
 }
-
 }

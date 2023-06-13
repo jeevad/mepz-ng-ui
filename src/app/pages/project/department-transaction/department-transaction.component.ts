@@ -79,7 +79,7 @@ export class DepartmentTransactionComponent {
   // Load project departments List
   loadProjectDepartments(): void {
     this.skip = this.limit * (this.page - 1);
-    this.departmentService.getSelectedDepartments(this.projectId, this.skip, this.limit)
+    this.departmentService.getProjectDepartments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
         this.project = data.results[0];
         this.projectDepartments = data.results[0].departments;
