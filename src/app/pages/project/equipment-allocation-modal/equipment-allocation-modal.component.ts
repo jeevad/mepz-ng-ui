@@ -58,11 +58,6 @@ export class EquipmentAllocationModalComponent {
     this.loadSelectedEquipments();
   }
 
-  openEquipmentAllocationModal() {
-    const modalRef = this.modalService.open(EquipmentAllocationModalComponent);
-    modalRef.componentInstance.name = 'World';
-  }
-
   loadProjectData() {
     this.projectService.Load(0, 10).subscribe((data: any) => {
       this.projectData = data.results;
@@ -92,20 +87,7 @@ export class EquipmentAllocationModalComponent {
     }
   }
 
-  // Function to load room data
-  loadRoomData(): void {
-    this.room.Load(0, 10).subscribe((data: any) => {
-      this.roomData = data.results;
-      console.log(data.results);
-    });
-  }
 
-  // Function to load room list
-  loadSelectedRooms(): void {
-    this.room.getSelectedRooms(this.projectId, this.deptId).subscribe((data: any) => {
-      this.selectedRooms = data.rooms;
-    });
-  }
 
   // Function to save equipment data
   saveEquipmentData(): void {
@@ -120,8 +102,7 @@ export class EquipmentAllocationModalComponent {
       console.log('equipmentdata:', roomDataObject1);
       this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1).subscribe((response: any) => {
         console.log('Data saved successfully:', response);
-        this.selectedEquipments.push(roomDataObject1);
-         this.loadSelectedRooms(); //real-time listing
+        this.selectedEquipments.push(roomDataObject1); //real-time listing
       });
     }
     this.selectedEquipment = []; // Clear the selected equipment array
@@ -161,20 +142,5 @@ export class EquipmentAllocationModalComponent {
       this.filteredEquipmentData = this.equipmentdata.slice();
     }
   }
-
-  buttonInRowClick(event: any): void {
-    event.stopPropagation();
-    console.log('Button in the row clicked.');
-  }
-
-  wholeRowClick(): void {
-    console.log('Whole row clicked.');
-  }
-
-  nextButtonClickEvent(): void {
-    console.log('Next clicked');
-  }
-
-  previousButtonClickEvent(): void { }
 
 }
