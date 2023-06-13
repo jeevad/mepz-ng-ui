@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./add-equipment.component.css'],
 })
 export class AddEquipmentComponent implements OnInit {
-  equipmentdata: any;
+  equipmentData: any;
   active: any = ['Active', 'Inactive'];
   message = '';
   messageclass = '';

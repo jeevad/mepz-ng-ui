@@ -9,7 +9,6 @@ import { DepartmentService } from 'src/app/service/department/department.service
 })
 export class DepartmentTransactionComponent {
   departmentData: any[] = [];
-  selectedDepartments: any[] = [];
   page = 1;
   limit = 10;
   skip = 0;
@@ -17,25 +16,22 @@ export class DepartmentTransactionComponent {
   projectId: any;
   searchText: string = ''; // For search bar
   filteredDepartmentData: any[] = []; // For search bar
-  projectDepartments: any;  //selectedDepartments old
+  projectDepartments: any;
   project: any;
-
   constructor(
     private departmentService: DepartmentService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.loadDepartmentData();
-    // this.loadSelectedDepartments();
     this.loadProjectDepartments();
   }
 
   // Add selected departments
   addDepartments(): void {
     const selectedItems = this.departmentData.filter((item) => item.selected);
-
     const departmentData = {
       departments: selectedItems.map((item) => ({
         departmentId: item._id,
@@ -60,9 +56,7 @@ export class DepartmentTransactionComponent {
   // Load department data from the service  | Sidebar
   loadDepartmentData(): void {
     this.departmentService.Load(0, 10).subscribe((data: any) => {
-      // this.selectedDepartments = data.departments;
       this.departmentData = data.results;
-      // this.filteredDepartmentData = this.departmentData.slice();  //For search bar
     });
   }
 

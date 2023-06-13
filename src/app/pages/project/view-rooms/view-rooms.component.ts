@@ -12,13 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewRoomsComponent {
   roomData: any[] = [];
   selectedQuantity: number = 0;
-  selectedQuantity1: number = 0;
   item: any[] = [];
   selectOptions: any[] = [];
-  selectedRooms: any;
-  selectedEquipments: any[] = [];
-  equipmentdata: any[] = []; //Equipment data list in sidebar
+  projectRooms: any;
   projectEquipments: any[] = [];
+  equipmentData: any[] = [];
   projectId: any;
   deptId!: any;
   roomId!: any;
@@ -31,6 +29,7 @@ export class ViewRoomsComponent {
     private modalService: NgbModal,
     private route: ActivatedRoute,
   ) {
+
     // For Qty dropdown: Creating options from 1 to 20
     for (let i = 1; i <= 20; i++) {
       this.selectOptions.push({ value: i.toString(), label: i.toString() });
@@ -40,38 +39,8 @@ export class ViewRoomsComponent {
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.deptId = this.route.snapshot.paramMap.get('deptId');
-    // console.log('projectId:', this.projectId);
-    // console.log('deptId0876:', this.deptId);
-    this.loadRoomData(); // Loading room data
-    this.loadSelectedRooms();
-
-    // this.loadEquipmentData(); //Equipment data list in sidebar
-    // this.loadSelectedEquipments();
-
-    // Initializing DataTables and setting up callbacks
-    // let table = $('#example').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
-
-    // let table1 = $('#example1').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
-
-    // let table2 = $('#example2').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
+    this.loadRoomData();
+    this.loadProjectRooms();
   }
 
   openEquipmentAllocationModal(roomId: string) {
@@ -89,8 +58,7 @@ export class ViewRoomsComponent {
       if (selectedQuantity > 0) {
         for (let j = 0; j < selectedQuantity; j++) {
           const roomDataObject = {
-
-            roomId: this.roomData[i]._id,
+             roomId: this.roomData[i]._id,
             name: this.roomData[i].name,
             code: this.roomData[i].code,
           };
@@ -98,8 +66,8 @@ export class ViewRoomsComponent {
           this.room.saveRoomData(this.projectId, this.deptId, roomDataObject).subscribe((response: any) => {
             console.log('Data saved successfully:', response);
 
-            this.selectedRooms.push(roomDataObject);
-            this.loadSelectedRooms(); //real-time listing
+            this.projectRooms.push(roomDataObject);
+            this.loadProjectRooms(); //real-time listing
           });
         }
       }
@@ -117,102 +85,21 @@ export class ViewRoomsComponent {
   //Search Bar function
   searchRoomList(): void {
     if (this.searchText.trim() !== '') {
-      this.filteredRoomData = this.selectedRooms.filter((room: any) =>
+      this.filteredRoomData = this.projectRooms.filter((room: any) =>
         room.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
         room.code.toLowerCase().includes(this.searchText.toLowerCase())
       );
     } else {
-      this.filteredRoomData = this.selectedRooms.slice();
+      this.filteredRoomData = this.projectRooms.slice();
     }
   }
 
   // Function to load room list
-  loadSelectedRooms(): void {
-    this.room.getSelectedRooms(this.projectId, this.deptId).subscribe((data: any) => {
-      this.selectedRooms = data.results[0].departments.rooms;
-      this.filteredRoomData = this.selectedRooms.slice(); //For search bar
+  loadProjectRooms(): void {
+    this.room.getProjectRooms(this.projectId, this.deptId).subscribe((data: any) => {
+      this.projectRooms = data.results[0].departments.rooms;
+      this.filteredRoomData = this.projectRooms.slice(); //For search bar
     });
   }
-
-  // Function to save equipment data
-  // saveEquipmentData(): void {
-  //   console.log('Save data method called');
-
-  //   for (let i = 0; i < this.projectEquipments.length; i++) {
-  //     const roomDataObject1 = {
-  //       name: this.projectEquipments[i].name,
-  //     };
-  //     console.log('equipmentdata:', roomDataObject1);
-  //         console.log('roomId:', this.roomId);
-
-  //     this.room
-  //       .saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1)
-
-  //       .subscribe((response: any) => {
-
-  //         console.log('Data saved successfully:', response);
-  //       });
-  //   }
-  //   // Clear the selected equipment array
-  //   this.projectEquipments = [];
-  // }
-
-  //Static room id for equipment
-  saveEquipmentData(): void {
-    console.log('Save data method called');
-
-    for (let i = 0; i < this.projectEquipments.length; i++) {
-      const roomDataObject1 = {
-        name: this.projectEquipments[i].name,
-      };
-      console.log('equipmentdata:', roomDataObject1);
-      this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1).subscribe((response: any) => {
-
-        console.log('Data saved successfully:', response);
-        this.selectedEquipments.push(roomDataObject1);
-      });
-    }
-    this.projectEquipments = []; // Clear the selected equipment array
-  }
-
-  // Load equipment data from the service  | List in Sidebar
-  loadEquipmentData(): void {
-    this.equipmentService.Load(0, 10).subscribe((data: any) => {
-      this.equipmentdata = data.results;
-      this.filteredRoomData = this.roomData.slice();   //For search bar
-    });
-  }
-
-  // Function to add selected equipment to the array | SAVED ONLY ONE TIME
-  selectEquipment(item: any): void {
-    const isItemSelected = this.projectEquipments.includes(item);
-    if (!isItemSelected) {
-      this.projectEquipments.push(item);
-    }
-  }
-
-  // Function to load equipment list
-  loadSelectedEquipments(): void {
-    this.room.getSelectedEquipments(this.projectId, this.deptId, this.roomId).subscribe((data: any) => {
-
-      this.selectedEquipments = data.equipments;
-    });
-  }
-
-  // Event handler for button click in a row
-  buttonInRowClick(event: any): void {
-    event.stopPropagation();
-    console.log('Button in the row clicked.');
-  }
-
-  wholeRowClick(): void {
-    console.log('Whole row clicked.');
-  }
-
-  nextButtonClickEvent(): void {
-    console.log('Next clicked');
-  }
-
-  previousButtonClickEvent(): void { }
 
 }

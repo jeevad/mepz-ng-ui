@@ -15,16 +15,16 @@ export class EquipmentService {
     });
   }
 
-  SaveData(equipmentdata: any) {
-    return this.http.post(environment.apiUrl + '/equipment', equipmentdata);
+  SaveData(equipmentData: any) {
+    return this.http.post(environment.apiUrl + '/equipment', equipmentData);
   }
   LoadbyID(id: any) {
     return this.http.get(environment.apiUrl + '/equipment/' + id);
   }
-  update(id: any, equipmentdata: any) {
+  update(id: any, equipmentData: any) {
     return this.http.patch(
       environment.apiUrl + '/equipment/' + id,
-      equipmentdata
+      equipmentData
     );
   }
   Removedata(id: any) {

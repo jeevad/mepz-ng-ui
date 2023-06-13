@@ -38,21 +38,16 @@ export class ProjectNewtemplateComponent {
   limit = 10;
   skip = 0;
   count: number = 0;
-  // projectId = '64735b04ef112ca4b26872ca';
   projectId:any;
-  // projectIdNew = '64735c1def112ca4b268730e';
   projectIdNew = '6481b8f4bcf2bf4cfef8d313';
   selectedDepartmentsRooms: any;
   //Rooms
   roomData: any[] = [];
   selectedQuantity: number = 0;
-  selectedQuantity1: number = 0;
-  // item: any[] = [];
   selectOptions: any[] = [];
-  selectedRooms: any[] = [];
-  selectedEquipments: any[] = [];
-  equipmentdata: any[] = []; //Equipment data list in sidebar
-  selectedEquipment: any[] = [];
+  projectRooms: any[] = [];
+  projectEquipments: any[] = [];
+  equipmentData: any[] = []; //Equipment data list in sidebar
 
   constructor(
     private department: ProjecttemplateService,
@@ -69,7 +64,7 @@ export class ProjectNewtemplateComponent {
     this.loadRoomData(); // Loading room data
     this.loadSelectedRooms();
     this.loadEquipmentData(); //Equipment data list in sidebar
-    this.loadSelectedEquipments();
+    this.loadProjectEquipments();
   }
 
   ngOnInit(): void {
@@ -187,7 +182,7 @@ export class ProjectNewtemplateComponent {
      // Load equipment data from the service  | List in Sidebar
   loadEquipmentData(): void {
     this.equipmentService.Load(0, 10).subscribe((data: any) => {
-      this.equipmentdata = data.results;
+      this.equipmentData = data.results;
     });
   }
 
@@ -216,11 +211,11 @@ export class ProjectNewtemplateComponent {
 saveEquipmentData(): void {
   console.log('Save data method called');
 
-  for (let i = 0; i < this.selectedEquipment.length; i++) {
+  for (let i = 0; i < this.projectEquipments.length; i++) {
     const roomDataObject1 = {
-      name: this.selectedEquipment[i].name,
+      name: this.projectEquipments[i].name,
     };
-    console.log('equipmentdata:', roomDataObject1);
+    console.log('equipmentData:', roomDataObject1);
     this.room
       .saveEquipmentData(this.projectId, this.deptid, this.roomId, roomDataObject1) // Add the roomId argument
       .subscribe((response: any) => {
@@ -228,29 +223,29 @@ saveEquipmentData(): void {
       });
   }
   // Clear the selected equipment array
-  this.selectedEquipment = [];
+  this.projectEquipments = [];
 }
 
 
   // Function to add selected equipment to the array | SAVED ONLY ONE TIME
   selectEquipment(item: any): void {
-    const isItemSelected = this.selectedEquipment.includes(item);
+    const isItemSelected = this.projectEquipments.includes(item);
     if (!isItemSelected) {
-      this.selectedEquipment.push(item);
+      this.projectEquipments.push(item);
     }
   }
 
   // Function to load room list
   loadSelectedRooms(): void {
-    this.room.getSelectedRooms(this.projectId, this.deptid).subscribe((data: any) => {
-      this.selectedRooms = data.rooms;
+    this.room.getProjectRooms(this.projectId, this.deptid).subscribe((data: any) => {
+      this.projectRooms = data.rooms;
     });
   }
 
   // Function to load equipment list
-  loadSelectedEquipments(): void {
-    this.room.getSelectedEquipments(this.projectId, this.deptid, this.roomId).subscribe((data: any) => {
-      this.selectedEquipments = data.equipments;
+  loadProjectEquipments(): void {
+    this.room.getProjectEquipments(this.projectId, this.deptid, this.roomId).subscribe((data: any) => {
+      this.projectEquipments = data.equipments;
     });
   }
 

@@ -45,7 +45,7 @@ export class RoomService {
   }
 
    // Function to get selected rooms for a project
-   getSelectedRooms(projectId: string, deptId: string) {
+   getProjectRooms(projectId: string, deptId: string) {
     const url = environment.apiUrl + `/project/getRooms/${projectId}/${deptId}`;
     return this.http.get(url);
   }
@@ -57,7 +57,7 @@ export class RoomService {
   }
 
   // Function to get selected equipments for a project
-  getSelectedEquipments(projectId: string, deptId: string, roomId: string,) {
+  getProjectEquipments(projectId: string, deptId: string, roomId: string,) {
     const url = environment.apiUrl + `/project/getEquipments/${projectId}/${deptId}/${roomId}`;
     return this.http.get(url);
   }
