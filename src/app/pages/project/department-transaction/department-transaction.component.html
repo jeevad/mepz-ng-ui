@@ -57,12 +57,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr role="row" class="odd" *ngFor="let department of filteredDepartmentData; let i=index;">   <!-- For search bar -->
+                <tr role="row" class="odd" *ngFor="let department of filteredDepartmentData; let i=index;">
+                  <!-- For search bar -->
                   <td>
                     <input type="checkbox" [(ngModel)]="department.selected">
                   </td>
                   <td>{{ department.name | uppercase}}</td>
-                  <td>{{ department.code | uppercase}}</td>
+                  <td>
+                    <!-- {{ department.code | uppercase}} -->
+                    <app-edit-input [data]="department.code"></app-edit-input>
+                  </td>
                   <td>{{ department.name | uppercase}}</td>
                   <td>{{ department.level | uppercase}}</td>
                   <td>
@@ -94,7 +98,7 @@
         <div class="modal-body">
           <div class="d-flex justify-content-center align-items-center bg-light">
             <div class="card p-3 shadow">
-              <table id="example1" class ="example table dt-responsive nowrap display" cellspacing="0" width="100%">
+              <table id="example1" class="example table dt-responsive nowrap display" cellspacing="0" width="100%">
                 <thead>
                   <tr role="row">
                     <th></th>
@@ -120,9 +124,9 @@
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
               </div>
             </div>
-          <!-- </div> -->
+            <!-- </div> -->
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

@@ -1,0 +1,25 @@
+<!-- <div *ngIf="!editMode" (click)="enableEdit();" class="cell">{{ data }}</div>
+<div *ngIf="editMode">
+  <input (focusout)="onFocusOut();editMode=false;" [(ngModel)]="data" class="cellInput"
+  appAutofocus type="text">
+  <a class="btn btn-sm btn-primary" (click)="saveData()">Save</a>
+</div> -->
+
+
+<div *ngIf="!editMode" (click)="enableEdit()" class="cell">{{ data }}</div>
+<!-- <input *ngIf="editMode" (focusout)="onFocusOut()" [(ngModel)]="data" class="cellInput" id="codeInput"
+  appAutofocus type="text" (focusout)="editMode=false" focus> -->
+
+<div (focusout)="onFocusOut();this.editMode=false;">
+<mat-form-field class="example-form-field" *ngIf="editMode" >
+  <input matInput type="text" [(ngModel)]="updatedData" appAutofocus
+    type="text" #inputBox id="codeInput" />
+  <button *ngIf="data !== updatedData" matSuffix mat-icon-button aria-label="Clear" (click)="saveData($event)">
+    <i class="fal fa-save"> </i>
+  </button>
+</mat-form-field>
+</div>
+
+
+<!-- <input *ngIf="editMode" (focusout)="onFocusOut()" [(ngModel)]="data" class="cellInput"
+    appAutofocus type="number" (keydown.enter)="$event.target.blur()" (focusout)="editMode=false"> -->

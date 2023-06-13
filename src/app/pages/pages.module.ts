@@ -10,10 +10,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { NgIf } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
 import { DepartmentTransactionComponent } from './project/department-transaction/department-transaction.component';
 import { FilterPipe } from '../pipes/filter.pipe';
+import { EditInputComponent } from './project/edit-input/edit-input.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { FilterPipe } from '../pipes/filter.pipe';
     ProjectListComponent,
     ProjectTemplateEquipmentComponent,
     DepartmentTransactionComponent,
-    FilterPipe
+    FilterPipe,
+    EditInputComponent,
     // EquipmentSpecificationComponent,
     // EquipmentBrandComponent,
     // ReportsByPackageComponent,
@@ -31,7 +36,6 @@ import { FilterPipe } from '../pipes/filter.pipe';
     // TransactionViewComponent,
   ],
   imports: [
-
     CommonModule,
     NgbModule,
     NgbDropdownModule,
@@ -47,6 +51,12 @@ import { FilterPipe } from '../pipes/filter.pipe';
     MatDialogModule,
     MatInputModule,
     PagesRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    NgIf,
+    MatButtonModule,
+    MatIconModule,
   ],
 })
 export class PagesModule {}
