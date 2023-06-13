@@ -18,6 +18,7 @@ export class DepartmentTransactionComponent {
   filteredDepartmentData: any[] = []; // For search bar
   projectDepartments: any;
   project: any;
+
   constructor(
     private departmentService: DepartmentService,
     private route: ActivatedRoute
