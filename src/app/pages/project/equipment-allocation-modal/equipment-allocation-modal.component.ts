@@ -4,6 +4,7 @@ import { NgbActiveModal, NgbModal, NgbNavModule } from '@ng-bootstrap/ng-bootstr
 import { RoomService } from 'src/app/service/room/room.service';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { FormsModule } from '@angular/forms';
+import { ProjectService } from 'src/app/service/project/project.service';
 
 @Component({
   selector: 'app-equipment-allocation-modal',
@@ -30,9 +31,12 @@ export class EquipmentAllocationModalComponent {
   selectedEquipment: any[] = [];
   searchText: string = '';
   filteredEquipmentData: any[] = [];
+  projectData: any[] = [];
+
 
   constructor(
     private room: RoomService,
+    private projectService: ProjectService,
     private equipmentService: EquipmentService,
     private modalService: NgbModal,
     public activeModal: NgbActiveModal
@@ -45,30 +49,8 @@ export class EquipmentAllocationModalComponent {
 
   ngOnInit() {
     console.log('this.projectId,this.deptId, this.roomId', this.projectId, this.deptId, this.roomId);
-    // Initializing DataTables and setting up callbacks
-    // let table = $('#example').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
+    this.loadProjectData();
 
-    // let table1 = $('#example1').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
-
-    // let table2 = $('#example2').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
 
     // this.loadRoomData(); // Loading room data
     // this.loadSelectedRooms();
@@ -79,6 +61,12 @@ export class EquipmentAllocationModalComponent {
   openEquipmentAllocationModal() {
     const modalRef = this.modalService.open(EquipmentAllocationModalComponent);
     modalRef.componentInstance.name = 'World';
+  }
+
+  loadProjectData() {
+    this.projectService.Load(0, 10).subscribe((data: any) => {
+      this.projectData = data.results;
+    });
   }
 
   // Function to save room data

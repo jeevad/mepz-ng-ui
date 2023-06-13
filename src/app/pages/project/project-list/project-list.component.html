@@ -31,10 +31,10 @@
                 <tr role="row" class="odd" *ngFor="let item of filteredEquipmentData; let i=index;">
                   <!-- For search bar -->
                   <td>{{ skip + i+1 }}</td>
-                  <td>{{item.code}}</td>
-                  <td class="sorting_1">{{item.name}}</td>
-                  <td>{{item.type}}</td>
-                  <td>{{item.company}}</td>
+                  <td>{{item.code | uppercase}}</td>
+                  <td class="sorting_1">{{item.name | uppercase}}</td>
+                  <td>{{item.type | uppercase}}</td>
+                  <td>{{item.company | uppercase}}</td>
                   <td class="projects-button">
                     <!-- <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal2">
                       <i class="fa fa-cog"> </i>

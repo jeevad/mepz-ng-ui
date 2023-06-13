@@ -61,10 +61,10 @@
                   <td>
                     <input type="checkbox" [(ngModel)]="department.selected">
                   </td>
-                  <td>{{ department.name }}</td>
-                  <td>{{ department.code }}</td>
-                  <td>{{ department.departmentalias }}</td>
-                  <td>{{ department.level }}</td>
+                  <td>{{ department.name | uppercase}}</td>
+                  <td>{{ department.code | uppercase}}</td>
+                  <td>{{ department.departmentalias | uppercase}}</td>
+                  <td>{{ department.level | uppercase}}</td>
                   <td>
                     <a routerLink="/pages/projects/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
                       class="btn btn-xs btn-primary">View Rooms</a>

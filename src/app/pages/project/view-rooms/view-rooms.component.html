@@ -67,9 +67,9 @@
               <tbody>
                 <tr role="row" class="odd" *ngFor="let room of filteredRoomData; let i=index;"> <!-- For search bar -->
                   <td><input type="checkbox" name="h_dep_id" value="947"></td>
-                  <td>{{ room.name }}</td>
+                  <td>{{ room.name | uppercase }}</td>
                   <td></td>
-                  <td>{{ room.code }}</td>
+                  <td>{{ room.code | uppercase }}</td>
                   <td></td>
                   <td>
                     <a title="Add Equipment" class="btn btn-xs btn-primary"
@@ -123,8 +123,8 @@
                         </option>
                       </select>
                     </td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.code }}</td>
+                    <td>{{ item.name | uppercase}}</td>
+                    <td>{{ item.code | uppercase}}</td>
                   </tr>
                 </tbody>
               </table>

@@ -82,14 +82,13 @@ export class DepartmentTransactionComponent {
   // Load project departments List
   loadProjectDepartments(): void {
     this.skip = this.limit * (this.page - 1);
-    this.departmentService
-      .getSelectedDepartments(this.projectId, this.skip, this.limit)
+    this.departmentService.getSelectedDepartments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
         this.projectDepartments = data.results[0].departments;
-        this.filteredDepartmentData = this.projectDepartments.slice(); //For search bar
-        // this.count = data.count;
+        this.filteredDepartmentData = this.projectDepartments.slice(); // For search bar
       });
   }
+
 
   // Toggle selection of a department
   toggleSelection(index: number): void {
