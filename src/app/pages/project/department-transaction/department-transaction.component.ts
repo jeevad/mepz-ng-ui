@@ -70,6 +70,7 @@ export class DepartmentTransactionComponent {
             .toLowerCase()
             .includes(this.searchText.toLowerCase()) ||
           department.code.toLowerCase().includes(this.searchText.toLowerCase())
+          
       );
     } else {
       this.filteredDepartmentData = this.projectDepartments.slice();
@@ -86,7 +87,6 @@ export class DepartmentTransactionComponent {
         this.filteredDepartmentData = this.projectDepartments.slice(); // For search bar
       });
   }
-
 
   // Toggle selection of a department
   toggleSelection(index: number): void {

@@ -14,7 +14,7 @@
                 <h6>Project Info</h6>
               </td>
               <td colspan="2"><strong>Code: </strong>{{project.code}}</td>
-              <td><strong>Project Name: </strong>>{{project.name}}</td>
+              <td><strong>Project Name: </strong>{{project.name}}</td>
             </tr>
           </tbody>
         </table>
@@ -63,7 +63,7 @@
                   </td>
                   <td>{{ department.name | uppercase}}</td>
                   <td>{{ department.code | uppercase}}</td>
-                  <td>{{ department.departmentalias | uppercase}}</td>
+                  <td>{{ department.name | uppercase}}</td>
                   <td>{{ department.level | uppercase}}</td>
                   <td>
                     <a routerLink="/pages/projects/{{projectId}}/department-transaction/{{department._id}}/view-rooms"

@@ -13,10 +13,10 @@
               <td>
                 <h6>Project Info</h6>
               </td>
-              <td colspan="2"><strong>Code: </strong>ASM</td>
-              <td><strong>Project Name: </strong>ARUNAMARI SPECIALIST MEDICAL CENTRE</td>
-              <td><strong>Department Code: </strong>AD</td>
-              <td><strong>Department Alias: </strong>ADMINISTRATION (L4)</td>
+              <td colspan="2"><strong>Code: </strong>{{project.code}}</td>
+              <td><strong>Project Name: </strong>{{project.name}}</td>
+              <td><strong>Department Code: </strong>{{department.code}}</td>
+              <td><strong>Department Alias: </strong>{{department.name}}</td>
             </tr>
           </tbody>
         </table>
@@ -68,7 +68,7 @@
                   <td>{{ room.name | uppercase }}</td>
                   <td></td>
                   <td>{{ room.code | uppercase }}</td>
-                  <td></td>
+                  <td>{{ room.name | uppercase }}</td>
                   <td>
                     <a title="Add Equipment" class="btn btn-xs btn-primary"
                       (click)="openEquipmentAllocationModal(room._id)">

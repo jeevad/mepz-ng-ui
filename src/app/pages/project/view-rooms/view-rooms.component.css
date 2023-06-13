@@ -2,7 +2,9 @@
 * MODAL AS RIGHT SIDEBAR
 * "right" in modal parent div, after class="modal".
 *******************************/
-
+h6 {
+  color: #ffa000;
+}
 .modal.right .modal-dialog {
     position: fixed;
     margin: auto;

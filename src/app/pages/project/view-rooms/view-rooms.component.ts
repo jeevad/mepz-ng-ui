@@ -22,6 +22,8 @@ export class ViewRoomsComponent {
   roomId!: any;
   searchText: string = ''; // For search bar
   filteredRoomData: any[] = []; // For search bar
+  project: any;
+  department: any;
 
   constructor(
     private room: RoomService,
@@ -61,6 +63,7 @@ export class ViewRoomsComponent {
              roomId: this.roomData[i]._id,
             name: this.roomData[i].name,
             code: this.roomData[i].code,
+            alias: this.roomData[i].name,
           };
           console.log('roomData:', roomDataObject);
           this.room.saveRoomData(this.projectId, this.deptId, roomDataObject).subscribe((response: any) => {
@@ -97,6 +100,8 @@ export class ViewRoomsComponent {
   // Function to load room list
   loadProjectRooms(): void {
     this.room.getProjectRooms(this.projectId, this.deptId).subscribe((data: any) => {
+      this.project = data.results[0];
+      this.department = data.results[0].departments;
       this.projectRooms = data.results[0].departments.rooms;
       this.filteredRoomData = this.projectRooms.slice(); //For search bar
     });
