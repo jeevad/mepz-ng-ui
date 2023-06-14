@@ -45,30 +45,31 @@
             <hr>
             <h5>Select from Existing Project</h5>
             <form class="form-horizontal row" method="post">
-                <div class="col-md-6">
+              <div class="col-md-6">
                 <label class="form-label">Project</label>
-                <select class="form-control" name="project[]" multiple>
+                <select class="form-control" name="project[]" multiple (change)="onProjectChange($event)">
                   <option value="">-Select Project-</option>
                   <option *ngFor="let item of projectData" [value]="item.code">{{ item.code | uppercase}} - {{ item.name | uppercase}}</option>
                 </select>
               </div>
-
               <div class="col-md-6">
                 <div class="col-md-12">
                   <label class="form-label">Department</label>
-                  <select class="form-control" name="com_code">
+                  <select class="form-control" name="com_code" (change)="onDepartmentChange($event)">
                     <option value="">-Select Department-</option>
+                    <option *ngFor="let department of projectDepartments" [value]="department.departmentId">{{ department.name }}</option>
                   </select>
                 </div>
                 <div class="col-md-12">
                   <label class="form-label">Room</label>
                   <select class="form-control" name="com_code">
                     <option value="">-Select Room-</option>
+                    <option *ngFor="let room of projectRooms" [value]="room.roomId">{{ room.name }}</option>
                   </select>
                 </div>
               </div>
-
             </form>
+
           </div>
         </div>
       </ng-template>

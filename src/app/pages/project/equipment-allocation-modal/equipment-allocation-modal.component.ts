@@ -30,7 +30,9 @@ export class EquipmentAllocationModalComponent {
   projectEquipment: any[] = [];
   searchText: string = '';
   filteredEquipmentData: any[] = [];
-  projectData: any[] = [];
+  projectData: any[] = []; //proj list
+  projectDepartments: any[] = [] //Selected project'd dep list
+  projectRooms: any[] = [] //Selected project'd rooms list
 
   constructor(
     private room: RoomService,
@@ -53,11 +55,44 @@ export class EquipmentAllocationModalComponent {
     this.loadProjectEquipments();
   }
 
+  // Add the loadProjectRooms() method in the EquipmentAllocationModalComponent
+  loadProjectRooms(): void {
+    this.room.getProjectRooms(this.projectId, this.deptId).subscribe((data: any) => {
+      this.projectRooms = data.results[0].departments.rooms;
+    });
+  }
+
   //Project list in equipment modal
   loadProjectData() {
     this.projectService.Load(0, 10).subscribe((data: any) => {
       this.projectData = data.results;
+      if (this.projectId) {
+        const selectedProject = this.projectData.find((project: any) => project.code === this.projectId);
+        if (selectedProject) {
+          this.projectDepartments = selectedProject.departments;
+          this.loadProjectRooms(); // Load the room list for the selected project and department
+        }
+      }
     });
+  }
+
+  //For Selected project's department list
+  onProjectChange(event: any): void {
+    this.projectDepartments = [];
+    this.projectRooms = [];
+    const projectCode = event.target.value;
+    const selectedProject = this.projectData.find((project) => project.code === projectCode);
+    if (selectedProject) {
+      this.projectDepartments = selectedProject.departments;
+    }
+  }
+
+  //For Selected project's rooms list
+  onDepartmentChange(event: any): void {
+    const departmentId = event.target.value;
+    const selectedDepartment = this.projectDepartments.find((department) => department.departmentId === departmentId);
+    this.projectRooms = selectedDepartment ? selectedDepartment.rooms : [];
+    this.loadProjectRooms();
   }
 
   // Function to save equipment data

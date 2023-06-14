@@ -70,7 +70,6 @@ export class DepartmentTransactionComponent {
             .toLowerCase()
             .includes(this.searchText.toLowerCase()) ||
           department.code.toLowerCase().includes(this.searchText.toLowerCase())
-          
       );
     } else {
       this.filteredDepartmentData = this.projectDepartments.slice();
@@ -83,7 +82,8 @@ export class DepartmentTransactionComponent {
     this.departmentService.getProjectDepartments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
         this.project = data.results[0];
-        this.projectDepartments = data.results[0].departments;
+        // this.projectDepartments = data.results[0].departments;
+        this.projectDepartments = this.project?.departments || []; // Assign departments to selected projectlist
         this.filteredDepartmentData = this.projectDepartments.slice(); // For search bar
       });
   }
