@@ -92,7 +92,7 @@ export class EquipmentAllocationModalComponent {
     const departmentId = event.target.value;
     const selectedDepartment = this.projectDepartments.find((department) => department.departmentId === departmentId);
     this.projectRooms = selectedDepartment ? selectedDepartment.rooms : [];
-    this.loadProjectRooms();
+    // this.loadProjectRooms();
   }
 
   // Function to save equipment data
