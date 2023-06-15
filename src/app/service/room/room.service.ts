@@ -61,4 +61,5 @@ export class RoomService {
     const url = environment.apiUrl + `/project/getEquipments/${projectId}/${deptId}/${roomId}`;
     return this.http.get(url);
   }
+
 }

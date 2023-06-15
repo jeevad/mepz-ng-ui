@@ -83,9 +83,9 @@
                 <select class="form-control" name="company" formControlName="company"
                   [ngClass]="{'is-invalid':submitted && addDepartment.controls['company'].errors}">
                   <option value="">-Select Company-</option>
-                  <option value="100001">LIKAS NUCLEAR AND RADIOTHERAPY SPECIALIST HOSPITAL</option>
-                  <option value="1234">HSS JV QATTA</option>
-                  <option value="8766">HEALTH SOLUTION (SE ASIA) SDN BHD</option>
+                  <option value="RADIOTHERAPY SPECIALIST HOSPITAL">LIKAS NUCLEAR AND RADIOTHERAPY SPECIALIST HOSPITAL</option>
+                  <option value="HSS JV QATTA">HSS JV QATTA</option>
+                  <option value="HEALTH SOLUTION">HEALTH SOLUTION (SE ASIA) SDN BHD</option>
                 </select>
                 <div class="text-danger" *ngIf="submitted && addDepartment.controls['company'].errors?.['required']">
                   Company is required</div>

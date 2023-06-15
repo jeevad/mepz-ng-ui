@@ -13,10 +13,10 @@
               <td>
                 <h6>Project Info</h6>
               </td>
-              <td colspan="2"><strong>Code: </strong>{{project.code}}</td>
-              <td><strong>Project Name: </strong>{{project.name}}</td>
-              <td><strong>Department Code: </strong>{{department.code}}</td>
-              <td><strong>Department Alias: </strong>{{department.name}}</td>
+              <td colspan="2"><strong>Code: </strong>{{project.code | uppercase}}</td>
+              <td><strong>Project Name: </strong>{{project.name | uppercase}}</td>
+              <td><strong>Department Code: </strong>{{department.code | uppercase}}</td>
+              <td><strong>Department Alias: </strong>{{department.name | uppercase}}</td>
             </tr>
           </tbody>
         </table>

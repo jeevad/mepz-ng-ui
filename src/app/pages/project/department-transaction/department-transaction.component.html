@@ -13,8 +13,8 @@
               <td>
                 <h6>Project Info</h6>
               </td>
-              <td colspan="2"><strong>Code: </strong>{{project.code}}</td>
-              <td><strong>Project Name: </strong>{{project.name}}</td>
+              <td colspan="2"><strong>Code: </strong>{{project.code | uppercase}}</td>
+              <td><strong>Project Name: </strong>{{project.name | uppercase}}</td>
             </tr>
           </tbody>
         </table>
@@ -112,8 +112,8 @@
                       <input class="checkbox" type="checkbox" name="{{item.name}}" value="{{item.code}}"
                         [(ngModel)]="item.selected">
                     </td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.code}}</td>
+                    <td>{{item.name | uppercase}}</td>
+                    <td>{{item.code | uppercase}}</td>
                   </tr>
 
                 </tbody>
