@@ -52,9 +52,12 @@
                     <tbody>
                       <tr *ngFor="let item of masterEquipmentList">
                       <!-- <tr *ngFor="let item of projectEquipments"> -->
-                        <td><input class="checkbox" type="checkbox" name="" value="" (click)="selectEquipment(item)"></td>
-                        <td>{{ item.name | uppercase}}</td>
-                        <td>{{ item.code | uppercase}}</td>
+                        <td>
+                          <input class="checkbox" type="checkbox" name="" value=""
+                            [checked]="projectEquipment.includes(item)"
+                            (click)="selectEquipment(item)">
+                            <td>{{ item.name | uppercase}}</td>
+                            <td>{{ item.code | uppercase}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -157,7 +160,11 @@
 
                     <tbody>
                       <tr *ngFor="let item of filteredEquipmentData">
-                        <td><input class="checkbox" type="checkbox" name="" value="" (click)="selectEquipment(item)"></td>
+                        <td>
+                          <input class="checkbox" type="checkbox" name="" value=""
+                            [checked]="projectEquipment.includes(item)"
+                            (click)="selectEquipment(item)">
+                        </td>
                         <td>{{ item.name | uppercase}}</td>
                         <td>{{ item.code | uppercase}}</td>
                       </tr>

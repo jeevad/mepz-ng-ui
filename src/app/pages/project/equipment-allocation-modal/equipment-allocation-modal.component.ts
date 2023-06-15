@@ -110,29 +110,35 @@ export class EquipmentAllocationModalComponent {
     this.loadNewEquipments();
   }
 
+  // Function for checkbox
+  selectEquipment(item: any): void {
+    const isItemSelected = this.projectEquipment.includes(item);
+
+    if (isItemSelected) {
+      const index = this.projectEquipment.indexOf(item);
+      this.projectEquipment.splice(index, 1);
+    } else {
+      this.projectEquipment.push(item);
+    }
+  }
+
   // Function to save equipment data
   saveEquipmentData(): void {
     for (let i = 0; i < this.projectEquipment.length; i++) {
-      const roomDataObject1 = {
+      const roomDataObject = {
         equipmentId: this.projectEquipment[i]._id,
         name: this.projectEquipment[i].name,
         code: this.projectEquipment[i].code,
       };
-      console.log('equipmentData:', roomDataObject1);
-      this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject1).subscribe((response: any) => {
-        console.log('Data saved successfully:', response);
-        this.projectEquipments.push(roomDataObject1);
-      });
+      console.log('equipmentData:', roomDataObject);
+      this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, roomDataObject)
+        .subscribe((response: any) => {
+          console.log('Data saved successfully:', response);
+          this.projectEquipments.push(roomDataObject);
+        });
     }
-    this.projectEquipment = []; // Clear the projectEquipments equipment array
-  }
 
-  // Function to add projectEquipments equipment to the array | SAVED ONLY ONE TIME
-  selectEquipment(item: any): void {
-    const isItemSelected = this.projectEquipment.includes(item);
-    if (!isItemSelected) {
-      this.projectEquipment.push(item);
-    }
+    this.projectEquipment = []; // Clear the projectEquipment array
   }
 
   //Search Bar function
@@ -147,7 +153,7 @@ export class EquipmentAllocationModalComponent {
     }
   }
 
- //Search Bar function | for master equipments
+  //Search Bar function | for master equipments
   searchMasterEquipment(): void {
     if (this.searchText.trim() !== '') {
       this.masterEquipmentList = this.equipmentData.filter((item: any) =>
