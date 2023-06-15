@@ -33,8 +33,8 @@
     </ng-template> -->
 
 <div *ngIf="mode === 'view'" class="cell">{{data}}</div>
-<mat-form-field *ngIf="mode === 'edit'">
-  <input matInput type="text" focusable1 editableOnEnter [(ngModel)]="updatedData" appAutofocus #inputBox
+<mat-form-field *ngIf="mode === 'edit'" subscriptSizing="dynamic" >
+  <input matInput type="text" focusable editableOnEnter [(ngModel)]="updatedData" appAutofocus #inputBox
     id="codeInput" />
   <button matSuffix mat-icon-button aria-label="Clear" (click)="saveData()">
     <i class="fal fa-save"> </i>

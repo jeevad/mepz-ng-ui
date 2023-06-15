@@ -8,7 +8,7 @@ export class FocusableDirective {
 
   constructor(private host: ElementRef) { }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.host.nativeElement.focus();
   }
 

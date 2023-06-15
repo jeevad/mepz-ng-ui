@@ -20,6 +20,9 @@ import { switchMap, filter, take } from 'rxjs/operators';
 })
 export class EditInputComponent {
   @Input() data: any;
+  @Input() field!: string;
+  @Input() projectId!: string;
+  @Input() type!: string;
   // @Output() focusOut: EventEmitter<any> = new EventEmitter<any>();
   updatedData: any;
 
@@ -70,9 +73,9 @@ export class EditInputComponent {
       .subscribe(() => {
         this.mode = 'edit';
         this.editMode.next(true);
-        setTimeout(() => {
-          this.inputBox.nativeElement.focus();
-        }, 1);
+        // setTimeout(() => {
+        //   this.inputBox.nativeElement.focus();
+        // }, 1);
       });
   }
 

@@ -63,12 +63,10 @@
                     <input type="checkbox" [(ngModel)]="department.selected">
                   </td>
                   <td>{{ department.name | uppercase}}</td>
-                  <td>
+                  <td class="editable">
                     <!-- {{ department.code | uppercase}} -->
-                    <!-- <app-edit-input [data]="department.code" [id]="department._id" [field]="'code'" [projectId]="projectId" [type]="'department'"></app-edit-input> -->
-                    <app-edit-input [data]="department.code" [id]="department._id">
-                      
-                    </app-edit-input>
+                    <app-edit-input [data]="department.code" [id]="department._id" [field]="'code'" [projectId]="projectId" [type]="'department'"></app-edit-input>
+                    <!-- <app-edit-input [data]="department.code" [id]="department._id"></app-edit-input> -->
                   </td>
                   <td>{{ department.name | uppercase}}</td>
                   <td>{{ department.level | uppercase}}</td>

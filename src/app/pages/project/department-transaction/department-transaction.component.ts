@@ -5,7 +5,7 @@ import { DepartmentService } from 'src/app/service/department/department.service
 @Component({
   selector: 'app-department-transaction',
   templateUrl: './department-transaction.component.html',
-  styleUrls: ['./department-transaction.component.css'],
+  styleUrls: ['./department-transaction.component.scss'],
 })
 export class DepartmentTransactionComponent {
   departmentData: any[] = [];
