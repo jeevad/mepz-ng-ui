@@ -18,6 +18,9 @@ import { ProjectTemplateEquipmentComponent } from './project-template-equipment/
 import { DepartmentTransactionComponent } from './project/department-transaction/department-transaction.component';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { EditInputComponent } from './project/edit-input/edit-input.component';
+import { EditModeDirective } from './project/edit-input/edit-mode.directive';
+import { ViewModeDirective } from './project/edit-input/view-mode.directive';
+import { FocusableDirective } from '../directives/focusable.directive';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { EditInputComponent } from './project/edit-input/edit-input.component';
     DepartmentTransactionComponent,
     FilterPipe,
     EditInputComponent,
+    ViewModeDirective,
+    EditModeDirective,
+    FocusableDirective,
     // EquipmentSpecificationComponent,
     // EquipmentBrandComponent,
     // ReportsByPackageComponent,

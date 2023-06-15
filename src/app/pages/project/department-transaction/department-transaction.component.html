@@ -13,8 +13,8 @@
               <td>
                 <h6>Project Info</h6>
               </td>
-              <td colspan="2"><strong>Code: </strong>{{project.code}}</td>
-              <td><strong>Project Name: </strong>{{project.name}}</td>
+              <td colspan="2"><strong>Code: </strong>{{project?.code}}</td>
+              <td><strong>Project Name: </strong>{{project?.name}}</td>
             </tr>
           </tbody>
         </table>
@@ -65,7 +65,10 @@
                   <td>{{ department.name | uppercase}}</td>
                   <td>
                     <!-- {{ department.code | uppercase}} -->
-                    <app-edit-input [data]="department.code"></app-edit-input>
+                    <!-- <app-edit-input [data]="department.code" [id]="department._id" [field]="'code'" [projectId]="projectId" [type]="'department'"></app-edit-input> -->
+                    <app-edit-input [data]="department.code" [id]="department._id">
+                      
+                    </app-edit-input>
                   </td>
                   <td>{{ department.name | uppercase}}</td>
                   <td>{{ department.level | uppercase}}</td>
