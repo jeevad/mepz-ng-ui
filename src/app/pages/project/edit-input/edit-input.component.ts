@@ -7,6 +7,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatInput } from '@angular/material/input';
+// import { ViewModeDirective } from './view-mode.directive';
+// import { EditModeDirective } from './edit-mode.directive';
+// import { NgControl } from '@angular/forms';
+import { fromEvent, Subject } from 'rxjs';
+import { switchMap, filter, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-input',
@@ -15,37 +20,84 @@ import { MatInput } from '@angular/material/input';
 })
 export class EditInputComponent {
   @Input() data: any;
-  @Output() focusOut: EventEmitter<any> = new EventEmitter<any>();
-  editMode = false;
+  @Input() field!: string;
+  @Input() projectId!: string;
+  @Input() type!: string;
+  // @Output() focusOut: EventEmitter<any> = new EventEmitter<any>();
   updatedData: any;
+
+  // @ContentChild(ViewModeDirective) viewModeTpl!: ViewModeDirective;
+  // @ContentChild(EditModeDirective) editModeTpl!: EditModeDirective;
+  @Output() update = new EventEmitter();
+
+  editMode = new Subject();
+  editMode$ = this.editMode.asObservable();
+
+  mode: 'view' | 'edit' = 'view';
 
   @ViewChild('inputBox')
   inputBox!: ElementRef;
 
-  constructor() {}
+  constructor(private host: ElementRef) {}
+
+  // onFocusOut() {
+  //   this.focusOut.emit(this.data);
+  // }
+
+  // enableEdit() {
+  //   setTimeout(() => {
+  //     this.inputBox.nativeElement.focus();
+  //   }, 1);
+  // }
 
   ngOnInit() {
     this.updatedData = this.data;
+    this.viewModeHandler();
+    this.editModeHandler();
   }
 
-  onFocusOut() {
-    console.log('focusout');
-    
-    this.focusOut.emit(this.data);
+  toViewMode() {
+    this.update.next('tt');
+    this.mode = 'view';
   }
 
-  enableEdit() {
-    this.editMode = true;
-    this.editMode=true;
-    setTimeout(() => {
-      this.inputBox.nativeElement.focus();
-    }, 1);
+  private get element() {
+    return this.host.nativeElement;
   }
 
-  saveData($event: any) {
-    $event.preventDefault();
+  private viewModeHandler() {
+    fromEvent(this.element, 'dblclick')
+      .pipe
+      // untilDestroyed(this)
+      ()
+      .subscribe(() => {
+        this.mode = 'edit';
+        this.editMode.next(true);
+        // setTimeout(() => {
+        //   this.inputBox.nativeElement.focus();
+        // }, 1);
+      });
+  }
+
+  private editModeHandler() {
+    const clickOutside$ = fromEvent(document, 'click').pipe(
+      filter(({ target }) => this.element.contains(target) === false),
+      take(1)
+    );
+
+    this.editMode$
+      .pipe(
+        // switchMapTo(clickOutside$)
+        switchMap((event) => clickOutside$)
+        // untilDestroyed(this)
+      )
+      .subscribe((event) => {
+        this.toViewMode();
+      });
+  }
+
+  saveData() {
     this.data = this.updatedData;
-    this.editMode = false;
-    console.log('this.data----', this.data);
+    this.mode = 'view';
   }
 }

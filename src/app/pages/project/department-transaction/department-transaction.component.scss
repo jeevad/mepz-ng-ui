@@ -226,3 +226,15 @@ label {
 .fade:not(.show) {
   opacity: 1;
 }
+
+.editable {
+  // border: 2px solid transparent;
+  padding: 11px 10px;
+  // width: 100%;
+  // height: 100%;
+
+  &:hover {
+    cursor: pointer;
+    border: 2px dashed #c8c8c8;
+  }
+}
