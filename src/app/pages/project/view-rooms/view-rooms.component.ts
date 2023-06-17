@@ -50,6 +50,7 @@ export class ViewRoomsComponent {
     modalRef.componentInstance.projectId = this.projectId;
     modalRef.componentInstance.deptId = this.deptId;
     modalRef.componentInstance.roomId = roomId;
+    modalRef.componentInstance.projectRooms = this.projectRooms;
   }
 
   // Function to save room data
@@ -60,7 +61,7 @@ export class ViewRoomsComponent {
       if (selectedQuantity > 0) {
         for (let j = 0; j < selectedQuantity; j++) {
           const roomDataObject = {
-             roomId: this.roomData[i]._id,
+            roomId: this.roomData[i]._id,
             name: this.roomData[i].name,
             code: this.roomData[i].code,
             alias: this.roomData[i].name,

@@ -11,11 +11,9 @@
         </div>
         <div class="col-auto">
           <div class="col-auto">
-            <select class="form-control" name="com_code" (change)="onRoomChange($event)">
+            <select [(ngModel)]="globalRoomId" class="form-control" name="global_core" (change)="onRoomChange($event, roomId)">
               <option value="">-Select Room-</option>
-              <option *ngFor="let room of projectRooms" [value]="room.roomId" [selected]="room.roomId === roomId">
-                {{ room.name | uppercase }}
-              </option>
+              <option *ngFor="let room of globalProjectRoom" [value]="room._id">{{ room.name | uppercase }}</option>
             </select>
           </div>
         </div>
@@ -51,13 +49,11 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let item of masterEquipmentList">
-                      <!-- <tr *ngFor="let item of projectEquipments"> -->
                         <td>
                           <input class="checkbox" type="checkbox" name="" value=""
-                            [checked]="projectEquipment.includes(item)"
-                            (click)="selectEquipment(item)">
-                            <td>{{ item.name | uppercase}}</td>
-                            <td>{{ item.code | uppercase}}</td>
+                            [checked]="projectEquipment.includes(item)" (click)="selectEquipment(item)">
+                        <td>{{ item.name | uppercase}}</td>
+                        <td>{{ item.code | uppercase}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -98,42 +94,41 @@
 
     <li [ngbNavItem]="2">
       <button ngbNavLink>Add Equipment from Existing Project</button>
-
-        <ng-template ngbNavContent>
-          <div class="row">
-            <div class="col-12">
-              <hr>
-              <h5>Select from Existing Project</h5>
-              <!-- Project, Department, Rooms dependent dropdown -->
-              <form class="form-horizontal row" method="post">
-                <div class="col-md-6">
-                  <label class="form-label">Project</label>
-                  <select class="form-control" name="project[]" multiple (change)="onProjectChange($event)">
-                    <option value="">-Select Project-</option>
-                    <option *ngFor="let item of projectData" [value]="item.code">{{ item.code | uppercase}} - {{ item.name
-                      | uppercase}}</option>
+      <ng-template ngbNavContent>
+        <div class="row">
+          <div class="col-12">
+            <hr>
+            <h5>Select from Existing Project</h5>
+            <!-- Project, Department, Rooms dependent dropdown -->
+            <form class="form-horizontal row" method="post">
+              <div class="col-md-6">
+                <label class="form-label">Project</label>
+                <select class="form-control" name="project[]" multiple (change)="onProjectChange($event)">
+                  <option value="">-Select Project-</option>
+                  <option *ngFor="let item of projectData" [value]="item.code">{{ item.code | uppercase}} - {{ item.name
+                    | uppercase}}</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <div class="col-md-12">
+                  <label class="form-label">Department</label>
+                  <select class="form-control" name="com_code" (change)="onDepartmentChange($event)">
+                    <option value="">-Select Department-</option>
+                    <option *ngFor="let department of projectDepartments" [value]="department.departmentId">{{
+                      department.name | uppercase }}</option>
                   </select>
                 </div>
-                <div class="col-md-6">
-                  <div class="col-md-12">
-                    <label class="form-label">Department</label>
-                    <select class="form-control" name="com_code" (change)="onDepartmentChange($event)">
-                      <option value="">-Select Department-</option>
-                      <option *ngFor="let department of projectDepartments" [value]="department.departmentId">{{
-                        department.name | uppercase }}</option>
-                    </select>
-                  </div>
-                  <div class="col-md-12">
-                    <label class="form-label">Room</label>
-                    <select class="form-control" name="com_code" (change)="onRoomChange($event)">
-                      <option value="">-Select Room-</option>
-                      <option *ngFor="let room of projectRooms" [value]="room.roomId">{{ room.name | uppercase }}</option>
-                    </select>
-                  </div>
+                <div class="col-md-12">
+                  <label class="form-label">Room</label>
+                  <select class="form-control" name="com_code" (change)="onRoomChangeGLobal($event, roomId)">
+                    <option value="">-Select Room-</option>
+                    <option *ngFor="let room of projectRooms" [value]="room.roomId">{{ room.name | uppercase }}</option>
+                  </select>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
+        </div>
 
         <div class="row">
           <div class="col-md-6 border px-2 py-2">
@@ -157,13 +152,11 @@
                         <th>Code</th>
                       </tr>
                     </thead>
-
                     <tbody>
                       <tr *ngFor="let item of filteredEquipmentData">
                         <td>
                           <input class="checkbox" type="checkbox" name="" value=""
-                            [checked]="projectEquipment.includes(item)"
-                            (click)="selectEquipment(item)">
+                            [checked]="projectEquipment.includes(item)" (click)="selectEquipment(item)">
                         </td>
                         <td>{{ item.name | uppercase}}</td>
                         <td>{{ item.code | uppercase}}</td>
@@ -210,7 +203,8 @@
 
   <div class="col-sm-12">
     <div class="col-md-12 text-center mt-3">
-      <button type="submit" class="btn btn-primary px-4 me-3 m" id="add_department" (click)="saveEquipmentData()">Add</button>
+      <button type="submit" class="btn btn-primary px-4 me-3 m" id="add_department"
+        (click)="saveEquipmentData()">Add</button>
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
     </div>
   </div>

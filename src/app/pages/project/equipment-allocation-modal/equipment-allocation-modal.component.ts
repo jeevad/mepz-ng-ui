@@ -5,6 +5,7 @@ import { RoomService } from 'src/app/service/room/room.service';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { FormsModule } from '@angular/forms';
 import { ProjectService } from 'src/app/service/project/project.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-equipment-allocation-modal',
@@ -18,6 +19,7 @@ export class EquipmentAllocationModalComponent {
   @Input() projectId!: any;
   @Input() deptId!: any;
   @Input() roomId!: any;
+  @Input() projectRooms: any[] = [];
 
   activeTab = 1;
   roomData: any[] = [];
@@ -26,17 +28,18 @@ export class EquipmentAllocationModalComponent {
   selectOptions: any[] = [];
   selectedRooms: any[] = [];
   projectEquipments: any[] = [];
-  equipmentData: any[] = []; //Equipment data list in sidebar
+  equipmentData: any[] = [];
   projectEquipment: any[] = [];
   searchText: string = '';
   filteredEquipmentData: any[] = [];
   masterEquipmentList: any[] = [];
-  projectData: any[] = []; //proj list
-  projectDepartments: any[] = [] //Selected project'd dep list
-  projectRooms: any[] = [] //Selected project'd rooms list
+  projectData: any[] = [];
+  projectDepartments: any[] = [];
+  globalRoomId: any;
   selectedRoomId: string = '';
   project: any;
   department: any;
+  globalProjectRoom: any[] =[];
 
 
   constructor(
@@ -56,9 +59,12 @@ export class EquipmentAllocationModalComponent {
   ngOnInit() {
     console.log('this.projectId,this.deptId, this.roomId', this.projectId, this.deptId, this.roomId);
     this.loadProjectData();
-    this.loadEquipmentData(); //Equipment data list in sidebar
+    this.loadEquipmentData();
     this.loadProjectEquipments();
     this.loadMasterEquipmentData()
+    const selectedRoom = this.projectRooms.filter(x => x.roomId = this.roomId);
+    this.globalRoomId = this.roomId;
+    this.globalProjectRoom = this.projectRooms;
   }
 
   // Add the loadProjectRooms() method in the EquipmentAllocationModalComponent
@@ -68,6 +74,7 @@ export class EquipmentAllocationModalComponent {
       const selectedRoomId = this.selectedRoomId;
       const selectedRoom = this.projectRooms.find((room) => room.roomId === selectedRoomId);
       this.projectEquipments = selectedRoom && selectedRoom.equipments ? selectedRoom.equipments : [];
+      this.globalRoomId = this.roomId;
     });
   }
 
@@ -105,10 +112,23 @@ export class EquipmentAllocationModalComponent {
   }
 
   // For Selected room's equipment list
-  onRoomChange(event: any): void {
+  onRoomChange(event: any, roomId: string): void {
     this.selectedRoomId = event.target.value;
+    this.roomId = event.target.value;
     this.loadNewEquipments();
+    this.loadProjectData();
+    this.loadEquipmentData();
+    this.loadProjectEquipments();
+    this.loadMasterEquipmentData();
   }
+
+  // For Selected room's equipment list
+  onRoomChangeGLobal(event: any, roomId: string): void {
+    this.selectedRoomId = event.target.value;
+    // this.roomId = event.target.value;
+    roomId = this.room._id
+    this.loadNewEquipments();
+   }
 
   // Function for checkbox
   selectEquipment(item: any): void {

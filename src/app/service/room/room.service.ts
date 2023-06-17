@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class RoomService {
   equipmentNamesEmitter: any;
-
+  _id: any;
+  
   constructor(private http: HttpClient) { }
 
   // Function to load rooms with pagination
