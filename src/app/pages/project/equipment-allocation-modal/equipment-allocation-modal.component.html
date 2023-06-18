@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="form-group">
         <label>Department:</label>
-        <span id="master_dep">{{department.code | uppercase}} - {{department.name | uppercase}}</span>
+        <span id="master_dep">{{department?.code | uppercase}} - {{department?.name | uppercase}}</span>
       </div>
       <div class="row g-3 align-items-center">
         <div class="col-auto">
@@ -11,7 +11,8 @@
         </div>
         <div class="col-auto">
           <div class="col-auto">
-            <select [(ngModel)]="globalRoomId" class="form-control" name="global_core" (change)="onRoomChange($event, roomId)">
+            <select [(ngModel)]="globalRoomId" class="form-control" name="global_core"
+              (change)="onRoomChange($event, roomId)">
               <option value="">-Select Room-</option>
               <option *ngFor="let room of globalProjectRoom" [value]="room._id">{{ room.name | uppercase }}</option>
             </select>
@@ -126,11 +127,22 @@
                   </select>
                 </div>
               </div>
+              <div class="col-md-6">
+                <input name="search" type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText"
+                  (input)="searchEquipment()">
+              </div>
             </form>
           </div>
         </div>
-
         <div class="row">
+          <div class="col-sm-12">
+            <div class="col-md-12 text-center mt-3">
+              <button type="submit" class="btn btn-primary px-4 me-3 m" id="add_department"
+                (click)="searchOtherProjectEqp()">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
           <div class="col-md-6 border px-2 py-2">
             <div class="row g-3 align-items-center">
               <div class="col-md-6">
