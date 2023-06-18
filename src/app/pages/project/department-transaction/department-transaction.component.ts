@@ -18,11 +18,12 @@ export class DepartmentTransactionComponent {
   filteredDepartmentData: any[] = []; // For search bar
   projectDepartments: any;
   project: any;
+  loader = false;
 
   constructor(
     private departmentService: DepartmentService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
@@ -56,8 +57,10 @@ export class DepartmentTransactionComponent {
 
   // Load department data from the service  | Sidebar
   loadDepartmentData(): void {
+    this.loader = true;
     this.departmentService.Load(0, 10).subscribe((data: any) => {
       this.departmentData = data.results;
+      this.loader = false;
     });
   }
 
@@ -79,7 +82,8 @@ export class DepartmentTransactionComponent {
   // Load project departments List
   loadProjectDepartments(): void {
     this.skip = this.limit * (this.page - 1);
-    this.departmentService.getProjectDepartments(this.projectId, this.skip, this.limit)
+    this.departmentService
+      .getProjectDepartments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
         this.project = data.results[0];
         // this.projectDepartments = data.results[0].departments;

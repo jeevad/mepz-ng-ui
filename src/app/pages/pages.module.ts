@@ -22,6 +22,7 @@ import { EditModeDirective } from './project/edit-input/edit-mode.directive';
 import { ViewModeDirective } from './project/edit-input/view-mode.directive';
 import { FocusableDirective } from '../directives/focusable.directive';
 import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
+import { LoaderComponent } from '../components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +36,7 @@ import { EquipmentListComponent } from './project/equipment-list/equipment-list.
     EditModeDirective,
     FocusableDirective,
     EquipmentListComponent,
-    // EquipmentSpecificationComponent,
-    // EquipmentBrandComponent,
-    // ReportsByPackageComponent,
-    // TemplateDepartmentComponent,
-    // EditAdminUserComponent,
-    // ViewRoomsComponent,
-    // TransactionViewComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import { DeletedialogComponent } from '../../deletedialog/deletedialog.component';
 import { FormsModule } from '@angular/forms';
+// import { NgxSpinnerService } from 'ngx-spinner';
 
 export interface DialogData {
   animal: string;
@@ -29,12 +30,13 @@ export class ProjectListComponent implements OnInit {
   name!: string;
   searchText: string = ''; // For search bar
   filteredEquipmentData: any[] = []; // For search bar
+  loader: boolean = false;
 
   constructor(
     public dialog: MatDialog,
-    private department: ProjectService,
-    private http: HttpClient
-  ) {}
+    private department: ProjectService
+  ) // private spinner: NgxSpinnerService
+  {}
 
   ngOnInit() {
     this.Load();
@@ -50,11 +52,13 @@ export class ProjectListComponent implements OnInit {
 
   // Loads the initial data
   Load() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.department.Load(this.skip, this.limit).subscribe((data: any) => {
       this.departmentData = data.results;
       this.count = data.count;
       this.filteredEquipmentData = this.departmentData.slice(); //For search bar
+      this.loader = false;
     });
   }
 

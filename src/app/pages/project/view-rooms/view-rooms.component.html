@@ -66,9 +66,22 @@
                 <tr role="row" class="odd" *ngFor="let room of filteredRoomData; let i=index;"> <!-- For search bar -->
                   <td><input type="checkbox" name="h_dep_id" value="947"></td>
                   <td>{{ room.name | uppercase }}</td>
-                  <td></td>
-                  <td>{{ room.code | uppercase }}</td>
-                  <td>{{ room.name | uppercase }}</td>
+                  <td><app-edit-input [data]="room.size || 0"
+                    [departmentId]="department._id"
+                    [roomId]="room._id" [field]="'size'"
+                    [projectId]="projectId" [type]="'room'"
+                    [inputsize]="100"></app-edit-input></td>
+                  <td><app-edit-input [data]="room.code || 0"
+                    [departmentId]="department._id"
+                    [roomId]="room._id" [field]="'code'"
+                    [projectId]="projectId" [type]="'room'"
+                    ></app-edit-input></td>
+                  <td><app-edit-input [data]="room.alias || room.name"
+                    [departmentId]="department._id"
+                    [roomId]="room._id" [field]="'alias'"
+                    [projectId]="projectId" [type]="'room'"
+                    ></app-edit-input>
+                    </td>
                   <td>
                     <a title="Add Equipment" class="btn btn-xs btn-primary"
                       (click)="openEquipmentAllocationModal(room._id)">

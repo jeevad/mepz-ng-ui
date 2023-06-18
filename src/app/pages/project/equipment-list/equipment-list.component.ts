@@ -20,6 +20,7 @@ export class EquipmentListComponent implements OnInit {
   searchText: string = ''; // For search bar
   filteredEquipmentData: any[] = []; // For search bar
   projectId: any;
+  loader = false;
 
   constructor(
     public dialog: MatDialog,
@@ -34,12 +35,14 @@ export class EquipmentListComponent implements OnInit {
 
   loadEquipments() {
     this.skip = this.limit * (this.page - 1);
+    this.loader = true;
     this.projectService
       .getEquipments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
         this.equipmentData = data.results[0].data;
         this.count = data.results[0].metadata[0].total;
         this.filteredEquipmentData = this.equipmentData.slice(); //For search bar
+        this.loader = false;
       });
   }
 

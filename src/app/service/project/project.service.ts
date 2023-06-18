@@ -36,4 +36,11 @@ export class ProjectService {
       }
     );
   }
+
+  saveProjectField(projectId: string, data: any) {
+    return this.http.post(
+      environment.apiUrl + '/project/updateProjectFields/' + projectId,
+      data
+    );
+  }
 }

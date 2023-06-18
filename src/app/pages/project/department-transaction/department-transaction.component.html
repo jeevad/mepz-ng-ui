@@ -40,6 +40,7 @@
       <div class="col-md-12 mt-4">
         <div class="card p-3">
           <div class="card-body">
+            <app-loader *ngIf="loader"></app-loader>
             <!-- For search bar -->
             <div class="input-group mb-3" style="width: 300px; float: right;">
               <input type="text" class="form-control form-control" placeholder="Search" [(ngModel)]="searchText"
@@ -64,12 +65,15 @@
                   </td>
                   <td>{{ department.name | uppercase}}</td>
                   <td class="editable">
-                    <!-- {{ department.code | uppercase}} -->
-                    <app-edit-input [data]="department.code" [id]="department._id" [field]="'code'" [projectId]="projectId" [type]="'department'"></app-edit-input>
-                    <!-- <app-edit-input [data]="department.code" [id]="department._id"></app-edit-input> -->
+                    <app-edit-input [data]="department.code" [departmentId]="department._id" [field]="'code'"
+                      [projectId]="projectId" [type]="'department'"></app-edit-input>
                   </td>
-                  <td><app-edit-input [data]="department.alias || department.name" [id]="department._id" [field]="'code'" [projectId]="projectId" [type]="'department'"></app-edit-input></td>
-                  <td>{{ department.level | uppercase}}</td>
+                  <td>
+                    <app-edit-input [data]="department.alias || department.name" [departmentId]="department._id"
+                      [field]="'alias'" [projectId]="projectId" [type]="'department'"></app-edit-input>
+                  </td>
+                  <td><app-edit-input [data]="department.level || 'N/A'" [departmentId]="department._id"
+                    [field]="'level'" [projectId]="projectId" [type]="'department'"></app-edit-input></td>
                   <td>
                     <a routerLink="/pages/projects/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
                       class="btn btn-xs btn-primary">View Rooms</a>

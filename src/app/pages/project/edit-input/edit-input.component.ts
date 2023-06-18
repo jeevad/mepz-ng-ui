@@ -12,6 +12,7 @@ import { MatInput } from '@angular/material/input';
 // import { NgControl } from '@angular/forms';
 import { fromEvent, Subject } from 'rxjs';
 import { switchMap, filter, take } from 'rxjs/operators';
+import { ProjectService } from 'src/app/service/project/project.service';
 
 @Component({
   selector: 'app-edit-input',
@@ -21,8 +22,12 @@ import { switchMap, filter, take } from 'rxjs/operators';
 export class EditInputComponent {
   @Input() data: any;
   @Input() field!: string;
-  @Input() projectId!: string;
   @Input() type!: string;
+  @Input() projectId!: string;
+  @Input() departmentId!: string;
+  @Input() roomId!: string;
+  @Input() equipmentIndex!: string;
+  @Input() inputsize: number = 200;
   // @Output() focusOut: EventEmitter<any> = new EventEmitter<any>();
   updatedData: any;
 
@@ -38,7 +43,10 @@ export class EditInputComponent {
   @ViewChild('inputBox')
   inputBox!: ElementRef;
 
-  constructor(private host: ElementRef) {}
+  constructor(
+    private host: ElementRef,
+    private projectService: ProjectService
+  ) {}
 
   // onFocusOut() {
   //   this.focusOut.emit(this.data);
@@ -97,7 +105,20 @@ export class EditInputComponent {
   }
 
   saveData() {
-    this.data = this.updatedData;
-    this.mode = 'view';
+    const data = {
+      type: this.type,
+      field: this.field,
+      value: this.updatedData,
+      departmentId: this.departmentId,
+      roomId: this.roomId,
+      equipmentIndex: this.equipmentIndex,
+    };
+    this.projectService
+      .saveProjectField(this.projectId, data)
+      .subscribe((response: any) => {
+        console.log('Data saved successfully:', response);
+        this.data = this.updatedData;
+        this.mode = 'view';
+      });
   }
 }

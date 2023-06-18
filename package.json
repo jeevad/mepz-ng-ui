@@ -35,6 +35,7 @@
     "javascript": "^1.0.0",
     "metismenu": "^3.0.7",
     "ngx-bootstrap": "^10.2.0",
+    "ngx-spinner": "^16.0.2",
     "perfect-scrollbar": "^1.5.5",
     "rxjs": "~7.8.0",
     "simplebar": "^6.2.1",

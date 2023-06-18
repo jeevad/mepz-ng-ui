@@ -26,7 +26,6 @@
               "src/.htaccess"
             ],
             "styles": [
-           
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/metismenu/dist/metisMenu.css",
               "node_modules/simplebar/dist/simplebar.css",
@@ -43,8 +42,6 @@
               "node_modules/metismenu/dist/metisMenu.min.js",
               "node_modules/simplebar/dist/simplebar.min.js",
               "node_modules/perfect-scrollbar/dist/perfect-scrollbar.js"
-  
-              
             ]
           },
           "configurations": {
@@ -135,7 +132,6 @@
             ],
             "styles": [
               "src/styles.css"
-  
             ],
             "scripts": []
           }
