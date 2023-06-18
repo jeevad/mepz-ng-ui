@@ -45,6 +45,7 @@ import { ProjectListComponent } from './project/project-list/project-list.compon
 import { ProjectEditComponent } from './project/project-edit/project-edit.component';
 import { AddProjectComponent } from './project/add-project/add-project.component';
 import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
+import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -107,6 +108,7 @@ const routes: Routes = [
       { path: ':projectId/past-transaction', component: PastTransactionComponent },
       { path: ':projectId/department-transaction', component: DepartmentTransactionComponent },
       { path: 'equipment-allocation', component: EquipmentAllocationComponent },
+      { path: ':projectId/equipment-list', component: EquipmentListComponent },
       { path: 'project-template-equipment-allocation', component: ProjectTemplateEquipmentComponent },
       { path: ':projectId/project-template-equipment-allocation', component: ProjectTemplateEquipmentComponent },
       { path: ':projectId/equipment-allocation', component: EquipmentAllocationComponent },

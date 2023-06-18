@@ -19,7 +19,6 @@ export interface DialogData {
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.css'],
 })
-
 export class ProjectListComponent implements OnInit {
   page = 1;
   limit = 10;
@@ -35,7 +34,7 @@ export class ProjectListComponent implements OnInit {
     public dialog: MatDialog,
     private department: ProjectService,
     private http: HttpClient
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.Load();
@@ -55,18 +54,19 @@ export class ProjectListComponent implements OnInit {
     this.department.Load(this.skip, this.limit).subscribe((data: any) => {
       this.departmentData = data.results;
       this.count = data.count;
-      this.filteredEquipmentData = this.departmentData.slice();   //For search bar
+      this.filteredEquipmentData = this.departmentData.slice(); //For search bar
     });
   }
 
   //Search Bar function
   searchProjectList(): void {
     if (this.searchText.trim() !== '') {
-      this.filteredEquipmentData = this.departmentData.filter((item: any) =>
-        item.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        item.code.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        item.type.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        item.company.toLowerCase().includes(this.searchText.toLowerCase())
+      this.filteredEquipmentData = this.departmentData.filter(
+        (item: any) =>
+          item.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          item.code.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          item.type.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          item.company.toLowerCase().includes(this.searchText.toLowerCase())
       );
     } else {
       this.filteredEquipmentData = this.departmentData.slice();
@@ -89,26 +89,7 @@ export class ProjectListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-
       this.animal = result;
     });
-  }
-
-  // Handles button click in a row
-  buttonInRowClick(event: any): void {
-    event.stopPropagation();
-
-  }
-
-  wholeRowClick(): void {
-
-  }
-
-  nextButtonClickEvent(): void {
-
-  }
-
-  previousButtonClickEvent(): void {
-
   }
 }

@@ -21,6 +21,7 @@ import { EditInputComponent } from './project/edit-input/edit-input.component';
 import { EditModeDirective } from './project/edit-input/edit-mode.directive';
 import { ViewModeDirective } from './project/edit-input/view-mode.directive';
 import { FocusableDirective } from '../directives/focusable.directive';
+import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FocusableDirective } from '../directives/focusable.directive';
     ViewModeDirective,
     EditModeDirective,
     FocusableDirective,
+    EquipmentListComponent,
     // EquipmentSpecificationComponent,
     // EquipmentBrandComponent,
     // ReportsByPackageComponent,

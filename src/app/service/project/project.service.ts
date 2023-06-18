@@ -27,4 +27,13 @@ export class ProjectService {
   Removedata(id: any) {
     return this.http.delete(environment.apiUrl + '/project/' + id);
   }
+
+  getEquipments(projectId: string, skip: number, limit: number) {
+    return this.http.get(
+      environment.apiUrl + '/project/getProjectEquipments/' + projectId,
+      {
+        params: { skip, limit },
+      }
+    );
+  }
 }
