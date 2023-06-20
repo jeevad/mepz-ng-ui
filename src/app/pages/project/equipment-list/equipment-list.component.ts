@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from 'src/app/service/project/project.service';
 import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal/equipment-allocation-modal.component';
 import { RoomService } from 'src/app/service/room/room.service';
+import { AlertComponent } from 'src/app/components/alert/alert.component';
 
 @Component({
   selector: 'app-equipment-list',
@@ -84,6 +85,15 @@ export class EquipmentListComponent implements OnInit {
   }
 
   openEquipmentAllocationModal() {
+    if (!this.selectedRoomId) {
+      const modalRef1 = this.modalService.open(
+        AlertComponent,
+        // {
+        //   size: 'xl',
+        // }
+      );
+      return;
+    }
     this.room
       .getProjectRooms(this.projectId, this.deptId)
       .subscribe((data: any) => {
