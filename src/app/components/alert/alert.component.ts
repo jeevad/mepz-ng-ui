@@ -13,12 +13,12 @@ import { DialogData } from 'src/app/pages/project/project-list/project-list.comp
 })
 export class AlertComponent {
   constructor(
-    public dialogRef: MatDialogRef<AlertComponent>,
+    // public dialogRef: MatDialogRef<AlertComponent>,
     // @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
   onNoClick(): void {
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
 
 }
