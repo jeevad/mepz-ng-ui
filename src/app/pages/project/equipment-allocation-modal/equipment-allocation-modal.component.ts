@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ProjectService } from 'src/app/service/project/project.service';
 import { filter } from 'rxjs';
 
+
 @Component({
   selector: 'app-equipment-allocation-modal',
   standalone: true,
@@ -65,7 +66,7 @@ export class EquipmentAllocationModalComponent {
       this.deptId,
       this.roomId
     );
-    this.loadProjectData();
+    this.loadProjectData();  //dependent dropdown
     this.loadEquipmentData();
     this.loadProjectEquipments();
     this.loadMasterEquipmentData();
@@ -108,6 +109,23 @@ export class EquipmentAllocationModalComponent {
       }
     });
   }
+
+   // Project list in equipment modal | DEPENDENT DROPDOWN
+  // loadProjectData() {
+  //   this.projectService.getEquipments(this.projectId, 0, 10).subscribe((data: any) => {
+  //     this.projectData = data.results;
+  //     if (this.projectId) {
+  //       const selectedProject = this.projectData.find(
+  //         (project: any) => project.code === this.projectId
+  //       );
+  //       if (selectedProject) {
+  //         this.projectDepartments = selectedProject.departments;
+  //       }
+  //     }
+  //     console.log(data.results, "fsf");
+
+  //   });
+  // }
 
   //For Selected project's department list
   onProjectChange(event: any): void {
@@ -267,5 +285,10 @@ export class EquipmentAllocationModalComponent {
       });
   }
 
-  searchOtherProjectEqp() {}
+  searchOtherProjectEqp() {
+
+    // const filterEquipmentDto:
+//  this.projectService.getAllEquipments(0, 10, filterEquipmentDto).subscribe((data: any) => {
+    // });
+  }
 }

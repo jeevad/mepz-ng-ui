@@ -1,6 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+
+interface FilterEquipmentDto {
+  projectId: string[];
+  departmentId?: string;
+  roomId?: string;
+  searchInput?: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -36,6 +43,24 @@ export class ProjectService {
       }
     );
   }
+
+  getAllEquipments(skip: number, limit: number, filterEquipmentDto: FilterEquipmentDto){
+    return this.http.get(
+      environment.apiUrl + '/project/getAllEquipments',
+      {
+        params: { skip, limit, ...filterEquipmentDto },
+      }
+    );
+  }
+
+  // getAllEquipments(skip: number, limit: number,){
+  //   return this.http.get(
+  //     environment.apiUrl + '/project/getAllEquipments',
+  //     {
+  //       params: { skip, limit,  },
+  //     }
+  //   );
+  // }
 
   saveProjectField(projectId: string, data: any) {
     return this.http.post(
