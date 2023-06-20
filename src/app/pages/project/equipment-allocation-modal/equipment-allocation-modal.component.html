@@ -105,32 +105,34 @@
             <form class="form-horizontal row" method="post">
               <div class="col-md-6">
                 <label class="form-label">Project</label>
-                <select class="form-control" [(ngModel)]="otherProjectId" name="projectId[]" multiple (change)="onProjectChange($event)">
+                <select class="form-control" [(ngModel)]="otherProjectId" name="projectId[]" multiple
+                  (change)="onProjectChange($event)">
                   <option value="">-Select Project-</option>
                   <option *ngFor="let item of projectData" [value]="item._id">{{ item.code | uppercase}} - {{ item.name
                     | uppercase}}</option>
                 </select>
               </div>
               <div class="col-md-6">
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                   <label class="form-label">Department</label>
-                  <select class="form-control" [(ngModel)]="otherDepartmentId"  name="com_code" (change)="onDepartmentChange($event)">
+                  <select class="form-control" [(ngModel)]="otherDepartmentId" name="com_code"
+                    (change)="onDepartmentChange($event)">
                     <option value="">-Select Department-</option>
                     <option *ngFor="let department of projectDepartments" [value]="department._id">{{
                       department.name | uppercase }}</option>
                   </select>
-                </div>
+                </div> -->
                 <div class="col-md-12">
                   <label class="form-label">Room</label>
-                  <select class="form-control"  [(ngModel)]="otherRoomId" name="com_code" (change)="onRoomChangeGLobal($event, roomId)">
+                  <select class="form-control" [(ngModel)]="otherRoomId" name="com_code">
                     <option value="">-Select Room-</option>
-                    <option *ngFor="let room of projectRooms" [value]="room._id">{{ room.name | uppercase }}</option>
+                    <option *ngFor="let room of projectRooms" [value]="room.departments?.rooms?._id">
+                      {{room.name}} - {{room.departments?.rooms?.name | uppercase }}</option>
                   </select>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <input name="search" type="text" class="form-control" placeholder="Search" [(ngModel)]="searchInput"
-                  (input)="searchEquipment()">
+                <div class="col-md-12 mt-3">
+                  <input name="search" type="text" class="form-control" placeholder="Search" [(ngModel)]="searchInput">
+                </div>
               </div>
             </form>
           </div>
@@ -161,18 +163,18 @@
                     <thead>
                       <tr role="row">
                         <th></th>
+                        <th>Room</th>
                         <th>Equipment</th>
-                        <th>Code</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let item of filteredEquipmentData">
+                      <tr *ngFor="let item of otherEquipmentData">
                         <td>
                           <input class="checkbox" type="checkbox" name="" value=""
                             [checked]="projectEquipment.includes(item)" (click)="selectEquipment(item)">
                         </td>
-                        <td>{{ item.name | uppercase}}</td>
-                        <td>{{ item.code | uppercase}}</td>
+                        <td><strong>{{ item.room_code | uppercase}} </strong><br> {{ item.room_name | uppercase}}</td>
+                        <td><strong>{{ item.code | uppercase}}</strong> <br> {{ item.name | uppercase}}</td>
                       </tr>
                     </tbody>
                   </table>

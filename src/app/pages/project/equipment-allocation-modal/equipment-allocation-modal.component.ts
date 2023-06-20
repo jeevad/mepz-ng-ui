@@ -51,6 +51,7 @@ export class EquipmentAllocationModalComponent {
   otherDepartmentId: any = '';
   otherRoomId: any = '';
   searchInput: any = '';
+  otherEquipmentData: any[] = [];
 
   constructor(
     private room: RoomService,
@@ -70,30 +71,30 @@ export class EquipmentAllocationModalComponent {
     this.loadEquipmentData();
     this.loadProjectEquipments();
     this.loadMasterEquipmentData();
-    const selectedRoom = this.projectRooms.filter(
-      (x) => (x.roomId = this.roomId)
-    );
+    // const selectedRoom = this.projectRooms.filter(
+    //   (x) => (x.roomId = this.roomId)
+    // );
     this.globalRoomId = this.roomId;
     this.globalProjectRoom = this.projectRooms;
   }
 
   // Add the loadProjectRooms() method in the EquipmentAllocationModalComponent
-  loadProjectRooms(): void {
-    this.room
-      .getProjectRooms(this.projectId, this.deptId)
-      .subscribe((data: any) => {
-        this.projectRooms = data.results[0].departments.rooms;
-        const selectedRoomId = this.selectedRoomId;
-        const selectedRoom = this.projectRooms.find(
-          (room) => room.roomId === selectedRoomId
-        );
-        this.projectEquipments =
-          selectedRoom && selectedRoom.equipments
-            ? selectedRoom.equipments
-            : [];
-        this.globalRoomId = this.roomId;
-      });
-  }
+  // loadProjectRooms(): void {
+  //   this.room
+  //     .getProjectRooms(this.projectId, this.deptId)
+  //     .subscribe((data: any) => {
+  //       this.projectRooms = data.results[0].departments.rooms;
+  //       const selectedRoomId = this.selectedRoomId;
+  //       const selectedRoom = this.projectRooms.find(
+  //         (room) => room.roomId === selectedRoomId
+  //       );
+  //       this.projectEquipments =
+  //         selectedRoom && selectedRoom.equipments
+  //           ? selectedRoom.equipments
+  //           : [];
+  //       this.globalRoomId = this.roomId;
+  //     });
+  // }
 
   //Project list in equipment modal
   loadProjectData() {
@@ -131,26 +132,40 @@ export class EquipmentAllocationModalComponent {
   onProjectChange(event: any): void {
     console.log('otherProjectId', this.otherProjectId);
 
-    this.projectDepartments = [];
-    this.projectRooms = [];
-    const projectCode = event.target.value;
-    const selectedProject = this.projectData.find(
-      (project) => project.code === projectCode
-    );
-    if (selectedProject) {
-      this.projectDepartments = selectedProject.departments;
-    }
+    const filterEquipmentDto: any = {
+      projectId: this.otherProjectId,
+      // departmentepartmentId: this.otherDepartmentId,
+      // roomId: this.otherRoomId,
+      // searchInput: this.searchInput,
+    };
+    this.projectService
+      .getAllRooms(0, 10, filterEquipmentDto)
+      .subscribe((data: any) => {
+        this.projectRooms = data.results[0].data;
+        // this.count = data.results[0].metadata[0].total;
+        // this.projectRooms = this.equipmentData.slice(); //For search bar
+        this.loader = false;
+      });
+    // this.projectDepartments = [];
+    // this.projectRooms = [];
+    // const projectCode = event.target.value;
+    // const selectedProject = this.projectData.find(
+    //   (project) => project.code === projectCode
+    // );
+    // if (selectedProject) {
+    //   this.projectDepartments = selectedProject.departments;
+    // }
   }
 
   //For Selected project's rooms list
-  onDepartmentChange(event: any): void {
-    const departmentId = event.target.value;
-    const selectedDepartment = this.projectDepartments.find(
-      (department) => department.departmentId === departmentId
-    );
-    this.projectRooms = selectedDepartment ? selectedDepartment.rooms : [];
-    // this.projectRooms = selectedDepartment.rooms;
-  }
+  // onDepartmentChange(event: any): void {
+  //   const departmentId = event.target.value;
+  //   const selectedDepartment = this.projectDepartments.find(
+  //     (department) => department.departmentId === departmentId
+  //   );
+  //   this.projectRooms = selectedDepartment ? selectedDepartment.rooms : [];
+  //   // this.projectRooms = selectedDepartment.rooms;
+  // }
 
   // For Selected room's equipment list
   onRoomChange(event: any, roomId: string): void {
@@ -164,12 +179,12 @@ export class EquipmentAllocationModalComponent {
   }
 
   // For Selected room's equipment list
-  onRoomChangeGLobal(event: any, roomId: string): void {
-    this.selectedRoomId = event.target.value;
-    // this.roomId = event.target.value;
-    roomId = this.room._id;
-    this.loadNewEquipments();
-  }
+  // onRoomChangeGLobal(event: any, roomId: string): void {
+  //   this.selectedRoomId = event.target.value;
+  //   // this.roomId = event.target.value;
+  //   roomId = this.room._id;
+  //   this.loadNewEquipments();
+  // }
 
   // Function for checkbox
   selectEquipment(item: any): void {
@@ -300,9 +315,9 @@ export class EquipmentAllocationModalComponent {
     this.projectService
       .getAllEquipments(0, 10, filterEquipmentDto)
       .subscribe((data: any) => {
-        this.equipmentData = data.results[0].data;
+        this.otherEquipmentData = data.results[0].data;
         // this.count = data.results[0].metadata[0].total;
-        this.filteredEquipmentData = this.equipmentData.slice(); //For search bar
+        // this.filteredEquipmentData = this.equipmentData.slice(); //For search bar
         this.loader = false;
       });
   }
