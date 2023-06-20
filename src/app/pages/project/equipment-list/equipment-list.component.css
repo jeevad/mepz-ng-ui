@@ -189,3 +189,6 @@ h6 {
       cursor: pointer;
   }
   
+  .selectedRoom {
+    background-color: greenyellow;
+  }

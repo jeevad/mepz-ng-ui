@@ -14,8 +14,8 @@
                             <td>
                                 <h6>Project Info</h6>
                             </td>
-                            <td colspan="2"><strong>Code: </strong>{{this.equipmentData[0].code}}</td>
-                            <td><strong>Project Name: </strong>>{{this.equipmentData[0].name}}</td>
+                            <td colspan="2"><strong>Code: </strong>{{this.equipmentData[0]?.code}}</td>
+                            <td><strong>Project Name: </strong>>{{this.equipmentData[0]?.name}}</td>
                             <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span>
                                 <span class="label label-primary replace-eq">Replaced Equipment</span>
                             </td>
@@ -39,8 +39,8 @@
                         <button type="button" class="btn btn-sm btn-primary" title="Filter"><i
                                 class='fal fa-filter'></i></button>
                         <!-- Add Equipment -->
-                        <button title="Add Equipment" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                            data-target="#myModal2">
+                        <button title="Add Equipment" type="button" class="btn btn-sm btn-primary"
+                            (click)="openEquipmentAllocationModal()">
                             <i class="fal fa-file-plus"> </i>
                         </button>
 
@@ -82,7 +82,8 @@
                             <tbody>
                                 <tr role="row" class="odd" *ngFor="let eqp of filteredEquipmentData; let i=index;">
                                     <td><strong>{{eqp.code}}</strong> - {{eqp.name}} </td>
-                                    <td>
+                                    <td (click)="selectRoom(eqp,i)" class="" [class.selectedRoom]="selectedIndex === i"
+                                        role="button">
                                         <div data-dep="AD - ADMINISTRATION (L4)" data-room="AD101 - RECEPTION"
                                             data-room_code="27278">
                                             <strong>{{eqp.departments.rooms.code}}</strong> -
@@ -90,7 +91,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="checkbox  " style="margin: 0px;">
+                                        <div class="checkbox" style="margin: 0px;">
                                             <label>
                                                 <input type="checkbox" name="eq_id" value="174731">
                                                 <strong>{{eqp.departments.rooms.equipments.code}}</strong> -
@@ -178,15 +179,12 @@
 
 
 
-                                    <table id="example3" class="display" cellspacing="0" width="100%">
+                                    <table id="example3" class="table" cellspacing="0" width="100%">
                                         <thead>
 
                                             <tr role="row">
                                                 <th></th>
                                                 <th>Equipment</th>
-
-
-
                                             </tr>
                                         </thead>
 

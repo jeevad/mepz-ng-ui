@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from 'src/app/service/project/project.service';
+import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal/equipment-allocation-modal.component';
+import { RoomService } from 'src/app/service/room/room.service';
 
 @Component({
   selector: 'app-equipment-list',
@@ -15,17 +18,21 @@ export class EquipmentListComponent implements OnInit {
   skip = 0;
   count: number = 0;
   equipmentData: any[] = [];
-  animal!: string;
   name!: string;
   searchText: string = ''; // For search bar
   filteredEquipmentData: any[] = []; // For search bar
   projectId: any;
   loader = false;
+  selectedRoomId!: string;
+  selectedIndex!: number;
+  deptId!: string;
 
   constructor(
     public dialog: MatDialog,
     private projectService: ProjectService,
-    private route: ActivatedRoute
+    private room: RoomService,
+    private route: ActivatedRoute,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -69,4 +76,31 @@ export class EquipmentListComponent implements OnInit {
       });
     }
   }
+
+  selectRoom(eqp: any, index: number) {
+    this.deptId = eqp.departments._id;
+    this.selectedRoomId = eqp.departments.rooms._id;
+    this.selectedIndex = index;
+  }
+
+  openEquipmentAllocationModal() {
+    this.room
+      .getProjectRooms(this.projectId, this.deptId)
+      .subscribe((data: any) => {
+        const modalRef = this.modalService.open(
+          EquipmentAllocationModalComponent,
+          {
+            size: 'xl',
+          }
+        );
+        modalRef.componentInstance.projectId = this.projectId;
+        modalRef.componentInstance.deptId = this.deptId;
+        modalRef.componentInstance.roomId = this.selectedRoomId;
+        modalRef.componentInstance.projectRooms =
+          data.results[0].departments.rooms;
+      });
+  }
+
+  // Function to load room list
+  loadProjectRooms(): void {}
 }
