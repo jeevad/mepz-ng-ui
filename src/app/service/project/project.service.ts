@@ -44,13 +44,16 @@ export class ProjectService {
     );
   }
 
-  getAllEquipments(skip: number, limit: number, filterEquipmentDto: FilterEquipmentDto){
-    return this.http.get(
-      environment.apiUrl + '/project/getAllEquipments',
-      {
-        params: { skip, limit, ...filterEquipmentDto },
-      }
-    );
+  getAllEquipments(skip: number, limit: number, filterEquipmentDto: any) {
+    let proj: any = [];
+    filterEquipmentDto.projectId.forEach((item: any, i: number) => {
+      proj[`projectId[${i}]`] = item;
+    });
+
+    delete filterEquipmentDto.projectId;
+    return this.http.get(environment.apiUrl + '/project/getAllEquipments', {
+      params: { skip, limit, ...filterEquipmentDto, ...proj },
+    });
   }
 
   // getAllEquipments(skip: number, limit: number,){

@@ -1,4 +1,5 @@
 <div class="modal-body">
+  <!-- <app-loader *ngIf="loader"></app-loader> -->
   <div class="row">
     <div class="col-12">
       <div class="form-group">
@@ -104,31 +105,31 @@
             <form class="form-horizontal row" method="post">
               <div class="col-md-6">
                 <label class="form-label">Project</label>
-                <select class="form-control" name="project[]" multiple (change)="onProjectChange($event)">
+                <select class="form-control" [(ngModel)]="otherProjectId" name="projectId[]" multiple (change)="onProjectChange($event)">
                   <option value="">-Select Project-</option>
-                  <option *ngFor="let item of projectData" [value]="item.code">{{ item.code | uppercase}} - {{ item.name
+                  <option *ngFor="let item of projectData" [value]="item._id">{{ item.code | uppercase}} - {{ item.name
                     | uppercase}}</option>
                 </select>
               </div>
               <div class="col-md-6">
                 <div class="col-md-12">
                   <label class="form-label">Department</label>
-                  <select class="form-control" name="com_code" (change)="onDepartmentChange($event)">
+                  <select class="form-control" [(ngModel)]="otherDepartmentId"  name="com_code" (change)="onDepartmentChange($event)">
                     <option value="">-Select Department-</option>
-                    <option *ngFor="let department of projectDepartments" [value]="department.departmentId">{{
+                    <option *ngFor="let department of projectDepartments" [value]="department._id">{{
                       department.name | uppercase }}</option>
                   </select>
                 </div>
                 <div class="col-md-12">
                   <label class="form-label">Room</label>
-                  <select class="form-control" name="com_code" (change)="onRoomChangeGLobal($event, roomId)">
+                  <select class="form-control"  [(ngModel)]="otherRoomId" name="com_code" (change)="onRoomChangeGLobal($event, roomId)">
                     <option value="">-Select Room-</option>
-                    <option *ngFor="let room of projectRooms" [value]="room.roomId">{{ room.name | uppercase }}</option>
+                    <option *ngFor="let room of projectRooms" [value]="room._id">{{ room.name | uppercase }}</option>
                   </select>
                 </div>
               </div>
               <div class="col-md-6">
-                <input name="search" type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText"
+                <input name="search" type="text" class="form-control" placeholder="Search" [(ngModel)]="searchInput"
                   (input)="searchEquipment()">
               </div>
             </form>
@@ -138,7 +139,7 @@
           <div class="col-sm-12">
             <div class="col-md-12 text-center mt-3">
               <button type="submit" class="btn btn-primary px-4 me-3 m" id="add_department"
-                (click)="searchOtherProjectEqp()">Search</button>
+                (click)="searchOtherProjectEqp()" [disabled]="otherProjectId.length === 0">Search</button>
             </div>
           </div>
         </div>

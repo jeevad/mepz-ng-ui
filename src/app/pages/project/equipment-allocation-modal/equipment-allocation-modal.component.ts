@@ -10,12 +10,13 @@ import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { FormsModule } from '@angular/forms';
 import { ProjectService } from 'src/app/service/project/project.service';
 import { filter } from 'rxjs';
-
+import { LoaderComponent } from 'src/app/components/loader/loader.component';
 
 @Component({
   selector: 'app-equipment-allocation-modal',
   standalone: true,
   imports: [CommonModule, FormsModule, NgbNavModule],
+  // declarations: [LoaderComponent],
   templateUrl: './equipment-allocation-modal.component.html',
   styleUrls: ['./equipment-allocation-modal.component.css'],
 })
@@ -45,6 +46,11 @@ export class EquipmentAllocationModalComponent {
   project: any;
   department: any;
   globalProjectRoom: any[] = [];
+  loader = true;
+  otherProjectId: string[] = [];
+  otherDepartmentId: any = '';
+  otherRoomId: any = '';
+  searchInput: any = '';
 
   constructor(
     private room: RoomService,
@@ -60,13 +66,7 @@ export class EquipmentAllocationModalComponent {
   }
 
   ngOnInit() {
-    console.log(
-      'this.projectId,this.deptId, this.roomId',
-      this.projectId,
-      this.deptId,
-      this.roomId
-    );
-    this.loadProjectData();  //dependent dropdown
+    this.loadProjectData(); //dependent dropdown
     this.loadEquipmentData();
     this.loadProjectEquipments();
     this.loadMasterEquipmentData();
@@ -110,7 +110,7 @@ export class EquipmentAllocationModalComponent {
     });
   }
 
-   // Project list in equipment modal | DEPENDENT DROPDOWN
+  // Project list in equipment modal | DEPENDENT DROPDOWN
   // loadProjectData() {
   //   this.projectService.getEquipments(this.projectId, 0, 10).subscribe((data: any) => {
   //     this.projectData = data.results;
@@ -129,6 +129,8 @@ export class EquipmentAllocationModalComponent {
 
   //For Selected project's department list
   onProjectChange(event: any): void {
+    console.log('otherProjectId', this.otherProjectId);
+
     this.projectDepartments = [];
     this.projectRooms = [];
     const projectCode = event.target.value;
@@ -286,9 +288,22 @@ export class EquipmentAllocationModalComponent {
   }
 
   searchOtherProjectEqp() {
-
-    // const filterEquipmentDto:
-//  this.projectService.getAllEquipments(0, 10, filterEquipmentDto).subscribe((data: any) => {
+    const filterEquipmentDto: any = {
+      projectId: this.otherProjectId,
+      departmentepartmentId: this.otherDepartmentId,
+      roomId: this.otherRoomId,
+      searchInput: this.searchInput,
+    };
+    // this.otherProjectId.forEach((element: any, i: number) => {
+    //   filterEquipmentDto.projectId[i] = element;
     // });
+    this.projectService
+      .getAllEquipments(0, 10, filterEquipmentDto)
+      .subscribe((data: any) => {
+        this.equipmentData = data.results[0].data;
+        // this.count = data.results[0].metadata[0].total;
+        this.filteredEquipmentData = this.equipmentData.slice(); //For search bar
+        this.loader = false;
+      });
   }
 }
