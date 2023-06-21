@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { RoomService } from 'src/app/service/room/room.service';
 import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal/equipment-allocation-modal.component';
 import { ActivatedRoute } from '@angular/router';
+import { RoomSelectionModalComponent } from './room-selection-modal.component';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-view-rooms',
   templateUrl: './view-rooms.component.html',
@@ -24,12 +27,14 @@ export class ViewRoomsComponent {
   filteredRoomData: any[] = []; // For search bar
   project: any;
   department: any;
+  selectedRooms: string[] = [];  //For Disable/Enable
 
   constructor(
     private room: RoomService,
     private equipmentService: EquipmentService,
     private modalService: NgbModal,
     private route: ActivatedRoute,
+    private router: Router
   ) {
 
     // For Qty dropdown: Creating options from 1 to 20
@@ -104,8 +109,82 @@ export class ViewRoomsComponent {
       this.project = data.results[0];
       this.department = data.results[0].departments;
       this.projectRooms = data.results[0].departments.rooms;
-      this.filteredRoomData = this.projectRooms.slice(); //For search bar
+      this.projectRooms.forEach((room: any) => {
+        room.enabled = true;
+      });
+      this.filteredRoomData = this.projectRooms.slice();
     });
   }
 
+  // Check if the room is selected | for enable/disable button
+  isSelectedRoom(roomId: string): boolean {
+    return this.selectedRooms.includes(roomId);
+  }
+
+  // Toggle the selection of a room | for enable/disable button
+  toggleRoomSelection(event: Event, roomId: string): void {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.selectedRooms.push(roomId);
+    } else {
+      const index = this.selectedRooms.indexOf(roomId);
+      if (index !== -1) {
+        this.selectedRooms.splice(index, 1);
+      }
+    }
+  }
+
+  // Toggle the status (enable/disable) of selected rooms | for enable/disable button
+  toggleRoomStatus(): void {
+    if (this.selectedRooms.length === 0) {
+      this.openRoomSelectionModal();
+      return;
+    }
+
+    let confirmationMessage = '';
+    let confirmAction = '';
+
+    for (const roomId of this.selectedRooms) {
+      const room = this.projectRooms.find((r: any) => r._id === roomId);
+      if (room) {
+        if (room.enabled) {
+          confirmationMessage = 'Confirm disable?';
+          confirmAction = 'disable';
+        } else {
+          confirmationMessage = 'Confirm enable?';
+          confirmAction = 'enable';
+        }
+
+        const confirmation = confirm(confirmationMessage);
+        if (confirmation) {
+          room.enabled = !room.enabled;
+        }
+      }
+    }
+  }
+
+  //Modal for Enable/Disable button
+  openRoomSelectionModal() {
+    const modalRef = this.modalService.open(RoomSelectionModalComponent, { centered: true, backdrop: 'static', keyboard: false });
+    modalRef.componentInstance.errorMessage = 'Please select a room!';
+  }
+
+  // for select all rooms | select/deselect button
+  selectAllRooms(): void {
+    this.selectedRooms = this.projectRooms.map((room: any) => room._id);
+  }
+
+  // for deselect all rooms | select/deselect button
+  deselectAllRooms(): void {
+    this.selectedRooms = [];
+  }
+
+  // back button
+  goBack() {
+    this.router.navigate(['pages/projects', this.projectId, 'department-transaction']);
+  }
+
 }
+
+
+

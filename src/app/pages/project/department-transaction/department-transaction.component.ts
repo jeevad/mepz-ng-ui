@@ -101,4 +101,13 @@ export class DepartmentTransactionComponent {
   buttonInRowClick(event: any): void {
     event.stopPropagation();
   }
+
+  selectAllDepartments(): void {
+    this.filteredDepartmentData.forEach((department) => (department.selected = true));
+  }
+
+  deselectAllDepartments(): void {
+    this.filteredDepartmentData.forEach((department) => (department.selected = false));
+  }
+
 }

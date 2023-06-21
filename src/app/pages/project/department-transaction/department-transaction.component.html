@@ -35,6 +35,14 @@
             <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE"><i
                 class='bx bxs-trash'></i></button>
           </div>
+          <br><br>
+          <button type="button" class="btn btn-sm btn-primary" id="select_all" style="margin-right: 3px;"
+          (click)="selectAllDepartments()">Select All</button>
+        <button type="button" class="btn btn-sm btn-primary" id="deselect_all" (click)="deselectAllDepartments()">
+          Deselect All
+        </button>
+
+          <br><br>
         </div>
       </div>
       <div class="col-md-12 mt-4">
@@ -76,7 +84,7 @@
                     [field]="'level'" [projectId]="projectId" [type]="'department'"></app-edit-input></td>
                   <td>
                     <a routerLink="/pages/projects/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
-                      class="btn btn-xs btn-primary">View Rooms</a>
+                      class="btn btn-sm btn-primary">View Rooms</a>
                   </td>
                 </tr>
               </tbody>

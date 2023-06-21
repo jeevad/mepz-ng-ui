@@ -16,11 +16,12 @@ import { DeletedialogComponent } from './pages/deletedialog/deletedialog.compone
 import { ReportsComponent } from './pages/reports/reports.component';
 import { FilterRoomsPipe } from './pipes/filter-rooms.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RoomSelectionModalComponent } from './pages/project/view-rooms/room-selection-modal.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, routingcomponents, FilterRoomsPipe, ],
+  declarations: [AppComponent, routingcomponents, FilterRoomsPipe, RoomSelectionModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -57,4 +58,4 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
