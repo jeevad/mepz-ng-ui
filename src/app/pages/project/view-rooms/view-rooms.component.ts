@@ -29,8 +29,7 @@ export class ViewRoomsComponent {
   department: any;
   selectedRooms: string[] = [];  //For Disable/Enable
   selectAllRoomsCheckbox: boolean = false; //for selectAll
-
-
+  isRoomSelected: boolean = false;
 
   constructor(
     private room: RoomService,
@@ -40,7 +39,7 @@ export class ViewRoomsComponent {
     private router: Router
   ) {
 
-    // For Qty dropdown: Creating options from 1 to 20
+    // For Quantity dropdown: Creating options from 1 to 20
     for (let i = 1; i <= 20; i++) {
       this.selectOptions.push({ value: i.toString(), label: i.toString() });
     }
@@ -77,7 +76,6 @@ export class ViewRoomsComponent {
           console.log('roomData:', roomDataObject);
           this.room.saveRoomData(this.projectId, this.deptId, roomDataObject).subscribe((response: any) => {
             console.log('Data saved successfully:', response);
-
             this.projectRooms.push(roomDataObject);
             this.loadProjectRooms(); //real-time listing
           });
@@ -119,7 +117,6 @@ export class ViewRoomsComponent {
     });
   }
 
-
   // Check if the room is selected | for enable/disable button
   isSelectedRoom(roomId: string): boolean {
     return this.selectedRooms.includes(roomId);
@@ -131,38 +128,46 @@ export class ViewRoomsComponent {
     if (checkbox.checked) {
       this.selectedRooms.push(roomId);
     } else {
-      const index = this.selectedRooms.indexOf(roomId);
-      if (index !== -1) {
-        this.selectedRooms.splice(index, 1);
-      }
+      this.selectedRooms = this.selectedRooms.filter((id: string) => id !== roomId);
     }
   }
 
-  // Toggle the status (enable/disable) of selected rooms | for enable/disable button
-  toggleRoomStatus(): void {
+  // Toggle the status of selected rooms | for enable/disable button
+  toggleSelectedRoomStatus(): void {
     if (this.selectedRooms.length === 0) {
       this.openRoomSelectionModal();
       return;
     }
-
-    let confirmationMessage = '';
-    let confirmAction = '';
-
     for (const roomId of this.selectedRooms) {
-      const room = this.projectRooms.find((r: any) => r._id === roomId);
+      const room = this.filteredRoomData.find((r: any) => r._id === roomId);
       if (room) {
-        if (room.enabled) {
-          confirmationMessage = 'Confirm disable?';
-          confirmAction = 'disable';
-        } else {
-          confirmationMessage = 'Confirm enable?';
-          confirmAction = 'enable';
-        }
-
+        const confirmationMessage = room.enabled ? 'Confirm disable?' : 'Confirm enable?';
         const confirmation = confirm(confirmationMessage);
         if (confirmation) {
           room.enabled = !room.enabled;
         }
+      }
+    }
+    this.selectedRooms = [];
+  }
+
+  // Toggle the status of a single room | for enable/disable button
+  toggleRoomStatus(roomId: string, currentStatus: boolean): void {
+    if (!this.isSelectedRoom(roomId)) {
+      this.openRoomSelectionModal();
+      return;
+    }
+    const room = this.projectRooms.find((room: any) => room._id === roomId);
+    if (room) {
+      let confirmationMessage: string;
+      if (currentStatus) {
+        confirmationMessage = 'Confirm disable?';
+      } else {
+        confirmationMessage = 'Confirm enable?';
+      }
+      const confirmation = confirm(confirmationMessage);
+      if (confirmation) {
+        room.enabled = !room.enabled;
       }
     }
   }

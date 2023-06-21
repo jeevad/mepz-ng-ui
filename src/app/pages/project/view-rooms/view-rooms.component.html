@@ -23,11 +23,19 @@
       </div>
       <div>
         <div>
+          <div class="float-start d-lg-flex gap-3">
+            <a class="btn btn-sm btn-danger" (click)="goBack()">
+              <i class="fa-solid fa-chevron-left fa-sm"></i> Back
+            </a>
+            &nbsp;
+          </div>
+
           <div class="float-end d-lg-flex gap-3">
             <button title="Add Room" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
               data-target="#myModal2">
               <i class="fal fa-file-plus"> </i>
             </button>
+
             <a class="btn btn-primary" routerLink="/pages/projects/equipment-allocation"> View Equipment
             </a>
           </div>
@@ -84,9 +92,9 @@
                         (click)="openEquipmentAllocationModal(room._id)">
                         Add Equipments
                       </a>
-                      <button type="button" class="btn btn-secondary" id="disable_room"
-                        (click)="toggleRoomStatus()">Disable/Enable
-                        Room</button>
+                      <button type="button" class="btn btn-secondary" id="disable_room" (click)="toggleRoomStatus(room._id, room.enabled)">
+                        {{ room.enabled ? 'Disable Room' : 'Enable Room' }}
+                      </button>
                       <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i
                           class='bx bxs-copy'></i>
                       </button>
