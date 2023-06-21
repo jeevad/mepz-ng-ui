@@ -92,22 +92,35 @@ export class DepartmentTransactionComponent {
       });
   }
 
-  // Toggle selection of a department
-  toggleSelection(index: number): void {
-    this.departmentData[index].selected = !this.departmentData[index].selected;
-  }
-
-  // Event handler for button click within a row
-  buttonInRowClick(event: any): void {
-    event.stopPropagation();
-  }
-
+  // Select all departments | for select/deselect checkbox
   selectAllDepartments(): void {
-    this.filteredDepartmentData.forEach((department) => (department.selected = true));
+    this.filteredDepartmentData.forEach(department => department.selected = true);
+    this.areAllDepartmentsSelected();
   }
 
+  // Deselect all departments | for select/deselect checkbox
   deselectAllDepartments(): void {
-    this.filteredDepartmentData.forEach((department) => (department.selected = false));
+    this.filteredDepartmentData.forEach(department => department.selected = false);
+  }
+
+  // Function to check if all departments are selected | for select/deselect checkbox
+  areAllDepartmentsSelected(): boolean {
+    const selectedCount = this.filteredDepartmentData.filter(department => department.selected).length;
+    return selectedCount === this.filteredDepartmentData.length;
+  }
+
+  // Toggle selection for a department | for select/deselect checkbox
+  toggleSelection(department: any): void {
+    department.selected = !department.selected;
+  }
+
+  // Toggle select all departments | for select/deselect checkbox
+  toggleSelectAllDepartments(): void {
+    if (this.areAllDepartmentsSelected()) {
+      this.deselectAllDepartments();
+    } else {
+      this.selectAllDepartments();
+    }
   }
 
 }

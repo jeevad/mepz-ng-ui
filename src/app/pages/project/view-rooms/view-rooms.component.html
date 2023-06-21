@@ -3,7 +3,7 @@
     <div class="row page-content">
       <div class="col-md-12">
         <div class="d-lg-flex align-items-center mb-4 gap-3">
-          <h4 class="mb-0 text-primary">Room Transaction </h4>
+          <h4 class="mb-0 text-primary">Room Transaction</h4>
         </div>
       </div>
       <div class="col-sm-12">
@@ -23,40 +23,20 @@
       </div>
       <div>
         <div>
-          <div class="float-start d-lg-flex gap-3">
-            <a class="btn btn-sm btn-danger" (click)="goBack()">
-              <i class="fa-solid fa-chevron-left fa-sm"></i> Back
-            </a>
-          </div>
           <div class="float-end d-lg-flex gap-3">
             <button title="Add Room" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
               data-target="#myModal2">
               <i class="fal fa-file-plus"> </i>
             </button>
-            <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i
-                class='bx bxs-copy'></i></button>
-            <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE"><i
-                class='bx bxs-trash'></i></button>
-            <button type="button" class="btn btn-secondary" id="disable_room"
-              (click)="toggleRoomStatus()">Disable/Enable
-              Room</button>
-            <button type="button" class="btn btn-warning" id="view_eq">View Equipment</button>
-            <a class="btn btn-primary" href="">All Equipment Allocation</a>
+            <a class="btn btn-primary" routerLink="/pages/projects/equipment-allocation"> View Equipment
+            </a>
           </div>
-          <br><br>
-          <button type="button" class="btn btn-sm btn-primary" id="select_all" style="margin-right: 3px;"
-            (click)="selectAllRooms()">Select All</button>
-          <button type="button" class="btn btn-sm btn-primary" id="deselect_all" (click)="deselectAllRooms()">Deselect
-            All</button>
-
-          <br><br>
           <small>Legend:
             <span class="tr-disabled" style="padding: 3px; margin-right: 3px;">Disabled room</span>
             <span style="padding: 3px; background: #A3CBF3; margin-left: 3px;">New Room</span>
           </small>
         </div>
       </div>
-
       <div class="col-md-12 mt-4">
         <div class="card p-3">
           <div class="card-body">
@@ -68,7 +48,9 @@
             <table id="example" class="display table" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th></th>
+                  <th>
+                    <input type="checkbox" (change)="toggleSelectionForRoom($event)">
+                  </th>
                   <th>Room</th>
                   <th>Size</th>
                   <th>Code</th>
@@ -79,21 +61,38 @@
               <tbody>
                 <tr role="row" class="odd" *ngFor="let room of filteredRoomData; let i=index;"
                   [ngClass]="{'disabled-room': !room.enabled}">
-                  <input type="checkbox" name="h_dep_id" [checked]="isSelectedRoom(room._id)"
-                    (change)="toggleRoomSelection($event, room._id)">
+                  <td>
+                    <input type="checkbox" name="h_dep_id" [checked]="isSelectedRoom(room._id)"
+                      (change)="toggleRoomSelection($event, room._id)">
+                  </td>
                   <td>{{ room.name | uppercase }}</td>
-                  <td><app-edit-input [data]="room.size || 0" [departmentId]="department._id" [roomId]="room._id"
-                      [field]="'size'" [projectId]="projectId" [type]="'room'" [inputsize]="100"></app-edit-input></td>
-                  <td><app-edit-input [data]="room.code || 0" [departmentId]="department._id" [roomId]="room._id"
-                      [field]="'code'" [projectId]="projectId" [type]="'room'"></app-edit-input></td>
-                  <td><app-edit-input [data]="room.alias || room.name" [departmentId]="department._id"
-                      [roomId]="room._id" [field]="'alias'" [projectId]="projectId" [type]="'room'"></app-edit-input>
+                  <td>
+                    <app-edit-input [data]="room.size || 0" [departmentId]="department._id" [roomId]="room._id"
+                      [field]="'size'" [projectId]="projectId" [type]="'room'" [inputsize]="100"></app-edit-input>
                   </td>
                   <td>
-                    <a title="Add Equipment" class="btn btn-xs btn-primary"
-                      (click)="openEquipmentAllocationModal(room._id)">
-                      Add Equipments
-                    </a>
+                    <app-edit-input [data]="room.code || 0" [departmentId]="department._id" [roomId]="room._id"
+                      [field]="'code'" [projectId]="projectId" [type]="'room'"></app-edit-input>
+                  </td>
+                  <td>
+                    <app-edit-input [data]="room.alias || room.name" [departmentId]="department._id" [roomId]="room._id"
+                      [field]="'alias'" [projectId]="projectId" [type]="'room'"></app-edit-input>
+                  </td>
+                  <td>
+                    <div class="d-flex gap-3">
+                      <a title="Add Equipment" class="btn btn-xs btn-primary"
+                        (click)="openEquipmentAllocationModal(room._id)">
+                        Add Equipments
+                      </a>
+                      <button type="button" class="btn btn-secondary" id="disable_room"
+                        (click)="toggleRoomStatus()">Disable/Enable
+                        Room</button>
+                      <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i
+                          class='bx bxs-copy'></i>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE"><i
+                          class='bx bxs-trash'></i></button>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -101,7 +100,8 @@
           </div>
         </div>
       </div>
-
+      <div>
+      </div>
     </div>
   </div>
 </section>

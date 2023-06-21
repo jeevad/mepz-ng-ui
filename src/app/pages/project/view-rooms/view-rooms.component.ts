@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./view-rooms.component.css'],
 })
 export class ViewRoomsComponent {
-  roomData: any[] = [];
+  public roomData: any[] = [];
   selectedQuantity: number = 0;
   item: any[] = [];
   selectOptions: any[] = [];
@@ -28,6 +28,9 @@ export class ViewRoomsComponent {
   project: any;
   department: any;
   selectedRooms: string[] = [];  //For Disable/Enable
+  selectAllRoomsCheckbox: boolean = false; //for selectAll
+
+
 
   constructor(
     private room: RoomService,
@@ -116,6 +119,7 @@ export class ViewRoomsComponent {
     });
   }
 
+
   // Check if the room is selected | for enable/disable button
   isSelectedRoom(roomId: string): boolean {
     return this.selectedRooms.includes(roomId);
@@ -169,17 +173,32 @@ export class ViewRoomsComponent {
     modalRef.componentInstance.errorMessage = 'Please select a room!';
   }
 
-  // for select all rooms | select/deselect button
+  // Select all rooms | for select/deselect checkbox
   selectAllRooms(): void {
     this.selectedRooms = this.projectRooms.map((room: any) => room._id);
   }
 
-  // for deselect all rooms | select/deselect button
+  // Deselect all rooms | for select/deselect checkbox
   deselectAllRooms(): void {
     this.selectedRooms = [];
   }
 
-  // back button
+  // Function to check if all rooms are selected | for select/deselect checkbox
+  areAllRoomsSelected(): boolean {
+    return this.selectedRooms.length === this.projectRooms.length;
+  }
+
+  // Toggle selection for a room | for select/deselect checkbox
+  toggleSelectionForRoom(event: Event): void {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.selectAllRooms();
+    } else {
+      this.deselectAllRooms();
+    }
+  }
+
+  // Back button
   goBack() {
     this.router.navigate(['pages/projects', this.projectId, 'department-transaction']);
   }
