@@ -6,7 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from 'src/app/service/project/project.service';
 import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal/equipment-allocation-modal.component';
 import { RoomService } from 'src/app/service/room/room.service';
-import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 
 @Component({
   selector: 'app-equipment-list',
@@ -33,7 +33,8 @@ export class EquipmentListComponent implements OnInit {
     private projectService: ProjectService,
     private room: RoomService,
     private route: ActivatedRoute,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private customDialog: MyCustomDialogService
   ) {}
 
   ngOnInit() {
@@ -84,14 +85,33 @@ export class EquipmentListComponent implements OnInit {
     this.selectedIndex = index;
   }
 
+  openCustomDialog() {
+    this.customDialog.openAlertDialog();
+  }
   openEquipmentAllocationModal() {
     if (!this.selectedRoomId) {
-      const modalRef1 = this.modalService.open(
-        AlertComponent,
-        // {
-        //   size: 'xl',
-        // }
-      );
+      // const modalRef1 = this.modalService.open(
+      //   AlertComponent
+      //   // {
+      //   //   size: 'xl',
+      //   // }
+      // );
+      const dialogRef = this.customDialog.openAlertDialog({
+        dialogMsg: 'Please select room from the table',
+        // dialogTitle: 'Alert1'
+      });
+      // const dialogRef = this.customDialog.openConfirmDialog();
+      // dialogRef.afterClosed().subscribe((result) => {
+      //   console.log(result);
+
+      // });
+
+      // const dialogRef = this.dialog.open(AlertComponent, {
+      //   width: '250px',
+      //   data: {
+      //     animal: 'panda',
+      //   },
+      // });
       return;
     }
     this.room
