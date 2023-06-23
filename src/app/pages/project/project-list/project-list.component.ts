@@ -1,14 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/service/project/project.service';
-import { HttpClient } from '@angular/common/http';
-import * as $ from 'jquery';
-import { DeletedialogComponent } from '../../deletedialog/deletedialog.component';
-import { FormsModule } from '@angular/forms';
 // import { NgxSpinnerService } from 'ngx-spinner';
 
 export interface DialogData {
@@ -31,23 +23,16 @@ export class ProjectListComponent implements OnInit {
   searchText: string = ''; // For search bar
   filteredEquipmentData: any[] = []; // For search bar
   loader: boolean = false;
+  projectType: string | null = 'individual';
 
   constructor(
-    public dialog: MatDialog,
-    private department: ProjectService
-  ) // private spinner: NgxSpinnerService
-  {}
+    private department: ProjectService,
+    private route: ActivatedRoute // private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
+    this.projectType = this.route.snapshot.paramMap.get('projectType');
     this.Load();
-  }
-
-  loadDataTable() {
-    $(function () {
-      $('#example').DataTable({
-        responsive: true,
-      });
-    });
   }
 
   // Loads the initial data
@@ -84,16 +69,5 @@ export class ProjectListComponent implements OnInit {
         this.Load();
       });
     }
-  }
-
-  // Opens the delete dialog
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DeletedialogComponent, {
-      data: { name: this.departmentData, data: this.departmentData },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      this.animal = result;
-    });
   }
 }

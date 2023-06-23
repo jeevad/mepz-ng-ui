@@ -27,6 +27,7 @@ export class EquipmentListComponent implements OnInit {
   selectedRoomId!: string;
   selectedIndex!: number;
   deptId!: string;
+  projectType: string | null = 'individual';
 
   constructor(
     public dialog: MatDialog,
@@ -39,6 +40,7 @@ export class EquipmentListComponent implements OnInit {
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
+    this.projectType = this.route.snapshot.paramMap.get('projectType');
     this.loadEquipments();
   }
 

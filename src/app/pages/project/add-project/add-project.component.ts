@@ -24,6 +24,7 @@ export class AddProjectComponent {
   editdata: any;
   submitted = false;
   addDepartment!: FormGroup;
+  projectType: string | null = 'individual';
 
   constructor(
     private department: ProjectService,
@@ -33,6 +34,7 @@ export class AddProjectComponent {
   ) {}
   ngOnInit(): void {
     this.deptid = this.route.snapshot.paramMap.get('id');
+    this.projectType = this.route.snapshot.paramMap.get('projectType');
 
     this.route.params.subscribe((param) => {
       if (param && param['id']) {

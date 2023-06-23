@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { data } from 'jquery';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 import { DepartmentService } from 'src/app/service/department/department.service';
 import { ProjectService } from 'src/app/service/project/project.service';
@@ -22,17 +20,18 @@ export class DepartmentTransactionComponent {
   projectDepartments: any;
   project: any;
   loader = false;
+  projectType: string | null = 'individual';
 
   constructor(
     private departmentService: DepartmentService,
     private projectService: ProjectService,
     private route: ActivatedRoute,
-    private http: HttpClient,
     private customDialog: MyCustomDialogService
   ) { }
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
+    this.projectType = this.route.snapshot.paramMap.get('projectType');
     this.loadDepartmentData();
     this.loadProjectDepartments();
   }

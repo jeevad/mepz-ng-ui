@@ -12,8 +12,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { DeletedialogComponent } from './pages/deletedialog/deletedialog.component';
-import { ReportsComponent } from './pages/reports/reports.component';
 import { FilterRoomsPipe } from './pipes/filter-rooms.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RoomSelectionModalComponent } from './pages/project/view-rooms/room-selection-modal.component';
