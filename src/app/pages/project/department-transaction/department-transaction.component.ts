@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { data } from 'jquery';
+import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 import { DepartmentService } from 'src/app/service/department/department.service';
 import { ProjectService } from 'src/app/service/project/project.service';
 @Component({
@@ -26,7 +27,8 @@ export class DepartmentTransactionComponent {
     private departmentService: DepartmentService,
     private projectService: ProjectService,
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private customDialog: MyCustomDialogService
   ) { }
 
   ngOnInit() {
@@ -129,25 +131,33 @@ export class DepartmentTransactionComponent {
 
   // Delete a department
   deleteDepartment(departmentId: string): void {
-    if (confirm('Are you sure you want to delete this department?')) {
-      const data = {
-        type: 'department',
-        field: 'delete',
-        departmentId: departmentId,
-        value: departmentId
-      };
+    const dialogRef = this.customDialog.openConfirmDialog({
+      dialogMsg: 'Are you sure want to delete?',
+    });
 
-      this.projectService.saveProjectField(this.projectId, data).subscribe({
-        next: () => {
-          console.log('Department deleted successfully');
-          this.loadProjectDepartments();
-        },
-        error: (error) => {
-          console.error('Failed to delete department', error);
-        },
-      });
-    }
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      if (result === 'ok') {
+        const data = {
+          type: 'department',
+          field: 'delete',
+          departmentId: departmentId,
+          value: departmentId,
+        };
+
+        this.projectService.saveProjectField(this.projectId, data).subscribe({
+          next: () => {
+            console.log('Department deleted successfully');
+            this.loadProjectDepartments();
+          },
+          error: (error) => {
+            console.error('Failed to delete department', error);
+          },
+        });
+      }
+    });
   }
+
 
   // Function triggered when the "COPY" button is clicked | Without DB
   copyDepartments(department: any): void {

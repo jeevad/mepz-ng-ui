@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RoomSelectionModalComponent } from './room-selection-modal.component';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../service/project/project.service';
+import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 
 @Component({
   selector: 'app-view-rooms',
@@ -38,7 +39,9 @@ export class ViewRoomsComponent {
     private projectService: ProjectService,
     private modalService: NgbModal,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private customDialog: MyCustomDialogService
+
   ) {
 
     // For Quantity dropdown: Creating options from 1 to 20
@@ -134,51 +137,56 @@ export class ViewRoomsComponent {
     }
   }
 
-  // Toggle the status of selected rooms | for enable/disable button
-  toggleSelectedRoomStatus(): void {
-    if (this.selectedRooms.length === 0) {
-      this.openRoomSelectionModal();
-      return;
-    }
-    for (const roomId of this.selectedRooms) {
-      const room = this.filteredRoomData.find((r: any) => r._id === roomId);
-      if (room) {
-        const confirmationMessage = room.enabled ? 'Confirm disable?' : 'Confirm enable?';
-        const confirmation = confirm(confirmationMessage);
-        if (confirmation) {
-          room.enabled = !room.enabled;
-        }
-      }
-    }
-    this.selectedRooms = [];
+// Toggle the status of selected rooms | for enable/disable button
+toggleSelectedRoomStatus(): void {
+  if (this.selectedRooms.length === 0) {
+    const dialogRef = this.customDialog.openAlertDialog({
+      dialogMsg: 'Please select room from the table',
+    });
+    return;
   }
-
-  // Toggle the status of a single room | for enable/disable button
-  toggleRoomStatus(roomId: string, currentStatus: boolean): void {
-    if (!this.isSelectedRoom(roomId)) {
-      this.openRoomSelectionModal();
-      return;
-    }
-    const room = this.projectRooms.find((room: any) => room._id === roomId);
+  for (const roomId of this.selectedRooms) {
+    const room = this.filteredRoomData.find((r: any) => r._id === roomId);
     if (room) {
-      let confirmationMessage: string;
-      if (currentStatus) {
-        confirmationMessage = 'Confirm disable?';
-      } else {
-        confirmationMessage = 'Confirm enable?';
-      }
+      const confirmationMessage = room.enabled ? 'Confirm disable?' : 'Confirm enable?';
       const confirmation = confirm(confirmationMessage);
       if (confirmation) {
         room.enabled = !room.enabled;
       }
     }
   }
+  this.selectedRooms = [];
+}
+
+// Toggle the status of a single room | for enable/disable button
+toggleRoomStatus(roomId: string, currentStatus: boolean): void {
+  if (!this.isSelectedRoom(roomId)) {
+    const dialogRef = this.customDialog.openAlertDialog({
+      dialogMsg: 'Please select room from the table',
+    });
+    return;
+  }
+  const room = this.projectRooms.find((room: any) => room._id === roomId);
+  if (room) {
+    let confirmationMessage: string;
+    if (currentStatus) {
+      confirmationMessage = 'Confirm disable?';
+    } else {
+      confirmationMessage = 'Confirm enable?';
+    }
+    const confirmation = confirm(confirmationMessage);
+    if (confirmation) {
+      room.enabled = !room.enabled;
+    }
+  }
+}
+
 
   //Modal for Enable/Disable button
-  openRoomSelectionModal() {
-    const modalRef = this.modalService.open(RoomSelectionModalComponent, { centered: true, backdrop: 'static', keyboard: false });
-    modalRef.componentInstance.errorMessage = 'Please select a room!';
-  }
+  // openRoomSelectionModal() {
+  //   const modalRef = this.modalService.open(RoomSelectionModalComponent, { centered: true, backdrop: 'static', keyboard: false });
+  //   modalRef.componentInstance.errorMessage = 'Please select a room!';
+  // }
 
   // Select all rooms | for select/deselect checkbox
   selectAllRooms(): void {
@@ -211,8 +219,14 @@ export class ViewRoomsComponent {
   }
 
   // Delete a department
-  deleteRoom(roomId: string): void {
-    if (confirm('Are you sure you want to delete this room?')) {
+deleteRoom(roomId: string): void {
+  const dialogRef = this.customDialog.openConfirmDialog({
+    dialogMsg: 'Are you sure want to delete?',
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+    console.log(result);
+    if (result === 'ok') {
       const data = {
         type: 'room',
         field: 'delete',
@@ -229,7 +243,8 @@ export class ViewRoomsComponent {
         }
       );
     }
-  }
+  });
+}
 
   // Function triggered when the "COPY" button for rooms is clicked | Without DB
   copyRooms(room: any): void {
