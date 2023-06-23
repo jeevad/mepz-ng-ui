@@ -42,11 +42,11 @@ export class MyCustomDialogService {
     let _dialogConfig: MatDialogConfig<CustomDialogConfig>;
     if (config) {
       _config = config;
-      _config.dialogTitle = _config.dialogTitle || 'Alert!' ;
+      _config.dialogTitle = _config.dialogTitle || 'Alert!';
     } else {
       _config = this._getDefaultCustomDialogConfig('alert');
     }
-    
+
     if (dialogConfig) {
       _dialogConfig = dialogConfig;
       if (_config && !_dialogConfig.data) {
@@ -80,7 +80,8 @@ export class MyCustomDialogService {
     let _dialogConfig: MatDialogConfig<CustomDialogConfig>;
     if (config) {
       _config = config;
-      _config.dialogTitle = _config.dialogTitle || 'Confirm' ;
+      _config.dialogType = 'confirm';
+      _config.dialogTitle = _config.dialogTitle || 'Confirm';
     } else {
       _config = this._getDefaultCustomDialogConfig('confirm');
     }
