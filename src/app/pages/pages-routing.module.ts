@@ -91,7 +91,7 @@ const routes: Routes = [
   { path: 'specification', component: EquipmentSpecificationComponent },
   { path: 'brand', component: EquipmentBrandComponent },
   { path: 'reports-by-package', component: ReportsByPackageComponent },
-  { path: 'template-department', component: TemplateDepartmentComponent },
+  // { path: 'template-department', component: TemplateDepartmentComponent },
   { path: 'edit-admin-user', component: EditAdminUserComponent },
 
   {

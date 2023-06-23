@@ -56,6 +56,7 @@ export class AddProjectComponent {
       signature1: [''],
       signature2: [''],
       remarks: [''],
+      isTemplate: [this.projectType === 'template'],
       noOfBeds: ['', Validators.required],
     });
   }
@@ -67,7 +68,7 @@ export class AddProjectComponent {
         this.department
           .SaveData(this.addDepartment.value)
           .subscribe((result) => {
-            this.router.navigate(['pages/projects']);
+            this.router.navigate([`pages/projects/${this.projectType}/list`]);
           });
       }
     } else if (this.isEdit) {
@@ -77,7 +78,7 @@ export class AddProjectComponent {
           .update(this.deptid, this.addDepartment.value)
           .subscribe((data) => {
             this.isEdit = false;
-            this.router.navigate(['pages/projects']);
+            this.router.navigate([`pages/projects/${this.projectType}/list`]);
           });
       }
     }

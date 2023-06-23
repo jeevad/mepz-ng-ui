@@ -113,6 +113,7 @@ export class EquipmentListComponent implements OnInit {
     modalRef.componentInstance.projectId = this.projectId;
     modalRef.componentInstance.deptId = this.deptId;
     modalRef.componentInstance.roomId = this.selectedRoomId;
+    modalRef.componentInstance.projectType = this.projectType;
   }
 
   // Function to load room list

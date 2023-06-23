@@ -25,7 +25,8 @@ export class EquipmentAllocationModalComponent {
   @Input() projectId!: string;
   @Input() deptId!: any;
   @Input() roomId!: any;
-  
+  @Input() projectType!: any;
+
   projectRooms: any[] = [];
 
   activeTab = 1;
@@ -88,7 +89,7 @@ export class EquipmentAllocationModalComponent {
   }
   //Project list in equipment modal
   loadProjectData() {
-    this.projectService.Load(0, 10).subscribe((data: any) => {
+    this.projectService.Load(0, 10, this.projectType).subscribe((data: any) => {
       this.projectData = data.results;
       if (this.projectId) {
         const selectedProject = this.projectData.find(
@@ -103,13 +104,8 @@ export class EquipmentAllocationModalComponent {
 
   //For Selected project's department list
   onProjectChange(event: any): void {
-    console.log('otherProjectId', this.otherProjectId);
-
     const filterEquipmentDto: any = {
       projectId: this.otherProjectId,
-      // departmentepartmentId: this.otherDepartmentId,
-      // roomId: this.otherRoomId,
-      // searchInput: this.searchInput,
     };
     this.projectService
       .getAllRooms(0, 10, filterEquipmentDto)
