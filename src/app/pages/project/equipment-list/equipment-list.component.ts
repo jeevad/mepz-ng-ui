@@ -90,28 +90,19 @@ export class EquipmentListComponent implements OnInit {
   }
   openEquipmentAllocationModal() {
     if (!this.selectedRoomId) {
-      // const modalRef1 = this.modalService.open(
-      //   AlertComponent
-      //   // {
-      //   //   size: 'xl',
-      //   // }
-      // );
       const dialogRef = this.customDialog.openAlertDialog({
         dialogMsg: 'Please select room from the table',
-        // dialogTitle: 'Alert1'
       });
-      // const dialogRef = this.customDialog.openConfirmDialog();
+      // const dialogRef = this.customDialog.openConfirmDialog({
+      //   dialogMsg: 'Are you sure want to delete?',
+      // });
       // dialogRef.afterClosed().subscribe((result) => {
       //   console.log(result);
-
+      //   if (result === 'ok') {
+      //     // write your code here
+      //   }
       // });
 
-      // const dialogRef = this.dialog.open(AlertComponent, {
-      //   width: '250px',
-      //   data: {
-      //     animal: 'panda',
-      //   },
-      // });
       return;
     }
     this.room

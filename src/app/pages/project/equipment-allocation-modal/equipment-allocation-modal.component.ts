@@ -15,7 +15,7 @@ import { LoaderComponent } from 'src/app/components/loader/loader.component';
 @Component({
   selector: 'app-equipment-allocation-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgbNavModule],
+  imports: [CommonModule, FormsModule, NgbNavModule,LoaderComponent],
   // declarations: [LoaderComponent],
   templateUrl: './equipment-allocation-modal.component.html',
   styleUrls: ['./equipment-allocation-modal.component.css'],
@@ -31,7 +31,6 @@ export class EquipmentAllocationModalComponent {
   roomData: any[] = [];
   selectedQuantity: number = 0;
   item: any[] = [];
-  selectOptions: any[] = [];
   selectedRooms: any[] = [];
   projectEquipments: any[] = [];
   equipmentData: any[] = [];
@@ -57,18 +56,12 @@ export class EquipmentAllocationModalComponent {
     private room: RoomService,
     private projectService: ProjectService,
     private equipmentService: EquipmentService,
-    private modalService: NgbModal,
     public activeModal: NgbActiveModal
-  ) {
-    // For Qty dropdown: Creating options from 1 to 20
-    for (let i = 1; i <= 20; i++) {
-      this.selectOptions.push({ value: i.toString(), label: i.toString() });
-    }
-  }
+  ) {}
 
   ngOnInit() {
     this.loadProjectData(); //dependent dropdown
-    this.loadEquipmentData();
+    // this.loadEquipmentData();
     this.loadProjectEquipments();
     this.loadMasterEquipmentData();
     // const selectedRoom = this.projectRooms.filter(
@@ -77,24 +70,6 @@ export class EquipmentAllocationModalComponent {
     this.globalRoomId = this.roomId;
     this.globalProjectRoom = this.projectRooms;
   }
-
-  // Add the loadProjectRooms() method in the EquipmentAllocationModalComponent
-  // loadProjectRooms(): void {
-  //   this.room
-  //     .getProjectRooms(this.projectId, this.deptId)
-  //     .subscribe((data: any) => {
-  //       this.projectRooms = data.results[0].departments.rooms;
-  //       const selectedRoomId = this.selectedRoomId;
-  //       const selectedRoom = this.projectRooms.find(
-  //         (room) => room.roomId === selectedRoomId
-  //       );
-  //       this.projectEquipments =
-  //         selectedRoom && selectedRoom.equipments
-  //           ? selectedRoom.equipments
-  //           : [];
-  //       this.globalRoomId = this.roomId;
-  //     });
-  // }
 
   //Project list in equipment modal
   loadProjectData() {
@@ -110,23 +85,6 @@ export class EquipmentAllocationModalComponent {
       }
     });
   }
-
-  // Project list in equipment modal | DEPENDENT DROPDOWN
-  // loadProjectData() {
-  //   this.projectService.getEquipments(this.projectId, 0, 10).subscribe((data: any) => {
-  //     this.projectData = data.results;
-  //     if (this.projectId) {
-  //       const selectedProject = this.projectData.find(
-  //         (project: any) => project.code === this.projectId
-  //       );
-  //       if (selectedProject) {
-  //         this.projectDepartments = selectedProject.departments;
-  //       }
-  //     }
-  //     console.log(data.results, "fsf");
-
-  //   });
-  // }
 
   //For Selected project's department list
   onProjectChange(event: any): void {
@@ -146,45 +104,14 @@ export class EquipmentAllocationModalComponent {
         // this.projectRooms = this.equipmentData.slice(); //For search bar
         this.loader = false;
       });
-    // this.projectDepartments = [];
-    // this.projectRooms = [];
-    // const projectCode = event.target.value;
-    // const selectedProject = this.projectData.find(
-    //   (project) => project.code === projectCode
-    // );
-    // if (selectedProject) {
-    //   this.projectDepartments = selectedProject.departments;
-    // }
   }
-
-  //For Selected project's rooms list
-  // onDepartmentChange(event: any): void {
-  //   const departmentId = event.target.value;
-  //   const selectedDepartment = this.projectDepartments.find(
-  //     (department) => department.departmentId === departmentId
-  //   );
-  //   this.projectRooms = selectedDepartment ? selectedDepartment.rooms : [];
-  //   // this.projectRooms = selectedDepartment.rooms;
-  // }
 
   // For Selected room's equipment list
   onRoomChange(event: any, roomId: string): void {
     this.selectedRoomId = event.target.value;
     this.roomId = event.target.value;
-    this.loadNewEquipments();
-    this.loadProjectData();
-    this.loadEquipmentData();
     this.loadProjectEquipments();
-    this.loadMasterEquipmentData();
   }
-
-  // For Selected room's equipment list
-  // onRoomChangeGLobal(event: any, roomId: string): void {
-  //   this.selectedRoomId = event.target.value;
-  //   // this.roomId = event.target.value;
-  //   roomId = this.room._id;
-  //   this.loadNewEquipments();
-  // }
 
   // Function for checkbox
   selectEquipment(item: any): void {
@@ -250,44 +177,10 @@ export class EquipmentAllocationModalComponent {
   }
 
   // Load equipment data from the service  | List in Sidebar
-  loadEquipmentData(): void {
-    this.equipmentService.Load(0, 10).subscribe((data: any) => {
-      this.equipmentData = data.results;
-      this.filteredEquipmentData = this.equipmentData.slice();
-    });
-  }
-
-  // Load equipment data from the service  | List in Sidebar
   loadMasterEquipmentData(): void {
     this.equipmentService.Load(0, 10).subscribe((data: any) => {
       this.equipmentData = data.results;
       this.masterEquipmentList = this.equipmentData.slice();
-    });
-  }
-
-  //Load equipment list for selected rooms in dropown
-  loadNewEquipments(): void {
-    this.equipmentService.Load(0, 10).subscribe((data: any) => {
-      this.equipmentData = data.results;
-      const selectedRoomId = this.selectedRoomId;
-      const selectedRoom = this.projectRooms.find(
-        (room) => room.roomId === selectedRoomId
-      );
-      this.filteredEquipmentData =
-        selectedRoom && selectedRoom.equipments ? selectedRoom.equipments : [];
-    });
-  }
-
-  //Load equipment list for selected rooms in dropown
-  loadMasterEquipments(): void {
-    this.equipmentService.Load(0, 10).subscribe((data: any) => {
-      this.equipmentData = data.results;
-      const selectedRoomId = this.selectedRoomId;
-      const selectedRoom = this.projectRooms.find(
-        (room) => room.roomId === selectedRoomId
-      );
-      this.masterEquipmentList =
-        selectedRoom && selectedRoom.equipments ? selectedRoom.equipments : [];
     });
   }
 
