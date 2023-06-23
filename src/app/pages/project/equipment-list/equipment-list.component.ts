@@ -105,21 +105,12 @@ export class EquipmentListComponent implements OnInit {
 
       return;
     }
-    this.room
-      .getProjectRooms(this.projectId, this.deptId)
-      .subscribe((data: any) => {
-        const modalRef = this.modalService.open(
-          EquipmentAllocationModalComponent,
-          {
-            size: 'xl',
-          }
-        );
-        modalRef.componentInstance.projectId = this.projectId;
-        modalRef.componentInstance.deptId = this.deptId;
-        modalRef.componentInstance.roomId = this.selectedRoomId;
-        modalRef.componentInstance.projectRooms =
-          data.results[0].departments.rooms;
-      });
+    const modalRef = this.modalService.open(EquipmentAllocationModalComponent, {
+      size: 'xl',
+    });
+    modalRef.componentInstance.projectId = this.projectId;
+    modalRef.componentInstance.deptId = this.deptId;
+    modalRef.componentInstance.roomId = this.selectedRoomId;
   }
 
   // Function to load room list

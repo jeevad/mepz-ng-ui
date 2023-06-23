@@ -15,7 +15,8 @@
             <select [(ngModel)]="globalRoomId" class="form-control" name="global_core"
               (change)="onRoomChange($event, roomId)">
               <option value="">-Select Room-</option>
-              <option *ngFor="let room of globalProjectRoom" [value]="room._id">{{ room.name | uppercase }}</option>
+              <option *ngFor="let room of globalProjectRoom" [value]="room.departments?.rooms?._id">
+                {{room.departments?.name}} - {{ room.departments?.rooms?.name | uppercase }}</option>
             </select>
           </div>
         </div>
