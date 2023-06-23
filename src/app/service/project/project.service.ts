@@ -12,7 +12,7 @@ interface FilterEquipmentDto {
   providedIn: 'root',
 })
 export class ProjectService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   Load(skip: number, limit: number) {
     return this.http.get(environment.apiUrl + '/project', {
@@ -68,19 +68,11 @@ export class ProjectService {
     });
   }
 
-  // getAllEquipments(skip: number, limit: number,){
-  //   return this.http.get(
-  //     environment.apiUrl + '/project/getAllEquipments',
-  //     {
-  //       params: { skip, limit,  },
-  //     }
-  //   );
-  // }
-
   saveProjectField(projectId: string, data: any) {
     return this.http.post(
       environment.apiUrl + '/project/updateProjectFields/' + projectId,
       data
     );
   }
+
 }

@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { data } from 'jquery';
 import { DepartmentService } from 'src/app/service/department/department.service';
+import { ProjectService } from 'src/app/service/project/project.service';
 @Component({
   selector: 'app-department-transaction',
   templateUrl: './department-transaction.component.html',
@@ -22,8 +24,10 @@ export class DepartmentTransactionComponent {
 
   constructor(
     private departmentService: DepartmentService,
-    private route: ActivatedRoute
-  ) {}
+    private projectService: ProjectService,
+    private route: ActivatedRoute,
+    private http: HttpClient
+  ) { }
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
@@ -121,6 +125,79 @@ export class DepartmentTransactionComponent {
     } else {
       this.selectAllDepartments();
     }
+  }
+
+  // Delete a department
+  deleteDepartment(departmentId: string): void {
+    if (confirm('Are you sure you want to delete this department?')) {
+      const data = {
+        type: 'department',
+        field: 'delete',
+        departmentId: departmentId,
+        value: departmentId
+      };
+
+      this.projectService.saveProjectField(this.projectId, data).subscribe({
+        next: () => {
+          console.log('Department deleted successfully');
+          this.loadProjectDepartments();
+        },
+        error: (error) => {
+          console.error('Failed to delete department', error);
+        },
+      });
+    }
+  }
+
+  // Function triggered when the "COPY" button is clicked | Without DB
+  copyDepartments(department: any): void {
+    if (department.selected) {
+      const clonedDepartment = { ...department };
+      const clonedCode = this.getClonedCode(department.code);
+      clonedDepartment.code = clonedCode;
+      this.departmentData.push(clonedDepartment);
+      this.filteredDepartmentData.push(clonedDepartment);
+    }
+  }
+
+  // Function triggered when the "COPY" button is clicked | With DB
+  // copyDepartments(): void {
+  //   const selectedDepartments = this.filteredDepartmentData.filter((department) => department.selected);
+  //   selectedDepartments.forEach((department) => {
+  //     const clonedDepartment = { ...department };
+  //     const clonedCode = this.getClonedCode(department.code);
+  //     clonedDepartment.code = clonedCode;
+  //     const data = {
+  //       type: 'department',
+  //       field: 'create',
+  //       departmentId: department._id,
+  //       value: clonedDepartment
+  //     };
+  //     this.projectService.saveProjectField(this.projectId, data).subscribe({
+  //       next: () => {
+  //         console.log('Cloned department saved successfully');
+  //         this.loadProjectDepartments();
+  //       },
+  //       error: (error) => {
+  //         console.error('Failed to save cloned department', error);
+  //       },
+  //     });
+  //     this.departmentData.push(clonedDepartment);
+  //     this.filteredDepartmentData.push(clonedDepartment);
+  //   });
+  // }
+
+  // Function to generate the cloned code by incrementing the number
+  getClonedCode(code: string): string {
+    const regex = /(.+)(\(\d+\))?/;
+    const match = code.match(regex);
+    if (match) {
+      const baseCode = match[1] || '';
+      const number = match[2] ? parseInt(match[2].substring(1, match[2].length - 1)) : 0;
+      const clonedNumber = number + 1;
+      return `${baseCode}(${clonedNumber})`;
+    }
+    return code;
   }
 
 }

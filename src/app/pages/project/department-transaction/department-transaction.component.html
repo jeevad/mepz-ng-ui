@@ -30,10 +30,6 @@
               data-target="#myModal2">
               <i class="fal fa-file-plus"> </i>
             </button>
-            <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i
-                class='bx bxs-copy'></i></button>
-            <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE"><i
-                class='bx bxs-trash'></i></button>
           </div>
         </div>
       </div>
@@ -50,7 +46,8 @@
               <thead>
                 <tr>
                   <th>
-                    <input type="checkbox" [checked]="areAllDepartmentsSelected()" (change)="toggleSelectAllDepartments()">
+                    <input type="checkbox" [checked]="areAllDepartmentsSelected()"
+                      (change)="toggleSelectAllDepartments()">
                   </th>
                   <th>Department</th>
                   <th>Code</th>
@@ -78,19 +75,33 @@
                       [projectId]="projectId" [type]="'department'"></app-edit-input>
                   </td>
                   <td>
-                    <a routerLink="/pages/projects/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
-                      class="btn btn-sm btn-primary">View Rooms</a>
+                    <div class="d-flex gap-3">
+                      <a routerLink="/pages/projects/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
+                        class="btn btn-primary">View Rooms</a>
+
+                      <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"
+                        (click)="copyDepartments(department)" [disabled]="!department.selected">
+                        <i class='bx bxs-copy'></i>
+                      </button>
+
+
+                      <button type="button" class="btn btn-sm btn-danger" (click)="deleteDepartment(department._id)"
+                        title="DELETE">
+                        <i class='bx bxs-trash'></i>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               </tbody>
-            </table>
 
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- Modal -->
 <div class="container demo">

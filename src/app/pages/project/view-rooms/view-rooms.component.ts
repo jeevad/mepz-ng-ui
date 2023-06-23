@@ -6,6 +6,7 @@ import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal
 import { ActivatedRoute } from '@angular/router';
 import { RoomSelectionModalComponent } from './room-selection-modal.component';
 import { Router } from '@angular/router';
+import { ProjectService } from '../../../service/project/project.service';
 
 @Component({
   selector: 'app-view-rooms',
@@ -34,6 +35,7 @@ export class ViewRoomsComponent {
   constructor(
     private room: RoomService,
     private equipmentService: EquipmentService,
+    private projectService: ProjectService,
     private modalService: NgbModal,
     private route: ActivatedRoute,
     private router: Router
@@ -206,6 +208,76 @@ export class ViewRoomsComponent {
   // Back button
   goBack() {
     this.router.navigate(['pages/projects', this.projectId, 'department-transaction']);
+  }
+
+  // Delete a department
+  deleteRoom(roomId: string): void {
+    if (confirm('Are you sure you want to delete this room?')) {
+      const data = {
+        type: 'room',
+        field: 'delete',
+        roomId: roomId,
+      };
+
+      this.projectService.saveProjectField(this.projectId, data).subscribe(
+        () => {
+          console.log('Room deleted successfully');
+          this.loadProjectRooms();
+        },
+        (error) => {
+          console.error('Failed to delete room', error);
+        }
+      );
+    }
+  }
+
+  // Function triggered when the "COPY" button for rooms is clicked | Without DB
+  copyRooms(room: any): void {
+    if (this.isSelectedRoom(room._id)) {
+      const clonedRoom = { ...room };
+      const clonedCode = this.getClonedCode(room.code);
+      clonedRoom.code = clonedCode;
+      const clonedEquipment = [room.code];
+      clonedRoom.equipment = clonedEquipment;
+      this.projectRooms.push(clonedRoom);
+      this.filteredRoomData.push(clonedRoom);
+    }
+  }
+
+  // Function triggered when the "COPY" button for rooms is clicked | With DB
+  // copyRooms(room: any): void {
+  //   if (this.isSelectedRoom(room._id)) {
+  //     const clonedRoom = { ...room };
+  //     const clonedCode = this.getClonedCode(room.code);
+  //     clonedRoom.code = clonedCode;
+  //     const clonedEquipment = [room.code];
+  //     clonedRoom.equipment = clonedEquipment;
+  //     this.projectRooms.push(clonedRoom);
+  //     this.filteredRoomData.push(clonedRoom);
+  //     const projectId = this.projectId
+  //     this.projectService.saveProjectField(projectId, clonedRoom)
+  //       .subscribe(
+  //         (response) => {
+  //           console.log('Room saved successfully:', response);
+  //         },
+  //         (error) => {
+  //           console.error('Failed to save room:', error);
+  //         }
+  //       );
+  //   }
+  // }
+
+  // Function to generate the cloned code by incrementing the number
+  getClonedCode(code: string): string {
+    const regex = /(.+)(\(\d+\))?/;
+    const match = code.match(regex);
+    if (match) {
+      const baseCode = match[1] || '';
+      const currentNumber = match[2] ? parseInt(match[2].substring(1, match[2].length - 1)) : 0;
+      const clonedNumber = currentNumber + 1;
+      return `${baseCode}(${clonedNumber})`;
+    }
+    return code;
   }
 
 }

@@ -34,6 +34,7 @@ export class EditInputComponent {
   // @ContentChild(ViewModeDirective) viewModeTpl!: ViewModeDirective;
   // @ContentChild(EditModeDirective) editModeTpl!: EditModeDirective;
   @Output() update = new EventEmitter();
+  @Output() delete = new EventEmitter();
 
   editMode = new Subject();
   editMode$ = this.editMode.asObservable();
@@ -121,4 +122,42 @@ export class EditInputComponent {
         this.mode = 'view';
       });
   }
+
+  // deleteData() {
+  //   const data = {
+  //     type: this.type,
+  //     field: this.field,
+  //     value: null,
+  //     departmentId: this.departmentId,
+  //     roomId: this.roomId,
+  //     equipmentIndex: this.equipmentIndex,
+  //   };
+  //   this.projectService.saveProjectField(this.projectId, data).subscribe((response: any) => {
+  //     console.log('Data deleted successfully:', response);
+  //     this.delete.emit(response);
+  //     this.toViewMode();
+  //   });
+  // }
+
+  // deleteData() {
+  //   const data = {
+  //     type: this.type || '',
+  //     field: this.field || '',
+  //     value: null,
+  //     departmentId: this.departmentId || '',
+  //     roomId: this.roomId || '',
+  //     equipmentIndex: this.equipmentIndex || '',
+  //   };
+
+  //   if (data.type && data.field && data.departmentId) {
+  //     this.projectService.saveProjectField(this.projectId, data).subscribe((response: any) => {
+  //       console.log('Data deleted successfully:', response);
+  //       this.delete.emit(response);
+  //       this.toViewMode();
+  //     });
+  //   } else {
+  //     console.log('Invalid data for deletion:', data);
+  //   }
+  // }
+
 }

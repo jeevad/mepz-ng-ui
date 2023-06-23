@@ -92,14 +92,18 @@
                         (click)="openEquipmentAllocationModal(room._id)">
                         Add Equipments
                       </a>
-                      <button type="button" class="btn btn-secondary" id="disable_room" (click)="toggleRoomStatus(room._id, room.enabled)">
+                      <button type="button" class="btn btn-secondary" id="disable_room"
+                        (click)="toggleRoomStatus(room._id, room.enabled)">
                         {{ room.enabled ? 'Disable Room' : 'Enable Room' }}
                       </button>
-                      <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i
-                          class='bx bxs-copy'></i>
+                      <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"
+                        (click)="copyRooms(room)" [disabled]="!isSelectedRoom(room._id)">
+                        <i class='bx bxs-copy'></i>
                       </button>
-                      <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE"><i
-                          class='bx bxs-trash'></i></button>
+
+                      <button type="button" class="btn btn-sm btn-danger" title="DELETE" (click)="deleteRoom(room._id)">
+                        <i class='bx bxs-trash'></i>
+                      </button>
                     </div>
                   </td>
                 </tr>
