@@ -15,7 +15,7 @@ import { LoaderComponent } from 'src/app/components/loader/loader.component';
 @Component({
   selector: 'app-equipment-allocation-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgbNavModule],
+  imports: [CommonModule, FormsModule, NgbNavModule,LoaderComponent],
   // declarations: [LoaderComponent],
   templateUrl: './equipment-allocation-modal.component.html',
   styleUrls: ['./equipment-allocation-modal.component.css'],

@@ -36,7 +36,6 @@ import { LoaderComponent } from '../components/loader/loader.component';
     EditModeDirective,
     FocusableDirective,
     EquipmentListComponent,
-    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -60,6 +59,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
     NgIf,
     MatButtonModule,
     MatIconModule,
+    LoaderComponent,
   ],
 })
 export class PagesModule {}
