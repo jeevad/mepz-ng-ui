@@ -1,14 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ProjectService } from 'src/app/service/project/project.service';
-import { HttpClient } from '@angular/common/http';
-import * as $ from 'jquery';
-import { DeletedialogComponent } from '../../deletedialog/deletedialog.component';
-import { FormsModule } from '@angular/forms';
 // import { NgxSpinnerService } from 'ngx-spinner';
 
 export interface DialogData {
@@ -26,40 +18,44 @@ export class ProjectListComponent implements OnInit {
   skip = 0;
   count: number = 0;
   departmentData: any[] = [];
-  animal!: string;
   name!: string;
   searchText: string = ''; // For search bar
   filteredEquipmentData: any[] = []; // For search bar
   loader: boolean = false;
+  projectType: any = 'individual';
 
   constructor(
-    public dialog: MatDialog,
-    private department: ProjectService
-  ) // private spinner: NgxSpinnerService
-  {}
+    private projectService: ProjectService,
+    private route: ActivatedRoute, // private spinner: NgxSpinnerService
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.Load();
-  }
-
-  loadDataTable() {
-    $(function () {
-      $('#example').DataTable({
-        responsive: true,
-      });
+    this.projectType = this.route.snapshot.paramMap.get('projectType');
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.projectType = this.route.snapshot.paramMap.get('projectType');
+        setTimeout(() => {
+          // window.scrollTo(0, 0);
+          this.Load();
+        }, 1);
+      }
     });
+    this.Load();
   }
 
   // Loads the initial data
   Load() {
     this.loader = true;
     this.skip = this.limit * (this.page - 1);
-    this.department.Load(this.skip, this.limit).subscribe((data: any) => {
-      this.departmentData = data.results;
-      this.count = data.count;
-      this.filteredEquipmentData = this.departmentData.slice(); //For search bar
-      this.loader = false;
-    });
+    this.projectService
+      .Load(this.skip, this.limit, this.projectType)
+      .subscribe((data: any) => {
+        this.departmentData = data.results;
+        this.count = data.count;
+        this.filteredEquipmentData = this.departmentData.slice(); //For search bar
+        this.loader = false;
+      });
   }
 
   //Search Bar function
@@ -80,20 +76,9 @@ export class ProjectListComponent implements OnInit {
   // Deletes an item
   delete(id: any) {
     if (confirm('delete?')) {
-      this.department.Removedata(id).subscribe((data) => {
+      this.projectService.Removedata(id).subscribe((data) => {
         this.Load();
       });
     }
-  }
-
-  // Opens the delete dialog
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DeletedialogComponent, {
-      data: { name: this.departmentData, data: this.departmentData },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      this.animal = result;
-    });
   }
 }

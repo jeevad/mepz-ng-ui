@@ -15,17 +15,19 @@ import { LoaderComponent } from 'src/app/components/loader/loader.component';
 @Component({
   selector: 'app-equipment-allocation-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgbNavModule,LoaderComponent],
+  imports: [CommonModule, FormsModule, NgbNavModule, LoaderComponent],
   // declarations: [LoaderComponent],
   templateUrl: './equipment-allocation-modal.component.html',
   styleUrls: ['./equipment-allocation-modal.component.css'],
 })
 export class EquipmentAllocationModalComponent {
   @Input() name: any;
-  @Input() projectId!: any;
+  @Input() projectId!: string;
   @Input() deptId!: any;
   @Input() roomId!: any;
-  @Input() projectRooms: any[] = [];
+  @Input() projectType!: any;
+
+  projectRooms: any[] = [];
 
   activeTab = 1;
   roomData: any[] = [];
@@ -60,6 +62,7 @@ export class EquipmentAllocationModalComponent {
   ) {}
 
   ngOnInit() {
+    this.getCurrentProjectRooms();
     this.loadProjectData(); //dependent dropdown
     // this.loadEquipmentData();
     this.loadProjectEquipments();
@@ -68,12 +71,25 @@ export class EquipmentAllocationModalComponent {
     //   (x) => (x.roomId = this.roomId)
     // );
     this.globalRoomId = this.roomId;
-    this.globalProjectRoom = this.projectRooms;
+    // this.globalProjectRoom = this.projectRooms;
   }
 
+  getCurrentProjectRooms() {
+    const filterEquipmentDto: any = {
+      projectId: [this.projectId],
+    };
+    this.projectService
+      .getAllRooms(0, 10, filterEquipmentDto)
+      .subscribe((data: any) => {
+        this.globalProjectRoom = data.results[0].data;
+        // this.count = data.results[0].metadata[0].total;
+        // this.projectRooms = this.equipmentData.slice(); //For search bar
+        this.loader = false;
+      });
+  }
   //Project list in equipment modal
   loadProjectData() {
-    this.projectService.Load(0, 10).subscribe((data: any) => {
+    this.projectService.Load(0, 10, this.projectType).subscribe((data: any) => {
       this.projectData = data.results;
       if (this.projectId) {
         const selectedProject = this.projectData.find(
@@ -88,13 +104,8 @@ export class EquipmentAllocationModalComponent {
 
   //For Selected project's department list
   onProjectChange(event: any): void {
-    console.log('otherProjectId', this.otherProjectId);
-
     const filterEquipmentDto: any = {
       projectId: this.otherProjectId,
-      // departmentepartmentId: this.otherDepartmentId,
-      // roomId: this.otherRoomId,
-      // searchInput: this.searchInput,
     };
     this.projectService
       .getAllRooms(0, 10, filterEquipmentDto)

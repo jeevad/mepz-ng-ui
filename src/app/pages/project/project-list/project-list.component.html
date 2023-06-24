@@ -2,27 +2,22 @@
   <div class="row page-content">
     <div class="col-md-12">
       <div class="d-lg-flex align-items-center mb-4 gap-3">
-        <h4 class="mb-0 text-primary">Projects </h4>
-        <div class="ms-auto"><a routerLink="/pages/projects/add" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i
-              class="bx bxs-plus-square"></i>Add Project</a></div>
+        <h4 class="mb-0 text-primary" *ngIf="projectType === 'individual'">Projects</h4>
+        <h4 class="mb-0 text-primary" *ngIf="projectType !== 'individual'">Template</h4>
+        <div class="ms-auto"><a routerLink="/pages/projects/{{ projectType }}/add"
+            class="btn btn-primary radius-30 mt-2 mt-lg-0">
+            <i class="bx bxs-plus-square"></i>Add
+            <span *ngIf="projectType === 'individual'; else isTemplate">Projects </span>
+            <ng-template #isTemplate>
+              Template
+            </ng-template>
+          </a>
+        </div>
       </div>
     </div>
     <div class="col-md-12">
       <div class="card p-3">
         <div class="card-body">
-          <!-- <div class='table-loading-overlay'>
-            <div class='table-loading-inner'>
-              <div class="col-xs-4 col-xs-offset-4">
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped progress-bar-streit active" role="progressbar" aria-valuenow="100"
-                    aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
           <!-- For search bar -->
           <div class="input-group mb-3" style="width: 300px; float: right;">
             <input type="text" class="form-control form-control" placeholder="Search" [(ngModel)]="searchText"
@@ -33,7 +28,7 @@
               <i class="fa fa-spinner fa-spin spin-big"></i>
             </div> -->
             <app-loader *ngIf="loader"></app-loader>
-            <table id="example" class="display table loading1" cellspacing="0" width="100%">
+            <table class="display table loading1" cellspacing="0" width="100%" *ngIf="projectType === 'individual'">
               <thead>
                 <tr>
                   <th>S.No</th>
@@ -61,19 +56,23 @@
                         <i class="fa fa-cog" style="font-size: 0.8rem;"> </i>
                       </button>
                       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/equipment-list"
+                        <button ngbDropdownItem
+                          routerLink="/pages/projects/{{ projectType }}/{{ item._id }}/equipment-list"
                           title="Equipment Allocation">Equipment
                           Allocation</button>
-                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/equipment-summary"
+                        <button ngbDropdownItem
+                          routerLink="/pages/projects/{{ projectType }}/{{ item._id }}/equipment-summary"
                           title="Summary">Summary</button>
-                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/department-transaction"
+                        <button ngbDropdownItem
+                          routerLink="/pages/projects/{{ projectType }}/{{ item._id }}/department-transaction"
                           title="Current Transaction">Current Transaction</button>
-                        <button ngbDropdownItem routerLink="/pages/projects/{{ item._id }}/past-transaction"
+                        <button ngbDropdownItem
+                          routerLink="/pages/projects/{{ projectType }}/{{ item._id }}/past-transaction"
                           title="Past Transaction">Past
                           Transaction</button>
                       </div>
                     </div>
-                    <a routerLink="/pages/projects/edit/{{ item._id }}" title="Edit"
+                    <a routerLink="/pages/projects/{{ projectType }}/edit/{{ item._id }}" title="Edit"
                       class="btn btn-sm btn-success mt-1 "><i class="fa fa-edit"></i></a>
                     <a href="javascript:;" class="btn btn-sm btn-danger btn_delete mt-1" data-bs-toggle="tooltip"
                       title="Delete" (click)="delete(item._id)"><i class='fa fa-trash'></i></a>
@@ -86,6 +85,45 @@
               <tfoot>
                 <tr>
                   <td colspan="5">
+                    <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()"
+                      aria-label="Default pagination"></ngb-pagination>
+                    <pre>Current page: {{page}}</pre>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+            <table class="display table loading1" cellspacing="0" width="100%" *ngIf="projectType !== 'individual'">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Name</th>
+                  <th>No of Beds</th>
+                  <th>Classification</th>
+                  <th>Type</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody onload="passVariable()">
+                <tr role="row" class="odd" *ngFor="let item of filteredEquipmentData; let i=index;">
+                  <!-- For search bar -->
+                  <td>{{ skip + i+1 }}</td>
+                  <td class="sorting_1">{{item.name | uppercase}}</td>
+                  <td>{{item.noOfBeds}}</td>
+                  <td>{{item.classification | uppercase}}</td>
+                  <td>{{item.type | uppercase}}</td>
+                  <td class="projects-button">
+                    <a routerLink="/pages/projects/{{ projectType }}/edit/{{ item._id }}" title="Edit"
+                      class="btn btn-sm btn-success mt-1 "><i class="fa fa-edit"></i></a>
+                    <a title="Create Project" class="btn btn-sm btn-info btn_report mt-1"><i
+                        class="fa fa-bxs-plus-square"> </i>Create Project</a>
+                    <a href="javascript:;" class="btn btn-sm btn-danger btn_delete mt-1" data-bs-toggle="tooltip"
+                      title="Delete" (click)="delete(item._id)"><i class='fa fa-trash'></i></a>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="6">
                     <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()"
                       aria-label="Default pagination"></ngb-pagination>
                     <pre>Current page: {{page}}</pre>

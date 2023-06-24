@@ -12,11 +12,11 @@ interface FilterEquipmentDto {
   providedIn: 'root',
 })
 export class ProjectService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  Load(skip: number, limit: number) {
+  Load(skip: number, limit: number, projectType: string) {
     return this.http.get(environment.apiUrl + '/project', {
-      params: { skip, limit },
+      params: { skip, limit, projectType },
     });
   }
   SaveData(departmentdata: any) {
@@ -74,5 +74,4 @@ export class ProjectService {
       data
     );
   }
-
 }

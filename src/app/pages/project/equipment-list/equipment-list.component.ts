@@ -27,6 +27,7 @@ export class EquipmentListComponent implements OnInit {
   selectedRoomId!: string;
   selectedIndex!: number;
   deptId!: string;
+  projectType: string | null = 'individual';
 
   constructor(
     public dialog: MatDialog,
@@ -39,6 +40,7 @@ export class EquipmentListComponent implements OnInit {
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
+    this.projectType = this.route.snapshot.paramMap.get('projectType');
     this.loadEquipments();
   }
 
@@ -105,21 +107,13 @@ export class EquipmentListComponent implements OnInit {
 
       return;
     }
-    this.room
-      .getProjectRooms(this.projectId, this.deptId)
-      .subscribe((data: any) => {
-        const modalRef = this.modalService.open(
-          EquipmentAllocationModalComponent,
-          {
-            size: 'xl',
-          }
-        );
-        modalRef.componentInstance.projectId = this.projectId;
-        modalRef.componentInstance.deptId = this.deptId;
-        modalRef.componentInstance.roomId = this.selectedRoomId;
-        modalRef.componentInstance.projectRooms =
-          data.results[0].departments.rooms;
-      });
+    const modalRef = this.modalService.open(EquipmentAllocationModalComponent, {
+      size: 'xl',
+    });
+    modalRef.componentInstance.projectId = this.projectId;
+    modalRef.componentInstance.deptId = this.deptId;
+    modalRef.componentInstance.roomId = this.selectedRoomId;
+    modalRef.componentInstance.projectType = this.projectType;
   }
 
   // Function to load room list

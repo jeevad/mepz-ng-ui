@@ -32,10 +32,10 @@ export class ViewRoomsComponent {
   selectedRooms: string[] = [];  //For Disable/Enable
   selectAllRoomsCheckbox: boolean = false; //for selectAll
   isRoomSelected: boolean = false;
+  projectType: string | null = 'individual';
 
   constructor(
     private room: RoomService,
-    private equipmentService: EquipmentService,
     private projectService: ProjectService,
     private modalService: NgbModal,
     private route: ActivatedRoute,
@@ -53,6 +53,7 @@ export class ViewRoomsComponent {
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.deptId = this.route.snapshot.paramMap.get('deptId');
+    this.projectType = this.route.snapshot.paramMap.get('projectType');
     this.loadRoomData();
     this.loadProjectRooms();
   }
