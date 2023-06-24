@@ -3,6 +3,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -23,8 +24,9 @@ export class AddProjectComponent {
   deptid: any;
   editdata: any;
   submitted = false;
-  addDepartment!: FormGroup;
+  addProjectForm!: FormGroup;
   projectType: string | null = 'individual';
+  isTemplate = false;
 
   constructor(
     private department: ProjectService,
@@ -40,42 +42,68 @@ export class AddProjectComponent {
       if (param && param['id']) {
         this.department.LoadbyID(param['id']).subscribe((resp) => {
           this.isEdit = true;
-          this.addDepartment.patchValue(resp);
+          this.addProjectForm.patchValue(resp);
         });
       }
     });
-    this.addDepartment = this.formBuilder.group({
-      code: ['', Validators.required],
-      name: ['', Validators.required],
-      fullName: ['', Validators.required],
-      clientOwner: ['', Validators.required],
-      contractNo: ['', Validators.required],
-      classification: ['', Validators.required],
-      type: ['', Validators.required],
-      company: ['', Validators.required],
-      signature1: [''],
-      signature2: [''],
-      remarks: [''],
-      isTemplate: [this.projectType === 'template'],
-      noOfBeds: ['', Validators.required],
-    });
+    let fromGroup = {};
+    if (this.projectType === 'template') {
+      this.isTemplate = true;
+      fromGroup = {
+        // code: ['', Validators.required],
+        name: ['', Validators.required],
+        // fullName: ['', Validators.required],
+        // clientOwner: ['', Validators.required],
+        // contractNo: ['', Validators.required],
+        classification: ['', Validators.required],
+        type: ['', Validators.required],
+        // company: ['', Validators.required],
+        // signature1: [''],
+        // signature2: [''],
+        remarks: [''],
+        isTemplate: [true],
+        noOfBeds: ['', Validators.required],
+      };
+    } else {
+      console.log('in-----');
+      
+      fromGroup = {
+        code: ['', Validators.required],
+        name: ['', Validators.required],
+        fullName: ['', Validators.required],
+        clientOwner: ['', Validators.required],
+        contractNo: ['', Validators.required],
+        classification: ['', Validators.required],
+        type: ['', Validators.required],
+        company: ['', Validators.required],
+        signature1: [''],
+        signature2: [''],
+        remarks: [''],
+        isTemplate: [false],
+        noOfBeds: ['', Validators.required],
+      };
+    }
+    this.addProjectForm = this.formBuilder.group(fromGroup);
   }
 
   SaveData() {
+    this.getFormValidationErrors();
+    console.log('this.addProjectForm.valid',this.addProjectForm.valid);
+    
     if (!this.isEdit) {
       this.submitted = true;
-      if (this.addDepartment.valid) {
+      if (this.addProjectForm.valid) {
         this.department
-          .SaveData(this.addDepartment.value)
+          .SaveData(this.addProjectForm.value)
           .subscribe((result) => {
             this.router.navigate([`pages/projects/${this.projectType}/list`]);
           });
       }
     } else if (this.isEdit) {
       this.submitted = true;
-      if (this.addDepartment.valid) {
+      if (this.addProjectForm.valid) {
         this.department
-          .update(this.deptid, this.addDepartment.value)
+          .update(this.deptid, this.addProjectForm.value)
           .subscribe((data) => {
             this.isEdit = false;
             this.router.navigate([`pages/projects/${this.projectType}/list`]);
@@ -86,5 +114,20 @@ export class AddProjectComponent {
 
   change(e: any) {
     this.active = e.target.value;
+  }
+
+  getFormValidationErrors() {
+    Object.keys(this.addProjectForm.controls).forEach((key) => {
+      const controlErrors: ValidationErrors | null | undefined =
+        this.addProjectForm?.get(key)?.errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach((keyError) => {
+          console.log(
+            'Key control: ' + key + ', keyError: ' + keyError + ', err value: ',
+            controlErrors[keyError]
+          );
+        });
+      }
+    });
   }
 }

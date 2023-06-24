@@ -22,7 +22,7 @@
       <div>
         <div>
           <div class="float-start d-lg-flex gap-3">
-            <a class="btn btn-sm btn-success" routerLink="/pages/projects/equipment-allocation"> Equipment Allocation <i
+            <a class="btn btn-sm btn-success" routerLink="/pages/projects/{{projectType}}/{{projectId}}/equipment-list"> Equipment Allocation <i
                 class="fa-solid fa-chevron-right fa-sm"></i></a>
           </div>
           <div class="float-end d-lg-flex gap-3">
@@ -76,7 +76,7 @@
                   </td>
                   <td>
                     <div class="d-flex gap-3">
-                      <a routerLink="/pages/projects/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
+                      <a routerLink="/pages/projects/{{projectType}}/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
                         class="btn btn-primary">View Rooms</a>
 
                       <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"

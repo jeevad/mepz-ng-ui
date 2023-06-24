@@ -29,7 +29,7 @@ export class ViewRoomsComponent {
   filteredRoomData: any[] = []; // For search bar
   project: any;
   department: any;
-  selectedRooms: string[] = [];  //For Disable/Enable
+  selectedRooms: string[] = []; //For Disable/Enable
   selectAllRoomsCheckbox: boolean = false; //for selectAll
   isRoomSelected: boolean = false;
   projectType: string | null = 'individual';
@@ -41,9 +41,7 @@ export class ViewRoomsComponent {
     private route: ActivatedRoute,
     private router: Router,
     private customDialog: MyCustomDialogService
-
   ) {
-
     // For Quantity dropdown: Creating options from 1 to 20
     for (let i = 1; i <= 20; i++) {
       this.selectOptions.push({ value: i.toString(), label: i.toString() });
@@ -59,11 +57,14 @@ export class ViewRoomsComponent {
   }
 
   openEquipmentAllocationModal(roomId: string) {
-    const modalRef = this.modalService.open(EquipmentAllocationModalComponent, { size: 'xl' });
+    const modalRef = this.modalService.open(EquipmentAllocationModalComponent, {
+      size: 'xl',
+    });
     modalRef.componentInstance.projectId = this.projectId;
     modalRef.componentInstance.deptId = this.deptId;
     modalRef.componentInstance.roomId = roomId;
-    modalRef.componentInstance.projectRooms = this.projectRooms;
+    // modalRef.componentInstance.projectRooms = this.projectRooms;
+    modalRef.componentInstance.projectType = this.projectType;
   }
 
   // Function to save room data
@@ -80,11 +81,13 @@ export class ViewRoomsComponent {
             alias: this.roomData[i].name,
           };
           console.log('roomData:', roomDataObject);
-          this.room.saveRoomData(this.projectId, this.deptId, roomDataObject).subscribe((response: any) => {
-            console.log('Data saved successfully:', response);
-            this.projectRooms.push(roomDataObject);
-            this.loadProjectRooms(); //real-time listing
-          });
+          this.room
+            .saveRoomData(this.projectId, this.deptId, roomDataObject)
+            .subscribe((response: any) => {
+              console.log('Data saved successfully:', response);
+              this.projectRooms.push(roomDataObject);
+              this.loadProjectRooms(); //real-time listing
+            });
         }
       }
     }
@@ -101,9 +104,10 @@ export class ViewRoomsComponent {
   //Search Bar function
   searchRoomList(): void {
     if (this.searchText.trim() !== '') {
-      this.filteredRoomData = this.projectRooms.filter((room: any) =>
-        room.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        room.code.toLowerCase().includes(this.searchText.toLowerCase())
+      this.filteredRoomData = this.projectRooms.filter(
+        (room: any) =>
+          room.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          room.code.toLowerCase().includes(this.searchText.toLowerCase())
       );
     } else {
       this.filteredRoomData = this.projectRooms.slice();
@@ -112,15 +116,17 @@ export class ViewRoomsComponent {
 
   // Function to load room list
   loadProjectRooms(): void {
-    this.room.getProjectRooms(this.projectId, this.deptId).subscribe((data: any) => {
-      this.project = data.results[0];
-      this.department = data.results[0].departments;
-      this.projectRooms = data.results[0].departments.rooms;
-      this.projectRooms.forEach((room: any) => {
-        room.enabled = true;
+    this.room
+      .getProjectRooms(this.projectId, this.deptId)
+      .subscribe((data: any) => {
+        this.project = data.results[0];
+        this.department = data.results[0].departments;
+        this.projectRooms = data.results[0].departments.rooms;
+        this.projectRooms.forEach((room: any) => {
+          room.enabled = true;
+        });
+        this.filteredRoomData = this.projectRooms.slice();
       });
-      this.filteredRoomData = this.projectRooms.slice();
-    });
   }
 
   // Check if the room is selected | for enable/disable button
@@ -134,54 +140,57 @@ export class ViewRoomsComponent {
     if (checkbox.checked) {
       this.selectedRooms.push(roomId);
     } else {
-      this.selectedRooms = this.selectedRooms.filter((id: string) => id !== roomId);
+      this.selectedRooms = this.selectedRooms.filter(
+        (id: string) => id !== roomId
+      );
     }
   }
 
-// Toggle the status of selected rooms | for enable/disable button
-toggleSelectedRoomStatus(): void {
-  if (this.selectedRooms.length === 0) {
-    const dialogRef = this.customDialog.openAlertDialog({
-      dialogMsg: 'Please select room from the table',
-    });
-    return;
+  // Toggle the status of selected rooms | for enable/disable button
+  toggleSelectedRoomStatus(): void {
+    if (this.selectedRooms.length === 0) {
+      const dialogRef = this.customDialog.openAlertDialog({
+        dialogMsg: 'Please select room from the table',
+      });
+      return;
+    }
+    for (const roomId of this.selectedRooms) {
+      const room = this.filteredRoomData.find((r: any) => r._id === roomId);
+      if (room) {
+        const confirmationMessage = room.enabled
+          ? 'Confirm disable?'
+          : 'Confirm enable?';
+        const confirmation = confirm(confirmationMessage);
+        if (confirmation) {
+          room.enabled = !room.enabled;
+        }
+      }
+    }
+    this.selectedRooms = [];
   }
-  for (const roomId of this.selectedRooms) {
-    const room = this.filteredRoomData.find((r: any) => r._id === roomId);
+
+  // Toggle the status of a single room | for enable/disable button
+  toggleRoomStatus(roomId: string, currentStatus: boolean): void {
+    if (!this.isSelectedRoom(roomId)) {
+      const dialogRef = this.customDialog.openAlertDialog({
+        dialogMsg: 'Please select room from the table',
+      });
+      return;
+    }
+    const room = this.projectRooms.find((room: any) => room._id === roomId);
     if (room) {
-      const confirmationMessage = room.enabled ? 'Confirm disable?' : 'Confirm enable?';
+      let confirmationMessage: string;
+      if (currentStatus) {
+        confirmationMessage = 'Confirm disable?';
+      } else {
+        confirmationMessage = 'Confirm enable?';
+      }
       const confirmation = confirm(confirmationMessage);
       if (confirmation) {
         room.enabled = !room.enabled;
       }
     }
   }
-  this.selectedRooms = [];
-}
-
-// Toggle the status of a single room | for enable/disable button
-toggleRoomStatus(roomId: string, currentStatus: boolean): void {
-  if (!this.isSelectedRoom(roomId)) {
-    const dialogRef = this.customDialog.openAlertDialog({
-      dialogMsg: 'Please select room from the table',
-    });
-    return;
-  }
-  const room = this.projectRooms.find((room: any) => room._id === roomId);
-  if (room) {
-    let confirmationMessage: string;
-    if (currentStatus) {
-      confirmationMessage = 'Confirm disable?';
-    } else {
-      confirmationMessage = 'Confirm enable?';
-    }
-    const confirmation = confirm(confirmationMessage);
-    if (confirmation) {
-      room.enabled = !room.enabled;
-    }
-  }
-}
-
 
   //Modal for Enable/Disable button
   // openRoomSelectionModal() {
@@ -216,36 +225,41 @@ toggleRoomStatus(roomId: string, currentStatus: boolean): void {
 
   // Back button
   goBack() {
-    this.router.navigate(['pages/projects', this.projectId, 'department-transaction']);
+    this.router.navigate([
+      'pages/projects',
+      this.projectType,
+      this.projectId,
+      'department-transaction',
+    ]);
   }
 
   // Delete a department
-deleteRoom(roomId: string): void {
-  const dialogRef = this.customDialog.openConfirmDialog({
-    dialogMsg: 'Are you sure want to delete?',
-  });
+  deleteRoom(roomId: string): void {
+    const dialogRef = this.customDialog.openConfirmDialog({
+      dialogMsg: 'Are you sure want to delete?',
+    });
 
-  dialogRef.afterClosed().subscribe((result) => {
-    console.log(result);
-    if (result === 'ok') {
-      const data = {
-        type: 'room',
-        field: 'delete',
-        roomId: roomId,
-      };
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      if (result === 'ok') {
+        const data = {
+          type: 'room',
+          field: 'delete',
+          roomId: roomId,
+        };
 
-      this.projectService.saveProjectField(this.projectId, data).subscribe(
-        () => {
-          console.log('Room deleted successfully');
-          this.loadProjectRooms();
-        },
-        (error) => {
-          console.error('Failed to delete room', error);
-        }
-      );
-    }
-  });
-}
+        this.projectService.saveProjectField(this.projectId, data).subscribe(
+          () => {
+            console.log('Room deleted successfully');
+            this.loadProjectRooms();
+          },
+          (error) => {
+            console.error('Failed to delete room', error);
+          }
+        );
+      }
+    });
+  }
 
   // Function triggered when the "COPY" button for rooms is clicked | Without DB
   copyRooms(room: any): void {
@@ -289,14 +303,12 @@ deleteRoom(roomId: string): void {
     const match = code.match(regex);
     if (match) {
       const baseCode = match[1] || '';
-      const currentNumber = match[2] ? parseInt(match[2].substring(1, match[2].length - 1)) : 0;
+      const currentNumber = match[2]
+        ? parseInt(match[2].substring(1, match[2].length - 1))
+        : 0;
       const clonedNumber = currentNumber + 1;
       return `${baseCode}(${clonedNumber})`;
     }
     return code;
   }
-
 }
-
-
-

@@ -112,6 +112,23 @@
                   <td>{{item.classification | uppercase}}</td>
                   <td>{{item.type | uppercase}}</td>
                   <td class="projects-button">
+                    <div ngbDropdown class="d-inline-block">
+                      <button type="button" class="btn btn-sm btn-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        <i class="fa fa-cog" style="font-size: 0.8rem;"> </i>
+                      </button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem
+                          routerLink="/pages/projects/{{ projectType }}/{{ item._id }}/equipment-list"
+                          title="Equipment Allocation">Equipment
+                          Allocation</button>
+                        <button ngbDropdownItem
+                          routerLink="/pages/projects/{{ projectType }}/{{ item._id }}/equipment-summary"
+                          title="Summary">Summary</button>
+                        <button ngbDropdownItem
+                          routerLink="/pages/projects/{{ projectType }}/{{ item._id }}/department-transaction"
+                          title="Department Transaction">Departments</button>
+                      </div>
+                    </div>
                     <a routerLink="/pages/projects/{{ projectType }}/edit/{{ item._id }}" title="Edit"
                       class="btn btn-sm btn-success mt-1 "><i class="fa fa-edit"></i></a>
                     <a title="Create Project" class="btn btn-sm btn-info btn_report mt-1"><i
