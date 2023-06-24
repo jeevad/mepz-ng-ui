@@ -15,32 +15,35 @@ export class EquipmentDetailComponent implements OnInit {
   count: number = 0;
   equipmentData: any[] = []; //Equipment data list in sidebar
 
-  constructor(private department: EquipmentService, private equipmentService: EquipmentService, private http: HttpClient) {
+  constructor(
+    private equipmentService: EquipmentService,
+    private http: HttpClient) {
     this.Load();
   }
+
   ngOnInit() {
-    this.Load();
-    this.loadEquipmentData() //Equipment data list in sidebar
+    // this.Load();
+    // this.loadEquipmentData() //Equipment data list in sidebar
   }
 
-    // Load equipmentData from the server | List in Sidebar
-    loadEquipmentData(): void {
-      this.equipmentService.Load(0, 10).subscribe((data: any) => {
-        this.equipmentData = data.results;
-      });
-    }
-
+  // Load equipmentData from the server | List in Sidebar
+  loadEquipmentData(): void {
+    this.equipmentService.Load(0, 10).subscribe((data: any) => {
+      this.equipmentData = data.results;
+    });
+  }
 
   Load() {
     this.skip = this.limit * (this.page - 1);
-    this.department.Load(this.skip, this.limit).subscribe((data: any) => {
+    this.equipmentService.Load(this.skip, this.limit).subscribe((data: any) => {
       this.equipmentData = data.results;
       this.count = data.count;
     });
   }
+
   delete(id: any) {
     if (confirm('delete?')) {
-      this.department.Removedata(id).subscribe((data) => {
+      this.equipmentService.Removedata(id).subscribe((data) => {
         this.Load();
       });
     }

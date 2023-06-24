@@ -45,7 +45,7 @@ export class EquipmentAllocationModalComponent {
   project: any;
   department: any;
   globalProjectRoom: any[] = [];
-  loader = true;
+  loader = false;
   otherProjectId: string[] = [];
   otherDepartmentId: any = '';
   otherRoomId: any = '';

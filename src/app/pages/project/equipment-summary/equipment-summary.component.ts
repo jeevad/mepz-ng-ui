@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SummaryService } from 'src/app/service/summary/summary.service';
+import { ProjectService } from 'src/app/service/project/project.service';
+import { ActivatedRoute } from '@angular/router';
+import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 
 @Component({
   selector: 'app-equipment-summary',
@@ -13,34 +16,53 @@ export class EquipmentSummaryComponent {
   skip = 0;
   count: number = 0;
   summaryData: any[] = [];
+  loader = false;
+  projectId: any;
+  equipmentData: any[] = [];
+  filteredEquipmentData: any[] = [];
+  loadFromMasterData: any[] = [];
 
-  constructor(private service: SummaryService, private http: HttpClient) {
-    this.find();
-  }
-  find() {
-    this.skip = this.limit * (this.page - 1);
-    this.service.Find(this.skip, this.limit).subscribe((data: any) => {
-      this.summaryData = data.results;
-      this.count = data.count;
-    });
+  constructor(private service: SummaryService,
+    private projectService: ProjectService,
+    private route: ActivatedRoute,
+    private equipmentService: EquipmentService,
+    private http: HttpClient) {
+
   }
 
-  delete(id: any) {
-    if (confirm('delete?')) {
-      this.service.Removedata(id).subscribe((data) => {
-        this.find();
-      });
-    }
-  }
   ngOnInit() {
-    let table = $('#example').DataTable({
-      drawCallback: () => {
-        $('.paginate_button.next').on('click', () => {
-          this.nextButtonClickEvent();
-        });
-      },
+    // let table = $('#example').DataTable({
+    //   drawCallback: () => {
+    //     $('.paginate_button.next').on('click', () => {
+    //       this.nextButtonClickEvent();
+    //     });
+    //   },
+    // });
+    this.projectId = this.route.snapshot.paramMap.get('projectId');
+    this.loadEquipments();
+
+  }
+
+  loadFromMaster() {
+    this.equipmentService.Load(this.skip, this.limit).subscribe((data: any) => {
+      this.loadFromMasterData = data.results;
     });
   }
+
+  loadEquipments() {
+    this.skip = this.limit * (this.page - 1);
+    this.loader = true;
+    this.projectService
+      .getEquipments(this.projectId, this.skip, this.limit)
+      .subscribe((data: any) => {
+        this.equipmentData = data.results[0].data;
+        this.count = data.results[0].metadata[0].total;
+        this.filteredEquipmentData = this.equipmentData.slice();
+        this.loader = false;
+        this.loadFromMaster();
+      });
+  }
+
   buttonInRowClick(event: any): void {
     event.stopPropagation();
   }
