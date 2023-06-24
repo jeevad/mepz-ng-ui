@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ProjectService } from 'src/app/service/project/project.service';
+import { AddProjectModalComponent } from './add-project-modal/add-project-modal.component';
 // import { NgxSpinnerService } from 'ngx-spinner';
 
 export interface DialogData {
@@ -27,7 +29,8 @@ export class ProjectListComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
     private route: ActivatedRoute, // private spinner: NgxSpinnerService
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -45,8 +48,11 @@ export class ProjectListComponent implements OnInit {
   }
 
   // Loads the initial data
-  Load() {
+  Load(page?: number | undefined) {
+    
     this.loader = true;
+    this.page = page === undefined ? this.page : page;
+    
     this.skip = this.limit * (this.page - 1);
     this.projectService
       .Load(this.skip, this.limit, this.projectType)
@@ -73,6 +79,21 @@ export class ProjectListComponent implements OnInit {
     }
   }
 
+  addProjectModal(project: any) {
+    const dialogRef = this.dialog.open(AddProjectModalComponent, {
+      data: {
+        projectType: 'individaul',
+        projectId: project._id,
+        formType: 'createFromTemplate',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+        this.Load(1);
+      }
+    });
+  }
   // Deletes an item
   delete(id: any) {
     if (confirm('delete?')) {

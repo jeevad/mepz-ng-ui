@@ -1,0 +1,165 @@
+<h4 mat-dialog-title class="mb-0 text-primary">Add Project </h4>
+<form method="post" [formGroup]="addProjectForm" (ngSubmit)="SaveData()">
+    <mat-dialog-content>
+        <div class="row">
+            <div class="col-md-6" *ngIf="!isTemplate">
+                <div class="form-group">
+                    <label class="form-label">Code</label>
+                    <input type="text" class="form-control" name="code" placeholder="Code" formControlName="code"
+                        [ngClass]="{'is-invalid':submitted && addProjectForm.controls['code'].errors}" />
+                    <div class="text-danger" *ngIf="submitted && addProjectForm.controls['code'].errors?.['required']">
+                        Code
+                        is required</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label class="form-label">Project Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Project Name"
+                        formControlName="name"
+                        [ngClass]="{'is-invalid':submitted && addProjectForm.controls['name'].errors}" />
+                    <div class="text-danger" *ngIf="submitted && addProjectForm.controls['name'].errors?.['required']">
+                        Project name is
+                        required</div>
+                </div>
+            </div>
+            <div class="col-md-6" *ngIf="!isTemplate">
+                <div class="form-group">
+
+                    <label class="form-label">Full Project Name</label>
+                    <input type="text" class="form-control" name="fullName" placeholder="Full Project Name"
+                        formControlName="fullName"
+                        [ngClass]="{'is-invalid':submitted && addProjectForm.controls['fullName'].errors}" />
+                    <div class="text-danger"
+                        *ngIf="submitted && addProjectForm.controls['fullName'].errors?.['required']">
+                        Full project name
+                        is required</div>
+                </div>
+            </div>
+            <div class="col-md-6" *ngIf="!isTemplate">
+                <div class="form-group">
+
+                    <label class="form-label">Client/Owner</label>
+                    <input type="text" class="form-control" name="clientOwner" placeholder="Client/Owner"
+                        formControlName="clientOwner"
+                        [ngClass]="{'is-invalid':submitted && addProjectForm.controls['clientOwner'].errors}" />
+                    <div class="text-danger"
+                        *ngIf="submitted && addProjectForm.controls['clientOwner'].errors?.['required']">
+                        Client/Owner is
+                        required</div>
+                </div>
+            </div>
+            <div class="col-md-6" *ngIf="!isTemplate">
+                <div class="form-group">
+
+                    <label class="form-label">Contract No</label>
+                    <input type="text" class="form-control" name="contractNo" placeholder="Contract No"
+                        formControlName="contractNo"
+                        [ngClass]="{'is-invalid':submitted && addProjectForm.controls['contractNo'].errors}" />
+                    <div class="text-danger"
+                        *ngIf="submitted && addProjectForm.controls['contractNo'].errors?.['required']">
+                        Contract number is required</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label class="form-label">No. of Beds</label>
+                    <input type="text" class="form-control" name="noOfBeds" placeholder="Beds"
+                        formControlName="noOfBeds"
+                        [ngClass]="{'is-invalid':submitted && addProjectForm.controls['noOfBeds'].errors}" />
+                    <div class="text-danger"
+                        *ngIf="submitted && addProjectForm.controls['noOfBeds'].errors?.['required']">
+                        No. of beds is required</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Classification</label>
+                    <input type="text" class="form-control" name="classification" placeholder="Classification"
+                        formControlName="classification"
+                        [ngClass]="{'is-invalid':submitted && addProjectForm.controls['classification'].errors}" />
+                    <div class="text-danger"
+                        *ngIf="submitted && addProjectForm.controls['classification'].errors?.['required']">
+                        Classification
+                        is
+                        required</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Project Type</label>
+                    <input type="text" class="form-control" name="type" placeholder="Project Type"
+                        formControlName="type"
+                        [ngClass]="{'is-invalid':submitted && addProjectForm.controls['type'].errors}" />
+                    <div class="text-danger" *ngIf="submitted && addProjectForm.controls['type'].errors?.['required']">
+                        Project Type is
+                        required</div>
+                </div>
+            </div>
+            <div class="col-md-6" *ngIf="isTemplate">
+                <div class="form-group">
+                    <label class="form-label">Remarks</label>
+                    <textarea class="form-control" placeholder="remarks" formControlName="remarks"></textarea>
+                    <!-- <input type="text" class="form-control" name="type" placeholder="Project Type" formControlName="type"
+            [ngClass]="{'is-invalid':submitted && addProjectForm.controls['type'].errors}" />
+          <div class="text-danger" *ngIf="submitted && addProjectForm.controls['type'].errors?.['required']">
+            Project Type is
+            required</div> -->
+                </div>
+            </div>
+            <ng-container *ngIf="!isTemplate">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Company</label>
+                        <select class="form-control" name="company" formControlName="company"
+                            [ngClass]="{'is-invalid':submitted && addProjectForm.controls['company'].errors}">
+                            <option value="">-Select Company-</option>
+                            <option value="RADIOTHERAPY SPECIALIST HOSPITAL">LIKAS NUCLEAR AND RADIOTHERAPY SPECIALIST
+                                HOSPITAL
+                            </option>
+                            <option value="HSS JV QATTA">HSS JV QATTA</option>
+                            <option value="HEALTH SOLUTION">HEALTH SOLUTION (SE ASIA) SDN BHD</option>
+                        </select>
+                        <div class="text-danger"
+                            *ngIf="submitted && addProjectForm.controls['company'].errors?.['required']">
+                            Company is required</div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Signature 1</label>
+                        <input type="text" class="form-control" name="signature1" placeholder="Signature 1"
+                            formControlName="signature1"
+                            [ngClass]="{'is-invalid':submitted && addProjectForm.controls['signature1'].errors}" />
+                        <div class="text-danger"
+                            *ngIf="submitted && addProjectForm.controls['signature1'].errors?.['required']">
+                            Signature 1 is required</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Signature 2</label>
+                        <input type="text" class="form-control" name="signature2" placeholder="Signature 2"
+                            formControlName="signature2"
+                            [ngClass]="{'is-invalid':submitted && addProjectForm.controls['signature2'].errors}" />
+                        <div class="text-danger"
+                            *ngIf="submitted && addProjectForm.controls['signature2'].errors?.['required']">
+                            Signature 2 is required</div>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- <div class="col-md-12 text-center mt-3">
+            <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+          </div> -->
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button type="submit" class="btn btn-primary px-4 me-3">Save</button>
+        <button type="button" mat-button mat-dialog-close="Cancel" class="btn btn-danger px-4 me-3">Cancel</button>
+        <!-- <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button class="btn btn-primary" [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+    </mat-dialog-actions>
+</form>
