@@ -45,6 +45,7 @@ import { ProjectEditComponent } from './project/project-edit/project-edit.compon
 import { AddProjectComponent } from './project/add-project/add-project.component';
 import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
 import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
+import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -93,6 +94,9 @@ const routes: Routes = [
   { path: 'reports-by-package', component: ReportsByPackageComponent },
   // { path: 'template-department', component: TemplateDepartmentComponent },
   { path: 'edit-admin-user', component: EditAdminUserComponent },
+  { path: 'edit-equipment', component: EditEquipmentComponent },
+  { path: 'edit-equipment/:id', component: EditEquipmentComponent },
+
 
   {
     path: 'projects',

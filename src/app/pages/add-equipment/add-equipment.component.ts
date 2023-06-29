@@ -21,6 +21,7 @@ export class AddEquipmentComponent implements OnInit {
   submitted: boolean = false;
   addEquipment!: FormGroup;
 
+
   constructor(
     private department: EquipmentService,
     private router: Router,

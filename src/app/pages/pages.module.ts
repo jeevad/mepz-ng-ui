@@ -23,6 +23,7 @@ import { ViewModeDirective } from './project/edit-input/view-mode.directive';
 import { FocusableDirective } from '../directives/focusable.directive';
 import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
 import { LoaderComponent } from '../components/loader/loader.component';
+import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
     EditModeDirective,
     FocusableDirective,
     EquipmentListComponent,
+    EditEquipmentComponent,
   ],
   imports: [
     CommonModule,
@@ -56,6 +58,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
     NgIf,
     MatIconModule,
     LoaderComponent,
+    ReactiveFormsModule
   ],
 })
 export class PagesModule {}

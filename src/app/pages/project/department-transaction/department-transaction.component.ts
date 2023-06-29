@@ -21,6 +21,7 @@ export class DepartmentTransactionComponent {
   project: any;
   loader = false;
   projectType: string | null = 'individual';
+  departmentId: any;
 
   constructor(
     private departmentService: DepartmentService,
@@ -139,8 +140,8 @@ export class DepartmentTransactionComponent {
       if (result === 'ok') {
         const data = {
           type: 'department',
-          field: 'delete',
-          departmentId: departmentId,
+          // field: isDeleted:true,
+          departmentId: this.departmentId,
           value: departmentId,
         };
 
@@ -156,6 +157,10 @@ export class DepartmentTransactionComponent {
       }
     });
   }
+
+    // Deletes an item
+
+
 
 
   // Function triggered when the "COPY" button is clicked | Without DB
