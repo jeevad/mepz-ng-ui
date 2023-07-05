@@ -14,6 +14,9 @@ import {
  * A service used for opening a custom dialog with options specified
  */
 export class MyCustomDialogService {
+  alert(arg0: string, arg1: string) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private dialog: MatDialog) {}
   /**
    * Retrieves the default custom dialog config

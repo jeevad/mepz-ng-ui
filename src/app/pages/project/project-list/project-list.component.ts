@@ -49,10 +49,10 @@ export class ProjectListComponent implements OnInit {
 
   // Loads the initial data
   Load(page?: number | undefined) {
-    
+
     this.loader = true;
     this.page = page === undefined ? this.page : page;
-    
+
     this.skip = this.limit * (this.page - 1);
     this.projectService
       .Load(this.skip, this.limit, this.projectType)

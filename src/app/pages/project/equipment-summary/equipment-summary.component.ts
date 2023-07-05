@@ -4,12 +4,12 @@ import { SummaryService } from 'src/app/service/summary/summary.service';
 import { ProjectService } from 'src/app/service/project/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
-
 @Component({
   selector: 'app-equipment-summary',
   templateUrl: './equipment-summary.component.html',
   styleUrls: ['./equipment-summary.component.css'],
 })
+
 export class EquipmentSummaryComponent {
   page = 1;
   limit = 10;
@@ -27,27 +27,26 @@ export class EquipmentSummaryComponent {
     private route: ActivatedRoute,
     private equipmentService: EquipmentService,
     private http: HttpClient) {
-
   }
 
   ngOnInit() {
-    // let table = $('#example').DataTable({
-    //   drawCallback: () => {
-    //     $('.paginate_button.next').on('click', () => {
-    //       this.nextButtonClickEvent();
-    //     });
-    //   },
-    // });
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.loadEquipments();
-
   }
 
   loadFromMaster() {
     this.equipmentService.Load(this.skip, this.limit).subscribe((data: any) => {
       this.loadFromMasterData = data.results;
+      console.log(data.results, "data results");
+
+      const groupNames = this.loadFromMasterData
+        .filter((equipment: any) => equipment.equipmentPower && equipment.equipmentPower.group)
+        .map((equipment: any) => equipment.equipmentPower.group);
+
+      console.log('Group Names:', groupNames);
     });
   }
+
 
   loadEquipments() {
     this.skip = this.limit * (this.page - 1);
@@ -67,8 +66,8 @@ export class EquipmentSummaryComponent {
     event.stopPropagation();
   }
 
-  wholeRowClick(): void {}
+  wholeRowClick(): void { }
 
-  nextButtonClickEvent(): void {}
-  previousButtonClickEvent(): void {}
+  nextButtonClickEvent(): void { }
+  previousButtonClickEvent(): void { }
 }

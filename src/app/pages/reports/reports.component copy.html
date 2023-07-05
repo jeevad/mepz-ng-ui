@@ -21,7 +21,7 @@
                     (change)="onProjectChange($event)"
                   >
                     <option value="">Select Project Name</option>
-                    <option *ngFor="let project of projectData"  [value]="project._id">
+                    <option *ngFor="let project of projectData" [value]="project._id">
                       {{ project.name }}
                     </option>
                   </select>
@@ -35,12 +35,13 @@
                     <option value="110">Department list</option>
                     <option value="111">Room Listing</option>
                     <option value="112">Equipment Listing(BQ)</option>
-                    <option value="120">All Equipments</option>
-                    <option value="114">Equipment Listing(BQ), by Group</option>
-                    <option value="119"> Equipment Listing by Department</option>
+                    <option value="113">Project Equipment</option>
+
+
                   </select>
                 </div>
               </div>
+
               <div class="col-md-6 mt-2 mb-4">
                 <div class="form-group">
                   <label for="inputState" class="form-label mt-2"> Revisions</label>

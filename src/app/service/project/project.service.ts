@@ -74,4 +74,11 @@ export class ProjectService {
       data
     );
   }
+
+  //new test
+  getDepartmentEquipments(projectId: string, departmentId: string) {
+    return this.http.get(environment.apiUrl + '/project/getDepartmentEquipments', {
+      params: { projectId, departmentId },
+    });
+  }
 }

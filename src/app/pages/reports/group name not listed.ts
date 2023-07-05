@@ -75,7 +75,7 @@ export class ReportsComponent implements OnInit {
   loadFromMaster() {
     this.equipmentService.Load(this.skip, this.limit).subscribe((data: any) => {
       this.loadFromMasterData = data.results;
-      // console.log(data.results, "data results");
+      console.log(data.results, "data results");
 
       const groupNames = this.loadFromMasterData
         .filter((equipment: any) => equipment.equipmentPower && equipment.equipmentPower.group)
@@ -169,33 +169,12 @@ onProjectChange(event: any) {
 
 } else if (reportType === '120') {
   this.getAllEquipments();
-} const selectedDepartment = this.selectedDepartments.find(
-  (dept) => dept.projectId === selectedProjectId
-);
+}
 
 
 }
 
- // Function to get department equipment for report type '119'
- getDepartmentEquipments(selectedProjectId: string, departmentId: string) {
-  this.projectService
-    .getDepartmentEquipments(selectedProjectId, departmentId)
-    .subscribe(
-      (data: any) => {
-        this.equipmentData = data.results[0].data;
-        this.count = data.results[0].metadata[0].total;
 
-        console.log('Selected Department Equipment:');
-        console.log('Total Equipments:', this.count);
-        this.equipmentData.forEach((equipment: any) => {
-          console.log('Equipment Name:', equipment.name);
-        });
-      },
-      (error: any) => {
-        console.error('Error fetching department equipment: ', error);
-      }
-    );
-}
 
 // Get all equipment names for report type '120'
 getAllEquipments() {
@@ -239,43 +218,67 @@ getProjectEquipments(selectedProjectId: string) {
 
 // Get all project equipments for report type '114'
 getAllProjectEquipments(selectedProjectId: string) {
-  const filterEquipmentDto: any = {
-    projectId: [selectedProjectId],
-  };
+  if (selectedProjectId !== '112') {
+    // Retrieve equipment data for a specific project
+    const filterEquipmentDto: any = {
+      projectId: [selectedProjectId],
+    };
 
-  this.projectService.getAllEquipments(0, 1000, filterEquipmentDto).subscribe(
-    (data: any) => {
-      this.equipmentData = data.results[0].data;
-      this.count = data.results[0].metadata[0].total;
+    this.projectService.getAllEquipments(0, 1000, filterEquipmentDto).subscribe(
+      (data: any) => {
+        this.equipmentData = data.results[0].data;
+        this.count = data.results[0].metadata[0].total;
 
-      this.otherEquipmentData = data.results[0].data;
-      const totalEquipmentCount = this.otherEquipmentData.length;
-      console.log('Selected Project Equipment:');
-      console.log('Total Equipments:', totalEquipmentCount);
-      this.otherEquipmentData.forEach((equipment: any) => {
-        this.loadFromMaster();
+        console.log('Selected Project Equipment:');
+        console.log('Total Equipments:', this.count);
+        this.equipmentData.forEach((equipment: any) => {
+          console.log('Equipment Code:', equipment.code);
+          console.log('Equipment Name:', equipment.name);
+
+          if (equipment.equipmentPower && equipment.equipmentPower.group !== undefined) {
+            console.log('Equipment Power Group:', equipment.equipmentPower.group);
+          } else {
+            console.log('Equipment Power Group: Not Available');
+          }
+        });
+
+        const groupData = this.equipmentData
+          .filter((equipment: any) => equipment.equipmentPower && equipment.equipmentPower.group)
+          .map((equipment: any) => equipment.equipmentPower.group);
+        console.log('Group Data:', groupData);
+     
+
+
+      },
+      (error: any) => {
+        console.error('Error fetching project equipment: ', error);
+      }
+    );
+  } else {
+    // Retrieve all equipment data
+    this.equipmentService.Load(this.skip, this.limit).subscribe((data: any) => {
+      this.equipmentData = data.results;
+      this.count = data.metadata.total;
+
+      console.log('All Equipment:');
+      console.log('Total Equipments:', this.count);
+      this.equipmentData.forEach((equipment: any) => {
         console.log('Equipment Code:', equipment.code);
         console.log('Equipment Name:', equipment.name);
 
-        if (
-          equipment.equipmentPower &&
-          equipment.equipmentPower.group !== undefined
-        ) {
+        if (equipment.equipmentPower && equipment.equipmentPower.group !== undefined) {
           console.log('Equipment Power Group:', equipment.equipmentPower.group);
         } else {
           console.log('Equipment Power Group: Not Available');
         }
       });
 
-      const groupData = this.otherEquipmentData
+      const groupData = this.equipmentData
         .filter((equipment: any) => equipment.equipmentPower && equipment.equipmentPower.group)
         .map((equipment: any) => equipment.equipmentPower.group);
-      // console.log('Group Data:', groupData);
-    },
-    (error: any) => {
-      console.error('Error fetching project equipment: ', error);
-    }
-  );
+      console.log('Group Data:', groupData);
+    });
+  }
 }
 
 }

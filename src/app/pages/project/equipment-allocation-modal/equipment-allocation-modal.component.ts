@@ -225,4 +225,5 @@ export class EquipmentAllocationModalComponent {
         this.loader = false;
       });
   }
+
 }
