@@ -25,8 +25,8 @@ import { HospitalClassificationComponent } from './hospital-classification/hospi
 import { AddClassificationComponent } from './add-classification/add-classification.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { AddCurrencyComponent } from './add-currency/add-currency.component';
-import { ProjectTemplateComponent } from './project-template/project-template.component';
-import { ProjectNewtemplateComponent } from './project-newtemplate/project-newtemplate.component';
+// import { ProjectTemplateComponent } from './project-template/project-template.component';
+// import { ProjectNewtemplateComponent } from './project-newtemplate/project-newtemplate.component';
 import { ProjectComponent } from './project/project.component';
 import { EquipmentAllocationComponent } from './project/equipment-allocation/equipment-allocation.component';
 import { EquipmentSummaryComponent } from './project/equipment-summary/equipment-summary.component';
@@ -36,14 +36,14 @@ import { ReportsComponent } from './reports/reports.component';
 import { EquipmentSpecificationComponent } from './equipment-specification/equipment-specification.component';
 import { EquipmentBrandComponent } from './equipment-brand/equipment-brand.component';
 import { ReportsByPackageComponent } from './reports-by-package/reports-by-package.component';
-import { TemplateDepartmentComponent } from './template-department/template-department.component';
+// import { TemplateDepartmentComponent } from './template-department/template-department.component';
 import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
 import { ViewRoomsComponent } from './project/view-rooms/view-rooms.component';
 import { TransactionViewComponent } from './project/transaction-view/transaction-view.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { ProjectEditComponent } from './project/project-edit/project-edit.component';
 import { AddProjectComponent } from './project/add-project/add-project.component';
-import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
+// import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
 import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
 import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
 
@@ -97,7 +97,6 @@ const routes: Routes = [
   { path: 'edit-equipment', component: EditEquipmentComponent },
   { path: 'edit-equipment/:id', component: EditEquipmentComponent },
 
-
   {
     path: 'projects',
     component: ProjectComponent,
@@ -105,26 +104,56 @@ const routes: Routes = [
       { path: '', component: ProjectListComponent },
       { path: 'add', component: AddProjectComponent },
       { path: 'edit/:id', component: ProjectEditComponent },
-      { path: ':projectId/equipment-summary', component: EquipmentSummaryComponent },
-      { path: ':projectId/past-transaction', component: PastTransactionComponent },
-      { path: ':projectId/department-transaction', component: DepartmentTransactionComponent },
+      {
+        path: ':projectId/equipment-summary',
+        component: EquipmentSummaryComponent,
+      },
+      {
+        path: ':projectId/past-transaction',
+        component: PastTransactionComponent,
+      },
+      {
+        path: ':projectId/department-transaction',
+        component: DepartmentTransactionComponent,
+      },
       { path: ':projectId/equipment-list', component: EquipmentListComponent },
       // { path: 'project-template-equipment-allocation', component: ProjectTemplateEquipmentComponent },
-      { path: ':projectId/project-template-equipment-allocation', component: ProjectTemplateEquipmentComponent },
+      // { path: ':projectId/project-template-equipment-allocation', component: ProjectTemplateEquipmentComponent },
       { path: 'transaction-view', component: TransactionViewComponent },
-      { path: ':projectId/department-transaction/:deptId/view-rooms', component: ViewRoomsComponent },
-//project template
+      {
+        path: ':projectId/department-transaction/:deptId/view-rooms',
+        component: ViewRoomsComponent,
+      },
+      //project template
       { path: ':projectType/list', component: ProjectListComponent },
       { path: ':projectType/add', component: AddProjectComponent },
       { path: ':projectType/edit/:id', component: ProjectEditComponent },
-      { path: ':projectType/:projectId/department-transaction', component: DepartmentTransactionComponent },
-      { path: ':projectType/:projectId/department-transaction/:deptId/view-rooms', component: ViewRoomsComponent },
+      {
+        path: ':projectType/:projectId/department-transaction',
+        component: DepartmentTransactionComponent,
+      },
+      {
+        path: ':projectType/:projectId/department-transaction/:deptId/view-rooms',
+        component: ViewRoomsComponent,
+      },
 
-      { path: ':projectType/:projectId/equipment-summary', component: EquipmentSummaryComponent },
-      { path: ':projectType/:projectId/equipment-list', component: EquipmentListComponent },
-      { path: ':projectType/:projectId/project-template-equipment-allocation', component: ProjectTemplateEquipmentComponent },
-      { path: ':projectType/:projectId/past-transaction', component: PastTransactionComponent },
-      { path: ':projectType/transaction-view', component: TransactionViewComponent },
+      {
+        path: ':projectType/:projectId/equipment-summary',
+        component: EquipmentSummaryComponent,
+      },
+      {
+        path: ':projectType/:projectId/equipment-list',
+        component: EquipmentListComponent,
+      },
+      // { path: ':projectType/:projectId/project-template-equipment-allocation', component: ProjectTemplateEquipmentComponent },
+      {
+        path: ':projectType/:projectId/past-transaction',
+        component: PastTransactionComponent,
+      },
+      {
+        path: ':projectType/transaction-view',
+        component: TransactionViewComponent,
+      },
     ],
   },
 ];
@@ -133,7 +162,7 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule { }
+export class PagesRoutingModule {}
 
 export const routingcomponents = [
   AdminUserComponent,
@@ -161,11 +190,9 @@ export const routingcomponents = [
   AddClassificationComponent,
   CurrencyComponent,
   AddCurrencyComponent,
-  ProjectTemplateComponent,
-  ProjectNewtemplateComponent,
   ReportsComponent,
-  ProjectTemplateComponent,
-  ProjectNewtemplateComponent,
+  // ProjectTemplateComponent,
+  // ProjectNewtemplateComponent,
   ProjectComponent,
   AddProjectComponent,
   ProjectEditComponent,
@@ -174,5 +201,7 @@ export const routingcomponents = [
   DepartmentTransactionComponent,
   PastTransactionComponent,
   ViewRoomsComponent,
-  ProjectTemplateEquipmentComponent
+  EquipmentListComponent,
+  EditEquipmentComponent,
+  // ProjectTemplateEquipmentComponent
 ];

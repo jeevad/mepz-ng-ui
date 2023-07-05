@@ -14,30 +14,30 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgIf } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProjectListComponent } from './project/project-list/project-list.component';
-import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
-import { DepartmentTransactionComponent } from './project/department-transaction/department-transaction.component';
+// import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
+// import { DepartmentTransactionComponent } from './project/department-transaction/department-transaction.component';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { EditInputComponent } from './project/edit-input/edit-input.component';
 import { EditModeDirective } from './project/edit-input/edit-mode.directive';
 import { ViewModeDirective } from './project/edit-input/view-mode.directive';
 import { FocusableDirective } from '../directives/focusable.directive';
-import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
+// import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
 import { LoaderComponent } from '../components/loader/loader.component';
-import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
+// import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
 
 @NgModule({
   declarations: [
     routingcomponents,
     ProjectListComponent,
-    ProjectTemplateEquipmentComponent,
-    DepartmentTransactionComponent,
+    // ProjectTemplateEquipmentComponent,
+    // DepartmentTransactionComponent,
     FilterPipe,
     EditInputComponent,
     ViewModeDirective,
     EditModeDirective,
     FocusableDirective,
-    EquipmentListComponent,
-    EditEquipmentComponent,
+    // EquipmentListComponent,
+    // EditEquipmentComponent,
   ],
   imports: [
     CommonModule,
