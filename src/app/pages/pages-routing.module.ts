@@ -203,5 +203,6 @@ export const routingcomponents = [
   ViewRoomsComponent,
   EquipmentListComponent,
   EditEquipmentComponent,
+  ProjectListComponent
   // ProjectTemplateEquipmentComponent
 ];

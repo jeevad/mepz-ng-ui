@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { NgIf } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ProjectListComponent } from './project/project-list/project-list.component';
+// import { ProjectListComponent } from './project/project-list/project-list.component';
 // import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
 // import { DepartmentTransactionComponent } from './project/department-transaction/department-transaction.component';
 import { FilterPipe } from '../pipes/filter.pipe';
@@ -28,7 +28,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
 @NgModule({
   declarations: [
     routingcomponents,
-    ProjectListComponent,
+    // ProjectListComponent,
     // ProjectTemplateEquipmentComponent,
     // DepartmentTransactionComponent,
     FilterPipe,
