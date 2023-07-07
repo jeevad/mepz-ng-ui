@@ -66,7 +66,7 @@ export class AddProjectComponent {
       };
     } else {
       console.log('in-----');
-      
+
       fromGroup = {
         code: ['', Validators.required],
         name: ['', Validators.required],
@@ -89,7 +89,7 @@ export class AddProjectComponent {
   SaveData() {
     this.getFormValidationErrors();
     console.log('this.addProjectForm.valid',this.addProjectForm.valid);
-    
+
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addProjectForm.valid) {

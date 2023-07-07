@@ -19,18 +19,22 @@ export class ProjectService {
       params: { skip, limit, projectType },
     });
   }
+
   SaveData(departmentdata: any) {
     return this.http.post(environment.apiUrl + '/project', departmentdata);
   }
+
   LoadbyID(id: any) {
     return this.http.get(environment.apiUrl + '/project/' + id);
   }
+
   update(id: any, departmentdata: any) {
     return this.http.patch(
       environment.apiUrl + '/project/' + id,
       departmentdata
     );
   }
+
   Removedata(id: any) {
     return this.http.delete(environment.apiUrl + '/project/' + id);
   }

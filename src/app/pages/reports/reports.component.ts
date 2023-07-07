@@ -138,6 +138,7 @@ export class ReportsComponent implements OnInit {
   //     );
   //   });
   // }
+
 //For list project's departments & rooms
 onProjectChange(event: any) {
   const selectedProjectId = event.target.value;
@@ -176,8 +177,8 @@ onProjectChange(event: any) {
 
 }
 
- // Function to get department equipment for report type '119'
- getDepartmentEquipments(selectedProjectId: string, departmentId: string) {
+// Function to get department equipment for report type '119'
+getDepartmentEquipments(selectedProjectId: string, departmentId: string) {
   this.projectService
     .getDepartmentEquipments(selectedProjectId, departmentId)
     .subscribe(
@@ -190,12 +191,25 @@ onProjectChange(event: any) {
         this.equipmentData.forEach((equipment: any) => {
           console.log('Equipment Name:', equipment.name);
         });
+
+
+        this.equipmentService.Load(this.skip, this.limit).subscribe(
+          (equipment: any) => {
+
+            console.log('Loaded Equipment:', equipment);
+           
+          },
+          (error: any) => {
+            console.error('Error loading equipment: ', error);
+          }
+        );
       },
       (error: any) => {
         console.error('Error fetching department equipment: ', error);
       }
     );
 }
+
 
 // Get all equipment names for report type '120'
 getAllEquipments() {

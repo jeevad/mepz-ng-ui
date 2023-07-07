@@ -4,14 +4,13 @@
       <div class="col-md-12">
         <div class="d-lg-flex align-items-center mb-4 gap-3">
           <h4 class="mb-0 text-primary">Edit Project </h4>
-          <div class="ms-auto"><a routerLink="/pages/projects/{{ projectType }}/list"
-              class="btn btn-primary sqare-0 mt-2 mt-lg-0">
+          <div class="ms-auto">
+            <a routerLink="/pages/projects/{{ projectType }}/list" class="btn btn-primary sqare-0 mt-2 mt-lg-0">
               <i class="bx bx-table"></i>Manage Projects</a>
           </div>
         </div>
         <div class="card border-top border-0 border-4 border-primary">
           <div class="card-body p-4">
-
             <form [formGroup]="addDepartment" (ngSubmit)="SaveData()" class="form-horizontal row">
               <div class="col-md-6">
                 <label class="form-label">Code</label>
@@ -91,86 +90,126 @@
                   <option value="HEALTH SOLUTION">HEALTH SOLUTION (SE ASIA) SDN BHD</option>
                 </select>
               </div>
-              <div class="col-md-6"></div>
+              <!-- <inputid="datetimepicker"> -->
               <div class="col-md-6">
-                <label class=" form-label">Date Initiated Proposal</label>
-                <input type="text" id="datetimepicker" class="form-control">
+                <label class="form-label">Date Initiated Proposal</label>
+                <input type="text" class="form-control" name="dateInitiatedProposal"
+                  formControlName="dateInitiatedProposal" autocomplete="off"
+                  [ngClass]="{'is-invalid': addDepartment.controls['dateInitiatedProposal'].errors && addDepartment.controls['dateInitiatedProposal'].touched}">
+                <div class="text-danger"
+                  *ngIf="addDepartment.controls['dateInitiatedProposal'].errors?.['required'] && addDepartment.controls['dateInitiatedProposal'].touched">
+                </div>
               </div>
               <div class="col-md-6">
-                <label class=" form-label">Proposed Facility Completion Date</label>
-                <input type="text" id="datetimepicker" class="form-control">
+                <label class="form-label">Proposed Facility Completion Date</label>
+                <input type="text" class="form-control" name="proposedFacilityCompletionDate"
+                  formControlName="proposedFacilityCompletionDate" autocomplete="off"
+                  [ngClass]="{'is-invalid': addDepartment.controls['proposedFacilityCompletionDate'].errors && addDepartment.controls['proposedFacilityCompletionDate'].touched}">
+                <div class="text-danger"
+                  *ngIf="addDepartment.controls['proposedFacilityCompletionDate'].errors?.['required'] && addDepartment.controls['proposedFacilityCompletionDate'].touched">
+                </div>
               </div>
               <div class="col-md-6">
-                <label class=" form-label">Signature 1</label>
-                <input type="text" class="form-control" name="signature1" value="Signature 1" fdprocessedid="xjrfa">
+                <label class="form-label">Signature 1</label>
+                <input type="text" class="form-control" name="signature1" formControlName="signature1"
+                  autocomplete="off"
+                  [ngClass]="{'is-invalid': addDepartment.controls['signature1'].errors && addDepartment.controls['signature1'].touched}">
+                <div class="text-danger"
+                  *ngIf="addDepartment.controls['signature1'].errors?.['required'] && addDepartment.controls['signature1'].touched">
+                </div>
               </div>
               <div class="col-md-6">
-                <label class=" form-label">Signature 2</label>
-                <input type="text" class="form-control" name="signature2" value="Signature 2" fdprocessedid="9mniza">
+                <label class="form-label">Signature 2</label>
+                <input type="text" class="form-control" name="signature2" formControlName="signature2"
+                  autocomplete="off"
+                  [ngClass]="{'is-invalid': addDepartment.controls['signature2'].errors && addDepartment.controls['signature2'].touched}">
+                <div class="text-danger"
+                  *ngIf="addDepartment.controls['signature2'].errors?.['required'] && addDepartment.controls['signature2'].touched">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Address 1</label>
+                <input type="text" class="form-control" name="address1" formControlName="address1" autocomplete="off"
+                  [ngClass]="{'is-invalid': addDepartment.controls['address1'].errors && addDepartment.controls['address1'].touched}">
+                <div class="text-danger"
+                  *ngIf="addDepartment.controls['address1'].errors?.['required'] && addDepartment.controls['address1'].touched">
+                </div>
               </div>
               <div class="row mt-4">
                 <h4>Location</h4>
                 <hr>
                 <div class="col-md-6">
-                  <label class=" form-label">Address 1</label>
-
-                  <input type="text" class="form-control" name="addr1" value="Address 1">
-
+                  <label class="form-label">Address 1</label>
+                  <input type="text" class="form-control" name="address1" formControlName="address1" autocomplete="off"
+                    [ngClass]="{'is-invalid': addDepartment.controls['address1'].errors && addDepartment.controls['address1'].touched}">
+                  <div class="text-danger"
+                    *ngIf="addDepartment.controls['address1'].errors?.['required'] && addDepartment.controls['address1'].touched">
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label class=" form-label">Address 2</label>
-
-                  <input type="text" class="form-control" name="addr2" value="Address 2">
-
+                  <label class="form-label">Address 2</label>
+                  <input type="text" class="form-control" name="address2" formControlName="address2" autocomplete="off"
+                    [ngClass]="{'is-invalid': addDepartment.controls['address2'].errors && addDepartment.controls['address2'].touched}">
+                  <div class="text-danger"
+                    *ngIf="addDepartment.controls['address2'].errors?.['required'] && addDepartment.controls['address2'].touched">
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label class=" form-label">City</label>
-
-                  <input type="text" class="form-control" name="city">
-
+                  <label class="form-label">City</label>
+                  <input type="text" class="form-control" name="city" formControlName="city" autocomplete="off"
+                    [ngClass]="{'is-invalid': addDepartment.controls['city'].errors && addDepartment.controls['city'].touched}">
+                  <div class="text-danger"
+                    *ngIf="addDepartment.controls['city'].errors?.['required'] && addDepartment.controls['city'].touched">
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label class=" form-label">Postal/Zip</label>
-
-                  <input type="text" class="form-control" name="postal">
-
+                  <label class="form-label">Postal/Zip</label>
+                  <input type="text" class="form-control" name="postalZip" formControlName="postalZip"
+                    autocomplete="off"
+                    [ngClass]="{'is-invalid': addDepartment.controls['postalZip'].errors && addDepartment.controls['postalZip'].touched}">
+                  <div class="text-danger"
+                    *ngIf="addDepartment.controls['postalZip'].errors?.['required'] && addDepartment.controls['postalZip'].touched">
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label class=" form-label">State/Prov.</label>
-
-                  <input type="text" class="form-control" name="state">
-
+                  <label class="form-label">State/Prov.</label>
+                  <input type="text" class="form-control" name="state" formControlName="state" autocomplete="off"
+                    [ngClass]="{'is-invalid': addDepartment.controls['state'].errors && addDepartment.controls['state'].touched}">
+                  <div class="text-danger"
+                    *ngIf="addDepartment.controls['state'].errors?.['required'] && addDepartment.controls['state'].touched">
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label class=" form-label">Country</label>
-
-                  <input type="text" class="form-control" name="country">
-
+                  <label class="form-label">Country</label>
+                  <input type="text" class="form-control" name="country" formControlName="country" autocomplete="off"
+                    [ngClass]="{'is-invalid': addDepartment.controls['country'].errors && addDepartment.controls['country'].touched}">
+                  <div class="text-danger"
+                    *ngIf="addDepartment.controls['country'].errors?.['required'] && addDepartment.controls['country'].touched">
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <h4 class="mt-4">Currency Base Settings</h4>
                   <hr>
                   <table class="table table-condensed table-striped">
-                    <tbody>
+                    <thead>
                       <tr>
                         <th>Code</th>
                         <th>Description</th>
                         <th>Symbol</th>
                       </tr>
-                    </tbody>
-                    <tbody id="currency_table">
-                      <tr>
-                        <td>MYR</td>
-                        <td>MALAYSIA RINGGIT</td>
-                        <td>$</td>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let currency of currencies">
+                        <td>{{ currency.currencyCode }}</td>
+                        <td>{{ currency.currencyDescription }}</td>
+                        <td>{{ currency.currencySymbol }}</td>
                       </tr>
                     </tbody>
                   </table>
                   <p><small>This settings is a one time settings only. Any changes cannot be made once you add and
                       save.</small></p>
-                  <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"
+                  <button type="button" class="btn btn-info btn-sm" (click)="openModal(modalContent)"
                     fdprocessedid="o595l">Add</button>
-
                 </div>
               </div>
               <div class="col-md-6 text-center mt-3">
@@ -184,3 +223,30 @@
     </div>
   </div>
 </section>
+
+<!-- Modal Popup -->
+<ng-template #modalContent let-modal>
+  <div class="modal-header">
+    <h4 class="modaltitle" id="modal-title">Add Currency Settings</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="currencyDropdown">Currency:</label>
+      <select id="currencyDropdown" class="form-control" [(ngModel)]="selectedCurrency">
+        <option value="">-Select Currency-</option>
+        <option value="BAHT">THAI BAHT (B)</option>
+        <option value="HK$">HONGKONG DOLLAR ($)</option>
+        <option value="MYR">MALAYSIA RINGGIT ($)</option>
+        <option value="PHP">PHILIPPINE PESO (P)</option>
+        <option value="RIAL">SAUDI RIAL (R)</option>
+        <option value="RUPE">INDIAN RUPEE (R)</option>
+        <option value="US$">US DOLLAR ($)</option>
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="addCurrency()">Add</button>
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">Close</button>
+  </div>
+</ng-template>
