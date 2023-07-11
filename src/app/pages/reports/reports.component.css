@@ -48,3 +48,20 @@ ul {
   column-count: 3;
   padding-left: 0px;
 }
+
+
+.custom-dropdown {
+  position: relative;
+}
+
+.custom-dropdown.disabled::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  z-index: 1;
+  cursor: not-allowed;
+}

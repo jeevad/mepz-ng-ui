@@ -7,41 +7,34 @@
         </div>
         <div class="card border-top border-0 border-4 border-primary">
           <div class="card-body p-4">
-
             <form class="form-horizontal row" method="post">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="inputState" class="form-label">Report Type</label>
-                  <select name="equ_listing" id="equ_listing2" style="width: 100%" class="form-select" fdprocessedid="vc1rn">
-                    <option value="109">Equipment Location Listing</option>
-                    <option value="110">Department list</option>
-                    <option value="111">Room Listing</option>
-                    <option value="112">Equipment Listing(BQ)</option>
-                    <option value="120">All Equipments</option>
-                    <option value="114">Equipment Listing(BQ), by Group</option>
-                    <option value="119"> Equipment Listing by Department</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
                   <label for="inputState" class="form-label">Project Name</label>
-                  <select
-                    name="equ_listing"
-                    id="equ_listing1"
-                    style="width: 100%"
-                    class="form-select"
-                    fdprocessedid="vc1rn"
-                    (change)="onProjectChange($event)"
-                  >
+                  <select name="equ_listing" id="equ_listing1" style="width: 100%" class="form-select"
+                    fdprocessedid="vc1rn" (change)="onProjectChange($event)">
                     <option value="">Select Project Name</option>
-                    <option *ngFor="let project of projectData"  [value]="project._id">
+                    <option *ngFor="let project of projectData" [value]="project._id">
                       {{ project.name }}
                     </option>
                   </select>
                 </div>
               </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputState" class="form-label">Report Type</label>
+                  <div class="custom-dropdown" [class.disabled]="!selectedProjectId">
+                    <select name="equ_listing" id="equ_listing2" style="width: 100%" class="form-select"
+                      fdprocessedid="vc1rn" (change)="onReportTypeChange($event)" [(ngModel)]="selectedReportType"
+                      [disabled]="!selectedProjectId">
+                      <option value="">Please select an option</option>
+                      <option value="110">Department list</option>
+                      <option value="111">Room Listing</option>
+                    </select>
 
+                  </div>
+                </div>
+              </div>
               <div class="col-md-6 mt-2 mb-4">
                 <div class="form-group">
                   <label for="inputState" class="form-label mt-2"> Revisions</label>
@@ -75,36 +68,20 @@
                 </div>
               </div>
               <hr>
-              <div class="col-md-12 mt-2 mb-4">
+              <div class="col-md-12 mt-2 mb-4" *ngIf="selectedReportType === '111' && projectRooms.length > 0">
                 <div>
                   <strong>Room List</strong>
                 </div>
                 <div class="overflow-auto">
                   <ul>
-                    <div class="checkbox"><label><input type="checkbox" value=""> AE101 LOBBY (WALK-IN)</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE102 WHEELCHAIR PARK</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE104 WAIT</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE105 DISABLED TOILET (M)</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE106 DISABLED TOILET (F)</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE107 RECEPTION (A&E)</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE108 DIRTY UTILITY</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE109 CLEAN UTILITY</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE111 EXAMINATION ROOM 1</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE112 EXAMINATION ROOM 2</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE113 TREATMENT</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE114 POP STORE</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value=""> AE101 LOBBY (WALK-IN)</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE102 WHEELCHAIR PARK</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE104 WAIT</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE105 DISABLED TOILET (M)</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE106 DISABLED TOILET (F)</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE107 RECEPTION (A&E)</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE108 DIRTY UTILITY</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE109 CLEAN UTILITY</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE111 EXAMINATION ROOM 1</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE112 EXAMINATION ROOM 2</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE113 TREATMENT</label></div>
-                    <div class="checkbox"><label><input type="checkbox" value="">AE114 POP STORE</label></div>
+                    <li *ngFor="let room of projectRooms">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" [value]="room.roomId">
+                          {{ room.departments.rooms.code }} - {{ room.departments.rooms.name }}
+                        </label>
+                      </div>
+                    </li>
                   </ul>
                 </div>
               </div>

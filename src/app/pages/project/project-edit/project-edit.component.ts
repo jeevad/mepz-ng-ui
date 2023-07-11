@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './project-edit.component.html',
   styleUrls: ['./project-edit.component.css'],
 })
-export class ProjectEditComponent implements OnInit {
+export class ProjectEditComponent implements OnInit{
 
   departmentdata: any;
   active: any = ['Active', 'Inactive'];
@@ -29,8 +29,9 @@ export class ProjectEditComponent implements OnInit {
   addDepartment!: FormGroup;
   projectType: string | null = 'individual';
   showModal: boolean = false;
+  // currencies: any[] = [];
   selectedCurrency: string | null = '';
-  currencies: any[] = [];
+  currencies: any[] = []; // Array to hold added currencies
 
   constructor(
     private department: ProjectService,
@@ -39,6 +40,7 @@ export class ProjectEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private http: HttpClient,
+
   ) { }
 
   ngOnInit(): void {
@@ -76,6 +78,9 @@ export class ProjectEditComponent implements OnInit {
       postalZip: [''],
       state: [''],
       country: [''],
+      // currencyDescription: [''],
+      // currencyCode: [''],
+      // currencySymbol: ['']
     });
   }
 
@@ -124,6 +129,8 @@ export class ProjectEditComponent implements OnInit {
         default:
           break;
       }
+
+      // Add the selected currency to the currencies array
       const newCurrency = {
         code: currencyCode,
         description: currencyDescription,
@@ -144,6 +151,7 @@ export class ProjectEditComponent implements OnInit {
           currencySymbol: currency.symbol
         };
       });
+
       if (!this.isEdit) {
         const formData = {
           ...this.addDepartment.value,
@@ -161,6 +169,7 @@ export class ProjectEditComponent implements OnInit {
             ...this.addDepartment.value,
             currencies: updatedCurrencies
           };
+
           this.department.update(this.deptid, formData).subscribe((data) => {
             this.isEdit = false;
             this.router.navigate(['pages/projects', this.projectType, 'list']);
@@ -169,6 +178,8 @@ export class ProjectEditComponent implements OnInit {
       }
     }
   }
+
+
 
   change(e: any) {
     this.active = e.target.value;
