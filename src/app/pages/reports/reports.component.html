@@ -23,13 +23,37 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="inputState" class="form-label">Report Type</label>
-                  <div class="custom-dropdown" [class.disabled]="!selectedProjectId">
+                  <div class="custom-dropdown">
                     <select name="equ_listing" id="equ_listing2" style="width: 100%" class="form-select"
-                      fdprocessedid="vc1rn" (change)="onReportTypeChange($event)" [(ngModel)]="selectedReportType"
-                      [disabled]="!selectedProjectId">
-                      <option value="">Please select an option</option>
-                      <option value="110">Department list</option>
-                      <option value="111">Room Listing</option>
+                      fdprocessedid="vc1rn" (change)="onReportTypeChange($event)" [(ngModel)]="selectedReportType">
+                      <option value="">Select Report Type</option>
+                      <option value="equipment-location-listing">Equipment Location Listing</option>
+                      <option value="department-list">Department list</option>
+                      <option value="room-listing">Room Listing</option>
+                      <option value="equipment-listing(bq)">Equipment Listing(BQ)</option>
+                      <option value="disabled-equipment-listing(bq)">Disabled Equipment Listing(BQ)</option>
+                      <option value="equipment-listing-by-department"> Equipment Listing by Department</option>
+                      <option value="equipment-listing-by-department-and-room"> Equipment Listing by Department and Room
+                      </option>
+                      <option value="equipment-listing-by-department-and-room(disabled)"> Equipment Listing by
+                        Department and Room(Disabled)</option>
+                      <option value="equipment-room-to-room-variation"> Equipment Room to Room variation</option>
+                      <option value="equipment-listing-by-floor"> Equipment Listing by Floor</option>
+                      <option value="power-requirement">Power Requirement</option>
+                      <option value="power-requirement-for-rds">Power Requirement for RDS</option>
+                      <option value="equipment-listing-for-rds"> Equipment Listing for RDS </option>
+                      <option value="equipment-specs"> Equipment Specs</option>
+                      <option value="equipment-brands"> Equipment Brands</option>
+                      <option value="equipment-listing(bq)-by-group"> Equipment Listing(BQ), by Group</option>
+                      <option value="summary-of-equipment-variation"> Summary of Equipment variation</option>
+                      <option value="equipment-location-listing-by-group"> Equipment Location Listing, by Group</option>
+                      <option value="equipment-listing-by-department-by-group"> Equipment Listing by Department, by
+                        Group</option>
+                      <option value="equipment-listing-by-department-and-room-by-group"> Equipment Listing by Department
+                        and Room, by Group</option>
+                      <option value="equipment-listing(bq)-with-utility">Equipment Listing(BQ) - With Utility</option>
+                      <option value="equipment-listing-by-department-and-room-with-utility">Equipment Listing by
+                        Department and Room - With Utility</option>
                     </select>
 
                   </div>
@@ -183,9 +207,10 @@
               </div>
               <hr>
               <div class="col-md-12 mt-4 float-end">
-                <div class="d-inline-block float-end" ngbDropdown #myDrop="ngbDropdown">
+                <div class="d-inline-block float-end" ngbDropdown #myDrop="ngbDropdown"
+                  [class.disabled]="!selectedProjectId">
                   <button type="button" class="btn btn-xl btn-outline-primary me-2" id="dropdownManual"
-                    ngbDropdownAnchor (focus)="myDrop.open()">
+                    ngbDropdownAnchor (focus)="myDrop.open()" [disabled]="!selectedProjectId">
                     Export as
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownManual">
