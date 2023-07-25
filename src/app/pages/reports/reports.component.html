@@ -12,7 +12,7 @@
                 <div class="form-group">
                   <label for="inputState" class="form-label">Project Name</label>
                   <select name="equ_listing" id="equ_listing1" style="width: 100%" class="form-select"
-                    fdprocessedid="vc1rn" (change)="onProjectChange($event)">
+                    fdprocessedid="vc1rn" [(ngModel)]="selectedProjectId">
                     <option value="">Select Project Name</option>
                     <option *ngFor="let project of projectData" [value]="project._id">
                       {{ project.name }}
@@ -92,7 +92,7 @@
                 </div>
               </div>
               <hr>
-              <div class="col-md-12 mt-2 mb-4" *ngIf="selectedReportType === '111' && projectRooms.length > 0">
+              <!-- <div class="col-md-12 mt-2 mb-4" *ngIf="selectedReportType === '111' && projectRooms.length > 0">
                 <div>
                   <strong>Room List</strong>
                 </div>
@@ -109,7 +109,7 @@
                   </ul>
                 </div>
               </div>
-              <hr>
+              <hr> -->
               <div class="col-md-6 labels-check mt-2 mb-4">
                 <div class="pull-right">
                   <strong>By Group</strong>
@@ -214,9 +214,9 @@
                     Export as
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownManual">
-                    <button ngbDropdownItem>PDF</button>
-                    <button ngbDropdownItem>PDF - 1 Page</button>
-                    <button ngbDropdownItem>EXCEL</button>
+                    <button ngbDropdownItem (click)="exportData()">PDF</button>
+                    <button ngbDropdownItem (click)="exportData()">PDF - 1 Page</button>
+                    <button ngbDropdownItem (click)="exportData()">EXCEL</button>
                   </div>
                 </div>
               </div>
