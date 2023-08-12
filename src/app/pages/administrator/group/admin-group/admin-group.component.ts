@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import * as $ from 'jquery';
 import { AdminGroupService } from 'src/app/service/admin-group/admin-group.service';
 import { HttpClient } from '@angular/common/http';
-import { UserFormComponent } from '../user-form/user-form.component';
+import { UserFormComponent } from '../../users/user-form/user-form.component';
+
 @Component({
   selector: 'app-admin-group',
   templateUrl: './admin-group.component.html',

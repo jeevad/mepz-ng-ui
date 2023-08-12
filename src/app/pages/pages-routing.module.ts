@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
-import { AdminUserComponent } from './admin-user/admin-user.component';
-import { UserFormComponent } from './user-form/user-form.component';
-import { AdminGroupComponent } from './admin-group/admin-group.component';
-import { AdminGroupFormComponent } from './admin-group-form/admin-group-form.component';
 import { AccessLevelComponent } from './access-level/access-level.component';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
 import { CompanydetailComponent } from './companydetail/companydetail.component';
@@ -46,6 +42,10 @@ import { AddProjectComponent } from './project/add-project/add-project.component
 // import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
 import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
 import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
+import { UserFormComponent } from './administrator/users/user-form/user-form.component';
+import { AdminUserComponent } from './administrator/users/admin-user/admin-user.component';
+import { AdminGroupComponent } from './administrator/group/admin-group/admin-group.component';
+import { AdminGroupFormComponent } from './administrator/group/admin-group-form/admin-group-form.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },

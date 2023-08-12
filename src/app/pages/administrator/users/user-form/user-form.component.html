@@ -43,21 +43,30 @@
 
                 <div class="col-md-6">
                   <label for="inputState" class="form-label">Admin</label>
-                  <select id="inputState" class="form-select" formControlName="admin">
+                  <select id="inputState" class="form-select" formControlName="admin"
+                    [ngClass]="{'is-invalid': submitted && userForm.controls['admin'].errors}">
                     <option *ngFor="let admin of admin1" [value]="admin.value">{{ admin.label }}</option>
                   </select>
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['admin'].errors?.['required']">
+                    This field is required</div>
                 </div>
                 <div class="col-md-6">
                   <label for="inputState" class="form-label">Active</label>
-                  <select id="inputState" class="form-select" formControlName="active">
+                  <select id="inputState" class="form-select" formControlName="active"
+                    [ngClass]="{'is-invalid': submitted && userForm.controls['active'].errors}">
                     <option *ngFor="let active of active1" [value]="active.value">{{ active.label }}</option>
                   </select>
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['active'].errors?.['required']">
+                    This field is required</div>
                 </div>
-               <div class="col-md-6">
+                <div class="col-md-6">
                   <label for="inputState" class="form-label">group</label>
-                  <select id="inputState" class="form-select" formControlName="group">
+                  <select id="inputState" class="form-select" formControlName="group"
+                    [ngClass]="{'is-invalid': submitted && userForm.controls['group'].errors}">
                     <option *ngFor="let name of groupNames" [value]="name">{{ name }}</option>
                   </select>
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['group'].errors?.['required']">
+                    This field is required</div>
                 </div>
                 <div class="col-md-6">
                   <label for="inputCity" class="form-label">Valid Until</label>
@@ -82,32 +91,34 @@
                     Current Password is required
                   </div>
                 </div> -->
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <label for="Contact" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="Contact" placeholder="Enter Password"
+                      formControlName="password" autocomplete="off"
+                      [ngClass]="{'is-invalid':submitted && userForm.controls['password'].errors}" />
+                    <div class="text-danger" *ngIf="submitted && userForm.controls['password'].errors?.['required']">
+                      Password is required</div>
+                  </div>
 
-                <div class="col-md-6">
-                  <label for="Contact" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="Contact" placeholder="Enter Password"
-                    formControlName="password" autocomplete="off"
-                    [ngClass]="{'is-invalid':submitted && userForm.controls['password'].errors}" />
-                  <div class="text-danger" *ngIf="submitted && userForm.controls['password'].errors?.['required']">
-                    Password is required</div>
+                  <div class="col-md-6">
+                    <label for="Phone" class="form-label">Re-Enter Password</label>
+                    <input type="password" class="form-control" id="Phone" placeholder="Enter Re-Enter Password"
+                      formControlName="reEnterPassword" autocomplete="off"
+                      [ngClass]="{'is-invalid':submitted && userForm.controls['reEnterPassword'].errors}" />
+                    <div class="text-danger"
+                      *ngIf="submitted && userForm.controls['reEnterPassword'].errors && userForm.controls['reEnterPassword'].errors?.['required']">
+                      Confirm Password is required</div>
+                    <div class="text-danger"
+                      *ngIf="submitted && userForm.controls['reEnterPassword'].errors && userForm.controls['reEnterPassword'].value != userForm.controls['password'].value">
+                      Password and Confirm Password should match</div>
+                  </div>
+
+                  <div class="text-danger" *ngIf="userForm.hasError('passwordMismatch')">
+                    Passwords must match
+                  </div>
                 </div>
 
-                <div class="col-md-6">
-                  <label for="Phone" class="form-label">Re-Enter Password</label>
-                  <input type="password" class="form-control" id="Phone" placeholder="Enter Re-Enter Password"
-                    formControlName="reEnterPassword" autocomplete="off"
-                    [ngClass]="{'is-invalid':submitted && userForm.controls['reEnterPassword'].errors}" />
-                  <div class="text-danger"
-                    *ngIf="submitted && userForm.controls['reEnterPassword'].errors && userForm.controls['reEnterPassword'].errors?.['required']">
-                    Confirm Password is required</div>
-                  <div class="text-danger"
-                    *ngIf="submitted && userForm.controls['reEnterPassword'].errors && userForm.controls['reEnterPassword'].value != userForm.controls['password'].value">
-                    Password and Confirm Password should match</div>
-                </div>
-
-                <div class="text-danger" *ngIf="userForm.hasError('passwordMismatch')">
-                  Passwords must match
-                </div>
                 <div class="col-12 text-center">
                   <button type="submit" class="btn btn-primary px-5 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
                   <a routerLink="/pages/admin-user" class="btn btn-secondary px-5">Cancel</a>

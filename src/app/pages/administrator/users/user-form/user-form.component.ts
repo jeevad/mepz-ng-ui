@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ValidatorFn, FormControl, AbstractControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  ValidatorFn,
+  FormControl,
+  AbstractControl,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserAdminService } from 'src/app/service/user-admin/user-admin.service';
 @Component({
@@ -26,9 +33,7 @@ export class UserFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
-  ) {
-  }
-
+  ) {}
 
   ngOnInit(): void {
     this.group.fetchGroupNames().subscribe(
@@ -39,41 +44,49 @@ export class UserFormComponent implements OnInit {
         console.error('Error fetching group names:', error);
       }
     );
-    console.log("ngOnint");
+    console.log('ngOnint');
     this.roomid = this.route.snapshot.paramMap.get('id');
     console.log(this.roomid);
+
+    this.userForm = this.formBuilder.group(
+      {
+        userName: ['', Validators.required],
+        staffId: ['', Validators.required],
+        admin: ['', Validators.required],
+        active: [true, Validators.required],
+        group: ['', Validators.required],
+        valid: ['', Validators.required],
+        remarks: [''],
+        password: ['', Validators.required],
+        reEnterPassword: ['', Validators.required],
+      },
+      { validator: this.passwordMatchValidator }
+    );
+    this.name = this.group.name;
+    // patch value on update
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
-        console.log("Param >> ",param['id']);
-        this.group.LoadbyID(param['id']).subscribe((resp) => {
+        console.log('Param >> ', param['id']);
+        this.group.LoadbyID(param['id']).subscribe((resp: any) => {
           this.isEdit = true;
+          // console.log('resp', resp);
+          delete resp.password;
+
           this.userForm.patchValue(resp);
         });
       }
     });
-    this.userForm = this.formBuilder.group({
-      userName: ['jeeva', Validators.required],
-      staffId: [123456, Validators.required],
-      admin: ['', Validators.required],
-      active: [true, Validators.required],
-      group: ['admin', Validators.required],
-      valid: ['sdfs', Validators.required],
-      remarks: ['', Validators.required],
-      password: ['123456', Validators.required],
-      reEnterPassword: ['123456', Validators.required],
-    }, {validator: this.passwordMatchValidator});
-    this.name = this.group.name;
-}
+  }
 
-admin1 = [
-  { value: true, label: 'Yes' },
-  { value: false, label: 'No' },
-];
+  admin1 = [
+    { value: true, label: 'Yes' },
+    { value: false, label: 'No' },
+  ];
 
-active1 = [
-  { value: true, label: 'Yes' },
-  { value: false, label: 'No' },
-];
+  active1 = [
+    { value: true, label: 'Yes' },
+    { value: false, label: 'No' },
+  ];
 
   updategroupname(names: string[]) {
     this.name = names;
@@ -87,9 +100,9 @@ active1 = [
           .SaveUserData(this.userForm.value)
 
           .subscribe((result) => {
-          console.log(this.userForm.value);
+            console.log(this.userForm.value);
 
-          console.log("result",result);
+            console.log('result', result);
             this.router.navigate(['/admin-user']);
           });
       }
@@ -106,36 +119,40 @@ active1 = [
     }
   }
 
-
-  passwordMatchValidator(control: AbstractControl): {[key: string]: any} | null {
+  passwordMatchValidator(
+    control: AbstractControl
+  ): { [key: string]: any } | null {
     const password = control.get('password');
     const reEnterPassword = control.get('reEnterPassword');
-    if (password && reEnterPassword && password.value !== reEnterPassword.value) {
-      return {'passwordMismatch': true};
+    if (
+      password &&
+      reEnterPassword &&
+      password.value !== reEnterPassword.value
+    ) {
+      return { passwordMismatch: true };
     }
     return null;
   }
 
-Cleardata() {
-  this.userForm = new FormGroup({
-    name: new FormControl(''),
-  });
-}
-
-Updatedata(Id: any) {
-  this.group.LoadbyID(Id).subscribe((data) => {
-    this.editdata = data;
-
+  Cleardata() {
     this.userForm = new FormGroup({
-      name: new FormControl(this.editdata.name),
+      name: new FormControl(''),
     });
-  });
-}
+  }
 
-updateRecord(Id: any, data: any) {
-  this.group.update(Id, this.userForm.value).subscribe((data) => {
-    this.isEdit = false;
-  });
-}
-}
+  Updatedata(Id: any) {
+    this.group.LoadbyID(Id).subscribe((data) => {
+      this.editdata = data;
 
+      this.userForm = new FormGroup({
+        name: new FormControl(this.editdata.name),
+      });
+    });
+  }
+
+  updateRecord(Id: any, data: any) {
+    this.group.update(Id, this.userForm.value).subscribe((data) => {
+      this.isEdit = false;
+    });
+  }
+}
