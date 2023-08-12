@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
-import { AccessLevelComponent } from './access-level/access-level.component';
-import { ActivityLogComponent } from './activity-log/activity-log.component';
 import { CompanydetailComponent } from './companydetail/companydetail.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
 import { DepartmentComponent } from './department/department.component';
@@ -46,6 +44,8 @@ import { UserFormComponent } from './administrator/users/user-form/user-form.com
 import { AdminUserComponent } from './administrator/users/admin-user/admin-user.component';
 import { AdminGroupComponent } from './administrator/group/admin-group/admin-group.component';
 import { AdminGroupFormComponent } from './administrator/group/admin-group-form/admin-group-form.component';
+import { ActivityLogComponent } from './administrator/activity-log/activity-log.component';
+import { AccessLevelComponent } from './administrator/access-level/access-level.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -203,6 +203,6 @@ export const routingcomponents = [
   ViewRoomsComponent,
   EquipmentListComponent,
   EditEquipmentComponent,
-  ProjectListComponent
+  ProjectListComponent,
   // ProjectTemplateEquipmentComponent
 ];
