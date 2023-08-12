@@ -14,16 +14,15 @@ export class AppComponent {
 
   blankUrl = '';
   currentUrl: string | undefined;
-  checkoutUrls = ['/login', '/'];
+  // checkoutUrls = ['auth/login', '/'];
+  checkoutUrls = ['/auth/login'];
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
       }
-
       if (event instanceof NavigationEnd) {
         this.currentUrl = event.url;
         console.log('this.currentUrl', this.currentUrl);
-
         setTimeout(() => {
           window.scrollTo(0, 0);
         }, 100);
@@ -34,11 +33,19 @@ export class AppComponent {
     if (!this.currentUrl) {
       return false;
     }
-    const index = this.checkoutUrls.indexOf(this.currentUrl);
+    const index = this.checkoutUrls.indexOf(this.getUrlWithoutParams());
     if (index >= 0) {
       return true;
     } else {
       return false;
     }
+  }
+
+  getUrlWithoutParams() {
+    let urlTree = this.router.parseUrl(this.router.url);
+
+    urlTree.queryParams = {};
+    urlTree.fragment = null; // optional
+    return urlTree.toString();
   }
 }

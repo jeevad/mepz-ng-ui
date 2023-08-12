@@ -52,15 +52,15 @@ export class UserFormComponent implements OnInit {
       }
     });
     this.userForm = this.formBuilder.group({
-      userName: ['', Validators.required],
-      staffId: ['', Validators.required],
+      userName: ['jeeva', Validators.required],
+      staffId: [123456, Validators.required],
       admin: ['', Validators.required],
-      active: ['', Validators.required],
-      group: ['', Validators.required],
-      valid: ['', Validators.required],
+      active: [true, Validators.required],
+      group: ['admin', Validators.required],
+      valid: ['sdfs', Validators.required],
       remarks: ['', Validators.required],
-      password: ['', Validators.required],
-      reEnterPassword: ['', Validators.required],
+      password: ['123456', Validators.required],
+      reEnterPassword: ['123456', Validators.required],
     }, {validator: this.passwordMatchValidator});
     this.name = this.group.name;
 }

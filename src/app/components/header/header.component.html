@@ -45,7 +45,8 @@
           <li> <a routerLink="/pages/utility-detail"><i class="bx bx-right-arrow-alt"></i>Utility</a></li>
           <li> <a routerLink="/pages/equipment-data"><i class="bx bx-right-arrow-alt"></i>Equipment data</a></li>
           <li> <a routerLink="/pages/package"><i class="bx bx-right-arrow-alt"></i>Package</a></li>
-          <li> <a routerLink="/pages/hospital-data"><i class="bx bx-right-arrow-alt"></i>Hospital classification</a></li>
+          <li> <a routerLink="/pages/hospital-data"><i class="bx bx-right-arrow-alt"></i>Hospital classification</a>
+          </li>
           <li> <a routerLink="/pages/currency"><i class="bx bx-right-arrow-alt"></i>Currency</a></li>
         </ul>
       </li>
@@ -56,9 +57,12 @@
           <div class="menu-title">Administrator</div>
         </a>
         <ul class="administrator">
-          <li class="dropdown-item"> <a routerLink="/pages/admin-user"><i class="bx bx-right-arrow-alt"></i>User</a></li>
-          <li class="dropdown-item"> <a routerLink="/pages/admin-group"><i class="bx bx-right-arrow-alt"></i>Group</a></li>
-          <li class="dropdown-item"> <a routerLink="/pages/access-level"><i class="bx bx-right-arrow-alt"></i>User access
+          <li class="dropdown-item"> <a routerLink="/pages/admin-user"><i class="bx bx-right-arrow-alt"></i>User</a>
+          </li>
+          <li class="dropdown-item"> <a routerLink="/pages/admin-group"><i class="bx bx-right-arrow-alt"></i>Group</a>
+          </li>
+          <li class="dropdown-item"> <a routerLink="/pages/access-level"><i class="bx bx-right-arrow-alt"></i>User
+              access
               level</a></li>
           <li class="dropdown-item"> <a routerLink="/pages/activity-log"><i class="bx bx-right-arrow-alt"></i>Activities
               log</a></li>
@@ -96,12 +100,13 @@
         <div ngbDropdown class="d-flex align-items-center ms-3">
           <a class="nav-link text-white" id="dropdownBasic1" ngbDropdownToggle><img
               src="assets/images/avatars/avatar-1.png" class="img-fluid rounded-circle me-3" alt="user" width="40">
-            Hi Admin
+            Hi {{userDetails?.userName}}
           </a>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1" id="dropdown-menu">
             <ul class="user-inf mb-0">
               <!-- <li><a class="dropdown-item" routerLink="/pages/"><i class="bx bx-user"></i><span>Profile</span></a></li> -->
-              <li><a class="dropdown-item" routerLink="/"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
+              <li>
+                <a class="dropdown-item" (click)="logout()"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
               </li>
 
             </ul>

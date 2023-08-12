@@ -72,16 +72,16 @@
                   <textarea class="form-control" id="inputAddress" placeholder="Remarks..." rows="2"
                     formControlName="remarks"></textarea>
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                   <label for="Current" class="form-label">Current Password</label>
                   <input type="password" class="form-control" id="Current" placeholder="Current Password"
-                    formControlName="CurrentPassword" autocomplete="off"
-                    [ngClass]="{'is-invalid':submitted && userForm.controls['CurrentPassword'].errors}" />
+                    formControlName="password" autocomplete="off"
+                    [ngClass]="{'is-invalid':submitted && userForm.controls['password'].errors}" />
                   <div class="text-danger"
-                    *ngIf="submitted && userForm.controls['CurrentPassword'].errors && userForm.controls['CurrentPassword'].errors?.['required']">
+                    *ngIf="submitted && userForm.controls['password'].errors && userForm.controls['password'].errors?.['required']">
                     Current Password is required
                   </div>
-                </div>
+                </div> -->
 
                 <div class="col-md-6">
                   <label for="Contact" class="form-label">Password</label>

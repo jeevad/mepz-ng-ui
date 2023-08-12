@@ -15,17 +15,26 @@
                   </p>
                 </div>
                 <div class="form-body">
-                  <form class="row g-3">
+                  <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
                     <div class="col-12">
-                      <label for="inputEmailAddress" class="form-label">Email Address </label>
-                      <input type="email" class="form-control" id="inputEmailAddress" placeholder="Email Address ">
+                      <label for="inputUsernameAddress" class="form-label">Username</label>
+                      <input type="text" formControlName="username" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" id="inputUsernameAddress"
+                        placeholder="Username" />
+                      <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                        <div *ngIf="f['username'].errors?.['required']">Username is required</div>
+                      </div>
                     </div>
                     <div class="col-12">
-                      <label for="inputChoosePassword" class="form-label">Enter Password</label>
+                      <label for="inputChoosePassword" class="form-label">Password</label>
                       <div class="input-group" id="show_hide_password">
-                        <input type="password" class="form-control border-end-0" id="inputChoosePassword"
-                          value="123456789" placeholder="Enter Password"> <a href="javascript:;"
-                          class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+                        <input type="password" formControlName="password" class="form-control border-end-0"
+                          id="inputChoosePassword" value="123456789" placeholder="Enter Password"
+                          [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+                        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                          <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+                        </div>
+                        <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -38,10 +47,46 @@
                     </div>
                     <div class="col-12">
                       <div class="d-grid">
-                        <a routerLink="/pages/dashboard" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Sign in</a>
+                        <!-- <a routerLink="/pages/dashboard" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Sign
+                          in</a> -->
+                        <button [disabled]="submitting" class="btn btn-primary">
+                          <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+                          <i class="bx bxs-lock-open"></i>Sign
+                          in
+                        </button>
                       </div>
                     </div>
                   </form>
+                  <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                      <label class="form-label">Username</label>
+                      <input type="text" formControlName="username" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
+                      <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                        <div *ngIf="f['username'].errors?.['required']">Username is required</div>
+                        <div *ngIf="f['username'].errors?.['username']">Username is invalid</div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Password</label>
+                      <input type="password" formControlName="password" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+                      <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="mb-3 col">
+                        <button [disabled]="submitting" class="btn btn-primary">
+                          <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+                          Login
+                        </button>
+                      </div>
+                      <div class="mb-3 col text-end">
+                        <a routerLink="../forgot-password" class="btn btn-link pe-0">Forgot Password?</a>
+                      </div>
+                    </div>
+                  </form> -->
                 </div>
               </div>
             </div>

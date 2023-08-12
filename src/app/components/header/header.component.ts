@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Account, Role } from '@app/_models';
+import { AccountService } from '@app/_services';
 import * as $ from 'jquery';
 import 'metismenu';
 
@@ -12,7 +14,20 @@ import 'metismenu';
 export class HeaderComponent implements OnInit {
   isMenuOpened: boolean = false;
 
-  constructor() {}
+  Role = Role;
+  account?: Account | null;
+  userDetails: any;
+
+  constructor(private accountService: AccountService) {
+    // this.accountService.account.subscribe((x) => (this.account = x));
+    console.log('this.accountService.accountValue',this.accountService.accountValue);
+    this.userDetails = this.accountService.accountValue;
+    
+  }
+
+  logout() {
+    this.accountService.logout();
+  }
 
   ngOnInit(): void {
     $(function () {

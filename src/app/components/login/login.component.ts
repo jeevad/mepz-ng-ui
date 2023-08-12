@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { FormBuilder, FormGroup, NgModel, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AccountService, AlertService } from '@app/_services';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +10,65 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  submit(login: any) {
-    console.log('form submitted', login);
+  // submit(login: any) {
+  //   console.log('form submitted', login);
+  // }
+
+  // logmsg(value: string) {
+  //   console.log(value);
+  // }
+
+  form!: FormGroup;
+  submitting = false;
+  submitted = false;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private accountService: AccountService,
+    private alertService: AlertService
+  ) {}
+
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      // email: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
   }
 
-  logmsg(value: string) {
-    console.log(value);
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.form.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // reset alerts on submit
+    this.alertService.clear();
+
+    // stop here if form is invalid
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.submitting = true;
+    
+    this.accountService
+      .login(this.f['username'].value, this.f['password'].value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          // get return url from query parameters or default to home page
+          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+          this.router.navigateByUrl(returnUrl);
+        },
+        error: (error: any) => {
+          this.alertService.error(error);
+          this.submitting = false;
+        },
+      });
   }
 }
