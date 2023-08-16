@@ -70,9 +70,21 @@
                 </div>
                 <div class="col-md-6">
                   <label for="inputCity" class="form-label">Valid Until</label>
-                  <input type="text" class="form-control" id="inputCity" placeholder="Enter Valid Until"
+                  <!-- <input type="text" class="form-control" id="inputCity" placeholder="Enter Valid Until"
                     formControlName="valid" autocomplete="off"
-                    [ngClass]="{'is-invalid': submitted && userForm.controls['valid'].errors}" />
+                    [ngClass]="{'is-invalid': submitted && userForm.controls['valid'].errors}" /> -->
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="dp"
+                        formControlName="valid"
+                        ngbDatepicker
+                        #d="ngbDatepicker"
+                        [ngClass]="{'is-invalid': submitted && userForm.controls['valid'].errors}"
+                      />
+                      <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+                    </div>
                   <div class="text-danger" *ngIf="submitted && userForm.controls['valid'].errors?.['required']">
                     Valid Until is required</div>
                 </div>

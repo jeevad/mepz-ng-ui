@@ -18,9 +18,7 @@ export class AdminGroupComponent implements OnInit {
   count: number = 0;
   groupdata: any[] = [];
   name: any;
-  constructor(private group: AdminGroupService, private http: HttpClient) {
-    this.LoadGroupData();
-  }
+  constructor(private group: AdminGroupService) {}
 
   LoadGroupData() {
     this.skip = this.limit * (this.page - 1);

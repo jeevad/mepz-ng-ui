@@ -7,8 +7,8 @@ import { environment } from '../../../environments/environment';
 })
 export class ActivitiesService {
   constructor(private http: HttpClient) {}
-  LoadGroupData(skip: number, limit: number) {
-    return this.http.get(environment.apiUrl + '/admingroup', {
+  findAll(skip: number, limit: number) {
+    return this.http.get(environment.apiUrl + '/activity-logs', {
       params: { skip, limit },
     });
   }

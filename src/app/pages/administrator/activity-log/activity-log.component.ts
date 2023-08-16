@@ -14,22 +14,27 @@ export class ActivityLogComponent implements OnInit {
   count: number = 0;
   activityData: any[] = [];
 
-  constructor(private group: ActivitiesService, private http: HttpClient) {
-    this.LoadGroupData();
-  }
-  LoadGroupData() {
+  constructor(private group: ActivitiesService) {}
+  findAll() {
     this.skip = this.limit * (this.page - 1);
-    this.group.LoadGroupData(this.skip, this.limit).subscribe((data: any) => {
+    this.group.findAll(this.skip, this.limit).subscribe((data: any) => {
       this.activityData = data.results;
       this.count = data.count;
     });
   }
+
+  changePageLimit() {
+    this.skip = 0;
+    this.findAll();
+  }
   delete(id: any) {
     if (confirm('delete?')) {
       this.group.Removedata(id).subscribe((data) => {
-        this.LoadGroupData();
+        this.findAll();
       });
     }
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.findAll();
+  }
 }

@@ -35,6 +35,13 @@ export class ProjectService {
     );
   }
 
+  updateAccessLevel(payload: any) {
+    return this.http.patch(
+      environment.apiUrl + '/project/updateAccessLevel',
+      payload
+    );
+  }
+
   Removedata(id: any) {
     return this.http.delete(environment.apiUrl + '/project/' + id);
   }
@@ -81,8 +88,11 @@ export class ProjectService {
 
   //new test
   getDepartmentEquipments(projectId: string, departmentId: string) {
-    return this.http.get(environment.apiUrl + '/project/getDepartmentEquipments', {
-      params: { projectId, departmentId },
-    });
+    return this.http.get(
+      environment.apiUrl + '/project/getDepartmentEquipments',
+      {
+        params: { projectId, departmentId },
+      }
+    );
   }
 }

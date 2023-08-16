@@ -51,7 +51,7 @@ export class UserFormComponent implements OnInit {
     this.userForm = this.formBuilder.group(
       {
         userName: ['', Validators.required],
-        staffId: ['', Validators.required],
+        staffId: [0, Validators.required],
         admin: ['', Validators.required],
         active: [true, Validators.required],
         group: ['', Validators.required],
@@ -93,18 +93,19 @@ export class UserFormComponent implements OnInit {
   }
 
   SaveUserData() {
+    this.userForm.value.valid = new Date(
+      this.userForm.value.valid.year,
+      this.userForm.value.valid.month,
+      this.userForm.value.valid.day
+    );
     if (!this.isEdit) {
       this.submitted = true;
       if (this.userForm.valid) {
-        this.group
-          .SaveUserData(this.userForm.value)
-
-          .subscribe((result) => {
-            console.log(this.userForm.value);
-
-            console.log('result', result);
-            this.router.navigate(['/admin-user']);
-          });
+        this.group.SaveUserData(this.userForm.value).subscribe((result) => {
+          console.log(this.userForm.value);
+          console.log('result', result);
+          this.router.navigate(['/pages/admin-user']);
+        });
       }
     } else if (this.isEdit) {
       this.submitted = true;
@@ -113,7 +114,7 @@ export class UserFormComponent implements OnInit {
           .update(this.roomid, this.userForm.value)
           .subscribe((data) => {
             this.isEdit = false;
-            this.router.navigate(['/admin-user']);
+            this.router.navigate(['/pages/admin-user']);
           });
       }
     }

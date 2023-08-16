@@ -9,7 +9,7 @@
                 <div class="position-relative d-flex">
                   <!--select-->
                   <label class="form-label me-2">Show </label>
-                  <select class="single-select form-select me-2">
+                  <select class="single-select form-select me-2" [(ngModel)]="limit" (change)="changePageLimit()">
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
@@ -34,13 +34,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>110</td>
-                      <td>Admin</td>
-                      <td>User visited <strong>admin - acl</strong></td>
-                      <td>2023-02-09 17:38:43</td>
+                    <tr *ngFor="let log of activityData;let i=index;">
+                      <td>{{ skip + i+1 }}</td>
+                      <td>{{log?.user?.userName}}</td>
+                      <td>{{log.pageName}}</td>
+                      <td>{{log.createdAt}}</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td>115</td>
                       <td>Admin</td>
                       <td>User visited <strong>admin - Project</strong></td>
@@ -69,12 +69,12 @@
                       <td>Admin</td>
                       <td>User visited <strong>admin - Add Group</strong></td>
                       <td>2023-02-09 17:38:43</td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                   <tfoot>
                     <tr>
                       <td colspan="5">
-                        <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="LoadGroupData()"
+                        <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="findAll()"
                           aria-label="Default pagination"></ngb-pagination>
                         <pre>Current page: {{ page }}</pre>
                       </td>
