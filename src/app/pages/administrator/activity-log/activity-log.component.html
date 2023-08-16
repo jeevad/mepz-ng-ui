@@ -27,9 +27,9 @@
                   ">
                   <thead class="table-light">
                     <tr>
-                      <th>Activity Id</th>
+                      <th>S.no</th>
                       <th>User</th>
-                      <th>Action</th>
+                      <th style="width: 300px;">Action</th>
                       <th>TimeStamp</th>
                     </tr>
                   </thead>
@@ -37,7 +37,7 @@
                     <tr *ngFor="let log of activityData;let i=index;">
                       <td>{{ skip + i+1 }}</td>
                       <td>{{log?.user?.userName}}</td>
-                      <td>{{log.pageName}}</td>
+                      <td>{{log.action}}</td>
                       <td>{{log.createdAt}}</td>
                     </tr>
                     <!-- <tr>
