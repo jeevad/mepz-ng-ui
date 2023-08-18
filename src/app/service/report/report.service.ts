@@ -2,96 +2,118 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-export const REPORT_TYPE = {
-  'equipment-location-listing': {
+export const REPORT_TYPE = [
+  {
     title: 'equipment-location-listing',
+    key: 'equipment-location-listing',
     format: ['pdf', 'excel'],
   },
-  'department-list': {
-    title: 'equipment-location-listing',
+  {
+    title: 'department-list',
+    key: 'department-list',
     format: ['pdf', 'excel'],
   },
-  'room-listing': {
-    title: 'equipment-location-listing',
+  {
+    title: 'room-listing',
+    key: 'room-listing',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-bq': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-bq',
+    key: 'equipment-listing-bq',
     format: ['pdf', 'excel'],
   },
-  'disabled-equipment-listing-bq': {
-    title: 'equipment-location-listing',
+  {
+    title: 'disabled-equipment-listing-bq',
+    key: '',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-by-department': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-by-department',
+    key: 'equipment-listing-by-department',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-by-department-and-room': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-by-department-and-room',
+    key: 'equipment-listing-by-department-and-room',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-by-department-and-room-disabled': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-by-department-and-room-disabled',
+    key: 'equipment-listing-by-department-and-room-disabled',
     format: ['pdf', 'excel'],
   },
-  'equipment-room-to-room-variation': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-room-to-room-variation',
+    key: 'equipment-room-to-room-variation',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-by-floor': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-by-floor',
+    key: 'equipment-listing-by-floor',
     format: ['pdf', 'excel'],
   },
-  'power-requirement': {
-    title: 'equipment-location-listing',
+  {
+    title: 'power-requirement',
+    key: 'power-requirement',
     format: ['pdf', 'excel'],
   },
-  'power-requirement-for-rds': {
-    title: 'equipment-location-listing',
+  {
+    title: 'power-requirement-for-rds',
+    key: 'power-requirement-for-rds',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-for-rds': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-for-rds',
+    key: 'equipment-listing-for-rds',
     format: ['pdf', 'excel'],
   },
-  'equipment-specs': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-specs',
+    key: 'equipment-specs',
     format: ['pdf', 'excel'],
   },
-  'equipment-brands': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-brands',
+    key: 'equipment-brands',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-bq-by-group': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-bq-by-group',
+    key: 'equipment-listing-bq-by-group',
     format: ['pdf', 'excel'],
   },
-  'summary-of-equipment-variation': {
-    title: 'equipment-location-listing',
+  {
+    title: 'summary-of-equipment-variation',
+    key: 'summary-of-equipment-variation',
     format: ['pdf', 'excel'],
   },
-  'equipment-location-listing-by-group': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-location-listing-by-group',
+    key: 'equipment-location-listing-by-group',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-by-department-by-group': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-by-department-by-group',
+    key: 'equipment-listing-by-department-by-group',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-by-department-and-room-by-group': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-by-department-and-room-by-group',
+    key: 'equipment-listing-by-department-and-room-by-group',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-bq-with-utility': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-bq-with-utility',
+    key: 'equipment-listing-bq-with-utility',
     format: ['pdf', 'excel'],
   },
-  'equipment-listing-by-department-and-room-with-utility': {
-    title: 'equipment-location-listing',
+  {
+    title: 'equipment-listing-by-department-and-room-with-utility',
+    key: 'equipment-listing-by-department-and-room-with-utility',
     format: ['pdf', 'excel'],
   },
-};
+];
 
 @Injectable({
   providedIn: 'root',
@@ -104,7 +126,6 @@ export class ReportService {
     reportType: string;
     format: string;
   }) {
-    // ?projectId=648977116be3d0e6681effcf&reportType=equipment-listing-by-department
     return this.http.get(environment.apiUrl + '/reports/getEquipmentReports', {
       params: params,
       responseType: 'blob',

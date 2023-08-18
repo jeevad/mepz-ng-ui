@@ -27,15 +27,18 @@
                     <select name="equ_listing" id="equ_listing2" style="width: 100%" class="form-select"
                       fdprocessedid="vc1rn" (change)="onReportTypeChange($event)" [(ngModel)]="selectedReportType">
                       <option value="">Select Report Type</option>
+                      <!-- <option *ngFor="let reportType of reportTypeList" [value]="reportType.key">
+                        {{ reportType.title }}
+                      </option> -->
                       <option value="equipment-location-listing">Equipment Location Listing</option>
                       <option value="department-list">Department list</option>
                       <option value="room-listing">Room Listing</option>
-                      <option value="equipment-listing(bq)">Equipment Listing(BQ)</option>
-                      <option value="disabled-equipment-listing(bq)">Disabled Equipment Listing(BQ)</option>
+                      <option value="equipment-listing-bq">Equipment Listing(BQ)</option>
+                      <option value="disabled-equipment-listing-bq">Disabled Equipment Listing(BQ)</option>
                       <option value="equipment-listing-by-department"> Equipment Listing by Department</option>
                       <option value="equipment-listing-by-department-and-room"> Equipment Listing by Department and Room
                       </option>
-                      <option value="equipment-listing-by-department-and-room(disabled)"> Equipment Listing by
+                      <option value="equipment-listing-by-department-and-room-disabled"> Equipment Listing by
                         Department and Room(Disabled)</option>
                       <option value="equipment-room-to-room-variation"> Equipment Room to Room variation</option>
                       <option value="equipment-listing-by-floor"> Equipment Listing by Floor</option>
@@ -44,14 +47,14 @@
                       <option value="equipment-listing-for-rds"> Equipment Listing for RDS </option>
                       <option value="equipment-specs"> Equipment Specs</option>
                       <option value="equipment-brands"> Equipment Brands</option>
-                      <option value="equipment-listing(bq)-by-group"> Equipment Listing(BQ), by Group</option>
+                      <option value="equipment-listing-bq-by-group"> Equipment Listing(BQ), by Group</option>
                       <option value="summary-of-equipment-variation"> Summary of Equipment variation</option>
                       <option value="equipment-location-listing-by-group"> Equipment Location Listing, by Group</option>
                       <option value="equipment-listing-by-department-by-group"> Equipment Listing by Department, by
                         Group</option>
                       <option value="equipment-listing-by-department-and-room-by-group"> Equipment Listing by Department
                         and Room, by Group</option>
-                      <option value="equipment-listing(bq)-with-utility">Equipment Listing(BQ) - With Utility</option>
+                      <option value="equipment-listing-bq-with-utility">Equipment Listing(BQ) - With Utility</option>
                       <option value="equipment-listing-by-department-and-room-with-utility">Equipment Listing by
                         Department and Room - With Utility</option>
                     </select>
@@ -214,9 +217,10 @@
                     Export as
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownManual">
-                    <button ngbDropdownItem (click)="exportData()">PDF</button>
-                    <button ngbDropdownItem (click)="exportData()">PDF - 1 Page</button>
-                    <button ngbDropdownItem (click)="exportData()">EXCEL</button>
+                    <button ngbDropdownItem (click)="exportData(format)"
+                      *ngFor="let format of reportFormats" class="text-uppercase">{{format}}</button>
+                    <!-- <button ngbDropdownItem (click)="exportData()">PDF - 1 Page</button>
+                    <button ngbDropdownItem (click)="exportData()">EXCEL</button> -->
                   </div>
                 </div>
               </div>

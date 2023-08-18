@@ -3,7 +3,10 @@ import { ProjectService } from 'src/app/service/project/project.service';
 // import { DepartmentService } from 'src/app/service/department/department.service';
 // import { RoomService } from 'src/app/service/room/room.service';
 // import { EquipmentService } from 'src/app/service/equipment/equipment.service';
-import { ReportService } from 'src/app/service/report/report.service';
+import {
+  ReportService,
+  REPORT_TYPE,
+} from 'src/app/service/report/report.service';
 import { saveAs } from 'file-saver';
 
 @Component({
@@ -17,7 +20,7 @@ export class ReportsComponent implements OnInit {
   skip = 0;
   projectData: any[] = [];
   selectedProjectId!: string;
-  reportTypeList: string[] = [];
+  reportTypeList = REPORT_TYPE;
   reportFormat!: string;
   // selectedDepartments: any[] = [];
   // deptId!: any;
@@ -34,6 +37,7 @@ export class ReportsComponent implements OnInit {
   // loader = false;
   // equipmentData: any[] = [];
   selectedReportType: string = '';
+  reportFormats: any;
 
   constructor(
     private projectService: ProjectService,
@@ -90,13 +94,17 @@ export class ReportsComponent implements OnInit {
   //   this.projectRooms = [];
   // }
 
-  onReportTypeChange(event: any) {}
+  onReportTypeChange(event: any) {
+    this.reportFormats = this.reportTypeList.find(
+      (item) => item.key === this.selectedReportType
+    )?.format;
+  }
 
-  exportData() {
+  exportData(format: string) {
     const params = {
       projectId: this.selectedProjectId,
       reportType: this.selectedReportType,
-      format: this.reportFormat,
+      format,
     };
     this.reportService.getEquipmentReports(params).subscribe((response) => {
       saveAs(response, `${this.selectedReportType}.pdf`);
