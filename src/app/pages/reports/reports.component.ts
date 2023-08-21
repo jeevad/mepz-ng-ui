@@ -8,6 +8,7 @@ import {
   REPORT_TYPE,
 } from 'src/app/service/report/report.service';
 import { saveAs } from 'file-saver';
+import { GroupsService } from '@app/service/groups/groups.service';
 
 @Component({
   selector: 'app-reports',
@@ -20,12 +21,14 @@ export class ReportsComponent implements OnInit {
   skip = 0;
   projectData: any[] = [];
   selectedProjectId!: string;
+  selectedRoom!: string;
+  selectedGroup!: string;
   reportTypeList = REPORT_TYPE;
   reportFormat!: string;
   // selectedDepartments: any[] = [];
   // deptId!: any;
   // projectId: any;
-  // projectRooms: any[] = [];
+  projectRooms: any[] = [];
   // otherProjectId: string[] = [];
   // otherDepartmentId: any = '';
   // otherRoomId: any = '';
@@ -38,9 +41,11 @@ export class ReportsComponent implements OnInit {
   // equipmentData: any[] = [];
   selectedReportType: string = '';
   reportFormats: any;
+  groupsList: any;
 
   constructor(
     private projectService: ProjectService,
+    private groups: GroupsService,
     // private departmentService: DepartmentService,
     // private equipmentService: EquipmentService,
     // private room: RoomService
@@ -49,6 +54,7 @@ export class ReportsComponent implements OnInit {
 
   ngOnInit() {
     this.loadProjects();
+    this.groupList();
   }
 
   // Method to load all projects in a dropdown
@@ -61,21 +67,26 @@ export class ReportsComponent implements OnInit {
   }
 
   // Method to retrieve all rooms for the currently selected project
-  // getCurrentProjectRooms() {
-  //   const filterEquipmentDto: any = {
-  //     projectId: [this.selectedProjectId],
-  //   };
-  //   this.projectService.getAllRooms(0, 1000, filterEquipmentDto).subscribe(
-  //     (data: any) => {
-  //       this.projectRooms = data.results[0]?.data || [];
-  //       console.log('Project Rooms: ', this.projectRooms);
-  //     },
-  //     (error: any) => {
-  //       console.error('Error: ', error);
-  //     }
-  //   );
-  // }
+  getCurrentProjectRooms() {
+    const filterEquipmentDto: any = {
+      projectId: [this.selectedProjectId],
+    };
+    this.projectService.getAllRooms(0, 1000, filterEquipmentDto).subscribe(
+      (data: any) => {
+        this.projectRooms = data.results[0]?.data || [];
+        console.log('Project Rooms: ', this.projectRooms);
+      },
+      (error: any) => {
+        console.error('Error: ', error);
+      }
+    );
+  }
 
+  groupList() {
+    this.groups.Find(this.skip, this.limit).subscribe((data: any) => {
+      this.groupsList = data.results;
+    });
+  }
   // Method to load data from the master equipment list
   // loadFromMaster() {
   //   this.equipmentService.Load(this.skip, this.limit).subscribe((data: any) => {
@@ -98,14 +109,34 @@ export class ReportsComponent implements OnInit {
     this.reportFormats = this.reportTypeList.find(
       (item) => item.key === this.selectedReportType
     )?.format;
+    this.getCurrentProjectRooms();
+    this.groupList();
+  }
+
+  getSelectedGroup() {
+    return this.groupsList
+      .filter((item: any) => item.isChecked)
+      .map((item: any) => item.name);
+  }
+
+  getSelectedRoom() {
+    return this.projectRooms
+      .filter((room: any) => room.departments.rooms.isChecked)
+      .map((room: any) => room.departments.rooms._id);
   }
 
   exportData(format: string) {
     const params = {
       projectId: this.selectedProjectId,
       reportType: this.selectedReportType,
+      group: this.getSelectedGroup(),
+      roomId: this.getSelectedRoom(),
       format,
     };
+    // console.log('getSelectedRoom', this.getSelectedRoom());
+    // console.log('params', params);
+    // return;
+
     this.reportService.getEquipmentReports(params).subscribe((response) => {
       saveAs(response, `${this.selectedReportType}.pdf`);
     });

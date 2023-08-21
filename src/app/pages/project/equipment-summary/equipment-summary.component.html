@@ -42,7 +42,7 @@
       <div class="col-md-12 mt-4">
         <div class="card p-3">
           <div class="card-body">
-            <table id="example" class="display" cellspacing="0" width="100%">
+            <table id="example" class="display table" cellspacing="0" width="100%">
               <thead>
 
                 <tr role="row">
@@ -86,13 +86,14 @@
                       [type]="'equipment'" [inputsize]="100"></app-edit-input>
                   </td>
                   <td class=" editablex">
-                    <app-edit-input [data]="eqp.departments.rooms.equipments.unitPrice || 0" [equipmentIndex]="eqp.arrayIndex"
-                      [departmentId]="eqp.departments._id" [roomId]="eqp.departments.rooms._id" [field]="'unitPrice'"
-                      [projectId]="projectId" [type]="'equipment'" [inputsize]="100"></app-edit-input>
+                    <app-edit-input [data]="eqp.departments.rooms.equipments.unitPrice || 0"
+                      [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departments._id"
+                      [roomId]="eqp.departments.rooms._id" [field]="'unitPrice'" [projectId]="projectId"
+                      [type]="'equipment'" [inputsize]="100"></app-edit-input>
                   </td>
                   <td>{{ loadFromMasterData[i]?.markUp }}</td>
                   <td>27,600.00</td>
-                  <td>{{ loadFromMasterData[i]?.equipmentPower?.group }}</td> 
+                  <td>{{ loadFromMasterData[i]?.equipmentPower?.group }}</td>
                   <td>{{ loadFromMasterData[i]?.utility }}</td>
                   <td>{{ loadFromMasterData[i]?.remarks }}</td>
                   <td>{{ loadFromMasterData[i]?.labels }}</td>

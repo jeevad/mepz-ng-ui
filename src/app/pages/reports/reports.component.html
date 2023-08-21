@@ -95,7 +95,8 @@
                 </div>
               </div>
               <hr>
-              <!-- <div class="col-md-12 mt-2 mb-4" *ngIf="selectedReportType === '111' && projectRooms.length > 0">
+              <div class="col-md-12 mt-2 mb-4" *ngIf="selectedReportType === 'equipment-listing-by-department-and-room' 
+                && projectRooms.length > 0">
                 <div>
                   <strong>Room List</strong>
                 </div>
@@ -104,7 +105,8 @@
                     <li *ngFor="let room of projectRooms">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" [value]="room.roomId">
+                          <input type="checkbox" [value]="room.departments.rooms._id"
+                            [(ngModel)]="room.departments.rooms.isChecked" name="rooms">
                           {{ room.departments.rooms.code }} - {{ room.departments.rooms.name }}
                         </label>
                       </div>
@@ -112,72 +114,15 @@
                   </ul>
                 </div>
               </div>
-              <hr> -->
+              <hr>
               <div class="col-md-6 labels-check mt-2 mb-4">
                 <div class="pull-right">
                   <strong>By Group</strong>
                 </div>
                 <div class="overflow-auto">
-                  <div class="checkbox"><label><input type="checkbox" value="G1 (Major Equipment)"> G1 (Major
-                      Equipment)</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="G1 (Medical Mechanical)"> G1 (Medical
-                      Mechanical)</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="G1 (Medical Electrical)"> G1 (Medical
-                      Electrical)</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="G3 (Loose Medical Equipment)"> G3 (Loose
-                      Medical Equipment)</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="G3 (Non Medical Equipment)"> G3 (Non
-                      Medical Equipment)</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="Loose Furniture"> Loose Furniture</label>
-                  </div>
-                  <div class="checkbox"><label><input type="checkbox" value="Non Medical Furniture"> Non Medical
-                      Furniture</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="Vehicle"> Vehicle</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="G2 (Existing/Relocating)"> G2
-                      (Existing/Relocating)</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="G4 (Consumables)"> G4 (Consumables)</label>
-                  </div>
-                  <div class="checkbox"><label><input type="checkbox" value="G4 (Non medical equipment)"> G4 (Non
-                      medical equipment)</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="G2ME (relocation related to M&amp;E)"> G2ME
-                      (relocation related to M&amp;E)</label></div>
-                  <div class="checkbox"><label><input type="checkbox"
-                        value="G2LM (relocation related to Loose medical)"> G2LM (relocation related to Loose
-                      medical)</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="G2NM (relocation related to non medical)">
-                      G2NM (relocation related to non medical)</label></div>
-                  <div class="checkbox"><label><input type="checkbox"
-                        value="G2LF (relocation related to loose furniture)"> G2LF (relocation related to loose
-                      furniture)</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="GROUP 1 MEDICAL EQUIPMENT"> GROUP 1 MEDICAL
-                      EQUIPMENT</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="Residential Furniture"> Residential
-                      Furniture</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="Residential Equipment"> Residential
-                      Equipment</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="Architectural"> Architectural</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="Mechanical"> Mechanical</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="Electrical"> Electrical</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="ICT"> ICT</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="Others"> Others</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="No Equipment"> No Equipment</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="Medical furniture"> Medical
-                      furniture</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="ACCESSORIES"> ACCESSORIES</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="SOCSO MEDICAL EQUIPMENT"> SOCSO MEDICAL
-                      EQUIPMENT</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="PERKESO MEDICAL/REHAB EQUIPMENT"> PERKESO
-                      MEDICAL/REHAB EQUIPMENT</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="OPERATIONAL/NON MEDICAL EQUIPMENT">
-                      OPERATIONAL/NON MEDICAL EQUIPMENT</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="ID FURNITURE"> ID FURNITURE</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="KITCHEN EQUIPMENT"> KITCHEN
-                      EQUIPMENT</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="AUDIOVISUAL"> AUDIOVISUAL</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="VOCATIONAL EQUIPMENT"> VOCATIONAL
-                      EQUIPMENT</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="FUTURE"> FUTURE</label></div>
-                  <div class="checkbox"><label><input type="checkbox" value="TESTNEW"> TESTNEW</label></div>
+                  <div class="checkbox" *ngFor="let group of groupsList"><label><input type="checkbox"
+                        [value]="group.name" [(ngModel)]="group.isChecked" name="group"> {{group.name}}
+                    </label></div>
                 </div>
               </div>
               <div class="col-md-6 mt-2">
@@ -217,8 +162,8 @@
                     Export as
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownManual">
-                    <button ngbDropdownItem (click)="exportData(format)"
-                      *ngFor="let format of reportFormats" class="text-uppercase">{{format}}</button>
+                    <button ngbDropdownItem (click)="exportData(format)" *ngFor="let format of reportFormats"
+                      class="text-uppercase">{{format}}</button>
                     <!-- <button ngbDropdownItem (click)="exportData()">PDF - 1 Page</button>
                     <button ngbDropdownItem (click)="exportData()">EXCEL</button> -->
                   </div>

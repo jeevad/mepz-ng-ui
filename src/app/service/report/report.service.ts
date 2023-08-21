@@ -125,7 +125,20 @@ export class ReportService {
     projectId: string;
     reportType: string;
     format: string;
+    roomId?: any[];
+    group?: any[];
   }) {
+    let room: any = [];
+    params?.roomId?.forEach((item: any, i: number) => {
+      room[`roomId[${i}]`] = item;
+    });
+    let group: any = [];
+    params?.group?.forEach((item: any, i: number) => {
+      room[`group[${i}]`] = item;
+    });
+    delete params.roomId;
+    delete params.group;
+    params = { ...params, ...room, ...group };
     return this.http.get(environment.apiUrl + '/reports/getEquipmentReports', {
       params: params,
       responseType: 'blob',
