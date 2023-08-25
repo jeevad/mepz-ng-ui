@@ -138,30 +138,32 @@
           <div class="d-flex justify-content-center align-items-center bg-light">
             <div class="card p-3 shadow">
               <h4>Add Room</h4>
-              <table id="example1" class="display" cellspacing="0" width="100%">
-                <thead>
-                  <tr role="row">
-                    <th>Qty</th>
-                    <th>Room</th>
-                    <th>Code</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of roomData">
-                    <td>
-                      <!-- This is Qty -->
-                      <select [(ngModel)]="item.selectedQuantity" name="rm_code" fdprocessedid="c8ea2k">
-                        <option [ngValue]="0">0</option>
-                        <option *ngFor="let option of selectOptions" [value]="option.value">
-                          {{ option.label }}
-                        </option>
-                      </select>
-                    </td>
-                    <td>{{ item.name | uppercase}}</td>
-                    <td>{{ item.code | uppercase}}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table id="example1" class="display" cellspacing="0" width="100%">
+                  <thead>
+                    <tr role="row">
+                      <th>Qty</th>
+                      <th>Room</th>
+                      <th>Code</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of roomData">
+                      <td>
+                        <!-- This is Qty -->
+                        <select [(ngModel)]="item.selectedQuantity" name="rm_code" fdprocessedid="c8ea2k">
+                          <option [ngValue]="0">0</option>
+                          <option *ngFor="let option of selectOptions" [value]="option.value">
+                            {{ option.label }}
+                          </option>
+                        </select>
+                      </td>
+                      <td>{{ item.name | uppercase}}</td>
+                      <td>{{ item.code | uppercase}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" (click)="saveRoomData()">Add</button>
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>

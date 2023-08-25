@@ -121,26 +121,28 @@
         <div class="modal-body">
           <div class="d-flex justify-content-center align-items-center bg-light">
             <div class="card p-3 shadow">
-              <table id="example1" class="example table dt-responsive nowrap display" cellspacing="0" width="100%">
-                <thead>
-                  <tr role="row">
-                    <th></th>
-                    <th>Department</th>
-                    <th>Code</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of departmentData; let i=index;">
-                    <td>
-                      <input class="checkbox" type="checkbox" name="{{item.name}}" value="{{item.code}}"
-                        [(ngModel)]="item.selected">
-                    </td>
-                    <td>{{item.name | uppercase}}</td>
-                    <td>{{item.code | uppercase}}</td>
-                  </tr>
+              <div class="table-responsive">
+                <table id="example1" class="example table dt-responsive nowrap display" cellspacing="0" width="100%">
+                  <thead>
+                    <tr role="row">
+                      <th></th>
+                      <th>Department</th>
+                      <th>Code</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of departmentData; let i=index;">
+                      <td>
+                        <input class="checkbox" type="checkbox" name="{{item.name}}" value="{{item.code}}"
+                          [(ngModel)]="item.selected">
+                      </td>
+                      <td>{{item.name | uppercase}}</td>
+                      <td>{{item.code | uppercase}}</td>
+                    </tr>
 
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+              </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="add_department"
                   (click)="addDepartments()">Add</button>
