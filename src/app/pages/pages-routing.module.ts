@@ -11,8 +11,8 @@ import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { AddRoomComponent } from './add-room/add-room.component';
 import { UtilityDetailComponent } from './utility-detail/utility-detail.component';
 import { AddUtilityComponent } from './add-utility/add-utility.component';
-import { EquipmentDetailComponent } from './equipment-detail/equipment-detail.component';
-import { AddEquipmentComponent } from './add-equipment/add-equipment.component';
+// import { EquipmentDetailComponent } from './equipment-detail/equipment-detail.component';
+// import { AddEquipmentComponent } from './add-equipment/add-equipment.component';
 import { PackageComponent } from './package/package.component';
 import { AddPackageComponent } from './add-package/add-package.component';
 import { HospitalClassificationComponent } from './hospital-classification/hospital-classification.component';
@@ -27,8 +27,8 @@ import { EquipmentSummaryComponent } from './project/equipment-summary/equipment
 import { DepartmentTransactionComponent } from './project/department-transaction/department-transaction.component';
 import { PastTransactionComponent } from './project/past-transaction/past-transaction.component';
 import { ReportsComponent } from './reports/reports.component';
-import { EquipmentSpecificationComponent } from './equipment-specification/equipment-specification.component';
-import { EquipmentBrandComponent } from './equipment-brand/equipment-brand.component';
+// import { EquipmentSpecificationComponent } from './equipment-specification/equipment-specification.component';
+// import { EquipmentBrandComponent } from './equipment-brand/equipment-brand.component';
 import { ReportsByPackageComponent } from './reports-by-package/reports-by-package.component';
 // import { TemplateDepartmentComponent } from './template-department/template-department.component';
 import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
@@ -39,13 +39,18 @@ import { ProjectEditComponent } from './project/project-edit/project-edit.compon
 import { AddProjectComponent } from './project/add-project/add-project.component';
 // import { ProjectTemplateEquipmentComponent } from './project-template-equipment/project-template-equipment.component';
 import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
-import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
+// import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
 import { UserFormComponent } from './administrator/users/user-form/user-form.component';
 import { AdminUserComponent } from './administrator/users/admin-user/admin-user.component';
 import { AdminGroupComponent } from './administrator/group/admin-group/admin-group.component';
 import { AdminGroupFormComponent } from './administrator/group/admin-group-form/admin-group-form.component';
 import { ActivityLogComponent } from './administrator/activity-log/activity-log.component';
 import { AccessLevelComponent } from './administrator/access-level/access-level.component';
+import { EquipmentDetailComponent } from './master-file/equipments/equipment-detail/equipment-detail.component';
+import { EquipmentSpecificationComponent } from './master-file/equipments/equipment-specification/equipment-specification.component';
+import { EquipmentBrandComponent } from './master-file/equipments/equipment-brand/equipment-brand.component';
+import { EditEquipmentComponent } from './master-file/equipments/edit-equipment/edit-equipment.component';
+import { AddEquipmentComponent } from './master-file/equipments/add-equipment/add-equipment.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },

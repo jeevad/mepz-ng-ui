@@ -58,7 +58,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
     NgIf,
     MatIconModule,
     LoaderComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
 })
 export class PagesModule {}
