@@ -14,6 +14,7 @@ export class AdminUserComponent implements OnInit {
   skip = 0;
   count: number = 0;
   userdata: any[] = [];
+  loader: boolean = false;
 
   constructor(private service: UsermodelService, private http: HttpClient) {
     this.find();
@@ -23,12 +24,14 @@ export class AdminUserComponent implements OnInit {
     this.find();
   }
   find() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.service.find(this.skip, this.limit).subscribe((data: any) => {
       console.log(data);
       this.userdata = data.results;
       this.count = data.count;
       console.log(data.count);
+      this.loader = false;
     });
   }
 

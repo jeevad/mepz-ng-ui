@@ -55,19 +55,22 @@ export class CompanyFormComponent implements OnInit {
       show2: false,
       logo3: [''],
       show3: false,
-      contact: [
-        '',
-        Validators.compose([Validators.maxLength(10), Validators.required]),
-      ],
-      phone: [
-        '',
-        Validators.compose([Validators.maxLength(10), Validators.required]),
-      ],
+      // contact: [
+      //   '',
+      //   Validators.compose([Validators.maxLength(10), Validators.required]),
+      // ],
+      // phone: [
+      //   '',
+      //   Validators.compose([Validators.maxLength(10), Validators.required]),
+      // ],
       fax: ['', Validators.required],
-      mobile: [
-        '',
-        Validators.compose([Validators.maxLength(10), Validators.required]),
-      ],
+      // mobile: [
+      //   '',
+      //   Validators.compose([Validators.maxLength(10), Validators.required]),
+      // ],
+      contact : ["",[Validators.required,Validators.pattern("^[0-9]*$"),Validators.minLength(10),Validators.maxLength(10)]],
+      mobile : ["",[Validators.required,Validators.pattern("^[0-9]*$"),Validators.minLength(10),Validators.maxLength(10)]],
+      phone : ["",[Validators.required,Validators.pattern("^[0-9]*$"),Validators.minLength(10),Validators.maxLength(10)]],
       email: ['', Validators.compose([Validators.email, Validators.required])],
       file1: [''],
       file2: [''],

@@ -33,6 +33,8 @@ export class ProjectEditComponent implements OnInit{
   selectedCurrency: string | null = '';
   currencies: any[] = []; // Array to hold added currencies
 
+  loader: boolean = false;
+
   constructor(
     private department: ProjectService,
     private router: Router,
@@ -47,6 +49,7 @@ export class ProjectEditComponent implements OnInit{
     this.deptid = this.route.snapshot.paramMap.get('id');
     this.projectType = this.route.snapshot.paramMap.get('projectType');
     this.route.params.subscribe((param) => {
+      this.loader = true;
       if (param && param['id']) {
         this.department.LoadbyID(param['id']).subscribe((resp: any) => {
           this.isEdit = true;
@@ -54,6 +57,7 @@ export class ProjectEditComponent implements OnInit{
           // this.currencies = resp.currencies || [];
           this.currencies = resp.currencies.filter((currency: any) => currency.currencyCode && currency.currencyDescription && currency.currencySymbol);
           console.log('Selected Projects Currencies:', this.currencies);
+          this.loader = false;
           // this.currencies = resp.currencies.filter((currency: any) => currency.projectId === param['id']) || [];
         });
       }
@@ -64,20 +68,21 @@ export class ProjectEditComponent implements OnInit{
       fullName: ['', Validators.required],
       clientOwner: ['', Validators.required],
       contractNo: ['', Validators.required],
-      noOfBeds: [''],
+      noOfBeds: ['',Validators.required],
       classification: ['', Validators.required],
       type: ['', Validators.required],
-      company: ['', Validators.required],
-      dateInitiatedProposal: [''],
-      proposedFacilityCompletionDate: [''],
-      signature1: [''],
-      signature2: [''],
-      address1: [''],
-      address2: [''],
-      city: [''],
-      postalZip: [''],
-      state: [''],
-      country: [''],
+      // company: ['', Validators.required],
+      comp: ['', Validators.required],
+      dateInitiatedProposal: ['',Validators.required],
+      proposedFacilityCompletionDate: ['',Validators.required],
+      signature1: ['',Validators.required],
+      signature2: ['',Validators.required],
+      address1: ['',Validators.required],
+      address2: ['',Validators.required],
+      city: ['',Validators.required],
+      postalZip: ['',Validators.required],
+      state: ['',Validators.required],
+      country: ['',Validators.required],
       // currencyDescription: [''],
       // currencyCode: [''],
       // currencySymbol: ['']
@@ -144,6 +149,7 @@ export class ProjectEditComponent implements OnInit{
   SaveData() {
     this.submitted = true;
     if (this.addDepartment.valid) {
+      this.submitted = false;
       const currencies = this.currencies.map(currency => {
         return {
           currencyCode: currency.code,

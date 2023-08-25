@@ -45,7 +45,6 @@ export class LoginComponent {
 
   onSubmit() {
     this.submitted = true;
-
     // reset alerts on submit
     this.alertService.clear();
 
@@ -55,20 +54,15 @@ export class LoginComponent {
     }
 
     this.submitting = true;
-    
-    this.accountService
-      .login(this.f['username'].value, this.f['password'].value)
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          // get return url from query parameters or default to home page
-          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-          this.router.navigateByUrl(returnUrl);
-        },
-        error: (error: any) => {
-          this.alertService.error(error);
-          this.submitting = false;
-        },
-      });
+    this.accountService.login(this.f['username'].value, this.f['password'].value).pipe(first()).subscribe({next: () => {
+        // get return url from query parameters or default to home page
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.router.navigateByUrl(returnUrl);
+      },
+      error: (error: any) => {
+        this.alertService.error(error);
+        this.submitting = false;
+      },
+    });
   }
 }

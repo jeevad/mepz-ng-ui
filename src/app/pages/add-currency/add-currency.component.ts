@@ -40,7 +40,7 @@ export class AddCurrencyComponent implements OnInit {
     this.addCurrency = this.formBuilder.group({
       code: ['', Validators.required],
       name: ['', Validators.required],
-      symbol: [''],
+      symbol: ['', Validators.required],
     });
   }
 

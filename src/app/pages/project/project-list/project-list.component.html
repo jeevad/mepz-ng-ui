@@ -17,17 +17,14 @@
     </div>
     <div class="col-md-12">
       <div class="card p-3">
-        <div class="card-body">
+        <div class="card-body d-flex flex-column">
           <!-- For search bar -->
           <div class="input-group mb-3" style="width: 300px; float: right;">
             <input type="text" class="form-control form-control" placeholder="Search" [(ngModel)]="searchText"
               (input)="searchProjectList()">
           </div>
-          <div>
-            <!-- <div id="overlay">
-              <i class="fa fa-spinner fa-spin spin-big"></i>
-            </div> -->
-            <app-loader *ngIf="loader"></app-loader>
+          <app-loader *ngIf="loader"></app-loader>
+          <div class="table-responsive">
             <table class="display table loading1" cellspacing="0" width="100%" *ngIf="projectType === 'individual'">
               <thead>
                 <tr>
@@ -84,9 +81,9 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <td colspan="5">
-                    <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Load()"
-                      aria-label="Default pagination"></ngb-pagination>
+                  <td colspan="6" class="text-end">
+                    <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="Load()"
+                      aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
                     <pre>Current page: {{page}}</pre>
                   </td>
                 </tr>
@@ -140,9 +137,8 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <td colspan="6">
-                    <ngb-pagination [collectionSize]="count" [pageSize]="limit" [(page)]="page" (pageChange)="Load()"
-                      aria-label="Default pagination"></ngb-pagination>
+                  <td colspan="6" class="text-end">
+                    <ngb-pagination class="d-inline-block" [collectionSize]="count" [pageSize]="limit" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
                     <pre>Current page: {{page}}</pre>
                   </td>
                 </tr>

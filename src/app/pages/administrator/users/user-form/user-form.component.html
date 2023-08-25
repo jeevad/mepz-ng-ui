@@ -48,7 +48,7 @@
                     <option *ngFor="let admin of admin1" [value]="admin.value">{{ admin.label }}</option>
                   </select>
                   <div class="text-danger" *ngIf="submitted && userForm.controls['admin'].errors?.['required']">
-                    This field is required</div>
+                    Admin is required</div>
                 </div>
                 <div class="col-md-6">
                   <label for="inputState" class="form-label">Active</label>
@@ -57,7 +57,7 @@
                     <option *ngFor="let active of active1" [value]="active.value">{{ active.label }}</option>
                   </select>
                   <div class="text-danger" *ngIf="submitted && userForm.controls['active'].errors?.['required']">
-                    This field is required</div>
+                    Status is required</div>
                 </div>
                 <div class="col-md-6">
                   <label for="inputState" class="form-label">group</label>
@@ -66,7 +66,7 @@
                     <option *ngFor="let name of groupNames" [value]="name">{{ name }}</option>
                   </select>
                   <div class="text-danger" *ngIf="submitted && userForm.controls['group'].errors?.['required']">
-                    This field is required</div>
+                    Group is required</div>
                 </div>
                 <div class="col-md-6">
                   <label for="inputCity" class="form-label">Valid Until</label>
@@ -83,15 +83,17 @@
                         #d="ngbDatepicker"
                         [ngClass]="{'is-invalid': submitted && userForm.controls['valid'].errors}"
                       />
-                      <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+                      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fal fa-calendar"></i></button>
                     </div>
                   <div class="text-danger" *ngIf="submitted && userForm.controls['valid'].errors?.['required']">
                     Valid Until is required</div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <label for="inputAddress" class="form-label">Remarks</label>
                   <textarea class="form-control" id="inputAddress" placeholder="Remarks..." rows="2"
-                    formControlName="remarks"></textarea>
+                    formControlName="remarks" [ngClass]="{'is-invalid': submitted && userForm.controls['remarks'].errors}"></textarea>
+                    <div class="text-danger" *ngIf="submitted && userForm.controls['remarks'].errors?.['required']">
+                      Remarks is required</div>
                 </div>
                 <!-- <div class="col-md-6">
                   <label for="Current" class="form-label">Current Password</label>
@@ -136,7 +138,6 @@
                   <a routerLink="/pages/admin-user" class="btn btn-secondary px-5">Cancel</a>
                 </div>
               </form>
-
             </div>
           </div>
         </div>

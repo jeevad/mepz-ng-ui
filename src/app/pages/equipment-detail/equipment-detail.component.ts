@@ -13,6 +13,7 @@ export class EquipmentDetailComponent implements OnInit {
   limit = 10;
   skip = 0;
   count: number = 0;
+  loader: boolean = false;
   equipmentData: any[] = []; //Equipment data list in sidebar
 
   constructor(
@@ -34,10 +35,12 @@ export class EquipmentDetailComponent implements OnInit {
   }
 
   Load() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.equipmentService.Load(this.skip, this.limit).subscribe((data: any) => {
       this.equipmentData = data.results;
       this.count = data.count;
+      this.loader = false;
     });
   }
 

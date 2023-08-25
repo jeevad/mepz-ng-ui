@@ -38,6 +38,7 @@
                   <option [ngValue]="true">Active</option>
                   <option [ngValue]="false">Inactive</option>
                 </select>
+                <div class="text-danger" *ngIf="submitted && addClassification.controls['active'].errors && addClassification.controls['active'].errors?.['required']">Status is required</div>
               </div>
               <div class="col-md-6 text-center mt-3">
                 <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>

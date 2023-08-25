@@ -56,7 +56,7 @@ export class UserFormComponent implements OnInit {
         active: [true, Validators.required],
         group: ['', Validators.required],
         valid: ['', Validators.required],
-        remarks: [''],
+        remarks: ['', Validators.required],
         password: ['', Validators.required],
         reEnterPassword: ['', Validators.required],
       },

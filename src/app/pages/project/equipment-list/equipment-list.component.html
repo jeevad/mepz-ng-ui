@@ -8,29 +8,31 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                <table id="table-info" class="table table-condensed">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <h6>Project Info</h6>
-                            </td>
-                            <td colspan="2"><strong>Code: </strong>{{this.equipmentData[0]?.code}}</td>
-                            <td><strong>Project Name: </strong>{{this.equipmentData[0]?.name}}</td>
-                            <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span>
-                                <span class="label label-primary replace-eq">Replaced Equipment</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="table-info" class="table table-condensed">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h6>Project Info</h6>
+                                </td>
+                                <td colspan="2"><strong>Code: </strong>{{this.equipmentData[0]?.code}}</td>
+                                <td><strong>Project Name: </strong>{{this.equipmentData[0]?.name}}</td>
+                                <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span>
+                                    <span class="label label-primary replace-eq">Replaced Equipment</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
                 <div>
                     <div class="float-start d-lg-flex gap-3">
                         <a class="btn btn-sm btn-success" routerLink="/pages/projects/{{ projectType }}/list" title="Back"><i
                                 class="fa-solid fa-chevron-left fa-sm"></i> </a>
-                        <a class="btn btn-sm btn-danger" routerLink="#" title="Cancel"><i
+                        <a class="btn btn-sm btn-danger" routerLink="/pages/projects/{{ projectType }}/list" title="Cancel"><i
                                 class="fa-solid fa-cancel fa-sm"></i> </a>
-                        <a class="btn btn-sm btn-primary" routerLink="/pages/equipment-summary" title="Summary"><i
+                        <a class="btn btn-sm btn-primary" routerLink="/pages/projects/{{projectId}}/equipment-summary" title="Summary"><i
                                 class="fa-solid fa-list-alt fa-sm"></i> </a>
                     </div>
                     <div class="float-end d-lg-flex gap-3">
@@ -122,10 +124,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="5">
-                                        <ngb-pagination [collectionSize]="count" [(page)]="page"
-                                            (pageChange)="loadEquipments()"
-                                            aria-label="Default pagination"></ngb-pagination>
+                                    <td colspan="6" class="text-end">
+                                        <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="loadEquipments()" aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
                                         <pre>Current page: {{page}}</pre>
                                     </td>
                                 </tr>
@@ -149,20 +149,13 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel3">Sidebar</h4>
+                    <h4 class="modal-title" id="myModalLabel3">Equipment</h4>
                 </div>
                 <div class="modal-body">
-
                     <h4>Replace Equipment</h4>
-
                     <div class="d-flex justify-content-center align-items-center bg-light">
                         <div class="card p-3 shadow">
-
-
-
-
                             <div class="col-sm-12">
-
                                 <div class="form-group">
                                     <label>Selected Equipment(s) to be Replaced:</label>
                                     <select name="room" class="form-control" multiple="" size="10"
@@ -172,64 +165,39 @@
                                     </select>
                                     <small>Above list shows unique Equipment</small>
                                 </div>
-
                                 <div class="form-group mt-2">
                                     <h4 class="mb-4">Select New Equipment:</h4>
-
-
-
-
                                     <table id="example3" class="table" cellspacing="0" width="100%">
                                         <thead>
-
                                             <tr role="row">
                                                 <th></th>
                                                 <th>Equipment</th>
                                             </tr>
                                         </thead>
-
                                         <tbody>
-
                                             <tr>
                                                 <td><input class="checkbox" type="checkbox" name="" value=""></td>
                                                 <td>SPO/014 - WATER JET</td>
-
-
-
                                             </tr>
-
                                             <tr>
                                                 <td><input class="checkbox" type="checkbox" name="" value=""></td>
                                                 <td>SPO/020 - VACUUM PUMP WITHOUT TANK</td>
-
-
                                             </tr>
-
-
                                             <tr>
                                                 <td><input class="checkbox" type="checkbox" name="" value=""></td>
                                                 <td>SPO/027 - VACUUM FORMING WORKSTATION WITH INTEGRATED TANK</td>
-
-
                                             </tr>
                                         </tbody>
-
-
                                     </table>
-
-
                                 </div>
 
                                 <div class="col-md-12 text-center mt-3">
-
                                     <button type="submit" class="btn btn-primary px-4 me-3 m"
                                         fdprocessedid="hipqpp">Ok</button>
-                                    <a class="btn btn-secondary px-5" href="">Close</a>
+                                    <a class="btn btn-secondary px-5" href="" data-dismiss="modal">Close</a>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>

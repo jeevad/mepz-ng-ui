@@ -19,7 +19,8 @@
                 <div class="col-md-12">
                   <label for="inputFirstName" class="form-label">Group Name</label>
                   <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Group Name"
-                    formControlName="name" autocomplete="off" />
+                    formControlName="name" autocomplete="off" [ngClass]="{'is-invalid': submitted && addgroup.controls['name'].errors}" />
+                  <p class="text-danger" *ngIf="submitted && addgroup.controls['name'].errors">Group name is required</p>
                 </div>
                 <div class="col-md-12" *ngIf="error">
                   <span class={{messageclass}}>{{message}}</span>

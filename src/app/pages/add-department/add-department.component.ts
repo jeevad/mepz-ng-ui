@@ -50,7 +50,7 @@ export class AddDepartmentComponent implements OnInit {
     this.addDepartment = this.formBuilder.group({
       code: ['', Validators.required],
       name: ['', Validators.required],
-      active: [''],
+      active: ['', Validators.required],
     });
   }
 

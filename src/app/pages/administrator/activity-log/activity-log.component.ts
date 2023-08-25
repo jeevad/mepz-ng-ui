@@ -13,13 +13,16 @@ export class ActivityLogComponent implements OnInit {
   skip = 0;
   count: number = 0;
   activityData: any[] = [];
+  loader: boolean = false;
 
   constructor(private group: ActivitiesService) {}
   findAll() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.group.findAll(this.skip, this.limit).subscribe((data: any) => {
       this.activityData = data.results;
       this.count = data.count;
+      this.loader = false;
     });
   }
 

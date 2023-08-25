@@ -15,7 +15,7 @@
                   <input name="_id" type="hidden" class="form-control" formControlName="_id">
                 </div>
               </div>
-              <form [formGroup]="addRoom" (ngSubmit)="SaveData()">
+              <form [formGroup]="addRoom" (ngSubmit)="SaveData()" autocomplete="off">
                 <div class="col-md-6 mt-0">
                   <label for="inputFirstName" class="form-label">Room Code</label>
                   <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Room code"
@@ -24,7 +24,6 @@
                   <div class="text-danger"
                     *ngIf="submitted && addRoom.controls['code'].errors && addRoom.controls['code'].errors?.['required']">
                     Room code is required</div>
-
                 </div>
                 <div class="col-md-6 mt-3">
                   <label for="inputLastName" class="form-label">Room Name</label>
@@ -41,7 +40,7 @@
                     <option [ngValue]="true">Active</option>
                     <option [ngValue]="false">Inactive</option>
                   </select>
-
+                  <div class="text-danger" *ngIf="submitted && addRoom.controls['active'].errors && addRoom.controls['active'].errors?.['required']">Status is required</div>
                 </div>
                 <div class="col-md-6 text-center mt-3">
                   <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>

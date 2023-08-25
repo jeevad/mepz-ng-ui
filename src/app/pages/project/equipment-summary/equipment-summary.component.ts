@@ -21,6 +21,7 @@ export class EquipmentSummaryComponent {
   equipmentData: any[] = [];
   filteredEquipmentData: any[] = [];
   loadFromMasterData: any[] = [];
+  projectType: string | null = 'individual';
 
   constructor(private service: SummaryService,
     private projectService: ProjectService,
@@ -31,6 +32,7 @@ export class EquipmentSummaryComponent {
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
+    this.projectType = this.route.snapshot.paramMap.get('projectType');
     this.loadEquipments();
   }
 

@@ -13,6 +13,7 @@ export class AdminGroupFormComponent implements OnInit {
   message = '';
   messageclass = '';
   error: boolean = false;
+  submitted: boolean = false;
   isEdit: boolean = false;
   groupid: any;
   editdata: any;
@@ -35,6 +36,7 @@ export class AdminGroupFormComponent implements OnInit {
   });
 
   SaveGroupData() {
+    this.submitted = true;
     if (!this.isEdit) {
       this.group.SaveGroupData(this.addgroup.value).subscribe((result) => {
         if (result != null) {

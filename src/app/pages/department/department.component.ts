@@ -15,6 +15,7 @@ export class DepartmentComponent implements OnInit {
   skip = 0; // Number of items to skip
   count: number = 0; // Total number of items
   departmentData: any[] = []; // Array to store department data
+  loader: boolean = false;
 
   constructor(
     private department: DepartmentService,
@@ -31,8 +32,10 @@ export class DepartmentComponent implements OnInit {
 
   // Load department data from the server
   loadDepartmentData(): void {
+    this.loader = true;
     this.departmentService.Load(0, 10).subscribe((data: any) => {
       this.departmentData = data.results;
+      this.loader = false;
     });
   }
 

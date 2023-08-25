@@ -17,7 +17,7 @@
                 </div>
               </div>
             </div>
-            <form [formGroup]="addDepartment" (ngSubmit)="SaveData()">
+            <form [formGroup]="addDepartment" (ngSubmit)="SaveData()" autocomplete="off">
               <div class="col-md-6  mt-0">
                 <label for="inputFirstName" class="form-label">Department Code</label>
                 <input type="text" class=" form-control" id="inputFirstName" placeholder="Enter Department code"
@@ -40,10 +40,12 @@
 
               <div class="col-6 mt-3">
                 <label for="inputState" class="form-label">Active</label>
-                <select class="custom-select form-select form-control" (change)="change($event)" formControlName="active">
+                <select class="custom-select form-select form-control" (change)="change($event)" formControlName="active" [ngClass]="{'is-invalid':submitted && addDepartment.controls['active'].
+                errors}">
                   <option [ngValue]="true">Active</option>
                   <option [ngValue]="false">Inactive</option>
                 </select>
+                <div class="text-danger" *ngIf="submitted && addDepartment.controls['active'].errors && addDepartment.controls['active'].errors?.['required']">Status is required</div>
               </div>
 
               <div class="col-md-6 text-center mt-3">

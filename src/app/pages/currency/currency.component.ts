@@ -14,6 +14,7 @@ export class CurrencyComponent implements OnInit {
   count: number = 0;
   currencyData: any[] = [];
   newData: any;
+  loader: boolean = false;
 
   constructor(private service: CurrencyService, private http: HttpClient) {
     this.find();
@@ -24,10 +25,12 @@ export class CurrencyComponent implements OnInit {
   }
 
   find() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.service.Find(this.skip, this.limit).subscribe((data: any) => {
       this.currencyData = data.results;
       this.count = data.count;
+      this.loader = false;
     });
   }
 

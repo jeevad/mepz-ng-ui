@@ -14,6 +14,8 @@ export class HospitalClassificationComponent implements OnInit {
   skip = 0;
   count: number = 0;
   classificationdata: any[] = [];
+  loader: boolean = false;
+  
   constructor(
     private service: ClassificationService,
     private http: HttpClient
@@ -25,11 +27,12 @@ export class HospitalClassificationComponent implements OnInit {
     this.find();
   }
   find() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
-
     this.service.Find(this.skip, this.limit).subscribe((result: any) => {
       this.classificationdata = result.results;
       this.count = result.count;
+      this.loader = false;
     });
   }
   delete(id: any) {

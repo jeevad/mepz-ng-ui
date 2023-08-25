@@ -12,6 +12,7 @@ export class UtilityDetailComponent implements OnInit {
   limit = 10;
   skip = 0;
   count: number = 0;
+  loader: boolean = false;
   utilityData: any[] = [];
   constructor(private utility: UtilityService, private http: HttpClient) {
     this.Find();
@@ -20,10 +21,12 @@ export class UtilityDetailComponent implements OnInit {
     this.Find();
   }
   Find() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.utility.Find(this.skip, this.limit).subscribe((data: any) => {
       this.utilityData = data.results;
       this.count = data.count;
+      this.loader = false;
     });
   }
   delete(id: any) {

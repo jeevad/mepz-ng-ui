@@ -14,6 +14,8 @@ export class GroupDetailComponent implements OnInit {
   skip = 0;
   count: number = 0;
   groupsData: any[] = [];
+  loader: boolean = false;
+  
   constructor(private groups: GroupsService, private http: HttpClient) {
     this.Find();
   }
@@ -22,11 +24,12 @@ export class GroupDetailComponent implements OnInit {
     this.Find();
   }
   Find() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
-
     this.groups.Find(this.skip, this.limit).subscribe((data: any) => {
       this.groupsData = data.results;
       this.count = data.count;
+      this.loader = false;
     });
   }
   delete(id: any) {

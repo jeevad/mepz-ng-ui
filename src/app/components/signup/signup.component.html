@@ -11,42 +11,60 @@
               <div class="border p-4 rounded">
                 <div class="text-center">
                   <h3 class="">Sign Up</h3>
-                  <p>Already have an account? <a routerLink="/login">Sign in here</a>
+                  <p>Already have an account? <a routerLink="/auth/login">Sign in here</a>
                   </p>
                 </div>
                 <div class="form-body">
-                  <form class="row g-3">
+                  <form class="row g-3" [formGroup]="signupForm" autocomplete="off">
                     <div class="col-sm-6">
                       <label for="inputFirstName" class="form-label">First Name</label>
-                      <input type="email" class="form-control" id="inputFirstName" placeholder="Jhon">
+                      <input type="email" class="form-control" id="inputFirstName" placeholder="Jhon" formControlName="firstname" [ngClass]="{'is-invalid' : f['firstname'].touched && f['firstname'].invalid || submitted && f['firstname'].errors}">
+                      <p class="text-danger mb-0 mt-1" *ngIf="f['firstname'].touched && f['firstname'].invalid || submitted && f['firstname'].errors">
+                        <span *ngIf="f['firstname'].errors?.['required']">First Name is Required</span>
+                      </p>
                     </div>
                     <div class="col-sm-6">
                       <label for="inputLastName" class="form-label">Last Name</label>
-                      <input type="email" class="form-control" id="inputLastName" placeholder="Deo">
+                      <input type="email" class="form-control" id="inputLastName" placeholder="Deo" formControlName="lastname" [ngClass]="{'is-invalid':f['lastname'].touched && f['lastname'].invalid || submitted && f['lastname'].errors}">
+                      <p class="text-danger mb-0 mt-1" *ngIf="f['lastname'].touched && f['lastname'].invalid || submitted && f['lastname'].errors">
+                        <span *ngIf="f['lastname'].errors?.['required']">Last Name is Required</span>
+                      </p>
                     </div>
                     <div class="col-12">
                       <label for="inputEmailAddress" class="form-label">Email Address</label>
-                      <input type="email" class="form-control" id="inputEmailAddress" placeholder="example@user.com">
+                      <input type="email" class="form-control" id="inputEmailAddress" placeholder="example@user.com" formControlName="email" [ngClass]="{'is-invalid':f['email'].touched && f['email'].invalid || submitted && f['email'].errors}">
+                      <p class="text-danger mb-0 mt-1" *ngIf="f['email'].touched && f['email'].invalid || submitted && f['email'].errors">
+                        <span *ngIf="f['email'].errors?.['required']">Email is Required</span>
+                        <span *ngIf="f['email'].errors?.['email']">Enter valid email</span>
+                      </p>
                     </div>
                     <div class="col-12">
                       <label for="inputChoosePassword" class="form-label">Password</label>
                       <div class="input-group" id="show_hide_password">
-                        <input type="password" class="form-control border-end-0" id="inputChoosePassword" value=""
-                          placeholder="Enter Password"> <a href="javascript:;"
-                          class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
-                      </div>
+                        <input type="password" class="form-control" id="inputChoosePassword" placeholder="Enter Password" formControlName="password" [ngClass]="{'is-invalid':f['password'].touched && f['password'].invalid || submitted && f['password'].errors}"> 
+                          <!-- <a href="javascript:;" class="input-group-text bg-transparent">
+                            <i class='bx bx-hide'></i>
+                          </a> -->
+                      </div> 
+                      <p class="text-danger mb-0 mt-1" *ngIf="f['password'].touched && f['password'].invalid || submitted && f['password'].errors">
+                        <span *ngIf="f['password'].errors?.['required']">Password is Required</span>
+                      </p>
                     </div>
 
                     <div class="col-12">
                       <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-                        <label class="form-check-label" for="flexSwitchCheckChecked">I read and agree to Terms &
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" formControlName="termsconditions" [ngClass]="{'is-invalid':f['termsconditions'].touched && f['termsconditions'].invalid || submitted && f['termsconditions'].errors}">
+                        <label class="form-check-label text-dark" for="flexSwitchCheckChecked">I read and agree to Terms &
                           Conditions</label>
                       </div>
+                      <p class="text-danger mb-0 mt-1" *ngIf="f['termsconditions'].touched && f['termsconditions'].invalid || submitted && f['termsconditions'].errors">
+                        <span *ngIf="f['termsconditions'].errors?.['required']">Agree to Terms &
+                          Conditions</span>
+                      </p>
                     </div>
                     <div class="col-12">
                       <div class="d-grid">
-                        <button type="submit" class="btn btn-primary"><i class='bx bx-user'></i>Sign up</button>
+                        <button type="submit" class="btn btn-primary" (click)="onSubmit()"><i class='bx bx-user'></i>Sign up</button>
                       </div>
                     </div>
                   </form>

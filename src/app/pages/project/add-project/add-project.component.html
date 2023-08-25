@@ -50,8 +50,14 @@
                 <input type="text" class="form-control" name="contractNo" placeholder="Contract No"
                   formControlName="contractNo"
                   [ngClass]="{'is-invalid':submitted && addProjectForm.controls['contractNo'].errors}" />
-                <div class="text-danger" *ngIf="submitted && addProjectForm.controls['contractNo'].errors?.['required']">
-                  Contract number is required</div>
+                <!-- <div class="text-danger" *ngIf="submitted && addProjectForm.controls['contractNo'].errors?.['required']">
+                  Contract number is required</div> -->
+                <div *ngIf="addProjectForm.controls['contractNo'].touched && addProjectForm.controls['contractNo'].invalid || submitted && addProjectForm.controls['contractNo'].errors?.['required']" class="text-danger mb-0 mt-1">
+                  <p class="mb-0" *ngIf="addProjectForm.controls['contractNo'].errors?.['required']">Contract Numbers is Required</p>
+                  <p class="mb-0" *ngIf="addProjectForm.controls['contractNo'].errors?.['pattern']">Digits only allowed</p>
+                  <p class="mb-0" *ngIf="addProjectForm.controls['contractNo'].errors?.['minlength']">Contract Numbers must have 10 digits</p>
+                  <p class="mb-0" *ngIf="addProjectForm.controls['contractNo'].errors?.['maxlength']">Contract Numbers allowed only 10 digits</p>
+                </div>
               </div>
               <div class="col-md-6">
                 <label class="form-label">No. of Beds</label>
@@ -79,7 +85,9 @@
               </div>
               <div class="col-md-6" *ngIf="isTemplate">
                 <label class="form-label">Remarks</label>
-                <textarea class="form-control"  placeholder="remarks" formControlName="remarks"></textarea>
+                <textarea class="form-control"  placeholder="remarks" formControlName="remarks" [ngClass]="{'is-invalid':submitted && addProjectForm.controls['remarks'].errors || addProjectForm.controls['remarks'].touched && addProjectForm.controls['remarks'].invalid}"></textarea>
+                <div class="text-danger" *ngIf="submitted && addProjectForm.controls['remarks'].errors?.['required'] || addProjectForm.controls['remarks'].touched && addProjectForm.controls['remarks'].invalid">
+                  Remark is required</div>
                 <!-- <input type="text" class="form-control" name="type" placeholder="Project Type" formControlName="type"
                   [ngClass]="{'is-invalid':submitted && addProjectForm.controls['type'].errors}" />
                 <div class="text-danger" *ngIf="submitted && addProjectForm.controls['type'].errors?.['required']">

@@ -14,7 +14,7 @@
         <div class="card border-top border-0 border-4 border-primary">
           <div class="card-body p-5">
             <!-- <form class="row g-3 mt-4" [formGroup]="addCompany" (ngSubmit)="SaveData()"> -->
-              <form [formGroup]="addCompany" (ngSubmit)="SaveData()" enctype="multipart/form-data">
+              <form [formGroup]="addCompany" (ngSubmit)="SaveData()" enctype="multipart/form-data" autocomplete="off">
 
               <div class="row">
                 <ng-container *ngFor="let i of [1, 2, 3]">
@@ -122,17 +122,31 @@
                 <input type="text" class="form-control" id="Contact" placeholder="Enter Contact no"
                   formControlName="contact" autocomplete="off"
                   [ngClass]="{'is-invalid':submitted && addCompany.controls['contact'].errors}" />
-                <div class="text-danger"
+                <!-- <div class="text-danger"
                   *ngIf="submitted && addCompany.controls['contact'].errors && addCompany.controls['city'].errors?.['required']">
-                  contact is Required</div>
+                  contact is Required
+                </div> -->
+                <div *ngIf="addCompany.controls['contact'].touched && addCompany.controls['contact'].invalid || submitted && addCompany.controls['contact'].errors?.['required']" class="text-danger mb-0 mt-1">
+                  <p class="mb-0" *ngIf="addCompany.controls['contact'].errors?.['required']">Contact Numbers is Required</p>
+                  <p class="mb-0" *ngIf="addCompany.controls['contact'].errors?.['pattern']">Digits only allowed</p>
+                  <p class="mb-0" *ngIf="addCompany.controls['contact'].errors?.['minlength']">Contact Numbers must have 10 digits</p>
+                  <p class="mb-0" *ngIf="addCompany.controls['contact'].errors?.['maxlength']">Contact Numbers allowed only 10 digits</p>
+                </div>
               </div>
               <div class="col-md-6">
                 <label for="Phone" class="form-label">Phone</label>
                 <input type="text" class="form-control" id="Phone" placeholder="Enter Phone no" formControlName="phone"
                   autocomplete="off" [ngClass]="{'is-invalid':submitted && addCompany.controls['phone'].errors}" />
-                <div class="text-danger"
+                <!-- <div class="text-danger"
                   *ngIf="submitted && addCompany.controls['phone'].errors && addCompany.controls['phone'].errors?.['required']">
-                  phone is Required</div>
+                  phone is Required
+                </div> -->
+                <div *ngIf="addCompany.controls['phone'].touched && addCompany.controls['phone'].invalid || submitted && addCompany.controls['phone'].errors?.['required']" class="text-danger mb-0 mt-1">
+                  <p class="mb-0" *ngIf="addCompany.controls['phone'].errors?.['required']">Phone Numbers is Required</p>
+                  <p class="mb-0" *ngIf="addCompany.controls['phone'].errors?.['pattern']">Digits only allowed</p>
+                  <p class="mb-0" *ngIf="addCompany.controls['phone'].errors?.['minlength']">Phone Numbers must have 10 digits</p>
+                  <p class="mb-0" *ngIf="addCompany.controls['phone'].errors?.['maxlength']">Phone Numbers allowed only 10 digits</p>
+                </div>
               </div>
               <div class="col-md-6">
                 <label for="Fax" class="form-label">Fax</label>
@@ -146,20 +160,31 @@
                 <label for="Mobile" class="form-label">Mobile</label>
                 <input type="text" class="form-control" id="Mobile" placeholder="Enter Mobile" formControlName="mobile"
                   autocomplete="off" [ngClass]="{'is-invalid':submitted && addCompany.controls['mobile'].errors}" />
-                <div class="text-danger"
+                <!-- <div class="text-danger"
                   *ngIf="submitted && addCompany.controls['mobile'].errors && addCompany.controls['mobile'].errors?.['required']">
-                  mobile is Required</div>
+                  mobile is Required
+                </div> -->
+                <div *ngIf="addCompany.controls['mobile'].touched && addCompany.controls['mobile'].invalid || submitted && addCompany.controls['mobile'].errors?.['required']" class="text-danger mb-0 mt-1">
+                  <p class="mb-0" *ngIf="addCompany.controls['mobile'].errors?.['required']">Mobile Numbers is Required</p>
+                  <p class="mb-0" *ngIf="addCompany.controls['mobile'].errors?.['pattern']">Digits only allowed</p>
+                  <p class="mb-0" *ngIf="addCompany.controls['mobile'].errors?.['minlength']">Mobile Numbers must have 10 digits</p>
+                  <p class="mb-0" *ngIf="addCompany.controls['mobile'].errors?.['maxlength']">Mobile Numbers allowed only 10 digits</p>
+                </div>
               </div>
               <div class="col-md-6">
                 <label for="Email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="Email" placeholder="Enter Email address"
                   formControlName="email" autocomplete="off"
                   [ngClass]="{'is-invalid':submitted && addCompany.controls['email'].errors}" />
-                <div class="text-danger"
-                  *ngIf="submitted && addCompany.controls['city'].errors && addCompany.controls['email'].errors?.['required']">
-                  Email is Required</div>
+                  <!-- <div class="text-danger" *ngIf="submitted && addCompany.controls['city'].errors && addCompany.controls['email'].errors?.['required']">
+                    Email is Required
+                  </div> -->
+                  <p class="text-danger mb-0 mt-1" *ngIf="addCompany.controls['email'].touched && addCompany.controls['email'].invalid || submitted && addCompany.controls['email'].errors">
+                    <span *ngIf="addCompany.controls['email'].errors?.['required']">Email is Required</span>
+                    <span *ngIf="addCompany.controls['email'].errors?.['email']">Enter valid email</span>
+                  </p>
               </div>
-              <div class="col-12 text-center">
+              <div class="col-12 text-center mt-3">
 
                 <button type="submit" class="btn btn-primary px-5 me-3">{{ isEdit ? 'Update' : 'Save' }}</button>
                 <a routerLink="/pages/company" class="btn btn-secondary px-5">Cancel</a>

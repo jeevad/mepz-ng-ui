@@ -14,6 +14,7 @@ export class CompanydetailComponent implements OnInit {
   skip = 0;
   count: number = 0;
   data: any[] = [];
+  loader: boolean = false;
 
   constructor(private service: CompanyService, private http: HttpClient) {
     this.find();
@@ -22,8 +23,10 @@ export class CompanydetailComponent implements OnInit {
     this.find();
   }
   find() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.service.Load(this.skip, this.limit).subscribe((result: any) => {
+      this.loader = false;
       this.data = result.results;
       this.count = result.count;
     });

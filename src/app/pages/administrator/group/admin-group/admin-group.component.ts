@@ -18,14 +18,18 @@ export class AdminGroupComponent implements OnInit {
   count: number = 0;
   groupdata: any[] = [];
   name: any;
+  loader: boolean = false;
+
   constructor(private group: AdminGroupService) {}
 
   LoadGroupData() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.group.LoadGroupData(this.skip, this.limit).subscribe((data: any) => {
       this.groupdata = data.results;
       this.count = data.count;
       this.name = data.results.map((item: any) => item.name);
+      this.loader = false;
       this.userFormComponent.updategroupname(this.name);
     });
   }

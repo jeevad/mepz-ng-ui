@@ -22,95 +22,84 @@
       <div>
         <div>
           <div class="float-start d-lg-flex gap-3">
-            <a class="btn btn-success" routerLink="/pages/projects" title="Back"><i
-                class="fa-solid fa-chevron-left fa-sm"></i> </a>
-            <a class="btn  btn-danger" routerLink="" title="Cancel"><i class="fa-solid fa-cancel fa-sm"></i> </a>
-
-            <a class="btn btn-primary" routerLink="" title="Submit"><i class="fa-solid fa-send fa-sm"></i> </a>
-
-            <a class="btn btn-info" data-toggle="modal" data-target="#reportModal" title="Reports"><i
-                class="fa-solid fa-bar-chart fa-sm"></i> </a>
-            <a class="btn btn-info" data-toggle="modal" data-target="#reportModal1" title="Reports-by-Pack"><i
-                class="fa-solid fa-file fa-sm"></i> </a>
-
-
-
-
+            <a class="btn btn-success" routerLink="/pages/projects/{{projectType}}/list" title="Back"><i class="fa-solid fa-chevron-left fa-sm"></i></a>
+            <a class="btn  btn-danger" routerLink="/pages/projects/{{projectType}}/list" title="Cancel"><i class="fa-solid fa-cancel fa-sm"></i></a>
+            <a class="btn btn-primary" title="Submit"><i class="fa-solid fa-send fa-sm"></i></a>
+            <a class="btn btn-info" data-toggle="modal" data-target="#reportModal" title="Reports"><i class="fa-solid fa-bar-chart fa-sm"></i> </a>
+            <a class="btn btn-info" data-toggle="modal" data-target="#reportModal1" title="Reports-by-Pack"><i class="fa-solid fa-file fa-sm"></i> </a>
           </div>
         </div>
       </div>
       <div class="col-md-12 mt-4">
         <div class="card p-3">
           <div class="card-body">
-            <table id="example" class="display table" cellspacing="0" width="100%">
-              <thead>
+            <div class="table-responsive">
+              <table id="example" class="display table" cellspacing="0" width="100%">
+                <thead>
+                  <tr role="row">
+                    <th>No</th>
+                    <th>Code</th>
+                    <th>Equipment</th>
+                    <th>Package</th>
+                    <th>FPQ</th>
+                    <th>APQ</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Mark-up</th>
+                    <th>Total Price</th>
+                    <th>Group</th>
+                    <th>Utility</th>
+                    <th>Remarks</th>
+                    <th>Label</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr role="row" class="odd" *ngFor="let eqp of filteredEquipmentData; let i=index;">
+                    <td>{{ skip + i+1 }}</td>
+                    <td>{{eqp.departments.rooms.equipments.code}}</td>
+                    <td> {{eqp.departments.rooms.equipments.name}}</td>
+                    <td>100</td>
+                    <td class=" editablex">
+                      <app-edit-input [data]="eqp.departments.rooms.equipments.apq || 0" [equipmentIndex]="eqp.arrayIndex"
+                        [departmentId]="eqp.departments._id" [roomId]="eqp.departments.rooms._id" [field]="'apq'"
+                        [projectId]="projectId" [type]="'equipment'" [inputsize]="100"></app-edit-input>
+                    </td>
+                    <td class=" editablex">
+                      <app-edit-input [data]="eqp.departments.rooms.equipments.fpq || 0" [equipmentIndex]="eqp.arrayIndex"
+                        [departmentId]="eqp.departments._id" [roomId]="eqp.departments.rooms._id" [field]="'fpq'"
+                        [projectId]="projectId" [type]="'equipment'" [inputsize]="100"></app-edit-input>
+                    </td>
+                    <td class=" editablex">
+                      <app-edit-input [data]="eqp.departments.rooms.equipments.quantity || 0"
+                        [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departments._id"
+                        [roomId]="eqp.departments.rooms._id" [field]="'quantity'" [projectId]="projectId"
+                        [type]="'equipment'" [inputsize]="100"></app-edit-input>
+                    </td>
+                    <td class=" editablex">
+                      <app-edit-input [data]="eqp.departments.rooms.equipments.unitPrice || 0"
+                        [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departments._id"
+                        [roomId]="eqp.departments.rooms._id" [field]="'unitPrice'" [projectId]="projectId"
+                        [type]="'equipment'" [inputsize]="100"></app-edit-input>
+                    </td>
+                    <td>{{ loadFromMasterData[i]?.markUp }}</td>
+                    <td>27,600.00</td>
+                    <td>{{ loadFromMasterData[i]?.equipmentPower?.group }}</td>
+                    <td>{{ loadFromMasterData[i]?.utility }}</td>
+                    <td>{{ loadFromMasterData[i]?.remarks }}</td>
+                    <td>{{ loadFromMasterData[i]?.labels }}</td>
+                  </tr>
+                </tbody>
 
-                <tr role="row">
-                  <th>No</th>
-                  <th>Code</th>
-                  <th>Equipment</th>
-                  <th>Package</th>
-                  <th>FPQ</th>
-                  <th>APQ</th>
-                  <th>Qty</th>
-                  <th>Unit Price</th>
-                  <th>Mark-up</th>
-                  <th>Total Price</th>
-                  <th>Group</th>
-                  <th>Utility</th>
-                  <th>Remarks</th>
-                  <th>Label</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr role="row" class="odd" *ngFor="let eqp of filteredEquipmentData; let i=index;">
-                  <td>{{ skip + i+1 }}</td>
-                  <td>{{eqp.departments.rooms.equipments.code}}</td>
-                  <td> {{eqp.departments.rooms.equipments.name}}</td>
-                  <td>100</td>
-                  <td class=" editablex">
-                    <app-edit-input [data]="eqp.departments.rooms.equipments.apq || 0" [equipmentIndex]="eqp.arrayIndex"
-                      [departmentId]="eqp.departments._id" [roomId]="eqp.departments.rooms._id" [field]="'apq'"
-                      [projectId]="projectId" [type]="'equipment'" [inputsize]="100"></app-edit-input>
-                  </td>
-                  <td class=" editablex">
-                    <app-edit-input [data]="eqp.departments.rooms.equipments.fpq || 0" [equipmentIndex]="eqp.arrayIndex"
-                      [departmentId]="eqp.departments._id" [roomId]="eqp.departments.rooms._id" [field]="'fpq'"
-                      [projectId]="projectId" [type]="'equipment'" [inputsize]="100"></app-edit-input>
-                  </td>
-                  <td class=" editablex">
-                    <app-edit-input [data]="eqp.departments.rooms.equipments.quantity || 0"
-                      [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departments._id"
-                      [roomId]="eqp.departments.rooms._id" [field]="'quantity'" [projectId]="projectId"
-                      [type]="'equipment'" [inputsize]="100"></app-edit-input>
-                  </td>
-                  <td class=" editablex">
-                    <app-edit-input [data]="eqp.departments.rooms.equipments.unitPrice || 0"
-                      [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departments._id"
-                      [roomId]="eqp.departments.rooms._id" [field]="'unitPrice'" [projectId]="projectId"
-                      [type]="'equipment'" [inputsize]="100"></app-edit-input>
-                  </td>
-                  <td>{{ loadFromMasterData[i]?.markUp }}</td>
-                  <td>27,600.00</td>
-                  <td>{{ loadFromMasterData[i]?.equipmentPower?.group }}</td>
-                  <td>{{ loadFromMasterData[i]?.utility }}</td>
-                  <td>{{ loadFromMasterData[i]?.remarks }}</td>
-                  <td>{{ loadFromMasterData[i]?.labels }}</td>
-                </tr>
-              </tbody>
-
-              <tfoot>
-                <tr>
-                  <td colspan="5">
-                    <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="loadEquipments()"
-                      aria-label="Default pagination"></ngb-pagination>
-                    <pre>Current page: {{page}}</pre>
-                  </td>
-                </tr>
-              </tfoot>
-
-            </table>
+                <tfoot>
+                  <tr>
+                    <td colspan="14" class="text-end">
+                      <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="loadEquipments()" aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
+                      <pre>Current page: {{page}}</pre>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
         </div>
       </div>

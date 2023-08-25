@@ -12,55 +12,57 @@
 
         <div class="card p-3">
           <div class="card-body">
-            <table class="example table dt-responsive nowrap" style="width: 100%">
-              <thead>
-                <tr>
-                  <th>S.No</th>
-                  <th>Code</th>
-                  <th>Name</th>
-                  <th>Address 1</th>
-                  <th>Address 2</th>
-                  <th>City</th>
-                  <th>Postal/Zip</th>
-                  <th>Prov./State</th>
-                  <th>Country</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of data; let i = index">
-                  <td>{{ skip + i + 1 }}</td>
-                  <td>{{ item.code }}</td>
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.address1 }}</td>
-                  <td>{{ item.address2 }}</td>
-                  <td>{{ item.city }}</td>
-                  <td>{{ item.postal }}</td>
-                  <td>{{ item.state }}</td>
-                  <td>{{ item.country }}</td>
-                  <td>
-                    <div class="d-flex order-actions">
-                      <a routerLink="/pages/company-form/{{ item._id }}" title="Edit" class="text-success me-2"><i
-                          class="fa fa-edit"> </i>
-                      </a>
+            <app-loader *ngIf="loader"></app-loader>
+            <div class="table-responsive">
+              <table class="example table dt-responsive nowrap" style="width: 100%">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Address 1</th>
+                    <th>Address 2</th>
+                    <th>City</th>
+                    <th>Postal/Zip</th>
+                    <th>Prov./State</th>
+                    <th>Country</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of data; let i = index">
+                    <td>{{ skip + i + 1 }}</td>
+                    <td>{{ item.code }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.address1 }}</td>
+                    <td>{{ item.address2 }}</td>
+                    <td>{{ item.city }}</td>
+                    <td>{{ item.postal }}</td>
+                    <td>{{ item.state }}</td>
+                    <td>{{ item.country }}</td>
+                    <td>
+                      <div class="d-flex order-actions">
+                        <a routerLink="/pages/company-form/{{ item._id }}" title="Edit" class="text-success me-2"><i
+                            class="fa fa-edit"> </i>
+                        </a>
 
-                      <a href="javascript:;" (click)="delete(item._id)" title="Delete" class="text-danger me-2"><i
-                          class="fa fa-trash"> </i>
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="5">
-                    <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="find()"
-                      aria-label="Default pagination"></ngb-pagination>
-                    <pre>Current page: {{ page }}</pre>
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
+                        <a href="javascript:;" (click)="delete(item._id)" title="Delete" class="text-danger me-2"><i
+                            class="fa fa-trash"> </i>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="10" class="text-end">
+                      <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="find()" aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
+                      <pre>Current page: {{ page }}</pre>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
         </div>
       </div>

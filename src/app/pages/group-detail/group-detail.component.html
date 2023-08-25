@@ -15,42 +15,45 @@
         <div class="col-md-12">
           <div class="card p-3">
             <div class="card-body">
-              <table class="example table dt-responsive nowrap table-responsive" style="width:100%;">
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Group Code</th>
-                    <th>Group Name</th>
-                    <th>Actions</th>
-                  </tr>
-                  <!-- </thead> -->
-                <tbody>
-                  <tr *ngFor="let item of groupsData; let i=index;">
-                    <td>{{ skip + i+1 }}</td>
-                    <td>{{item.code}}</td>
-                    <td>{{item.name}}</td>
-                    <td>
-                      <div class="d-flex order-actions">
+              <app-loader *ngIf="loader"></app-loader>
+              <div class="table-responsive">
+                <table class="example table dt-responsive nowrap" style="width:100%;">
+                  <thead>
+                    <tr>
+                      <th>S.No</th>
+                      <th>Group Code</th>
+                      <th>Group Name</th>
+                      <th>Actions</th>
+                    </tr>
+                    <!-- </thead> -->
+                  <tbody>
+                    <tr *ngFor="let item of groupsData; let i=index;">
+                      <td>{{ skip + i+1 }}</td>
+                      <td>{{item.code}}</td>
+                      <td>{{item.name}}</td>
+                      <td>
+                        <div class="d-flex order-actions">
 
-                        <a routerLink="/pages/group-form/{{item._id}}" title="Edit" class="text-success me-2"><i
-                            class="fa fa-edit"> </i> </a>
+                          <a routerLink="/pages/group-form/{{item._id}}" title="Edit" class="text-success me-2"><i
+                              class="fa fa-edit"> </i> </a>
 
-                        <a href="javascript:;" (click)="delete(item._id)" title="Delete" class="text-danger me-2"><i
-                            class="fa fa-trash"> </i> </a>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="5">
-                      <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="Find()"
-                        aria-label="Default pagination"></ngb-pagination>
-                      <pre>Current page: {{page}}</pre>
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
+                          <a href="javascript:;" (click)="delete(item._id)" title="Delete" class="text-danger me-2"><i
+                              class="fa fa-trash"> </i> </a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="5" class="text-end">
+                        <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="Find()"
+                          aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
+                        <pre>Current page: {{page}}</pre>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
             </div>
           </div>
         </div>

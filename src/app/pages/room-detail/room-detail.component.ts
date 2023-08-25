@@ -14,6 +14,7 @@ export class RoomDetailComponent implements OnInit {
   skip = 0;
   count: number = 0;
   roomData: any[] = [];
+  loader: boolean = false;
 
   constructor(private room: RoomService, private http: HttpClient) {
     this.Load();
@@ -26,8 +27,10 @@ export class RoomDetailComponent implements OnInit {
 
   // Load room data from the server
   loadRoomData(): void {
+    this.loader = true;
     this.room.Load(0, 10).subscribe((data: any) => {
       this.roomData = data.results;
+      this.loader = false;
       console.log(data.results);
     });
   }

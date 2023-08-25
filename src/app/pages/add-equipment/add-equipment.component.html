@@ -14,7 +14,7 @@
         <div class="card border-top border-0 border-4 border-primary">
           <div class="card-body p-4">
 
-            <form class="row" [formGroup]="addEquipment" (ngSubmit)="SaveData()">
+            <form class="row" [formGroup]="addEquipment" (ngSubmit)="SaveData()" autocomplete="off">
               <div class="col-md-6 mt-0">
                 <label for="inputFirstName" class="form-label">Equipment Code</label>
                 <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Equipment code"
@@ -25,7 +25,7 @@
                   *ngIf="submitted && addEquipment.controls['code'].errors && addEquipment.controls['code'].errors?.['required']">
                   Equipment code is required</div>
               </div>
-              <div class="col-md-6 mt-3">
+              <div class="col-md-6 mt-3 mt-md-0">
                 <label for="inputLastName" class="form-label">Equipment Name</label>
                 <input type="text" class="form-control" id="inputLastName" placeholder="Enter Equipment name"
                   formControlName="name"

@@ -13,6 +13,7 @@ export class PackageComponent implements OnInit {
   skip = 0;
   count: number = 0;
   packagedata: any[] = [];
+  loader: boolean = false;
 
   constructor(private http: HttpClient, private service: PackageService) {
     this.Find();
@@ -21,10 +22,12 @@ export class PackageComponent implements OnInit {
   ngOnInit() {}
 
   Find() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.service.Find(this.skip, this.limit).subscribe((data: any) => {
       this.packagedata = data.results;
       this.count = data.count;
+      this.loader = false;
     });
   }
   

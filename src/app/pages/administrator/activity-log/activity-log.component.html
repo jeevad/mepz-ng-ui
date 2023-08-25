@@ -5,6 +5,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-body">
+              <app-loader *ngIf="loader"></app-loader>
               <div class="d-lg-flex align-items-center mb-4 gap-3">
                 <div class="position-relative d-flex">
                   <!--select-->
@@ -73,9 +74,9 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td colspan="5">
-                        <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="findAll()"
-                          aria-label="Default pagination"></ngb-pagination>
+                      <td colspan="5" class="text-end">
+                        <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="findAll()"
+                          aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
                         <pre>Current page: {{ page }}</pre>
                       </td>
                     </tr>

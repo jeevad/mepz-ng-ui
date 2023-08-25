@@ -38,7 +38,7 @@ export class AddClassificationComponent implements OnInit {
     this.addClassification = this.formBuilder.group({
       code: ['', Validators.required],
       name: ['', Validators.required],
-      active: [''],
+      active: ['', Validators.required],
     });
   }
   SaveData() {
