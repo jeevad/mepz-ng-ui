@@ -7,17 +7,19 @@
         </div>
       </div>
       <div class="col-sm-12">
-        <table id="table-info" class="table table-condensed">
-          <tbody>
-            <tr>
-              <td>
-                <h6>Project Info</h6>
-              </td>
-              <td colspan="2"><strong>Code: </strong>{{project?.code | uppercase}}</td>
-              <td><strong>Project Name: </strong>{{project?.name | uppercase}}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table id="table-info" class="table table-condensed">
+            <tbody>
+              <tr>
+                <td>
+                  <h6>Project Info</h6>
+                </td>
+                <td colspan="2"><strong>Code: </strong>{{project?.code | uppercase}}</td>
+                <td><strong>Project Name: </strong>{{project?.name | uppercase}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div>
         <div>
@@ -35,66 +37,68 @@
       </div>
       <div class="col-md-12 mt-4">
         <div class="card p-3">
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <app-loader *ngIf="loader"></app-loader>
             <!-- For search bar -->
             <div class="input-group mb-3" style="width: 300px; float: right;">
               <input type="text" class="form-control form-control" placeholder="Search" [(ngModel)]="searchText"
                 (input)="searchDepartmentList()">
             </div>
-            <table id="example" class="display table" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <th>
-                    <input type="checkbox" [checked]="areAllDepartmentsSelected()"
-                      (change)="toggleSelectAllDepartments()">
-                  </th>
-                  <th>Department</th>
-                  <th>Code</th>
-                  <th>Department Alias</th>
-                  <th>Level</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr role="row" class="odd" *ngFor="let department of filteredDepartmentData; let i=index;">
-                  <td>
-                    <input type="checkbox" [checked]="department.selected" (change)="toggleSelection(department)">
-                  </td>
-                  <td>{{ department.name | uppercase}}</td>
-                  <td class="editable">
-                    <app-edit-input [data]="department.code" [departmentId]="department._id" [field]="'code'"
-                      [projectId]="projectId" [type]="'department'"></app-edit-input>
-                  </td>
-                  <td>
-                    <app-edit-input [data]="department.alias || department.name" [departmentId]="department._id"
-                      [field]="'alias'" [projectId]="projectId" [type]="'department'"></app-edit-input>
-                  </td>
-                  <td>
-                    <app-edit-input [data]="department.level || 'N/A'" [departmentId]="department._id" [field]="'level'"
-                      [projectId]="projectId" [type]="'department'"></app-edit-input>
-                  </td>
-                  <td>
-                    <div class="d-flex gap-3">
-                      <a routerLink="/pages/projects/{{projectType}}/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
-                        class="btn btn-primary">View Rooms</a>
+            <div class="table-responsive">
+              <table id="example" class="display table" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>
+                      <input type="checkbox" [checked]="areAllDepartmentsSelected()"
+                        (change)="toggleSelectAllDepartments()">
+                    </th>
+                    <th>Department</th>
+                    <th>Code</th>
+                    <th>Department Alias</th>
+                    <th>Level</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr role="row" class="odd" *ngFor="let department of filteredDepartmentData; let i=index;">
+                    <td>
+                      <input type="checkbox" [checked]="department.selected" (change)="toggleSelection(department)">
+                    </td>
+                    <td>{{ department.name | uppercase}}</td>
+                    <td class="editable">
+                      <app-edit-input [data]="department.code" [departmentId]="department._id" [field]="'code'"
+                        [projectId]="projectId" [type]="'department'"></app-edit-input>
+                    </td>
+                    <td>
+                      <app-edit-input [data]="department.alias || department.name" [departmentId]="department._id"
+                        [field]="'alias'" [projectId]="projectId" [type]="'department'"></app-edit-input>
+                    </td>
+                    <td>
+                      <app-edit-input [data]="department.level || 'N/A'" [departmentId]="department._id" [field]="'level'"
+                        [projectId]="projectId" [type]="'department'"></app-edit-input>
+                    </td>
+                    <td>
+                      <div class="d-flex gap-3">
+                        <a routerLink="/pages/projects/{{projectType}}/{{projectId}}/department-transaction/{{department._id}}/view-rooms"
+                          class="btn btn-primary">View Rooms</a>
 
-                      <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"
-                        (click)="copyDepartments(department)" [disabled]="!department.selected">
-                        <i class='bx bxs-copy'></i>
-                      </button>
+                        <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"
+                          (click)="copyDepartments(department)" [disabled]="!department.selected">
+                          <i class='bx bxs-copy'></i>
+                        </button>
 
 
-                      <button type="button" class="btn btn-sm btn-danger" (click)="deleteDepartment(department._id)"
-                        title="DELETE">
-                        <i class='bx bxs-trash'></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
+                        <button type="button" class="btn btn-sm btn-danger" (click)="deleteDepartment(department._id)"
+                          title="DELETE">
+                          <i class='bx bxs-trash'></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
 
-            </table>
+              </table>
+            </div>
           </div>
         </div>
       </div>

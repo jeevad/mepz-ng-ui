@@ -7,19 +7,21 @@
         </div>
       </div>
       <div class="col-sm-12">
-        <table id="table-info" class="table table-condensed">
-          <tbody>
-            <tr>
-              <td>
-                <h6>Project Info</h6>
-              </td>
-              <td colspan="2"><strong>Code: </strong>{{project?.code | uppercase}}</td>
-              <td><strong>Project Name: </strong>{{project?.name | uppercase}}</td>
-              <td><strong>Department Code: </strong>{{department?.code | uppercase}}</td>
-              <td><strong>Department Alias: </strong>{{department?.name | uppercase}}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table id="table-info" class="table table-condensed">
+            <tbody>
+              <tr>
+                <td>
+                  <h6>Project Info</h6>
+                </td>
+                <td colspan="2"><strong>Code: </strong>{{project?.code | uppercase}}</td>
+                <td><strong>Project Name: </strong>{{project?.name | uppercase}}</td>
+                <td><strong>Department Code: </strong>{{department?.code | uppercase}}</td>
+                <td><strong>Department Alias: </strong>{{department?.name | uppercase}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div>
         <div>
@@ -47,68 +49,70 @@
       </div>
       <div class="col-md-12 mt-4">
         <div class="card p-3">
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <!-- For search bar -->
             <div class="input-group mb-3" style="width: 300px; float: right;">
               <input type="text" class="form-control form-control" placeholder="Search" [(ngModel)]="searchText"
                 (input)="searchRoomList()">
             </div>
-            <table id="example" class="display table" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <th>
-                    <input type="checkbox" (change)="toggleSelectionForRoom($event)">
-                  </th>
-                  <th>Room</th>
-                  <th>Size</th>
-                  <th>Code</th>
-                  <th>Room Alias</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr role="row" class="odd" *ngFor="let room of filteredRoomData; let i=index;"
-                  [ngClass]="{'disabled-room': !room.enabled}">
-                  <td>
-                    <input type="checkbox" name="h_dep_id" [checked]="isSelectedRoom(room._id)"
-                      (change)="toggleRoomSelection($event, room._id)">
-                  </td>
-                  <td>{{ room.name | uppercase }}</td>
-                  <td>
-                    <app-edit-input [data]="room.size || 0" [departmentId]="department._id" [roomId]="room._id"
-                      [field]="'size'" [projectId]="projectId" [type]="'room'" [inputsize]="100"></app-edit-input>
-                  </td>
-                  <td>
-                    <app-edit-input [data]="room.code || 0" [departmentId]="department._id" [roomId]="room._id"
-                      [field]="'code'" [projectId]="projectId" [type]="'room'"></app-edit-input>
-                  </td>
-                  <td>
-                    <app-edit-input [data]="room.alias || room.name" [departmentId]="department._id" [roomId]="room._id"
-                      [field]="'alias'" [projectId]="projectId" [type]="'room'"></app-edit-input>
-                  </td>
-                  <td>
-                    <div class="d-flex gap-3">
-                      <a title="Add Equipment" class="btn btn-xs btn-primary"
-                        (click)="openEquipmentAllocationModal(room._id)">
-                        Add Equipments
-                      </a>
-                      <button type="button" class="btn btn-secondary" id="disable_room"
-                        (click)="toggleRoomStatus(room._id, room.enabled)">
-                        {{ room.enabled ? 'Disable Room' : 'Enable Room' }}
-                      </button>
-                      <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"
-                        (click)="copyRooms(room)" [disabled]="!isSelectedRoom(room._id)">
-                        <i class='bx bxs-copy'></i>
-                      </button>
+            <div class="table-responsive">
+              <table id="example" class="display table" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>
+                      <input type="checkbox" (change)="toggleSelectionForRoom($event)">
+                    </th>
+                    <th>Room</th>
+                    <th>Size</th>
+                    <th>Code</th>
+                    <th>Room Alias</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr role="row" class="odd" *ngFor="let room of filteredRoomData; let i=index;"
+                    [ngClass]="{'disabled-room': !room.enabled}">
+                    <td>
+                      <input type="checkbox" name="h_dep_id" [checked]="isSelectedRoom(room._id)"
+                        (change)="toggleRoomSelection($event, room._id)">
+                    </td>
+                    <td>{{ room.name | uppercase }}</td>
+                    <td>
+                      <app-edit-input [data]="room.size || 0" [departmentId]="department._id" [roomId]="room._id"
+                        [field]="'size'" [projectId]="projectId" [type]="'room'" [inputsize]="100"></app-edit-input>
+                    </td>
+                    <td>
+                      <app-edit-input [data]="room.code || 0" [departmentId]="department._id" [roomId]="room._id"
+                        [field]="'code'" [projectId]="projectId" [type]="'room'"></app-edit-input>
+                    </td>
+                    <td>
+                      <app-edit-input [data]="room.alias || room.name" [departmentId]="department._id" [roomId]="room._id"
+                        [field]="'alias'" [projectId]="projectId" [type]="'room'"></app-edit-input>
+                    </td>
+                    <td>
+                      <div class="d-flex gap-3">
+                        <a title="Add Equipment" class="btn btn-xs btn-primary"
+                          (click)="openEquipmentAllocationModal(room._id)">
+                          Add Equipments
+                        </a>
+                        <button type="button" class="btn btn-secondary" id="disable_room"
+                          (click)="toggleRoomStatus(room._id, room.enabled)">
+                          {{ room.enabled ? 'Disable Room' : 'Enable Room' }}
+                        </button>
+                        <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"
+                          (click)="copyRooms(room)" [disabled]="!isSelectedRoom(room._id)">
+                          <i class='bx bxs-copy'></i>
+                        </button>
 
-                      <button type="button" class="btn btn-sm btn-danger" title="DELETE" (click)="deleteRoom(room._id)">
-                        <i class='bx bxs-trash'></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                        <button type="button" class="btn btn-sm btn-danger" title="DELETE" (click)="deleteRoom(room._id)">
+                          <i class='bx bxs-trash'></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
