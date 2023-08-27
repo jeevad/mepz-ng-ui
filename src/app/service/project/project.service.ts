@@ -55,15 +55,25 @@ export class ProjectService {
     );
   }
 
-  getAllEquipments(skip: number, limit: number, filterEquipmentDto: any) {
-    let proj: any = [];
-    filterEquipmentDto.projectId.forEach((item: any, i: number) => {
-      proj[`projectId[${i}]`] = item;
-    });
+  // Function to get selected equipments for a project
+  getProjectEquipments(projectId: string, deptId: string, roomId: string) {
+    const url =
+      environment.apiUrl +
+      `/project/getEquipments/${projectId}/${deptId}/${roomId}`;
+    return this.http.get(url);
+  }
 
-    delete filterEquipmentDto.projectId;
+  getAllEquipments(filterEquipmentDto: any) {
+    let proj: any = [];
+    if (Array.isArray(filterEquipmentDto.projectId)) {
+      filterEquipmentDto.projectId.forEach((item: any, i: number) => {
+        proj[`projectIds[${i}]`] = item;
+      });
+      delete filterEquipmentDto.projectId;
+    }
+
     return this.http.get(environment.apiUrl + '/project/getAllEquipments', {
-      params: { skip, limit, ...filterEquipmentDto, ...proj },
+      params: { ...filterEquipmentDto, ...proj },
     });
   }
 

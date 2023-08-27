@@ -58,6 +58,7 @@ export class RoomService {
   }
 
   // Function to get selected equipments for a project
+  // TODO: Remove this
   getProjectEquipments(projectId: string, deptId: string, roomId: string,) {
     const url = environment.apiUrl + `/project/getEquipments/${projectId}/${deptId}/${roomId}`;
     return this.http.get(url);

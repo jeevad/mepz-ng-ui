@@ -21,6 +21,7 @@ export class EditEquipmentComponent {
   editdata: any;
   submitted: boolean = false;
   addEquipment!: FormGroup;
+  activeTab = 1;
 
   constructor(
     private department: EquipmentService,

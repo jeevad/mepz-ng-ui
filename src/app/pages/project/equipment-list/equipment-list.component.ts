@@ -50,8 +50,8 @@ export class EquipmentListComponent implements OnInit {
     this.projectService
       .getEquipments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
-        this.equipmentData = data.results[0]?.data;
-        this.count = data.results[0].metadata[0]?.total;
+        this.equipmentData = data.results;
+        this.count = data.count;
         this.filteredEquipmentData = this.equipmentData.slice(); //For search bar
         this.loader = false;
       });

@@ -75,7 +75,7 @@ export class ViewRoomsComponent {
       if (selectedQuantity > 0) {
         for (let j = 0; j < selectedQuantity; j++) {
           const roomDataObject = {
-            roomId: this.roomData[i]._id,
+            masterId: this.roomData[i]._id,
             name: this.roomData[i].name,
             code: this.roomData[i].code,
             alias: this.roomData[i].name,

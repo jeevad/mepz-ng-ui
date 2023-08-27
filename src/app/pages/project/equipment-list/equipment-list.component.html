@@ -15,8 +15,8 @@
                                 <td>
                                     <h6>Project Info</h6>
                                 </td>
-                                <td colspan="2"><strong>Code: </strong>{{this.equipmentData[0]?.code}}</td>
-                                <td><strong>Project Name: </strong>{{this.equipmentData[0]?.name}}</td>
+                                <td colspan="2"><strong>Code: </strong>{{this.equipmentData[0]?.projectCode}}</td>
+                                <td><strong>Project Name: </strong>{{this.equipmentData[0]?.projectName}}</td>
                                 <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span>
                                     <span class="label label-primary replace-eq">Replaced Equipment</span>
                                 </td>
@@ -28,12 +28,13 @@
             <div>
                 <div>
                     <div class="float-start d-lg-flex gap-3">
-                        <a class="btn btn-sm btn-success" routerLink="/pages/projects/{{ projectType }}/list" title="Back"><i
-                                class="fa-solid fa-chevron-left fa-sm"></i> </a>
-                        <a class="btn btn-sm btn-danger" routerLink="/pages/projects/{{ projectType }}/list" title="Cancel"><i
-                                class="fa-solid fa-cancel fa-sm"></i> </a>
-                        <a class="btn btn-sm btn-primary" routerLink="/pages/projects/{{ projectType }}/{{projectId}}/equipment-summary" title="Summary"><i
-                                class="fa-solid fa-list-alt fa-sm"></i> </a>
+                        <a class="btn btn-sm btn-success" routerLink="/pages/projects/{{ projectType }}/list"
+                            title="Back"><i class="fa-solid fa-chevron-left fa-sm"></i> </a>
+                        <a class="btn btn-sm btn-danger" routerLink="/pages/projects/{{ projectType }}/list"
+                            title="Cancel"><i class="fa-solid fa-cancel fa-sm"></i> </a>
+                        <a class="btn btn-sm btn-primary"
+                            routerLink="/pages/projects/{{ projectType }}/{{projectId}}/equipment-summary"
+                            title="Summary"><i class="fa-solid fa-list-alt fa-sm"></i> </a>
                     </div>
                     <div class="float-end d-lg-flex gap-3">
                         <button type="button" class="btn btn-primary btn-xs" title="Equipment List" data-toggle="modal"
@@ -74,9 +75,11 @@
                                 </thead>
                                 <thead>
                                     <tr>
-                                        <th><input type="text" placeholder="Search Department" fdprocessedid="6ij23s"></th>
+                                        <th><input type="text" placeholder="Search Department" fdprocessedid="6ij23s">
+                                        </th>
                                         <th><input type="text" placeholder="Search Room" fdprocessedid="tvivm"></th>
-                                        <th><input type="text" placeholder="Search Equipment" fdprocessedid="aw57a6"></th>
+                                        <th><input type="text" placeholder="Search Equipment" fdprocessedid="aw57a6">
+                                        </th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -84,40 +87,41 @@
                                 </thead>
                                 <tbody>
                                     <tr role="row" class="odd" *ngFor="let eqp of filteredEquipmentData; let i=index;">
-                                        <td><strong>{{eqp.code}}</strong> - {{eqp.name}} </td>
-                                        <td (click)="selectRoom(eqp,i)" class="" [class.selectedRoom]="selectedIndex === i"
-                                            role="button">
+                                        <td><strong>{{eqp.departmentCode}}</strong> - {{eqp.departmentName}} </td>
+                                        <td (click)="selectRoom(eqp,i)" class=""
+                                            [class.selectedRoom]="selectedIndex === i" role="button">
                                             <div data-dep="AD - ADMINISTRATION (L4)" data-room="AD101 - RECEPTION"
                                                 data-room_code="27278">
-                                                <strong>{{eqp.departments.rooms.code}}</strong> -
-                                                {{eqp.departments.rooms.name}}
+                                                <strong>{{eqp.roomCode}}</strong> -
+                                                {{eqp.roomName}}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="checkbox" style="margin: 0px;">
                                                 <label>
                                                     <input type="checkbox" name="eq_id" value="174731">
-                                                    <strong>{{eqp.departments.rooms.equipments.code}}</strong> -
-                                                    {{eqp.departments.rooms.equipments.name}}
+                                                    <strong>{{eqp.code}}</strong> -
+                                                    {{eqp.name}}
                                                 </label>
                                             </div>
                                         </td>
                                         <td class=" editablex">
-                                            <app-edit-input [data]="eqp.departments.rooms.equipments.apq || 0"
-                                                [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departments._id"
-                                                [roomId]="eqp.departments.rooms._id" [field]="'apq'" [projectId]="projectId"
+                                            <app-edit-input [data]="eqp.apq || 0" [equipmentIndex]="eqp.arrayIndex"
+                                                [departmentId]="eqp.departmentId"
+                                                [roomId]="eqp.roomId" [field]="'apq'"
+                                                [projectId]="projectId" [type]="'equipment'"
+                                                [inputsize]="100"></app-edit-input>
+                                        </td>
+                                        <td class=" editablex">
+                                            <app-edit-input [data]="eqp.fpq || 0"
+                                                [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departmentId"
+                                                [roomId]="eqp.roomId" [field]="'fpq'" [projectId]="projectId"
                                                 [type]="'equipment'" [inputsize]="100"></app-edit-input>
                                         </td>
                                         <td class=" editablex">
-                                            <app-edit-input [data]="eqp.departments.rooms.equipments.fpq || 0"
-                                                [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departments._id"
-                                                [roomId]="eqp.departments.rooms._id" [field]="'fpq'" [projectId]="projectId"
-                                                [type]="'equipment'" [inputsize]="100"></app-edit-input>
-                                        </td>
-                                        <td class=" editablex">
-                                            <app-edit-input [data]="eqp.departments.rooms.equipments.quantity || 0"
-                                                [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departments._id"
-                                                [roomId]="eqp.departments.rooms._id" [field]="'quantity'"
+                                            <app-edit-input [data]="eqp.quantity || 0"
+                                                [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departmentId"
+                                                [roomId]="eqp.roomId" [field]="'quantity'"
                                                 [projectId]="projectId" [type]="'equipment'"
                                                 [inputsize]="100"></app-edit-input>
                                         </td>
@@ -126,7 +130,9 @@
                                 <tfoot>
                                     <tr>
                                         <td colspan="6" class="text-end">
-                                            <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="loadEquipments()" aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
+                                            <ngb-pagination class="d-inline-block" [collectionSize]="count"
+                                                [(page)]="page" (pageChange)="loadEquipments()"
+                                                aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
                                             <pre>Current page: {{page}}</pre>
                                         </td>
                                     </tr>

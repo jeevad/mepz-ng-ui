@@ -127,6 +127,7 @@ export class EquipmentAllocationModalComponent {
   // Function for checkbox
   selectEquipment(item: any): void {
     const isItemSelected = this.projectEquipment.includes(item);
+    console.log('item', item);
 
     if (isItemSelected) {
       const index = this.projectEquipment.indexOf(item);
@@ -138,23 +139,19 @@ export class EquipmentAllocationModalComponent {
 
   // Function to save equipment data
   saveEquipmentData(): void {
-    for (let i = 0; i < this.projectEquipment.length; i++) {
-      const roomDataObject = {
-        equipmentId: this.projectEquipment[i]._id,
-        name: this.projectEquipment[i].name,
-        code: this.projectEquipment[i].code,
-      };
-      console.log('equipmentData:', roomDataObject);
+    for (const eqp of this.projectEquipment) {
+      // for (let i = 0; i < this.projectEquipment.length; i++) {
+      // this.projectEquipment
+      if (this.activeTab === 1) {
+        eqp.masterId = eqp._id;
+      }
+      delete eqp._id;
+      console.log('equipmentData:', eqp);
       this.room
-        .saveEquipmentData(
-          this.projectId,
-          this.deptId,
-          this.roomId,
-          roomDataObject
-        )
+        .saveEquipmentData(this.projectId, this.deptId, this.roomId, eqp)
         .subscribe((response: any) => {
           console.log('Data saved successfully:', response);
-          this.projectEquipments.push(roomDataObject);
+          this.projectEquipments.push(eqp);
         });
     }
 
@@ -197,10 +194,10 @@ export class EquipmentAllocationModalComponent {
 
   // Function to load equipment list
   loadProjectEquipments(): void {
-    this.room
+    this.projectService
       .getProjectEquipments(this.projectId, this.deptId, this.roomId)
       .subscribe((data: any) => {
-        this.projectEquipments = data.results[0].departments.rooms.equipments;
+        this.projectEquipments = data.results;
         this.project = data.results[0];
         this.department = data.results[0].departments;
       });
@@ -209,21 +206,19 @@ export class EquipmentAllocationModalComponent {
   searchOtherProjectEqp() {
     const filterEquipmentDto: any = {
       projectId: this.otherProjectId,
-      departmentepartmentId: this.otherDepartmentId,
+      departmentId: this.otherDepartmentId,
       roomId: this.otherRoomId,
       searchInput: this.searchInput,
+      skip: 0,
+      limit: 10,
     };
-    // this.otherProjectId.forEach((element: any, i: number) => {
-    //   filterEquipmentDto.projectId[i] = element;
-    // });
     this.projectService
-      .getAllEquipments(0, 10, filterEquipmentDto)
+      .getAllEquipments(filterEquipmentDto)
       .subscribe((data: any) => {
-        this.otherEquipmentData = data.results[0].data;
+        this.otherEquipmentData = data.results;
         // this.count = data.results[0].metadata[0].total;
         // this.filteredEquipmentData = this.equipmentData.slice(); //For search bar
         this.loader = false;
       });
   }
-
 }
