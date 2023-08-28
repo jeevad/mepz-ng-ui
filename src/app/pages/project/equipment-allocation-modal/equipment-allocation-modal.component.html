@@ -178,7 +178,7 @@
                           <input class="checkbox" type="checkbox" name="" value=""
                             [checked]="projectEquipment.includes(item)" (click)="selectEquipment(item)">
                         </td>
-                        <td><strong>{{ item.room_code | uppercase}} </strong><br> {{ item.room_name | uppercase}}</td>
+                        <td><strong>{{ item.room.code | uppercase}} </strong><br> {{ item.room.name | uppercase}}</td>
                         <td><strong>{{ item.code | uppercase}}</strong> <br> {{ item.name | uppercase}}</td>
                       </tr>
                     </tbody>

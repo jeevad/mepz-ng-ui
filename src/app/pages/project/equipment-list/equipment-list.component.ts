@@ -82,8 +82,8 @@ export class EquipmentListComponent implements OnInit {
   }
 
   selectRoom(eqp: any, index: number) {
-    this.deptId = eqp.departments._id;
-    this.selectedRoomId = eqp.departments.rooms._id;
+    this.deptId = eqp.department.projectDepartmentId;
+    this.selectedRoomId = eqp.room.projectRoomId;
     this.selectedIndex = index;
   }
 

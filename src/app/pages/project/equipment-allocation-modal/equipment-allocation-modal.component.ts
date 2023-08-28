@@ -212,7 +212,7 @@ export class EquipmentAllocationModalComponent {
       this.projectEquipments = data.results;
       this.loader = false;
       this.project = data.results[0];
-      this.department = data.results[0].departments;
+      this.department = data.results[0].department;
     });
   }
 

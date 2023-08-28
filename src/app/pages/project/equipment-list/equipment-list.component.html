@@ -87,13 +87,13 @@
                                 </thead>
                                 <tbody>
                                     <tr role="row" class="odd" *ngFor="let eqp of filteredEquipmentData; let i=index;">
-                                        <td><strong>{{eqp.departmentCode}}</strong> - {{eqp.departmentName}} </td>
+                                        <td><strong>{{eqp.department.code}}</strong> - {{eqp.department.name}} </td>
                                         <td (click)="selectRoom(eqp,i)" class=""
                                             [class.selectedRoom]="selectedIndex === i" role="button">
                                             <div data-dep="AD - ADMINISTRATION (L4)" data-room="AD101 - RECEPTION"
                                                 data-room_code="27278">
-                                                <strong>{{eqp.roomCode}}</strong> -
-                                                {{eqp.roomName}}
+                                                <strong>{{eqp.room.code}}</strong> -
+                                                {{eqp.room.name}}
                                             </div>
                                         </td>
                                         <td>
