@@ -163,7 +163,7 @@
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownManual">
                     <button ngbDropdownItem (click)="exportData(format)" *ngFor="let format of reportFormats"
-                      class="text-uppercase">{{format}}</button>
+                      class="text-uppercase">{{format.title}}</button>
                     <!-- <button ngbDropdownItem (click)="exportData()">PDF - 1 Page</button>
                     <button ngbDropdownItem (click)="exportData()">EXCEL</button> -->
                   </div>

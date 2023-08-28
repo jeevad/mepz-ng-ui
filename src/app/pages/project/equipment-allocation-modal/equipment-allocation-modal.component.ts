@@ -53,6 +53,8 @@ export class EquipmentAllocationModalComponent {
   otherRoomId: any = '';
   searchInput: any = '';
   otherEquipmentData: any[] = [];
+  isAlertVisible: boolean = false;
+  alertMessage: any;
 
   constructor(
     private room: RoomService,
@@ -143,15 +145,22 @@ export class EquipmentAllocationModalComponent {
         eqp.masterId = eqp._id;
       }
       delete eqp._id;
-      console.log('equipmentData:', eqp);
-      this.room
-        .saveEquipmentData(this.projectId, this.deptId, this.roomId, eqp)
-        .subscribe((response: any) => {
-          console.log('Data saved successfully:', response);
-          this.projectEquipments.push(eqp);
-        });
+      let equipLength = [];
+      this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, eqp).subscribe((response: any) => {
+        this.projectEquipments.push(eqp);
+      });
     }
-
+    if(this.projectEquipment.length === 1){
+      this.alertMessage = this.projectEquipment.length+' Item added to the project';
+      this.isAlertVisible = true;
+      setTimeout(() => { this.isAlertVisible = false; }, 3000);
+    } else if (this.projectEquipment.length > 1) {
+      this.alertMessage = this.projectEquipment.length+' Items added to the project';
+      this.isAlertVisible = true;
+      setTimeout(() => { this.isAlertVisible = false; }, 3000);
+    } else {
+      this.alertMessage = ""
+    }
     this.projectEquipment = []; // Clear the projectEquipment array
   }
 
