@@ -28,6 +28,7 @@
     <li [ngbNavItem]="1">
       <button ngbNavLink>Add Equipment from Master</button>
       <ng-template ngbNavContent>
+        <app-loader *ngIf="loader"></app-loader>
         <div class="row">
           <div class="col-md-6 border px-2 py-2">
             <div class="row g-3 align-items-center">
@@ -51,6 +52,7 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <!-- <app-loader *ngIf="loader"></app-loader> -->
                       <tr *ngFor="let item of masterEquipmentList">
                         <td>
                           <input class="checkbox" type="checkbox" name="" value=""
@@ -79,6 +81,7 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <!-- <app-loader *ngIf="loader"></app-loader> -->
                         <tr *ngFor="let item of projectEquipments; let i = index">
                           <td>{{ i+1 }}</td>
                           <td>{{ item.name | uppercase}}</td>
@@ -169,6 +172,7 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <app-loader *ngIf="loader"></app-loader>
                       <tr *ngFor="let item of otherEquipmentData">
                         <td>
                           <input class="checkbox" type="checkbox" name="" value=""

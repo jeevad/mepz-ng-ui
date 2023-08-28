@@ -47,7 +47,7 @@ export class EquipmentAllocationModalComponent {
   project: any;
   department: any;
   globalProjectRoom: any[] = [];
-  loader = false;
+  loader: boolean = false;
   otherProjectId: string[] = [];
   otherDepartmentId: any = '';
   otherRoomId: any = '';
@@ -75,26 +75,23 @@ export class EquipmentAllocationModalComponent {
   }
 
   getCurrentProjectRooms() {
-    const filterEquipmentDto: any = {
-      projectId: [this.projectId],
-    };
-    this.projectService
-      .getAllRooms(0, 10, filterEquipmentDto)
-      .subscribe((data: any) => {
-        this.globalProjectRoom = data.results[0].data;
-        // this.count = data.results[0].metadata[0].total;
-        // this.projectRooms = this.equipmentData.slice(); //For search bar
-        this.loader = false;
-      });
+    this.loader = true;
+    const filterEquipmentDto: any = {projectId: [this.projectId],};
+    this.projectService.getAllRooms(0, 10, filterEquipmentDto).subscribe((data: any) => {
+      this.globalProjectRoom = data.results[0].data;
+      // this.count = data.results[0].metadata[0].total;
+      // this.projectRooms = this.equipmentData.slice(); //For search bar
+      this.loader = false;
+    });
   }
   //Project list in equipment modal
   loadProjectData() {
+    this.loader = true;
     this.projectService.Load(0, 10, this.projectType).subscribe((data: any) => {
       this.projectData = data.results;
+      this.loader = false;
       if (this.projectId) {
-        const selectedProject = this.projectData.find(
-          (project: any) => project.code === this.projectId
-        );
+        const selectedProject = this.projectData.find((project: any) => project.code === this.projectId);
         if (selectedProject) {
           this.projectDepartments = selectedProject.departments;
         }
@@ -160,47 +157,54 @@ export class EquipmentAllocationModalComponent {
 
   //Search Bar function
   searchEquipment(): void {
+    this.loader = true;
     if (this.searchText.trim() !== '') {
-      this.masterEquipmentList = this.equipmentData.filter(
-        (item: any) =>
+      this.masterEquipmentList = this.equipmentData.filter((item: any) =>
           item.name.toLowerCase().includes(this.searchText.toLowerCase()) |
           item.code.toLowerCase().includes(this.searchText.toLowerCase())
       );
+      this.loader = false;
     } else {
       this.masterEquipmentList = this.equipmentData.slice();
+      this.loader = false;
     }
   }
 
   //Search Bar function | for master equipments
   searchMasterEquipment(): void {
+    this.loader = true;
     if (this.searchText.trim() !== '') {
       this.masterEquipmentList = this.equipmentData.filter(
         (item: any) =>
           item.name.toLowerCase().includes(this.searchText.toLowerCase()) |
           item.code.toLowerCase().includes(this.searchText.toLowerCase())
       );
+      this.loader = false;
     } else {
       this.masterEquipmentList = this.equipmentData.slice();
+      this.loader = false;
     }
   }
 
   // Load equipment data from the service  | List in Sidebar
   loadMasterEquipmentData(): void {
+    this.loader = true;
     this.equipmentService.Load(0, 10).subscribe((data: any) => {
       this.equipmentData = data.results;
       this.masterEquipmentList = this.equipmentData.slice();
+      this.loader = false;
     });
   }
 
   // Function to load equipment list
   loadProjectEquipments(): void {
-    this.projectService
-      .getProjectEquipments(this.projectId, this.deptId, this.roomId)
-      .subscribe((data: any) => {
-        this.projectEquipments = data.results;
-        this.project = data.results[0];
-        this.department = data.results[0].departments;
-      });
+    this.loader = true;
+    this.projectService.getProjectEquipments(this.projectId, this.deptId, this.roomId).subscribe((data: any) => {
+      this.projectEquipments = data.results;
+      this.loader = false;
+      this.project = data.results[0];
+      this.department = data.results[0].departments;
+    });
   }
 
   searchOtherProjectEqp() {
@@ -212,9 +216,8 @@ export class EquipmentAllocationModalComponent {
       skip: 0,
       limit: 10,
     };
-    this.projectService
-      .getAllEquipments(filterEquipmentDto)
-      .subscribe((data: any) => {
+    this.loader = true;
+    this.projectService.getAllEquipments(filterEquipmentDto).subscribe((data: any) => {
         this.otherEquipmentData = data.results;
         // this.count = data.results[0].metadata[0].total;
         // this.filteredEquipmentData = this.equipmentData.slice(); //For search bar
