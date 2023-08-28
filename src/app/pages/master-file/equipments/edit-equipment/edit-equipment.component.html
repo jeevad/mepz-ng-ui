@@ -1,649 +1,712 @@
 <div class="container">
   <div class="row">
-    <h3>Equipment - Edit</h3>
-    <form class="row" [formGroup]="addEquipment" (ngSubmit)="SaveData()">
-      <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
-        <li [ngbNavItem]="1">
-          <button ngbNavLink>Equipment</button>
-          <ng-template ngbNavContent>
-            <div class="row mt-3">
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Code</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Equipment code"
-                    formControlName="code"
-                    [ngClass]="{'is-invalid': submitted && addEquipment.controls['code'].errors}">
-                  <div class="text-danger"
-                    *ngIf="submitted && addEquipment.controls['code'].errors && addEquipment.controls['code'].errors?.['required']">
-                    Equipment code is required</div>
+    <div class="col-md-12">
+      <h3>Equipment - Edit</h3>
+      <form [formGroup]="addEquipment" (ngSubmit)="SaveData()">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs border-0">
+          <li [ngbNavItem]="1" class="me-2 mb-2">
+            <button ngbNavLink>Equipment</button>
+            <ng-template ngbNavContent>
+              <div class="row row-cols-lg-2 mt-4">
+                <div class="cols mb-3">
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Code</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Equipment code"
+                        formControlName="code"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.controls['code'].errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.controls['code'].errors && addEquipment.controls['code'].errors?.['required']">
+                        Equipment code is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Equipment Name -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Name</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" id="inputLastName" placeholder="Enter Equipment name"
+                        formControlName="name"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.controls['name'].errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.controls['name'].errors && addEquipment.controls['name'].errors?.['required']">
+                        Equipment name is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Cost -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Cost</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" id="inputLastName" placeholder="Enter Cost"
+                        formControlName="cost"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.controls['cost'].errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.controls['cost'].errors && addEquipment.controls['cost'].errors?.['required']">
+                        Cost is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Mark Up (%) -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Mark Up (%)</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" id="inputLastName" placeholder="Enter Mark Up (%)"
+                        formControlName="markUp"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.controls['markUp'].errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.controls['markUp'].errors && addEquipment.controls['markUp'].errors?.['required']">
+                        Mark up is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Remarks -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Remarks</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" id="inputRemarks" placeholder="Enter Remarks"
+                        formControlName="remarks"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.controls['remarks'].errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.controls['remarks'].errors && addEquipment.controls['remarks'].errors?.['required']">
+                        Remarks</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Utility -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Utility</label>
+                    <div class="col-md-8">
+                      <select class="form-control" formControlName="utility"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.controls['utility'].errors}">
+                        <option value="">-</option>
+                        <option value="p">0.5 ams power/ water in 2inch</option>
+                        <option value="x">power</option>
+                      </select>
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.controls['utility'].errors && addEquipment.controls['utility'].errors?.['required']">
+                        Utility is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Labels -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Labels</label>
+                    <div class="col-md-8">
+                      <select class="form-control" formControlName="labels"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.controls['labels'].errors}">
+                        <option value="">-</option>
+                        <option value="G1 (Major Equipment)">G1 (Major Equipment)</option>
+                        <option value="G1 (Medical Mechanical)">G1 (Medical Mechanical)</option>
+                        <option value="G1 (Medical Electrical)">G1 (Medical Electrical)</option>
+                        <option value="G3 (Loose Medical Equipment)">G3 (Loose Medical Equipment)</option>
+                        <option value="G3 (Non Medical Equipment)">G3 (Non Medical Equipment)</option>
+                        <option value="Loose Furniture">Loose Furniture</option>
+                        <option value="Non Medical Furniture">Non Medical Furniture</option>
+                        <option value="Vehicle">Vehicle</option>
+                        <option value="G2 (Existing/Relocating)">G2 (Existing/Relocating)</option>
+                        <option value="G4 (Consumables)">G4 (Consumables)</option>
+                        <option value="G4 (Non medical equipment)">G4 (Non medical equipment)</option>
+                        <option value="G2ME (relocation related to M&E)">G2ME (relocation related to M&E)</option>
+                        <option value="G2LM (relocation related to Loose medical)">G2LM (relocation related to Loose
+                          medical)
+                        </option>
+                        <option value="G2NM (relocation related to non medical)">G2NM (relocation related to non medical)
+                        </option>
+                        <option value="G2LF (relocation related to loose furniture)">G2LF (relocation related to loose
+                          furniture)</option>
+                        <option value="GROUP 1 MEDICAL EQUIPMENT">GROUP 1 MEDICAL EQUIPMENT</option>
+                        <option value="Residential Furniture">Residential Furniture</option>
+                        <option value="Residential Equipment">Residential Equipment</option>
+                        <option value="Architectural">Architectural</option>
+                        <option value="Mechanical">Mechanical</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="ICT">ICT</option>
+                        <option value="Others">Others</option>
+                        <option value="No Equipment">No Equipment</option>
+                        <option value="Medical furniture">Medical furniture</option>
+                        <option value="ACCESSORIES">ACCESSORIES</option>
+                        <option value="SOCSO MEDICAL EQUIPMENT">SOCSO MEDICAL EQUIPMENT</option>
+                        <option value="PERKESO MEDICAL/REHAB EQUIPMENT">PERKESO MEDICAL/REHAB EQUIPMENT</option>
+                        <option value="OPERATIONAL/NON MEDICAL EQUIPMENT">OPERATIONAL/NON MEDICAL EQUIPMENT</option>
+                        <option value="ID FURNITURE">ID FURNITURE</option>
+                        <option value="KITCHEN EQUIPMENT">KITCHEN EQUIPMENT</option>
+                        <option value="AUDIOVISUAL">AUDIOVISUAL</option>
+                        <option value="VOCATIONAL EQUIPMENT">VOCATIONAL EQUIPMENT</option>
+                        <option value="FUTURE">FUTURE</option>
+                        <option value="TESTNEW">TESTNEW</option>
+                      </select>
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.controls['labels'].errors && addEquipment.controls['labels'].errors?.['required']">
+                        Labels is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2" class="me-2 mb-2">
+            <button ngbNavLink>Package</button>
+            <ng-template ngbNavContent>
+              <div class="row row-cols-lg-2 mt-4">
+                <div class="cols mb-3">
+                  <div class="form-group" formGroupName="equipmentPackage">
+                    <label class="col-md-4 control-label">Package</label>
+                    <div class="col-md-8">
+                      <select class="form-control" formControlName="package"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPackage.package')?.errors}">
+                        <option value="">-</option>
+                        <option value="VEN-1">VEN-1 - ANAESTHETIC, VENTILATOR & ASSOCIATED PACKAGE</option>
+                        <option value="MON-1">MON-1 - MONITOR PATIENT & ASSOCIATED PACKAGE</option>
+                        <option value="ECG-1">ECG-1 - ECG, STRESS TEST & ASSOCIATED PACKAGE</option>
+                        <option value="DIA-1">DIA-1 - HAEMODIALYSIS ASSOCIATED PACKAGE</option>
+                        <option value="ADL-1">ADL-1 - ASSISTED DAILY LIVING KITCHEN</option>
+                        <option value="DEF-1">DEF-1 - DEFIBRILLATOR & ASSOCIATED PACKAGE</option>
+                        <option value="RST-1">RST-1 - RESUSCITATION, TROLLEY & ASSOCIATED PACKAGE</option>
+                        <option value="CTG-1">CTG-1 - CTG, FETAL DOPPLER & ASSOCIATED PACKAGE</option>
+                        <option value="NCU-1">NCU-1 - NICU INCUBATOR, RADIANT WARMER & ASSOCIATED PACKAGE</option>
+                        <option value="ULT-1">ULT-1 - ULTRASOUND & ASSOCIATED PACKAGE</option>
+                        <option value="PIF-1">PIF-1 - PUMP INFUSION & ASSOCIATED PACKAGE</option>
+                        <option value="INS-1">INS-1 - SURGICAL INSTRUMENT ASSOCIATED PACKAGE</option>
+                        <option value="DEN-1">DEN-1 - DENTAL ASSOCIATED PACKAGE</option>
+                        <option value="LAN-1">LAN-1 - LAB ANALYSER & ASSOCIATED PACKAGE</option>
+                        <option value="LIC-1">LIC-1 - LAB MICROBIOLOGY, INCUBATOR, CENTRIFUGE & ASSOCIATED PACKAGE</option>
+                        <option value="LMI-1">LMI-1 - LAB MICROSCOPE, WEIGHING SCALE & ASSOCIATED PACKAGE</option>
+                        <option value="LLG-1">LLG-1 - LAB LOOSE & GLASSWARE ASSOCIATED PACKAGE</option>
+                        <option value="BIC-1">BIC-1 - ICU BED & ASSOCIATED PACKAGE</option>
+                        <option value="BED-1">BED-1 - BED, COUCH, WHEELCHAIR & ASSOCIATED PACKAGE</option>
+                        <option value="SCO-1">SCO-1 - ENDOSCOPE, LAPAROSCOPE & ASSOCIATED PACKAGE</option>
+                        <option value="OTM-1">OTM-1 - MICROSCOPE OPERATING DIAGNOSTIC & ASSOCIATED PACKAGE</option>
+                        <option value="LES-1">LES-1 - LASER ENT, EYE & DENTAL ASSOCIATED PACKAGE</option>
+                        <option value="EYE-1">EYE-1 - OPTHALMOLOGY ASSOCIATED PACKAGE</option>
+                        <option value="ENT-1">ENT-1 - ENT, AUDIOLOGY & SPEECH ASSOCIATED PACKAGE</option>
+                        <option value="CLI-1">CLI-1 - CLINICAL, DIAGNOSTIC & ASSOCIATED PACKAGE</option>
+                        <option value="OTL-1">OTL-1 - OT LOOSE ASSOCIATED PACKAGE</option>
+                        <option value="PSC-1">PSC-1 - PUMP SUCTION & ASSOCIATED PACKAGE</option>
+                        <option value="PHA-1">PHA-1 - PHARMACY ASSOCIATED PACKAGE</option>
+                        <option value="REF-1">REF-1 - REFRIGERATOR MEDICAL & ASSOCIATED PACKAGE</option>
+                        <option value="WSC-1">WSC-1 - WEIGHING SCALE & ASSOCIATED PACKAGE</option>
+                        <option value="GAS-1">GAS-1 - MEDICAL GAS ASSOCIATED PACKAGE</option>
+                        <option value="ELT-1">ELT-1 - ELECTROTHERAPY MACHINE & ASSOCIATED PACKAGE</option>
+                        <option value="GYM-1">GYM-1 - GYM EQUIPMENT, COUCH & ASSOCIATED PACKAGE</option>
+                        <option value="REH-1">REH-1 - REHABILITATION LOOSE & ADL ASSOCIATED PACKAGE</option>
+                        <option value="POP-1">POP-1 - POP & SPLINT ASSOCIATED PACKAGE</option>
+                        <option value="EDU-1">EDU-1 - EDUCATION MATERIAL ASSOCIATED PACKAGE</option>
+                        <option value="MOR-1">MOR-1 - LOOSE MORTUARY ASSOCIATED PACKAGE</option>
+                        <option value="XRY-1">XRY-1 - LOOSE X-RAY ASSOCIATED PACKAGE </option>
+                        <option value="DIS-1">DIS-1 - DISASTER EQUIPMENT ASSOCIATED PACKAGE</option>
+                        <option value="DOM-1">DOM-1 - DOMESTIC ELECTRICAL ASSOCIATED PACKAGE</option>
+                        <option value="KIT-1">KIT-1 - KITCHEN LOOSE ASSOCIATED PACKAGE</option>
+                        <option value="NON-1">NON-1 - NON MEDICAL EQUIPMENT ASSOCIATED PACKAGE</option>
+                        <option value="OFF-1">OFF-1 - OFFICE STATIONERY ASSOCIATED PACKAGE</option>
+                        <option value="MRI-1">MRI-1 - MRI COMPATIBLE EQUIPMENT ASSOCIATED PACKAGE</option>
+                        <option value="Test-1">Test-1 - Test for pages</option>
+                        <option value="VEHI">VEHI -
+                          AMBULANCE & VEHICLES</option>
+                        <option value="PHAR">PHAR - PHARMACY EQUIPMENT</option>
+                        <option value="HXR001">HXR001 - IMAGING</option>
+                        <option value="HPH080">HPH080 - PHARMACY</option>
+                        <option value="HMG005">HMG005 - MEDICAL GAS PACKAGE</option>
+                        <option value="AMBU">AMBU - AMBULANCE RELATED EQUIPMENT</option>
+                        <option value="MNE-1">MNE-1 - EQUIPMENT RELATED TO G1</option>
+                      </select>
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPackage.package')?.hasError('required')">
+                        Package is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Package Remarks -->
+                  <div class="form-group" formGroupName="equipmentPackage">
+                    <label class="col-md-4 control-label">Package Remarks</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="packageRemarks" placeholder="Remarks"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPackage.packageRemarks')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPackage.packageRemarks')?.hasError('required')">
+                        Package Remarks is required</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <!-- Equipment Name -->
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Name</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputLastName" placeholder="Enter Equipment name"
-                    formControlName="name"
-                    [ngClass]="{'is-invalid': submitted && addEquipment.controls['name'].errors}">
-                  <div class="text-danger"
-                    *ngIf="submitted && addEquipment.controls['name'].errors && addEquipment.controls['name'].errors?.['required']">
-                    Equipment name is required</div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="3" class="me-2 mb-2">
+            <button ngbNavLink>Power Requirement</button>
+            <ng-template ngbNavContent>
+              <!-- equipmentPower -->
+              <div class="row row-cols-lg-2 mt-4">
+                <div class="cols mb-3">
+                  <!-- HEAT DISSIPATION (kw)(each) -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">HEAT DISSIPATION (kw)(each)</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="heatDissipationPower"
+                        placeholder="HEAT DISSIPATION(kw)(each)"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.heatDissipationPower')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.heatDissipationPower')?.hasError('required')">
+                        Heat
+                        Dissipation is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Data -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Data</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="data" placeholder="Data"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.data')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.data')?.hasError('required')">
+                        Data is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- BSS -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">BSS</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="bss" placeholder="BSS"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.bss')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.bss')?.hasError('required')">
+                        BSS is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Group -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Group</label>
+                    <div class="col-md-8">
+                      <select name="g_code" class="form-control" formControlName="group"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPowwer.group')?.errors}">
+                        <option value="">-</option>
+                        <option value="A">ARCHITECTURAL</option>
+                        <option value="G7">CHANGE TO LLME</option>
+                        <option value="G6">CHANGE TO MLME</option>
+                        <option value="D">CONTRACT</option>
+                        <option value="ER">E.REPLACEMENT</option>
+                        <option value="U4">E1-230V 13AMP</option>
+                        <option value="U11">E1/230V 15AMP</option>
+                        <option value="U10">E1/50KW TPH (REFER ATTACH)</option>
+                        <option value="U12">E2/D/E- REFER MORTURY</option>
+                        <option value="EL">ELECTRICAL</option>
+                        <option value="MO">FURNITURE LOOSE</option>
+                        <option value="FP">FUTURE</option>
+                        <option value="GROUP 1">G1</option>
+                        <option value="G3">G3</option>
+                        <option value="G.4">G4</option>
+                        <option value="IT">IT</option>
+                        <option value="KT">KITCHEN EQUIPMENT/UTENSILS</option>
+                        <option value="G">KITCHEN PLS REF ATTCH DOCUM</option>
+                        <option value="LF">LF</option>
+                        <option value="G4">LLME</option>
+                        <option value="C">LOOSE MEDICAL EQUIPMENT</option>
+                        <option value="MME">M AND E</option>
+                        <option value="M">MECHANICAL</option>
+                        <option value="ME">MEDICAL EQUIPMENT</option>
+                        <option value="MF">MEDICAL FURNITURE</option>
+                        <option value="MI">MEDICAL INSTRUMENT AND SS</option>
+                        <option value="MS">MISCELLANEOUS</option>
+                        <option value="U3">N1- 230V 13 AMP</option>
+                        <option value="U1">N1/ E1 -230V 13AMP</option>
+                        <option value="U8">N1/E1/W/D FLOOR MOUNTED</option>
+                        <option value="U2">N2/E1-230V 13AMP</option>
+                        <option value="U6">N2/E2</option>
+                        <option value="U5">N2/E2/ TPH 30AMP</option>
+                        <option value="U7">N2/E2/F/W/D</option>
+                        <option value="U9">N4/E4</option>
+                        <option value="NP">NEW</option>
+                        <option value="N">NILL</option>
+                        <option value="NM">NON MEDICAL EQUIPMENT</option>
+                        <option value="PH2">PHASE 2</option>
+                        <option value="F">PLS REFER ATTCH HYDRO DOCUM</option>
+                        <option value="B">REF ATTACHED CSSD DOCUM</option>
+                        <option value="L">REFER ATTACHED DOCUMENT</option>
+                        <option value="E">REFER ATTACHED X-RAY DOCUMENT</option>
+                        <option value="H">REFER ATTCH DOCUMENT</option>
+                        <option value="G2">RELOCATION</option>
+                        <option value="SI">SURGICAL INSTRUMENT</option>
+                        <option value="VEH">VEHICLE</option>
+                      </select>
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.group')?.hasError('required')">Group is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Typical Power Consumption -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Typical Power Consumption</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="typicalPowerConsumption"
+                        placeholder="Typical Power Consumption"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typicalPowerConsumption')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.typicalPowerConsumption')?.hasError('required')">
+                        Typical Power Consumption is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Type of Power (1-phase/3-phase) -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Type of Power (1-phase/3-phase)</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="typeOfPower"
+                        placeholder="Type of Power (1-phase/3-phase)"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typeOfPower')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.typeOfPower')?.hasError('required')">Type of
+                        Power
+                        (1-phase/3-phase) is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Water Inlet(Hot/Cold) -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Water Inlet(Hot/Cold)</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="waterInlet" placeholder="Water Inlet(Hot/Cold)"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.waterInlet')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.waterInlet')?.hasError('required')">Water
+                        Inlet(Hot/Cold) is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Drainage -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Drainage</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="drainage" placeholder="Drainage"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.drainage')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.drainage')?.hasError('required')">Drainage is
+                        required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Ventilation/Exhaust -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Ventilation/Exhaust</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="ventilationExhaust"
+                        placeholder="Ventilation/Exhaust" value=""
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.ventilationExhaust')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.ventilationExhaust')?.hasError('required')">
+                        Ventilation/Exhaust is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Medical Gas -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Medical Gas</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="medicalGas" placeholder="Medical Gas"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.medicalGas')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.medicalGas')?.hasError('required')">Medical Gas
+                        is
+                        required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Typical Weight (KG) -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Typical Weight (KG)</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="typicalWeight"
+                        placeholder="Typical Weight (KG)"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typicalWeight')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.typicalWeight')?.hasError('required')">Typical
+                        Weight
+                        (KG) is requried
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Typical Floor Loading -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Typical Floor Loading</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="typicalFloorLoading"
+                        placeholder="Typical Floor Loading"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typicalFloorLoading')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.typicalFloorLoading')?.hasError('required')">
+                        Typical
+                        Floor Loading is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Typical Ceiling Loading -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Typical Ceiling Loading</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="typicalCeilingLoading"
+                        placeholder="Typical Ceiling Loading"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typicalCeilingLoading')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.typicalCeilingLoading')?.hasError('required')">
+                        Typical Ceiling Loading is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Radiation Shielding -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Radiation Shielding</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="radiationShielding"
+                        placeholder="Radiation Shielding"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.radiationShielding')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.radiationShielding')?.hasError('required')">
+                        Radiation
+                        Shielding is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Corridor Clearance -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Corridor Clearance</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="corridorClearance"
+                        placeholder="Corridor Clearance"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.corridorClearance')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.corridorClearance')?.hasError('required')">
+                        Corridor
+                        Clearance is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Control Room -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Control Room</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="controlRoom" placeholder="Control Room"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.controlRoom')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.controlRoom')?.hasError('required')">Control Room
+                        is
+                        required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Tech Room -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Tech Room</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="techRoom" placeholder="Tech Room"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.techRoom')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.techRoom')?.hasError('required')">Tech Room is
+                        required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Chiller -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Chiller</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="chiller" placeholder="Chiller"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.chiller')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.chiller')?.hasError('required')">Chiller is
+                        required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">File 1</label>
+                    <div class="col-md-8">
+                      <a style="display:inline-block; margin-bottom: 10px;" href=""></a>
+                      <a href="" class="btn btn-sm btn-danger pull-right" onclick="return confirm('Are you sure?')">Delete</a>
+                      <input type="file" id="fileOneInput" formControlName="fileOne" />
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">File 2</label>
+                    <div class="col-md-8">
+                      <a style="display:inline-block; margin-bottom: 10px;" href=""></a>
+                      <a href="" class="btn btn-sm btn-danger pull-right" onclick="return confirm('Are you sure?')">Delete</a>
+                      <input type="file" id="fileTwoInput" formControlName="fileTwo" />
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">File 3</label>
+                    <div class="col-md-8">
+                      <a style="display:inline-block; margin-bottom: 10px;" href=""></a>
+                      <a href="" class="btn btn-sm btn-danger pull-right" onclick="return confirm('Are you sure?')">Delete</a>
+                      <input type="file" id="fileThreeInput" formControlName="fileThree" />
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Remarks -->
+                  <div class="form-group" formGroupName="equipmentPower">
+                    <label class="col-md-4 control-label">Remarks</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="powerRemarks" placeholder="Remarks"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.powerRemarks')?.errors}">
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentPower.powerRemarks')?.hasError('required')">Remarks is
+                        required
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <!-- Cost -->
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Cost</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputLastName" placeholder="Enter Cost"
-                    formControlName="cost"
-                    [ngClass]="{'is-invalid': submitted && addEquipment.controls['cost'].errors}">
-                  <div class="text-danger"
-                    *ngIf="submitted && addEquipment.controls['cost'].errors && addEquipment.controls['cost'].errors?.['required']">
-                    Cost is required</div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="4" class="me-2 mb-2">
+            <button ngbNavLink>Equipment Project wise Label Updation</button>
+            <ng-template ngbNavContent>
+              <div class="row row-cols-lg-2 mt-4">
+                <div class="cols mb-3">
+                  <!-- Equipment Code -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Equipment Code</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" name="gd_code" placeholder="Equipment Code" value="AA0003"
+                        readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Equipment Name -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Equipment Name</label>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" name="gd_desc" placeholder="Equipment Name"
+                        value="AIRWAY GUEDEL VARIOUS SIZES" readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Label -->
+                  <div class="form-group" formGroupName="equipmentLabel">
+                    <label class="col-md-4 control-label">Label</label>
+                    <div class="col-md-8">
+                      <select formControlName="label" class="form-control"
+                        [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentLabel.label')?.errors}">
+                        <option value="">-</option>
+                        <option value="G1 (Major Equipment)">G1 (Major Equipment)</option>
+                        <option value="G1 (Medical Mechanical)">G1 (Medical Mechanical)</option>
+                        <option value="G1 (Medical Electrical)">G1 (Medical Electrical)</option>
+                        <option value="G3 (Loose Medical Equipment)">G3 (Loose Medical Equipment)</option>
+                        <option value="G3 (Non Medical Equipment)">G3 (Non Medical Equipment)</option>
+                        <option value="Loose Furniture">Loose Furniture</option>
+                        <option value="Non Medical Furniture">Non Medical Furniture</option>
+                        <option value="Vehicle">Vehicle</option>
+                        <option value="G2 (Existing/Relocating)">G2 (Existing/Relocating)</option>
+                        <option value="G4 (Consumables)">G4 (Consumables)</option>
+                        <option value="G4 (Non medical equipment)">G4 (Non medical equipment)</option>
+                        <option value="G2ME (relocation related to M&E)">G2ME (relocation related to M&E)</option>
+                        <option value="G2LM (relocation related to Loose medical)">G2LM (relocation related to Loose medical)
+                        </option>
+                        <option value="G2NM (relocation related to non medical)">G2NM (relocation related to non medical)
+                        </option>
+                        <option value="G2LF (relocation related to loose furniture)">G2LF (relocation related to loose
+                          furniture)</option>
+                        <option value="GROUP 1 MEDICAL EQUIPMENT">GROUP 1 MEDICAL EQUIPMENT</option>
+                        <option value="Residential Furniture">Residential Furniture</option>
+                        <option value="Residential Equipment">Residential Equipment</option>
+                        <option value="Architectural">Architectural</option>
+                        <option value="Mechanical">Mechanical</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="ICT">ICT</option>
+                        <option value="Others">Others</option>
+                        <option value="No Equipment">No Equipment</option>
+                        <option value="Medical furniture">Medical furniture</option>
+                        <option value="ACCESSORIES">ACCESSORIES</option>
+                        <option value="SOCSO MEDICAL EQUIPMENT">SOCSO MEDICAL EQUIPMENT</option>
+                        <option value="PERKESO MEDICAL/REHAB EQUIPMENT">PERKESO MEDICAL/REHAB EQUIPMENT</option>
+                        <option value="OPERATIONAL/NON MEDICAL EQUIPMENT">OPERATIONAL/NON MEDICAL EQUIPMENT</option>
+                        <option value="ID FURNITURE">ID FURNITURE</option>
+                        <option value="KITCHEN EQUIPMENT">KITCHEN EQUIPMENT</option>
+                        <option value="AUDIOVISUAL">AUDIOVISUAL</option>
+                        <option value="VOCATIONAL EQUIPMENT">VOCATIONAL EQUIPMENT</option>
+                        <option value="FUTURE">FUTURE</option>
+                        <option value="TESTNEW">TESTNEW</option>
+                      </select>
+                      <div class="text-danger"
+                        *ngIf="submitted && addEquipment.get('equipmentLabel.label')?.hasError('required')">Label is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cols mb-3">
+                  <!-- Projects -->
+                  <div class="form-group" formGroupName="equipmentLabel">
+                    <label class="col-md-4 control-label">Projects</label>
+                    <div class="col-md-8">
+                      <label>Note: This label changes will not be updated in
+                        [CYB,CYB2,CYBR,HLAW,HLWS-001,HM-001,PGH-PM01,PGH-PM002,HPK,HTM,HSA-P,IJN01,MTH-01,PGH-04,PGH-05,PJHK300B].
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <!-- Mark Up (%) -->
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Mark Up (%)</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputLastName" placeholder="Enter Mark Up (%)"
-                    formControlName="markUp"
-                    [ngClass]="{'is-invalid': submitted && addEquipment.controls['markUp'].errors}">
-                  <div class="text-danger"
-                    *ngIf="submitted && addEquipment.controls['markUp'].errors && addEquipment.controls['markUp'].errors?.['required']">
-                    Mark up is required</div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <!-- Remarks -->
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Remarks</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputRemarks" placeholder="Enter Remarks"
-                    formControlName="remarks"
-                    [ngClass]="{'is-invalid': submitted && addEquipment.controls['remarks'].errors}">
-                  <div class="text-danger"
-                    *ngIf="submitted && addEquipment.controls['remarks'].errors && addEquipment.controls['remarks'].errors?.['required']">
-                    Remarks</div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <!-- Utility -->
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Utility</label>
-                <div class="col-sm-4">
-                  <select class="form-control" formControlName="utility"
-                    [ngClass]="{'is-invalid': submitted && addEquipment.controls['utility'].errors}">
-                    <option value="">-</option>
-                    <option value="p">0.5 ams power/ water in 2inch</option>
-                    <option value="x">power</option>
-                  </select>
-                  <div class="text-danger"
-                    *ngIf="submitted && addEquipment.controls['utility'].errors && addEquipment.controls['utility'].errors?.['required']">
-                    Utility is required</div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <!-- Labels -->
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Labels</label>
-                <div class="col-sm-4">
-                  <select class="form-control" formControlName="labels"
-                    [ngClass]="{'is-invalid': submitted && addEquipment.controls['labels'].errors}">
-                    <option value="">-</option>
-                    <option value="G1 (Major Equipment)">G1 (Major Equipment)</option>
-                    <option value="G1 (Medical Mechanical)">G1 (Medical Mechanical)</option>
-                    <option value="G1 (Medical Electrical)">G1 (Medical Electrical)</option>
-                    <option value="G3 (Loose Medical Equipment)">G3 (Loose Medical Equipment)</option>
-                    <option value="G3 (Non Medical Equipment)">G3 (Non Medical Equipment)</option>
-                    <option value="Loose Furniture">Loose Furniture</option>
-                    <option value="Non Medical Furniture">Non Medical Furniture</option>
-                    <option value="Vehicle">Vehicle</option>
-                    <option value="G2 (Existing/Relocating)">G2 (Existing/Relocating)</option>
-                    <option value="G4 (Consumables)">G4 (Consumables)</option>
-                    <option value="G4 (Non medical equipment)">G4 (Non medical equipment)</option>
-                    <option value="G2ME (relocation related to M&E)">G2ME (relocation related to M&E)</option>
-                    <option value="G2LM (relocation related to Loose medical)">G2LM (relocation related to Loose
-                      medical)
-                    </option>
-                    <option value="G2NM (relocation related to non medical)">G2NM (relocation related to non medical)
-                    </option>
-                    <option value="G2LF (relocation related to loose furniture)">G2LF (relocation related to loose
-                      furniture)</option>
-                    <option value="GROUP 1 MEDICAL EQUIPMENT">GROUP 1 MEDICAL EQUIPMENT</option>
-                    <option value="Residential Furniture">Residential Furniture</option>
-                    <option value="Residential Equipment">Residential Equipment</option>
-                    <option value="Architectural">Architectural</option>
-                    <option value="Mechanical">Mechanical</option>
-                    <option value="Electrical">Electrical</option>
-                    <option value="ICT">ICT</option>
-                    <option value="Others">Others</option>
-                    <option value="No Equipment">No Equipment</option>
-                    <option value="Medical furniture">Medical furniture</option>
-                    <option value="ACCESSORIES">ACCESSORIES</option>
-                    <option value="SOCSO MEDICAL EQUIPMENT">SOCSO MEDICAL EQUIPMENT</option>
-                    <option value="PERKESO MEDICAL/REHAB EQUIPMENT">PERKESO MEDICAL/REHAB EQUIPMENT</option>
-                    <option value="OPERATIONAL/NON MEDICAL EQUIPMENT">OPERATIONAL/NON MEDICAL EQUIPMENT</option>
-                    <option value="ID FURNITURE">ID FURNITURE</option>
-                    <option value="KITCHEN EQUIPMENT">KITCHEN EQUIPMENT</option>
-                    <option value="AUDIOVISUAL">AUDIOVISUAL</option>
-                    <option value="VOCATIONAL EQUIPMENT">VOCATIONAL EQUIPMENT</option>
-                    <option value="FUTURE">FUTURE</option>
-                    <option value="TESTNEW">TESTNEW</option>
-                  </select>
-                  <div class="text-danger"
-                    *ngIf="submitted && addEquipment.controls['labels'].errors && addEquipment.controls['labels'].errors?.['required']">
-                    Labels is required</div>
-                </div>
-              </div>
-            </div>
-          </ng-template>
-        </li>
-        <li [ngbNavItem]="2">
-          <button ngbNavLink>Package</button>
-          <ng-template ngbNavContent>
-            <div class="row mt-3">
-              <div class="form-group" formGroupName="equipmentPackage">
-                <label class="col-sm-2 control-label">Package</label>
-                <div class="col-sm-4">
-                  <select class="form-control" formControlName="package"
-                    [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPackage.package')?.errors}">
-                    <option value="">-</option>
-                    <option value="VEN-1">VEN-1 - ANAESTHETIC, VENTILATOR & ASSOCIATED PACKAGE</option>
-                    <option value="MON-1">MON-1 - MONITOR PATIENT & ASSOCIATED PACKAGE</option>
-                    <option value="ECG-1">ECG-1 - ECG, STRESS TEST & ASSOCIATED PACKAGE</option>
-                    <option value="DIA-1">DIA-1 - HAEMODIALYSIS ASSOCIATED PACKAGE</option>
-                    <option value="ADL-1">ADL-1 - ASSISTED DAILY LIVING KITCHEN</option>
-                    <option value="DEF-1">DEF-1 - DEFIBRILLATOR & ASSOCIATED PACKAGE</option>
-                    <option value="RST-1">RST-1 - RESUSCITATION, TROLLEY & ASSOCIATED PACKAGE</option>
-                    <option value="CTG-1">CTG-1 - CTG, FETAL DOPPLER & ASSOCIATED PACKAGE</option>
-                    <option value="NCU-1">NCU-1 - NICU INCUBATOR, RADIANT WARMER & ASSOCIATED PACKAGE</option>
-                    <option value="ULT-1">ULT-1 - ULTRASOUND & ASSOCIATED PACKAGE</option>
-                    <option value="PIF-1">PIF-1 - PUMP INFUSION & ASSOCIATED PACKAGE</option>
-                    <option value="INS-1">INS-1 - SURGICAL INSTRUMENT ASSOCIATED PACKAGE</option>
-                    <option value="DEN-1">DEN-1 - DENTAL ASSOCIATED PACKAGE</option>
-                    <option value="LAN-1">LAN-1 - LAB ANALYSER & ASSOCIATED PACKAGE</option>
-                    <option value="LIC-1">LIC-1 - LAB MICROBIOLOGY, INCUBATOR, CENTRIFUGE & ASSOCIATED PACKAGE</option>
-                    <option value="LMI-1">LMI-1 - LAB MICROSCOPE, WEIGHING SCALE & ASSOCIATED PACKAGE</option>
-                    <option value="LLG-1">LLG-1 - LAB LOOSE & GLASSWARE ASSOCIATED PACKAGE</option>
-                    <option value="BIC-1">BIC-1 - ICU BED & ASSOCIATED PACKAGE</option>
-                    <option value="BED-1">BED-1 - BED, COUCH, WHEELCHAIR & ASSOCIATED PACKAGE</option>
-                    <option value="SCO-1">SCO-1 - ENDOSCOPE, LAPAROSCOPE & ASSOCIATED PACKAGE</option>
-                    <option value="OTM-1">OTM-1 - MICROSCOPE OPERATING DIAGNOSTIC & ASSOCIATED PACKAGE</option>
-                    <option value="LES-1">LES-1 - LASER ENT, EYE & DENTAL ASSOCIATED PACKAGE</option>
-                    <option value="EYE-1">EYE-1 - OPTHALMOLOGY ASSOCIATED PACKAGE</option>
-                    <option value="ENT-1">ENT-1 - ENT, AUDIOLOGY & SPEECH ASSOCIATED PACKAGE</option>
-                    <option value="CLI-1">CLI-1 - CLINICAL, DIAGNOSTIC & ASSOCIATED PACKAGE</option>
-                    <option value="OTL-1">OTL-1 - OT LOOSE ASSOCIATED PACKAGE</option>
-                    <option value="PSC-1">PSC-1 - PUMP SUCTION & ASSOCIATED PACKAGE</option>
-                    <option value="PHA-1">PHA-1 - PHARMACY ASSOCIATED PACKAGE</option>
-                    <option value="REF-1">REF-1 - REFRIGERATOR MEDICAL & ASSOCIATED PACKAGE</option>
-                    <option value="WSC-1">WSC-1 - WEIGHING SCALE & ASSOCIATED PACKAGE</option>
-                    <option value="GAS-1">GAS-1 - MEDICAL GAS ASSOCIATED PACKAGE</option>
-                    <option value="ELT-1">ELT-1 - ELECTROTHERAPY MACHINE & ASSOCIATED PACKAGE</option>
-                    <option value="GYM-1">GYM-1 - GYM EQUIPMENT, COUCH & ASSOCIATED PACKAGE</option>
-                    <option value="REH-1">REH-1 - REHABILITATION LOOSE & ADL ASSOCIATED PACKAGE</option>
-                    <option value="POP-1">POP-1 - POP & SPLINT ASSOCIATED PACKAGE</option>
-                    <option value="EDU-1">EDU-1 - EDUCATION MATERIAL ASSOCIATED PACKAGE</option>
-                    <option value="MOR-1">MOR-1 - LOOSE MORTUARY ASSOCIATED PACKAGE</option>
-                    <option value="XRY-1">XRY-1 - LOOSE X-RAY ASSOCIATED PACKAGE </option>
-                    <option value="DIS-1">DIS-1 - DISASTER EQUIPMENT ASSOCIATED PACKAGE</option>
-                    <option value="DOM-1">DOM-1 - DOMESTIC ELECTRICAL ASSOCIATED PACKAGE</option>
-                    <option value="KIT-1">KIT-1 - KITCHEN LOOSE ASSOCIATED PACKAGE</option>
-                    <option value="NON-1">NON-1 - NON MEDICAL EQUIPMENT ASSOCIATED PACKAGE</option>
-                    <option value="OFF-1">OFF-1 - OFFICE STATIONERY ASSOCIATED PACKAGE</option>
-                    <option value="MRI-1">MRI-1 - MRI COMPATIBLE EQUIPMENT ASSOCIATED PACKAGE</option>
-                    <option value="Test-1">Test-1 - Test for pages</option>
-                    <option value="VEHI">VEHI -
-                      AMBULANCE & VEHICLES</option>
-                    <option value="PHAR">PHAR - PHARMACY EQUIPMENT</option>
-                    <option value="HXR001">HXR001 - IMAGING</option>
-                    <option value="HPH080">HPH080 - PHARMACY</option>
-                    <option value="HMG005">HMG005 - MEDICAL GAS PACKAGE</option>
-                    <option value="AMBU">AMBU - AMBULANCE RELATED EQUIPMENT</option>
-                    <option value="MNE-1">MNE-1 - EQUIPMENT RELATED TO G1</option>
-                  </select>
-                  <div class="text-danger"
-                    *ngIf="submitted && addEquipment.get('equipmentPackage.package')?.hasError('required')">
-                    Package is required</div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <!-- Package Remarks -->
-              <div class="form-group" formGroupName="equipmentPackage">
-                <label class="col-sm-2 control-label">Package Remarks</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" formControlName="packageRemarks" placeholder="Remarks"
-                    [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPackage.packageRemarks')?.errors}">
-                  <div class="text-danger"
-                    *ngIf="submitted && addEquipment.get('equipmentPackage.packageRemarks')?.hasError('required')">
-                    Package Remarks is required</div>
-                </div>
-              </div>
-            </div>
-          </ng-template>
-        </li>
-        <li [ngbNavItem]="3">
-          <button ngbNavLink>Power Requirement</button>
-          <ng-template ngbNavContent>
-            <!-- equipmentPower -->
-            <!-- HEAT DISSIPATION (kw)(each) -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">HEAT DISSIPATION (kw)(each)</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="heatDissipationPower"
-                  placeholder="HEAT DISSIPATION(kw)(each)"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.heatDissipationPower')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.heatDissipationPower')?.hasError('required')">
-                  Heat
-                  Dissipation is required
-                </div>
-              </div>
-            </div>
-            <!-- Data -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Data</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="data" placeholder="Data"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.data')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.data')?.hasError('required')">
-                  Data is required
-                </div>
-              </div>
-            </div>
-            <!-- BSS -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">BSS</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="bss" placeholder="BSS"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.bss')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.bss')?.hasError('required')">
-                  BSS is required
-                </div>
-              </div>
-            </div>
-            <!-- Group -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Group</label>
-              <div class="col-sm-4">
-                <select name="g_code" class="form-control" formControlName="group"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPowwer.group')?.errors}">
-                  <option value="">-</option>
-                  <option value="A">ARCHITECTURAL</option>
-                  <option value="G7">CHANGE TO LLME</option>
-                  <option value="G6">CHANGE TO MLME</option>
-                  <option value="D">CONTRACT</option>
-                  <option value="ER">E.REPLACEMENT</option>
-                  <option value="U4">E1-230V 13AMP</option>
-                  <option value="U11">E1/230V 15AMP</option>
-                  <option value="U10">E1/50KW TPH (REFER ATTACH)</option>
-                  <option value="U12">E2/D/E- REFER MORTURY</option>
-                  <option value="EL">ELECTRICAL</option>
-                  <option value="MO">FURNITURE LOOSE</option>
-                  <option value="FP">FUTURE</option>
-                  <option value="GROUP 1">G1</option>
-                  <option value="G3">G3</option>
-                  <option value="G.4">G4</option>
-                  <option value="IT">IT</option>
-                  <option value="KT">KITCHEN EQUIPMENT/UTENSILS</option>
-                  <option value="G">KITCHEN PLS REF ATTCH DOCUM</option>
-                  <option value="LF">LF</option>
-                  <option value="G4">LLME</option>
-                  <option value="C">LOOSE MEDICAL EQUIPMENT</option>
-                  <option value="MME">M AND E</option>
-                  <option value="M">MECHANICAL</option>
-                  <option value="ME">MEDICAL EQUIPMENT</option>
-                  <option value="MF">MEDICAL FURNITURE</option>
-                  <option value="MI">MEDICAL INSTRUMENT AND SS</option>
-                  <option value="MS">MISCELLANEOUS</option>
-                  <option value="U3">N1- 230V 13 AMP</option>
-                  <option value="U1">N1/ E1 -230V 13AMP</option>
-                  <option value="U8">N1/E1/W/D FLOOR MOUNTED</option>
-                  <option value="U2">N2/E1-230V 13AMP</option>
-                  <option value="U6">N2/E2</option>
-                  <option value="U5">N2/E2/ TPH 30AMP</option>
-                  <option value="U7">N2/E2/F/W/D</option>
-                  <option value="U9">N4/E4</option>
-                  <option value="NP">NEW</option>
-                  <option value="N">NILL</option>
-                  <option value="NM">NON MEDICAL EQUIPMENT</option>
-                  <option value="PH2">PHASE 2</option>
-                  <option value="F">PLS REFER ATTCH HYDRO DOCUM</option>
-                  <option value="B">REF ATTACHED CSSD DOCUM</option>
-                  <option value="L">REFER ATTACHED DOCUMENT</option>
-                  <option value="E">REFER ATTACHED X-RAY DOCUMENT</option>
-                  <option value="H">REFER ATTCH DOCUMENT</option>
-                  <option value="G2">RELOCATION</option>
-                  <option value="SI">SURGICAL INSTRUMENT</option>
-                  <option value="VEH">VEHICLE</option>
-                </select>
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.group')?.hasError('required')">Group is required
-                </div>
-              </div>
-            </div>
-            <!-- Typical Power Consumption -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Typical Power Consumption</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="typicalPowerConsumption"
-                  placeholder="Typical Power Consumption"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typicalPowerConsumption')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.typicalPowerConsumption')?.hasError('required')">
-                  Typical Power Consumption is required
-                </div>
-              </div>
-            </div>
-            <!-- Type of Power (1-phase/3-phase) -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Type of Power (1-phase/3-phase)</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="typeOfPower"
-                  placeholder="Type of Power (1-phase/3-phase)"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typeOfPower')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.typeOfPower')?.hasError('required')">Type of
-                  Power
-                  (1-phase/3-phase) is required
-                </div>
-              </div>
-            </div>
-            <!-- Water Inlet(Hot/Cold) -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Water Inlet(Hot/Cold)</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="waterInlet" placeholder="Water Inlet(Hot/Cold)"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.waterInlet')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.waterInlet')?.hasError('required')">Water
-                  Inlet(Hot/Cold) is required
-                </div>
-              </div>
-            </div>
-            <!-- Drainage -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Drainage</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="drainage" placeholder="Drainage"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.drainage')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.drainage')?.hasError('required')">Drainage is
-                  required
-                </div>
-              </div>
-            </div>
-            <!-- Ventilation/Exhaust -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Ventilation/Exhaust</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="ventilationExhaust"
-                  placeholder="Ventilation/Exhaust" value=""
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.ventilationExhaust')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.ventilationExhaust')?.hasError('required')">
-                  Ventilation/Exhaust is required
-                </div>
-              </div>
-            </div>
-            <!-- Medical Gas -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Medical Gas</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="medicalGas" placeholder="Medical Gas"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.medicalGas')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.medicalGas')?.hasError('required')">Medical Gas
-                  is
-                  required
-                </div>
-              </div>
-            </div>
-            <!-- Typical Weight (KG) -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Typical Weight (KG)</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="typicalWeight"
-                  placeholder="Typical Weight (KG)"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typicalWeight')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.typicalWeight')?.hasError('required')">Typical
-                  Weight
-                  (KG) is requried
-                </div>
-              </div>
-            </div>
-            <!-- Typical Floor Loading -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Typical Floor Loading</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="typicalFloorLoading"
-                  placeholder="Typical Floor Loading"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typicalFloorLoading')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.typicalFloorLoading')?.hasError('required')">
-                  Typical
-                  Floor Loading is required
-                </div>
-              </div>
-            </div>
-            <!-- Typical Ceiling Loading -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Typical Ceiling Loading</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="typicalCeilingLoading"
-                  placeholder="Typical Ceiling Loading"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.typicalCeilingLoading')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.typicalCeilingLoading')?.hasError('required')">
-                  Typical Ceiling Loading is required
-                </div>
-              </div>
-            </div>
-            <!-- Radiation Shielding -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Radiation Shielding</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="radiationShielding"
-                  placeholder="Radiation Shielding"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.radiationShielding')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.radiationShielding')?.hasError('required')">
-                  Radiation
-                  Shielding is required
-                </div>
-              </div>
-            </div>
-            <!-- Corridor Clearance -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Corridor Clearance</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="corridorClearance"
-                  placeholder="Corridor Clearance"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.corridorClearance')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.corridorClearance')?.hasError('required')">
-                  Corridor
-                  Clearance is required
-                </div>
-              </div>
-            </div>
-            <!-- Control Room -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Control Room</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="controlRoom" placeholder="Control Room"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.controlRoom')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.controlRoom')?.hasError('required')">Control Room
-                  is
-                  required
-                </div>
-              </div>
-            </div>
-            <!-- Tech Room -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Tech Room</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="techRoom" placeholder="Tech Room"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.techRoom')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.techRoom')?.hasError('required')">Tech Room is
-                  required
-                </div>
-              </div>
-            </div>
-            <!-- Chiller -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Chiller</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="chiller" placeholder="Chiller"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.chiller')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.chiller')?.hasError('required')">Chiller is
-                  required
-                </div>
-              </div>
-            </div>
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">File 1</label>
-              <div class="col-sm-4">
-                <a style="display:inline-block; margin-bottom: 10px;" href=""></a>
-                <a href="" class="btn btn-sm btn-danger pull-right" onclick="return confirm('Are you sure?')">Delete</a>
-                <input type="file" id="fileOneInput" formControlName="fileOne" />
-              </div>
-            </div>
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">File 2</label>
-              <div class="col-sm-4">
-                <a style="display:inline-block; margin-bottom: 10px;" href=""></a>
-                <a href="" class="btn btn-sm btn-danger pull-right" onclick="return confirm('Are you sure?')">Delete</a>
-                <input type="file" id="fileTwoInput" formControlName="fileTwo" />
-              </div>
-            </div>
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">File 3</label>
-              <div class="col-sm-4">
-                <a style="display:inline-block; margin-bottom: 10px;" href=""></a>
-                <a href="" class="btn btn-sm btn-danger pull-right" onclick="return confirm('Are you sure?')">Delete</a>
-                <input type="file" id="fileThreeInput" formControlName="fileThree" />
-              </div>
-            </div>
-            <!-- Remarks -->
-            <div class="form-group" formGroupName="equipmentPower">
-              <label class="col-sm-2 control-label">Remarks</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" formControlName="powerRemarks" placeholder="Remarks"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentPower.powerRemarks')?.errors}">
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentPower.powerRemarks')?.hasError('required')">Remarks is
-                  required
-                </div>
-              </div>
-            </div>
-          </ng-template>
-        </li>
-        <li [ngbNavItem]="4">
-          <button ngbNavLink>Equipment Project wise Label Updation</button>
-          <ng-template ngbNavContent>
-            <!-- Equipment Code -->
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Equipment Code</label>
-              <div class="col-sm-2">
-                <input type="text" class="form-control" name="gd_code" placeholder="Equipment Code" value="AA0003"
-                  readonly>
-              </div>
-            </div>
-            <!-- Equipment Name -->
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Equipment Name</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" name="gd_desc" placeholder="Equipment Name"
-                  value="AIRWAY GUEDEL VARIOUS SIZES" readonly>
-              </div>
-            </div>
-            <!-- Label -->
-            <div class="form-group" formGroupName="equipmentLabel">
-              <label class="col-sm-2 control-label">Label</label>
-              <div class="col-sm-4">
-                <select formControlName="label" class="form-control"
-                  [ngClass]="{'is-invalid': submitted && addEquipment.get('equipmentLabel.label')?.errors}">
-                  <option value="">-</option>
-                  <option value="G1 (Major Equipment)">G1 (Major Equipment)</option>
-                  <option value="G1 (Medical Mechanical)">G1 (Medical Mechanical)</option>
-                  <option value="G1 (Medical Electrical)">G1 (Medical Electrical)</option>
-                  <option value="G3 (Loose Medical Equipment)">G3 (Loose Medical Equipment)</option>
-                  <option value="G3 (Non Medical Equipment)">G3 (Non Medical Equipment)</option>
-                  <option value="Loose Furniture">Loose Furniture</option>
-                  <option value="Non Medical Furniture">Non Medical Furniture</option>
-                  <option value="Vehicle">Vehicle</option>
-                  <option value="G2 (Existing/Relocating)">G2 (Existing/Relocating)</option>
-                  <option value="G4 (Consumables)">G4 (Consumables)</option>
-                  <option value="G4 (Non medical equipment)">G4 (Non medical equipment)</option>
-                  <option value="G2ME (relocation related to M&E)">G2ME (relocation related to M&E)</option>
-                  <option value="G2LM (relocation related to Loose medical)">G2LM (relocation related to Loose medical)
-                  </option>
-                  <option value="G2NM (relocation related to non medical)">G2NM (relocation related to non medical)
-                  </option>
-                  <option value="G2LF (relocation related to loose furniture)">G2LF (relocation related to loose
-                    furniture)</option>
-                  <option value="GROUP 1 MEDICAL EQUIPMENT">GROUP 1 MEDICAL EQUIPMENT</option>
-                  <option value="Residential Furniture">Residential Furniture</option>
-                  <option value="Residential Equipment">Residential Equipment</option>
-                  <option value="Architectural">Architectural</option>
-                  <option value="Mechanical">Mechanical</option>
-                  <option value="Electrical">Electrical</option>
-                  <option value="ICT">ICT</option>
-                  <option value="Others">Others</option>
-                  <option value="No Equipment">No Equipment</option>
-                  <option value="Medical furniture">Medical furniture</option>
-                  <option value="ACCESSORIES">ACCESSORIES</option>
-                  <option value="SOCSO MEDICAL EQUIPMENT">SOCSO MEDICAL EQUIPMENT</option>
-                  <option value="PERKESO MEDICAL/REHAB EQUIPMENT">PERKESO MEDICAL/REHAB EQUIPMENT</option>
-                  <option value="OPERATIONAL/NON MEDICAL EQUIPMENT">OPERATIONAL/NON MEDICAL EQUIPMENT</option>
-                  <option value="ID FURNITURE">ID FURNITURE</option>
-                  <option value="KITCHEN EQUIPMENT">KITCHEN EQUIPMENT</option>
-                  <option value="AUDIOVISUAL">AUDIOVISUAL</option>
-                  <option value="VOCATIONAL EQUIPMENT">VOCATIONAL EQUIPMENT</option>
-                  <option value="FUTURE">FUTURE</option>
-                  <option value="TESTNEW">TESTNEW</option>
-                </select>
-                <div class="text-danger"
-                  *ngIf="submitted && addEquipment.get('equipmentLabel.label')?.hasError('required')">Label is required
-                </div>
-              </div>
-            </div>
-            <!-- Projects -->
-            <div class="form-group" formGroupName="equipmentLabel">
-              <label class="col-sm-2 control-label">Projects</label>
-              <div class="col-sm-4">
-                <label>Note: This label changes will not be updated in
-                  [CYB,CYB2,CYBR,HLAW,HLWS-001,HM-001,PGH-PM01,PGH-PM002,HPK,HTM,HSA-P,IJN01,MTH-01,PGH-04,PGH-05,PJHK300B].
-                </label>
-              </div>
-            </div>
-          </ng-template>
-        </li>
-      </ul>
-      <div [ngbNavOutlet]="nav" class="mt-2"></div>
-      <div class="row">
-        <div class="col-md-6 text-center mt-3">
-          <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
-          <a routerLink="/pages/equipment-data"><i class="material-icon">Cancel</i></a>
+            </ng-template>
+          </li>
+        </ul>
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        <div class="row">
+          <div class="col-md-6 text-center mt-3">
+            <button type="submit" class="btn btn-primary px-4 me-3">{{ isEdit ? 'Update' : 'Save'}}</button>
+            <a routerLink="/pages/equipment-data"><i class="material-icon">Cancel</i></a>
+          </div>
         </div>
-      </div>
-    </form>
-  </div> <!-- /container -->
+      </form>
+    </div>
+  </div>
+</div> <!-- /container -->
