@@ -23,6 +23,7 @@ import { ViewModeDirective } from './project/edit-input/view-mode.directive';
 import { FocusableDirective } from '../directives/focusable.directive';
 // import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
 import { LoaderComponent } from '../components/loader/loader.component';
+import { EditInputEquipmentComponent } from './project/edit-input-equipment/edit-input-equipment.component';
 // import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
     // DepartmentTransactionComponent,
     FilterPipe,
     EditInputComponent,
+    EditInputEquipmentComponent,
     ViewModeDirective,
     EditModeDirective,
     FocusableDirective,

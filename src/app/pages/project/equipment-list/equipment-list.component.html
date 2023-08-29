@@ -106,38 +106,32 @@
                                             </div>
                                         </td>
                                         <td class=" editablex">
-                                            <app-edit-input [data]="eqp.apq || 0" [equipmentIndex]="eqp.arrayIndex"
-                                                [departmentId]="eqp.departmentId"
-                                                [roomId]="eqp.roomId" [field]="'apq'"
-                                                [projectId]="projectId" [type]="'equipment'"
-                                                [inputsize]="100"></app-edit-input>
+                                            <app-edit-input-equipment [data]="eqp.apq || 0" [equipmentId]="eqp.id"
+                                                [field]="'apq'" [inputsize]="100"></app-edit-input-equipment>
                                         </td>
                                         <td class=" editablex">
-                                            <app-edit-input [data]="eqp.fpq || 0"
-                                                [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departmentId"
-                                                [roomId]="eqp.roomId" [field]="'fpq'" [projectId]="projectId"
-                                                [type]="'equipment'" [inputsize]="100"></app-edit-input>
+                                            <app-edit-input-equipment [data]="eqp.fpq || 0" [equipmentId]="eqp.id"
+                                                [field]="'fpq'" [inputsize]="100"></app-edit-input-equipment>
                                         </td>
                                         <td class=" editablex">
-                                            <app-edit-input [data]="eqp.quantity || 0"
-                                                [equipmentIndex]="eqp.arrayIndex" [departmentId]="eqp.departmentId"
-                                                [roomId]="eqp.roomId" [field]="'quantity'"
-                                                [projectId]="projectId" [type]="'equipment'"
-                                                [inputsize]="100"></app-edit-input>
+                                            <app-edit-input-equipment [data]="eqp.qty || 0" [equipmentId]="eqp.id"
+                                                [field]="'qty'" [inputType]="'text'"
+                                                [inputsize]="100"></app-edit-input-equipment>
                                         </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td colspan="6" class="text-end">
-                                            <ngb-pagination class="d-inline-block" [collectionSize]="count"
-                                                [(page)]="page" (pageChange)="loadEquipments()"
-                                                aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
-                                            <pre>Current page: {{page}}</pre>
+
                                         </td>
                                     </tr>
                                 </tfoot>
                             </table>
+                            <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page"
+                                (pageChange)="loadEquipments()" aria-label="Default pagination"
+                                [maxSize]="5"></ngb-pagination>
+                            <pre>Current page: {{page}}</pre>
                         </div>
                     </div>
                 </div>

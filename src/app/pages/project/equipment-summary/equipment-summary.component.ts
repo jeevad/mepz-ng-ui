@@ -9,7 +9,6 @@ import { EquipmentService } from 'src/app/service/equipment/equipment.service';
   templateUrl: './equipment-summary.component.html',
   styleUrls: ['./equipment-summary.component.css'],
 })
-
 export class EquipmentSummaryComponent {
   page = 1;
   limit = 10;
@@ -23,12 +22,13 @@ export class EquipmentSummaryComponent {
   loadFromMasterData: any[] = [];
   projectType: string | null = 'individual';
 
-  constructor(private service: SummaryService,
+  constructor(
+    private service: SummaryService,
     private projectService: ProjectService,
     private route: ActivatedRoute,
     private equipmentService: EquipmentService,
-    private http: HttpClient) {
-  }
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
@@ -39,16 +39,18 @@ export class EquipmentSummaryComponent {
   loadFromMaster() {
     this.equipmentService.Load(this.skip, this.limit).subscribe((data: any) => {
       this.loadFromMasterData = data.results;
-      console.log(data.results, "data results");
+      console.log(data.results, 'data results');
 
       const groupNames = this.loadFromMasterData
-        .filter((equipment: any) => equipment.equipmentPower && equipment.equipmentPower.group)
+        .filter(
+          (equipment: any) =>
+            equipment.equipmentPower && equipment.equipmentPower.group
+        )
         .map((equipment: any) => equipment.equipmentPower.group);
 
       console.log('Group Names:', groupNames);
     });
   }
-
 
   loadEquipments() {
     this.skip = this.limit * (this.page - 1);
@@ -56,9 +58,11 @@ export class EquipmentSummaryComponent {
     this.projectService
       .getEquipments(this.projectId, this.skip, this.limit)
       .subscribe((data: any) => {
-        this.equipmentData = data.results[0].data;
-        this.count = data.results[0].metadata[0].total;
-        this.filteredEquipmentData = this.equipmentData.slice();
+        this.equipmentData = data.results;
+        this.count = data.count;
+        console.log('data.count', data.count);
+
+        // this.filteredEquipmentData = this.equipmentData.slice();
         this.loader = false;
         this.loadFromMaster();
       });
@@ -68,8 +72,8 @@ export class EquipmentSummaryComponent {
     event.stopPropagation();
   }
 
-  wholeRowClick(): void { }
+  wholeRowClick(): void {}
 
-  nextButtonClickEvent(): void { }
-  previousButtonClickEvent(): void { }
+  nextButtonClickEvent(): void {}
+  previousButtonClickEvent(): void {}
 }

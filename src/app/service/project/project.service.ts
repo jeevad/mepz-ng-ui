@@ -96,6 +96,13 @@ export class ProjectService {
     );
   }
 
+  updateEquipmentFields(equipmentId: string, data: any) {
+    return this.http.post(
+      environment.apiUrl + '/project/updateEquipmentFields/' + equipmentId,
+      data
+    );
+  }
+
   //new test
   getDepartmentEquipments(projectId: string, departmentId: string) {
     return this.http.get(
