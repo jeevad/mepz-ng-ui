@@ -47,8 +47,8 @@
                     <thead>
                       <tr role="row">
                         <th></th>
-                        <th>Equipment</th>
-                        <th>Code</th>
+                        <th>Code / Equipment</th>
+                        <!-- <th>Code</th> -->
                       </tr>
                     </thead>
                     <tbody>
@@ -57,12 +57,15 @@
                         <td>
                           <input class="checkbox" type="checkbox" name="" value=""
                             [checked]="projectEquipment.includes(item)" (click)="selectEquipment(item)">
-                        <td>{{ item.name | uppercase}}</td>
-                        <td>{{ item.code | uppercase}}</td>
+                        <td><strong>{{ item.code | uppercase}}</strong> / {{ item.name | uppercase}}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
+                <ngb-pagination class="d-inline-block mt-3" [collectionSize]="masterEquipmentCount"
+                  [(page)]="masterEquipmentPage" (pageChange)="loadMasterEquipmentData()"
+                  aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
+                Current page: {{masterEquipmentPage}}
               </div>
             </div>
           </div>
@@ -90,6 +93,10 @@
                       </tbody>
                     </table>
                   </div>
+                  <!-- <ngb-pagination class="d-inline-block" [collectionSize]="projectEquipmentsCount"
+                  [(page)]="projectEquipmentsPage" (pageChange)="loadMasterEquipmentData()"
+                  aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
+                <pre>Current page: {{projectEquipmentsPage}}</pre> -->
                 </div>
               </div>
             </div>

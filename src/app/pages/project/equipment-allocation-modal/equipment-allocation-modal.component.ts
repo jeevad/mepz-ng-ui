@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   NgbActiveModal,
   NgbModal,
+  NgbModule,
   NgbNavModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { RoomService } from 'src/app/service/room/room.service';
@@ -15,7 +16,13 @@ import { LoaderComponent } from 'src/app/components/loader/loader.component';
 @Component({
   selector: 'app-equipment-allocation-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgbNavModule, LoaderComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    NgbNavModule,
+    NgbModule,
+    LoaderComponent,
+  ],
   // declarations: [LoaderComponent],
   templateUrl: './equipment-allocation-modal.component.html',
   styleUrls: ['./equipment-allocation-modal.component.css'],
@@ -55,6 +62,11 @@ export class EquipmentAllocationModalComponent {
   otherEquipmentData: any[] = [];
   isAlertVisible: boolean = false;
   alertMessage: any;
+  masterEquipmentCount: number = 0;
+  masterEquipmentPage: number = 1;
+  limit: number = 50;
+  projectEquipmentsCount: number = 0;
+  projectEquipmentsPage: number = 1;
 
   constructor(
     private room: RoomService,
@@ -78,22 +90,29 @@ export class EquipmentAllocationModalComponent {
 
   getCurrentProjectRooms() {
     this.loader = true;
-    const filterEquipmentDto: any = {projectId: [this.projectId],};
-    this.projectService.getAllRooms(0, 10, filterEquipmentDto).subscribe((data: any) => {
-      this.globalProjectRoom = data.results[0].data;
-      // this.count = data.results[0].metadata[0].total;
-      // this.projectRooms = this.equipmentData.slice(); //For search bar
-      this.loader = false;
-    });
+    const filterEquipmentDto: any = { projectId: [this.projectId] };
+    this.projectService
+      .getAllRooms(0, 10, filterEquipmentDto)
+      .subscribe((data: any) => {
+        this.globalProjectRoom = data.results[0].data;
+        // this.count = data.results[0].metadata[0].total;
+        // this.projectRooms = this.equipmentData.slice(); //For search bar
+        this.loader = false;
+      });
   }
   //Project list in equipment modal
   loadProjectData() {
     this.loader = true;
-    this.projectService.Load(0, 10, this.projectType).subscribe((data: any) => {
+    // const skip = this.limit * (this.masterEquipmentPage - 1);
+    console.log('this.masterEquipmentPage', this.masterEquipmentPage);
+
+    this.projectService.Load(0, 0, this.projectType).subscribe((data: any) => {
       this.projectData = data.results;
       this.loader = false;
       if (this.projectId) {
-        const selectedProject = this.projectData.find((project: any) => project.code === this.projectId);
+        const selectedProject = this.projectData.find(
+          (project: any) => project.code === this.projectId
+        );
         if (selectedProject) {
           this.projectDepartments = selectedProject.departments;
         }
@@ -146,20 +165,28 @@ export class EquipmentAllocationModalComponent {
       }
       delete eqp._id;
       let equipLength = [];
-      this.room.saveEquipmentData(this.projectId, this.deptId, this.roomId, eqp).subscribe((response: any) => {
-        this.projectEquipments.push(eqp);
-      });
+      this.room
+        .saveEquipmentData(this.projectId, this.deptId, this.roomId, eqp)
+        .subscribe((response: any) => {
+          this.projectEquipments.push(eqp);
+        });
     }
-    if(this.projectEquipment.length === 1){
-      this.alertMessage = this.projectEquipment.length+' Item added to the project';
+    if (this.projectEquipment.length === 1) {
+      this.alertMessage =
+        this.projectEquipment.length + ' Item added to the project';
       this.isAlertVisible = true;
-      setTimeout(() => { this.isAlertVisible = false; }, 3000);
+      setTimeout(() => {
+        this.isAlertVisible = false;
+      }, 3000);
     } else if (this.projectEquipment.length > 1) {
-      this.alertMessage = this.projectEquipment.length+' Items added to the project';
+      this.alertMessage =
+        this.projectEquipment.length + ' Items added to the project';
       this.isAlertVisible = true;
-      setTimeout(() => { this.isAlertVisible = false; }, 3000);
+      setTimeout(() => {
+        this.isAlertVisible = false;
+      }, 3000);
     } else {
-      this.alertMessage = ""
+      this.alertMessage = '';
     }
     this.projectEquipment = []; // Clear the projectEquipment array
   }
@@ -168,7 +195,8 @@ export class EquipmentAllocationModalComponent {
   searchEquipment(): void {
     this.loader = true;
     if (this.searchText.trim() !== '') {
-      this.masterEquipmentList = this.equipmentData.filter((item: any) =>
+      this.masterEquipmentList = this.equipmentData.filter(
+        (item: any) =>
           item.name.toLowerCase().includes(this.searchText.toLowerCase()) |
           item.code.toLowerCase().includes(this.searchText.toLowerCase())
       );
@@ -198,9 +226,11 @@ export class EquipmentAllocationModalComponent {
   // Load equipment data from the service  | List in Sidebar
   loadMasterEquipmentData(): void {
     this.loader = true;
-    this.equipmentService.Load(0, 10).subscribe((data: any) => {
+    const skip = this.limit * (this.masterEquipmentPage - 1);
+    this.equipmentService.Load(skip, this.limit).subscribe((data: any) => {
       this.equipmentData = data.results;
-      this.masterEquipmentList = this.equipmentData.slice();
+      this.masterEquipmentList = this.equipmentData;
+      this.masterEquipmentCount = data.count;
       this.loader = false;
     });
   }
@@ -208,12 +238,15 @@ export class EquipmentAllocationModalComponent {
   // Function to load equipment list
   loadProjectEquipments(): void {
     this.loader = true;
-    this.projectService.getProjectEquipments(this.projectId, this.deptId, this.roomId).subscribe((data: any) => {
-      this.projectEquipments = data.results;
-      this.loader = false;
-      this.project = data.results[0];
-      this.department = data.results[0].department;
-    });
+    this.projectService
+      .getProjectEquipments(this.projectId, this.deptId, this.roomId)
+      .subscribe((data: any) => {
+        this.projectEquipments = data.results;
+        this.projectEquipmentsCount = data.count;
+        this.loader = false;
+        this.project = data.results[0];
+        this.department = data.results[0].department;
+      });
   }
 
   searchOtherProjectEqp() {
@@ -226,7 +259,9 @@ export class EquipmentAllocationModalComponent {
       limit: 10,
     };
     this.loader = true;
-    this.projectService.getAllEquipments(filterEquipmentDto).subscribe((data: any) => {
+    this.projectService
+      .getAllEquipments(filterEquipmentDto)
+      .subscribe((data: any) => {
         this.otherEquipmentData = data.results;
         // this.count = data.results[0].metadata[0].total;
         // this.filteredEquipmentData = this.equipmentData.slice(); //For search bar
