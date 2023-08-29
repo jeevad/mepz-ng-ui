@@ -62,10 +62,13 @@
                     </tbody>
                   </table>
                 </div>
-                <ngb-pagination class="d-inline-block mt-3" [collectionSize]="masterEquipmentCount"
-                  [(page)]="masterEquipmentPage" (pageChange)="loadMasterEquipmentData()"
-                  aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
-                Current page: {{masterEquipmentPage}}
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                  <ngb-pagination class="d-inline-block mt-3" [collectionSize]="masterEquipmentCount"
+                    [(page)]="masterEquipmentPage" (pageChange)="loadMasterEquipmentData()"
+                    aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
+                  <span>Current page: {{masterEquipmentPage}}</span>
+                </div>
+
               </div>
             </div>
           </div>
