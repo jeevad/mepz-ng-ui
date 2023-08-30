@@ -16,8 +16,14 @@ import { FilterRoomsPipe } from './pipes/filter-rooms.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RoomSelectionModalComponent } from './pages/project/view-rooms/room-selection-modal.component';
 import { AlertComponent } from './_components';
-import { ErrorInterceptor, JwtInterceptor, appInitializer, fakeBackendProvider } from './_helpers';
+import {
+  ErrorInterceptor,
+  JwtInterceptor,
+  appInitializer,
+  fakeBackendProvider,
+} from './_helpers';
 import { AccountService } from './_services/account.service';
+import { ToastsContainer } from './components/toaster/toasts-container.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +49,8 @@ import { AccountService } from './_services/account.service';
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
+    // ToasterComponent,
+    ToastsContainer,
     // NgbModule.forRoot(),
     CollapseModule.forRoot(),
   ],
@@ -61,12 +69,17 @@ import { AccountService } from './_services/account.service';
   //   ],
 
   providers: [
-    { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializer,
+      multi: true,
+      deps: [AccountService],
+    },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     // provider used to create fake backend
-    fakeBackendProvider
+    fakeBackendProvider,
   ],
   bootstrap: [AppComponent],
 })
