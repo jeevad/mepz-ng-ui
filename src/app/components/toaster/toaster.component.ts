@@ -8,7 +8,6 @@ import { ToasterService } from './toaster.service';
   imports: [NgbTooltipModule, ToastsContainer],
   selector: 'app-toaster',
   templateUrl: './toaster.component.html',
-  styleUrls: ['./toaster.component.css'],
 })
 export class ToasterComponent implements OnDestroy {
   constructor(public toastService: ToasterService) {}
