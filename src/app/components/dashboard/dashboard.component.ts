@@ -10,9 +10,9 @@ export class DashboardComponent {
   constructor(public toastService: ToasterService) {}
 
   ngOnInit() {
-    this.showStandard();
-    this.showSuccess();
-    this.showDanger();
+    // this.showStandard();
+    // this.showSuccess();
+    // this.showDanger();
   }
 
   showStandard() {

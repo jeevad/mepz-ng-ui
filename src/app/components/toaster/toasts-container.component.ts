@@ -43,7 +43,7 @@ import { ToasterService } from './toaster.service';
     </ngb-toast>
   `,
   host: {
-    class: 'toast-container position-fixed top-0 end-0 p-3',
+    class: 'toast-container position-fixed bottom-0 end-0 p-3',
     style: 'z-index: 1200',
   },
 })

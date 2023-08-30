@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 import { ProjectService } from 'src/app/service/project/project.service';
 
 @Component({
@@ -32,7 +33,8 @@ export class AddProjectComponent {
     private department: ProjectService,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public toastService: ToasterService,
   ) {}
   ngOnInit(): void {
     this.deptid = this.route.snapshot.paramMap.get('id');
@@ -96,6 +98,10 @@ export class AddProjectComponent {
         this.department
           .SaveData(this.addProjectForm.value)
           .subscribe((result) => {
+            this.toastService.show('Project created', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            });
             this.router.navigate([`pages/projects/${this.projectType}/list`]);
           });
       }
@@ -106,6 +112,12 @@ export class AddProjectComponent {
           .update(this.deptid, this.addProjectForm.value)
           .subscribe((data) => {
             this.isEdit = false;
+            console.log('in-----');
+            
+            this.toastService.show('Updated project', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            });
             this.router.navigate([`pages/projects/${this.projectType}/list`]);
           });
       }

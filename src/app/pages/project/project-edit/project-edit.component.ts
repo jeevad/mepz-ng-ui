@@ -10,13 +10,13 @@ import { ProjectService } from 'src/app/service/project/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 @Component({
   selector: 'app-project-edit',
   templateUrl: './project-edit.component.html',
   styleUrls: ['./project-edit.component.css'],
 })
-export class ProjectEditComponent implements OnInit{
-
+export class ProjectEditComponent implements OnInit {
   departmentdata: any;
   active: any = ['Active', 'Inactive'];
   message = '';
@@ -41,9 +41,8 @@ export class ProjectEditComponent implements OnInit{
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
-    private http: HttpClient,
-
-  ) { }
+    public toastService: ToasterService
+  ) {}
 
   ngOnInit(): void {
     this.deptid = this.route.snapshot.paramMap.get('id');
@@ -55,7 +54,12 @@ export class ProjectEditComponent implements OnInit{
           this.isEdit = true;
           this.addDepartment.patchValue(resp);
           // this.currencies = resp.currencies || [];
-          this.currencies = resp.currencies.filter((currency: any) => currency.currencyCode && currency.currencyDescription && currency.currencySymbol);
+          this.currencies = resp.currencies.filter(
+            (currency: any) =>
+              currency.currencyCode &&
+              currency.currencyDescription &&
+              currency.currencySymbol
+          );
           console.log('Selected Projects Currencies:', this.currencies);
           this.loader = false;
           // this.currencies = resp.currencies.filter((currency: any) => currency.projectId === param['id']) || [];
@@ -68,21 +72,21 @@ export class ProjectEditComponent implements OnInit{
       fullName: ['', Validators.required],
       clientOwner: ['', Validators.required],
       contractNo: ['', Validators.required],
-      noOfBeds: ['',Validators.required],
+      noOfBeds: ['', Validators.required],
       classification: ['', Validators.required],
       type: ['', Validators.required],
       // company: ['', Validators.required],
       comp: ['', Validators.required],
-      dateInitiatedProposal: ['',Validators.required],
-      proposedFacilityCompletionDate: ['',Validators.required],
-      signature1: ['',Validators.required],
-      signature2: ['',Validators.required],
-      address1: ['',Validators.required],
-      address2: ['',Validators.required],
-      city: ['',Validators.required],
-      postalZip: ['',Validators.required],
-      state: ['',Validators.required],
-      country: ['',Validators.required],
+      dateInitiatedProposal: ['', Validators.required],
+      proposedFacilityCompletionDate: ['', Validators.required],
+      signature1: ['', Validators.required],
+      signature2: ['', Validators.required],
+      address1: ['', Validators.required],
+      address2: ['', Validators.required],
+      city: ['', Validators.required],
+      postalZip: ['', Validators.required],
+      state: ['', Validators.required],
+      country: ['', Validators.required],
       // currencyDescription: [''],
       // currencyCode: [''],
       // currencySymbol: ['']
@@ -139,7 +143,7 @@ export class ProjectEditComponent implements OnInit{
       const newCurrency = {
         code: currencyCode,
         description: currencyDescription,
-        symbol: currencySymbol
+        symbol: currencySymbol,
       };
       this.currencies.push(newCurrency);
       console.log('Currencies:', this.currencies);
@@ -150,21 +154,25 @@ export class ProjectEditComponent implements OnInit{
     this.submitted = true;
     if (this.addDepartment.valid) {
       this.submitted = false;
-      const currencies = this.currencies.map(currency => {
+      const currencies = this.currencies.map((currency) => {
         return {
           currencyCode: currency.code,
           currencyDescription: currency.description,
-          currencySymbol: currency.symbol
+          currencySymbol: currency.symbol,
         };
       });
 
       if (!this.isEdit) {
         const formData = {
           ...this.addDepartment.value,
-          currencies: currencies
+          currencies: currencies,
         };
 
         this.department.SaveData(formData).subscribe((result) => {
+          this.toastService.show('Updated project', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/projects', this.projectType, 'list']);
         });
       } else {
@@ -173,19 +181,21 @@ export class ProjectEditComponent implements OnInit{
           const updatedCurrencies = [...existingCurrencies, ...currencies];
           const formData = {
             ...this.addDepartment.value,
-            currencies: updatedCurrencies
+            currencies: updatedCurrencies,
           };
 
           this.department.update(this.deptid, formData).subscribe((data) => {
             this.isEdit = false;
+            this.toastService.show('Updated project', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            });
             this.router.navigate(['pages/projects', this.projectType, 'list']);
           });
         });
       }
     }
   }
-
-
 
   change(e: any) {
     this.active = e.target.value;
