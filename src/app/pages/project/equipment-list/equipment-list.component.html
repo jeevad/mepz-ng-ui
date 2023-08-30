@@ -130,10 +130,10 @@
                             </table>
                         </div>
                         <div class="d-sm-flex align-items-center justify-content-between mt-4">
+                            <span>Current page: {{page}}</span>
                             <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page"
                                 (pageChange)="loadEquipments()" aria-label="Default pagination"
                                 [maxSize]="5"></ngb-pagination>
-                            <span>Current page: {{page}}</span>
                         </div>
                     </div>
                 </div>
