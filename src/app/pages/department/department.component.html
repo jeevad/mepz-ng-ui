@@ -40,16 +40,11 @@
                       </td>
                     </tr>
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="5" class="text-end">
-                        <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="Load()"
-                          aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
-                        <pre>Current page: {{page}}</pre>
-                      </td>
-                    </tr>
-                  </tfoot>
                 </table>
+              </div>
+              <div class="pagination-wrap">
+                <p>Current page: {{ page }}</p>
+                <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="Load()" aria-label="Default pagination" [maxSize]="maxSize"></ngb-pagination>
               </div>
             </div>
           </div>

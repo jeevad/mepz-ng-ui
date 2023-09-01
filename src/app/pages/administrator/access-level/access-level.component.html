@@ -1,90 +1,88 @@
-<div class="page-wrapper">
-  <section class="section">
-    <div class="container">
-      <div class="row page-content">
-        <div class="col-md-12">
-          <div class="card p-3">
-            <div class="card-body">
-              <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <div class="table-responsive ">
-                  <table class="table mb-0">
-                    <thead class="table-light">
-                      <tr>
-                        <th>Group</th>
-                        <th class="text-center">Project</th>
-                        <th>Report Type</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td style="width:200px">
-                          <!-- <div class="col-md-6"> -->
-                          <select id="inputState" class="form-select" formControlName="group" (change)="onChangeGroup()"
-                            [ngClass]="{'is-invalid': submitted && form.controls['group'].errors}">
-                            <option value="">Please select Group</option>
-                            <option *ngFor="let item of groupdata;let i=index;" [value]="item.name">{{ item.name }}
-                            </option>
-                          </select>
-                          <div class="text-danger" *ngIf="submitted && form.controls['group'].errors?.['required']">
-                            This field is required</div>
-                          <!-- </div> -->
-                        </td>
+<section class="section">
+  <div class="container">
+    <div class="row page-content">
+      <div class="col-md-12">
+        <div class="card p-3">
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="table-responsive ">
+                <table class="table mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Group</th>
+                      <th class="text-center">Project</th>
+                      <th>Report Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="width:200px">
+                        <!-- <div class="col-md-6"> -->
+                        <select id="inputState" class="form-select" formControlName="group" (change)="onChangeGroup()"
+                          [ngClass]="{'is-invalid': submitted && form.controls['group'].errors}">
+                          <option value="">Please select Group</option>
+                          <option *ngFor="let item of groupdata;let i=index;" [value]="item.name">{{ item.name }}
+                          </option>
+                        </select>
+                        <div class="text-danger" *ngIf="submitted && form.controls['group'].errors?.['required']">
+                          This field is required</div>
+                        <!-- </div> -->
+                      </td>
 
-                        <td>
-                          <table class="table">
-                            <tbody>
-                              <ng-container formArrayName="projects">
-                                <ng-container *ngFor="let project of projects.controls; let i = index">
-                                  <tr [formGroupName]="i">
-                                    <td>{{project.value.code}}</td>
-                                    <td>{{project.value.name}}</td>
-                                    <td>
-                                      <label class="checkbox-inline me-2">
-                                        <input type="checkbox" class="form-check-input" name="view"
-                                          formControlName="view"> View
-                                      </label>
-                                      <label class="checkbox-inline me-2">
-                                        <input type="checkbox" class="form-check-input" name="add"
-                                          formControlName="add"> Add
-                                      </label>
-                                      <label class="checkbox-inline me-2">
-                                        <input type="checkbox" class="form-check-input" name="edit"
-                                          formControlName="edit"> Edit
-                                      </label>
-                                      <label class="checkbox-inline me-2">
-                                        <input type="checkbox" class="form-check-input" name="delete"
-                                          formControlName="delete"> Delete
-                                      </label>
-                                    </td>
-                                  </tr>
-                                </ng-container>
+                      <td>
+                        <table class="table">
+                          <tbody>
+                            <ng-container formArrayName="projects">
+                              <ng-container *ngFor="let project of projects.controls; let i = index">
+                                <tr [formGroupName]="i">
+                                  <td>{{project.value.code}}</td>
+                                  <td>{{project.value.name}}</td>
+                                  <td>
+                                    <label class="checkbox-inline me-2">
+                                      <input type="checkbox" class="form-check-input" name="view"
+                                        formControlName="view"> View
+                                    </label>
+                                    <label class="checkbox-inline me-2">
+                                      <input type="checkbox" class="form-check-input" name="add"
+                                        formControlName="add"> Add
+                                    </label>
+                                    <label class="checkbox-inline me-2">
+                                      <input type="checkbox" class="form-check-input" name="edit"
+                                        formControlName="edit"> Edit
+                                    </label>
+                                    <label class="checkbox-inline me-2">
+                                      <input type="checkbox" class="form-check-input" name="delete"
+                                        formControlName="delete"> Delete
+                                    </label>
+                                  </td>
+                                </tr>
                               </ng-container>
-                            </tbody>
-                          </table>
-                        </td>
-                        <td>
-                          <div *ngIf="form.controls['group'].value">
-                            <label class="checkbox-inline me-2">
-                              <input type="checkbox" class="form-check-input" name="" value="1"> Pdf
-                            </label>
-                            <label class="checkbox-inline me-2">
-                              <input type="checkbox" class="form-check-input" name="" value="1"> Doc
-                            </label>
-                          </div>
-                        </td>
-                      </tr>
+                            </ng-container>
+                          </tbody>
+                        </table>
+                      </td>
+                      <td>
+                        <div *ngIf="form.controls['group'].value">
+                          <label class="checkbox-inline me-2">
+                            <input type="checkbox" class="form-check-input" name="" value="1"> Pdf
+                          </label>
+                          <label class="checkbox-inline me-2">
+                            <input type="checkbox" class="form-check-input" name="" value="1"> Doc
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
 
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-12 text-center mt-3">
-                  <button type="submit" class="btn btn-primary px-5 me-3">Save</button>
-                </div>
-              </form>
-            </div>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-primary px-5 me-3">Save</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>

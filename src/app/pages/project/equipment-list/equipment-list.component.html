@@ -50,7 +50,7 @@
                         <button title="Replace" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                             data-target="#myModal3" type="button" class="btn btn-sm btn-primary"><i
                                 class='fal fa-exchange'></i></button>
-                        <button type="button" class="btn btn-sm btn-danger" id="delete_eq" title="DELETE"><i
+                        <button type="button" class="btn btn-sm btn-danger" (click)="delete('1230')" id="delete_eq" title="DELETE"><i
                                 class='bx bxs-trash'></i></button>
                         <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i
                                 class='bx bxs-copy'></i></button>
@@ -120,20 +120,11 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="6" class="text-end">
-
-                                        </td>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
-                        <div class="d-sm-flex align-items-center justify-content-between mt-4">
-                            <span>Current page: {{page}}</span>
-                            <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page"
-                                (pageChange)="loadEquipments()" aria-label="Default pagination"
-                                [maxSize]="5"></ngb-pagination>
+                        <div class="pagination-wrap">
+                            <p>Current page: {{ page }}</p>
+                            <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="loadEquipments()" aria-label="Default pagination" [maxSize]="maxSize"></ngb-pagination>
                         </div>
                     </div>
                 </div>

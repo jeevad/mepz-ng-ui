@@ -9,7 +9,7 @@
                 <h5 class="mb-0 text-primary">Add User</h5>
               </div>
 
-              <form [formGroup]="userForm" (ngSubmit)="SaveUserData()" class="row g-3">
+              <form [formGroup]="userForm" (ngSubmit)="SaveUserData()" class="row g-3" autocomplete="off">
                 <div class="col-md-6">
                   <label for="inputFirstName" class="form-label">Username</label>
                   <input type="text" class="form-control" id="inputFirstName" placeholder="Enter Username"
@@ -85,7 +85,7 @@
                       />
                       <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fal fa-calendar"></i></button>
                     </div>
-                  <div class="text-danger" *ngIf="submitted && userForm.controls['valid'].errors?.['required']">
+                  <div class="text-danger" *ngIf="submitted && userForm.controls['valid'].errors">
                     Valid Until is required</div>
                 </div>
                 <div class="col-md-12">

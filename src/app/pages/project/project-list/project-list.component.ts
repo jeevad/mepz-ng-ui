@@ -3,17 +3,21 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ProjectService } from 'src/app/service/project/project.service';
 import { AddProjectModalComponent } from './add-project-modal/add-project-modal.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 // import { NgxSpinnerService } from 'ngx-spinner';
 
 export interface DialogData {
   animal: string;
   name: string;
 }
+
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.css'],
 })
+
 export class ProjectListComponent implements OnInit {
   page = 1;
   limit = 10;
@@ -25,12 +29,15 @@ export class ProjectListComponent implements OnInit {
   filteredEquipmentData: any[] = []; // For search bar
   loader: boolean = false;
   projectType: any = 'individual';
+  maxSize: number = 5;
 
   constructor(
     private projectService: ProjectService,
     private route: ActivatedRoute, // private spinner: NgxSpinnerService
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private customDialog: MyCustomDialogService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
@@ -45,6 +52,17 @@ export class ProjectListComponent implements OnInit {
       }
     });
     this.Load();
+    this.reponsivePagination();
+  }
+
+  reponsivePagination(){
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
+      if (result.matches) {
+        this.maxSize = 1;
+      } else {
+        this.maxSize = 5;
+      }
+    });
   }
 
   // Loads the initial data
@@ -96,10 +114,15 @@ export class ProjectListComponent implements OnInit {
   }
   // Deletes an item
   delete(id: any) {
-    if (confirm('delete?')) {
-      this.projectService.Removedata(id).subscribe((data) => {
-        this.Load();
-      });
-    }
+    const dialogRef = this.customDialog.openConfirmDialog({
+      dialogMsg: 'Are you sure want to delete?',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'ok') {
+        this.projectService.Removedata(id).subscribe((data) => {
+          this.Load();
+        });
+      }
+    });
   }
 }

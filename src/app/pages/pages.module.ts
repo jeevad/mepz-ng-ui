@@ -24,6 +24,7 @@ import { FocusableDirective } from '../directives/focusable.directive';
 // import { EquipmentListComponent } from './project/equipment-list/equipment-list.component';
 import { LoaderComponent } from '../components/loader/loader.component';
 import { EditInputEquipmentComponent } from './project/edit-input-equipment/edit-input-equipment.component';
+import { TacComponent } from './project/tac/tac.component';
 // import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { EditInputEquipmentComponent } from './project/edit-input-equipment/edit
     ViewModeDirective,
     EditModeDirective,
     FocusableDirective,
+    TacComponent,
     // EquipmentListComponent,
     // EditEquipmentComponent,
   ],

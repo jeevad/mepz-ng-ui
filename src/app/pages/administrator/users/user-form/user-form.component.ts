@@ -44,9 +44,7 @@ export class UserFormComponent implements OnInit {
         console.error('Error fetching group names:', error);
       }
     );
-    console.log('ngOnint');
     this.roomid = this.route.snapshot.paramMap.get('id');
-    console.log(this.roomid);
 
     this.userForm = this.formBuilder.group(
       {
@@ -66,12 +64,9 @@ export class UserFormComponent implements OnInit {
     // patch value on update
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
-        console.log('Param >> ', param['id']);
         this.group.LoadbyID(param['id']).subscribe((resp: any) => {
           this.isEdit = true;
-          // console.log('resp', resp);
           delete resp.password;
-
           this.userForm.patchValue(resp);
         });
       }
@@ -102,8 +97,6 @@ export class UserFormComponent implements OnInit {
       this.submitted = true;
       if (this.userForm.valid) {
         this.group.SaveUserData(this.userForm.value).subscribe((result) => {
-          console.log(this.userForm.value);
-          console.log('result', result);
           this.router.navigate(['/pages/admin-user']);
         });
       }

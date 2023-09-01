@@ -1,71 +1,63 @@
-<div class="page-wrapper">
-  <section class="section">
-    <div class="container">
-      <div class="row page-content">
-        <div class="col-md-12">
-          <div class="d-lg-flex align-items-center mb-4 gap-3">
-            <h4 class="mb-0 text-primary">User</h4>
-            <div class="ms-auto"><a routerLink="/pages/add-admin-user" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i
-                  class="bx bxs-plus-square"></i>Add User</a></div>
-          </div>
+<section class="section pt-0">
+  <div class="container">
+    <div class="row page-content">
+      <div class="col-md-12">
+        <div class="d-lg-flex align-items-center mb-4 gap-3">
+          <h4 class="mb-0 text-primary">User</h4>
+          <div class="ms-auto"><a routerLink="/pages/add-admin-user" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i
+                class="bx bxs-plus-square"></i>Add User</a></div>
         </div>
-        <div class="col-md-12">
-          <div class="card p-3">
-            <div class="card-body">
-              <app-loader *ngIf="loader"></app-loader>
-              <div class="table-responsive">
-                <table class="example table dt-responsive nowrap" style="width:100%;">
-                  <thead class="table-light">
-                    <tr>
-                      <th>S.No</th>
-                      <th>Username</th>
-                      <th>Staff ID</th>
-                      <th>Admin</th>
-                      <th>Active</th>
-                      <th>Group</th>
-                      <th>Valid Until</th>
-                      <th>Remarks</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
+      </div>
+      <div class="col-md-12">
+        <div class="card p-3">
+          <div class="card-body">
+            <app-loader *ngIf="loader"></app-loader>
+            <div class="table-responsive">
+              <table class="example table dt-responsive nowrap" style="width:100%;">
+                <thead class="table-light">
+                  <tr>
+                    <th>S.No</th>
+                    <th>Username</th>
+                    <th>Staff ID</th>
+                    <th>Admin</th>
+                    <th>Active</th>
+                    <th>Group</th>
+                    <th>Valid Until</th>
+                    <th>Remarks</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
 
 
-                  <tbody>
-                    <tr *ngFor="let item of userdata; let i = index">
-                      <td>{{ skip + i+1 }}</td>
-                      <td>{{ item.userName }}</td>
-                      <td>{{ item.staffId }}</td>
-                      <td>{{ item.admin }}</td>
-                      <td>{{ item.active ? 'Yes' : 'No' }}</td>
-                      <td>{{ item.group }}</td>
-                      <td>{{ item.valid }}</td>
-                      <td>{{item.remarks}}</td>
-                      <td>
-                        <div class="d-flex order-actions">
-                          <a routerLink="/pages/add-admin-user/{{item._id}}" class="btn text-success"><i
-                              class='bx bxs-edit'></i></a>
-                              <a (click)="delete(item._id)" class="btn text-danger ms-3"><i
-                              class='bx bxs-trash'></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-
-
-                  <tfoot>
-                    <tr>
-                      <td colspan="9" class="text-end">
-                        <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="find()" aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
-                        <pre>Current page: {{page}}</pre>
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
+                <tbody>
+                  <tr *ngFor="let item of userdata; let i = index">
+                    <td>{{ skip + i+1 }}</td>
+                    <td>{{ item.userName }}</td>
+                    <td>{{ item.staffId }}</td>
+                    <td>{{ item.admin }}</td>
+                    <td>{{ item.active ? 'Yes' : 'No' }}</td>
+                    <td>{{ item.group }}</td>
+                    <td>{{ item.valid }}</td>
+                    <td>{{item.remarks}}</td>
+                    <td>
+                      <div class="d-flex order-actions">
+                        <a routerLink="/pages/add-admin-user/{{item._id}}" class="btn text-success"><i
+                            class='bx bxs-edit'></i></a>
+                            <a (click)="delete(item._id)" class="btn text-danger ms-3"><i
+                            class='bx bxs-trash'></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+            <div class="pagination-wrap">
+              <p>Current page: {{ page }}</p>
+              <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="find()" aria-label="Default pagination" [maxSize]="maxSize"></ngb-pagination>
+          </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>

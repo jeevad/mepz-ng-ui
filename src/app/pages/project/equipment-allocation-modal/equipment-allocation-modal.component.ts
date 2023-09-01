@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ProjectService } from 'src/app/service/project/project.service';
 import { filter } from 'rxjs';
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-equipment-allocation-modal',
@@ -27,6 +28,7 @@ import { LoaderComponent } from 'src/app/components/loader/loader.component';
   templateUrl: './equipment-allocation-modal.component.html',
   styleUrls: ['./equipment-allocation-modal.component.css'],
 })
+
 export class EquipmentAllocationModalComponent {
   @Input() name: any;
   @Input() projectId!: string;
@@ -67,12 +69,14 @@ export class EquipmentAllocationModalComponent {
   limit: number = 50;
   projectEquipmentsCount: number = 0;
   projectEquipmentsPage: number = 1;
+  maxSize: number = 5;
 
   constructor(
     private room: RoomService,
     private projectService: ProjectService,
     private equipmentService: EquipmentService,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
@@ -81,11 +85,22 @@ export class EquipmentAllocationModalComponent {
     // this.loadEquipmentData();
     this.loadProjectEquipments();
     this.loadMasterEquipmentData();
+    this.reponsivePagination();
     // const selectedRoom = this.projectRooms.filter(
     //   (x) => (x.roomId = this.roomId)
     // );
     this.globalRoomId = this.roomId;
     // this.globalProjectRoom = this.projectRooms;
+  }
+
+  reponsivePagination(){
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
+      if (result.matches) {
+        this.maxSize = 1;
+      } else {
+        this.maxSize = 5;
+      }
+    });
   }
 
   getCurrentProjectRooms() {

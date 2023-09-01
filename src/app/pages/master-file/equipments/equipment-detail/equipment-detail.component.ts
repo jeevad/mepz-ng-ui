@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { HttpClient } from '@angular/common/http';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 
 @Component({
   selector: 'app-equipment-detail',
@@ -15,17 +17,32 @@ export class EquipmentDetailComponent implements OnInit {
   count: number = 0;
   loader: boolean = false;
   equipmentData: any[] = []; //Equipment data list in sidebar
+  maxSize: number = 5;
 
   constructor(
     private equipmentService: EquipmentService,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private customDialog: MyCustomDialogService,
+    private breakpointObserver: BreakpointObserver) {
     this.Load();
   }
 
   ngOnInit() {
     // this.Load();
     // this.loadEquipmentData() //Equipment data list in sidebar
+    this.reponsivePagination();
   }
+
+  reponsivePagination(){
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
+      if (result.matches) {
+        this.maxSize = 1;
+      } else {
+        this.maxSize = 5;
+      }
+    });
+  }
+
 
   // Load equipmentData from the server | List in Sidebar
   loadEquipmentData(): void {
@@ -45,10 +62,15 @@ export class EquipmentDetailComponent implements OnInit {
   }
 
   delete(id: any) {
-    if (confirm('delete?')) {
-      this.equipmentService.Removedata(id).subscribe((data) => {
-        this.Load();
-      });
-    }
+    const dialogRef = this.customDialog.openConfirmDialog({
+      dialogMsg: 'Are you sure want to delete?',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'ok') {
+        this.equipmentService.Removedata(id).subscribe((data) => {
+          this.Load();
+        });
+      }
+    });
   }
 }

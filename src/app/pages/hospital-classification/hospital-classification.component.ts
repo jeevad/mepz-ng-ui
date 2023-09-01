@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { ClassificationService } from 'src/app/service/classification/classification.service';
 import { HttpClient } from '@angular/common/http';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 
 @Component({
   selector: 'app-hospital-classification',
@@ -15,16 +17,20 @@ export class HospitalClassificationComponent implements OnInit {
   count: number = 0;
   classificationdata: any[] = [];
   loader: boolean = false;
+  maxSize: number = 5;
   
   constructor(
     private service: ClassificationService,
-    private http: HttpClient
+    private http: HttpClient,
+    private customDialog: MyCustomDialogService,
+    private breakpointObserver: BreakpointObserver
   ) {
     this.find();
   }
 
   ngOnInit() {
     this.find();
+    this.reponsivePagination();
   }
   find() {
     this.loader = true;
@@ -35,11 +41,25 @@ export class HospitalClassificationComponent implements OnInit {
       this.loader = false;
     });
   }
+  reponsivePagination(){
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
+      if (result.matches) {
+        this.maxSize = 1;
+      } else {
+        this.maxSize = 5;
+      }
+    });
+  }
   delete(id: any) {
-    if (confirm('delete?')) {
-      this.service.Removedata(id).subscribe((classificationdata) => {
-        this.find();
-      });
-    }
+    const dialogRef = this.customDialog.openConfirmDialog({
+      dialogMsg: 'Are you sure want to delete?',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'ok') {
+        this.service.Removedata(id).subscribe((classificationdata) => {
+          this.find();
+        });
+      }
+    });
   }
 }

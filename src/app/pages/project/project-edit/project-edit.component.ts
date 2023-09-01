@@ -54,6 +54,7 @@ export class ProjectEditComponent implements OnInit{
         this.department.LoadbyID(param['id']).subscribe((resp: any) => {
           this.isEdit = true;
           this.addDepartment.patchValue(resp);
+          this.addDepartment.controls['comp'].patchValue(resp.company);
           // this.currencies = resp.currencies || [];
           this.currencies = resp.currencies.filter((currency: any) => currency.currencyCode && currency.currencyDescription && currency.currencySymbol);
           console.log('Selected Projects Currencies:', this.currencies);

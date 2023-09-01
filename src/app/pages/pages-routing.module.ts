@@ -51,6 +51,7 @@ import { EquipmentSpecificationComponent } from './master-file/equipments/equipm
 import { EquipmentBrandComponent } from './master-file/equipments/equipment-brand/equipment-brand.component';
 import { EditEquipmentComponent } from './master-file/equipments/edit-equipment/edit-equipment.component';
 import { AddEquipmentComponent } from './master-file/equipments/add-equipment/add-equipment.component';
+import { TacComponent } from './project/tac/tac.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -158,6 +159,10 @@ const routes: Routes = [
       {
         path: ':projectType/transaction-view',
         component: TransactionViewComponent,
+      },
+      {
+        path: ':projectType/:id/tac',
+        component: TacComponent,
       },
     ],
   },

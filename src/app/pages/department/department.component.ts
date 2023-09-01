@@ -3,6 +3,8 @@ import * as $ from 'jquery';
 import { DepartmentService } from 'src/app/service/department/department.service';
 import { HttpClient } from '@angular/common/http';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 
 @Component({
   selector: 'app-department',
@@ -16,11 +18,14 @@ export class DepartmentComponent implements OnInit {
   count: number = 0; // Total number of items
   departmentData: any[] = []; // Array to store department data
   loader: boolean = false;
+  maxSize: number = 5;
 
   constructor(
     private department: DepartmentService,
     private departmentService: DepartmentService,
-    private http: HttpClient
+    private http: HttpClient,
+    private breakpointObserver: BreakpointObserver,
+    private customDialog: MyCustomDialogService,
   ) {
     this.Load(); // Initial loading of departments
   }
@@ -28,6 +33,17 @@ export class DepartmentComponent implements OnInit {
   ngOnInit() {
     this.Load(); // Initial loading of departments
     this.loadDepartmentData(); // Load department data for display
+    this.reponsivePagination();
+  }
+
+  reponsivePagination(){
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
+      if (result.matches) {
+        this.maxSize = 1;
+      } else {
+        this.maxSize = 5;
+      }
+    });
   }
 
   // Load department data from the server
@@ -41,19 +57,26 @@ export class DepartmentComponent implements OnInit {
 
   // Load departments based on pagination settings
   Load() {
+    this.loader = true;
     this.skip = this.limit * (this.page - 1);
     this.department.Load(this.skip, this.limit).subscribe((data: any) => {
       this.departmentData = data.results; // Update departmentData array with loaded data
       this.count = data.count; // Update total count of items
+      this.loader = false;
     });
   }
 
   // Delete department by ID
   delete(id: any) {
-    if (confirm('Delete?')) {
-      this.department.Removedata(id).subscribe((data) => {
-        this.Load(); // Reload departments after deletion
-      });
-    }
+    const dialogRef = this.customDialog.openConfirmDialog({
+      dialogMsg: 'Are you sure want to delete?',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'ok') {
+        this.department.Removedata(id).subscribe((data) => {
+          this.Load();
+        });
+      }
+    });
   }
 }

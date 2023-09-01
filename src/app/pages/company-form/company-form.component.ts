@@ -44,7 +44,7 @@ export class CompanyFormComponent implements OnInit {
       inactive: false,
       name: ['', Validators.required],
       address1: ['', Validators.required],
-      address2: [''],
+      address2: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
       postal: ['', Validators.required],

@@ -7,12 +7,14 @@ import { ProjectService } from 'src/app/service/project/project.service';
 import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal/equipment-allocation-modal.component';
 import { RoomService } from 'src/app/service/room/room.service';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-equipment-list',
   templateUrl: './equipment-list.component.html',
   styleUrls: ['./equipment-list.component.css'],
 })
+
 export class EquipmentListComponent implements OnInit {
   page = 1;
   limit = 10;
@@ -28,6 +30,7 @@ export class EquipmentListComponent implements OnInit {
   selectedIndex!: number;
   deptId!: string;
   projectType: string | null = 'individual';
+  maxSize: number = 5;
 
   constructor(
     public dialog: MatDialog,
@@ -35,13 +38,25 @@ export class EquipmentListComponent implements OnInit {
     private room: RoomService,
     private route: ActivatedRoute,
     private modalService: NgbModal,
-    private customDialog: MyCustomDialogService
+    private customDialog: MyCustomDialogService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     this.projectType = this.route.snapshot.paramMap.get('projectType');
     this.loadEquipments();
+    this.reponsivePagination();
+  }
+
+  reponsivePagination(){
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
+      if (result.matches) {
+        this.maxSize = 1;
+      } else {
+        this.maxSize = 5;
+      }
+    });
   }
 
   loadEquipments() {
@@ -74,11 +89,21 @@ export class EquipmentListComponent implements OnInit {
 
   // Deletes an item
   delete(id: any) {
-    if (confirm('delete?')) {
-      this.projectService.Removedata(id).subscribe((data) => {
-        this.loadEquipments();
-      });
-    }
+    const dialogRef = this.customDialog.openConfirmDialog({
+      dialogMsg: 'Are you sure want to delete?',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'ok') {
+        this.projectService.Removedata(id).subscribe((data) => {
+          this.loadEquipments();
+        });
+      }
+    });
+    // if (confirm('delete?')) {
+    //   this.projectService.Removedata(id).subscribe((data) => {
+    //     this.loadEquipments();
+    //   });
+    // }
   }
 
   selectRoom(eqp: any, index: number) {
@@ -87,24 +112,15 @@ export class EquipmentListComponent implements OnInit {
     this.selectedIndex = index;
   }
 
-  openCustomDialog() {
-    this.customDialog.openAlertDialog();
-  }
+  // openCustomDialog() {
+  //   this.customDialog.openAlertDialog();
+  // }
+
   openEquipmentAllocationModal() {
     if (!this.selectedRoomId) {
       const dialogRef = this.customDialog.openAlertDialog({
         dialogMsg: 'Please select room from the table',
       });
-      // const dialogRef = this.customDialog.openConfirmDialog({
-      //   dialogMsg: 'Are you sure want to delete?',
-      // });
-      // dialogRef.afterClosed().subscribe((result) => {
-      //   console.log(result);
-      //   if (result === 'ok') {
-      //     // write your code here
-      //   }
-      // });
-
       return;
     }
     const modalRef = this.modalService.open(EquipmentAllocationModalComponent, {

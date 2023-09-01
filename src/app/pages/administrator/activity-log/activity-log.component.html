@@ -1,92 +1,85 @@
-<div class="page-wrapper">
-  <section class="section">
-    <div class="container">
-      <div class="row page-content">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <app-loader *ngIf="loader"></app-loader>
-              <div class="d-lg-flex align-items-center mb-4 gap-3">
-                <div class="position-relative d-flex">
-                  <!--select-->
-                  <label class="form-label me-2">Show </label>
-                  <select class="single-select form-select me-2" [(ngModel)]="limit" (change)="changePageLimit()">
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                  </select>
-                  <label class="form-label">Entity </label>
-                </div>
+<section class="section pt-0">
+  <div class="container">
+    <div class="row page-content">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <app-loader *ngIf="loader"></app-loader>
+            <div class="d-lg-flex align-items-center mb-4 gap-3">
+              <div class="position-relative d-flex">
+                <!--select-->
+                <label class="form-label me-2">Show </label>
+                <select class="single-select form-select me-2" [(ngModel)]="limit" (change)="changePageLimit()">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                <label class="form-label">Entity </label>
               </div>
-              <div class="table-responsive">
-                <table class="table mb-0 text-center table-striped" style="
-                    position: relative;
-                    height: 400px;
-                    overflow: auto;
-                    width: 100%;
-                  ">
-                  <thead class="table-light">
-                    <tr>
-                      <th>S.no</th>
-                      <th>User</th>
-                      <th style="width: 300px;">Action</th>
-                      <th>TimeStamp</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let log of activityData;let i=index;">
-                      <td>{{ skip + i+1 }}</td>
-                      <td>{{log?.user?.userName}}</td>
-                      <td>{{log.action}}</td>
-                      <td>{{log.createdAt}}</td>
-                    </tr>
-                    <!-- <tr>
-                      <td>115</td>
-                      <td>Admin</td>
-                      <td>User visited <strong>admin - Project</strong></td>
-                      <td>2023-02-09 17:38:43</td>
-                    </tr>
-                    <tr>
-                      <td>130</td>
-                      <td>Admin</td>
-                      <td>User visited <strong>admin - acl</strong></td>
-                      <td>2023-02-09 17:38:43</td>
-                    </tr>
-                    <tr>
-                      <td>120</td>
-                      <td>Admin</td>
-                      <td>User visited <strong>admin - acl</strong></td>
-                      <td>2023-02-09 17:38:43</td>
-                    </tr>
-                    <tr>
-                      <td>180</td>
-                      <td>Admin</td>
-                      <td>User visited <strong>admin - User</strong></td>
-                      <td>2023-02-09 17:38:43</td>
-                    </tr>
-                    <tr>
-                      <td>110</td>
-                      <td>Admin</td>
-                      <td>User visited <strong>admin - Add Group</strong></td>
-                      <td>2023-02-09 17:38:43</td>
-                    </tr> -->
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="5" class="text-end">
-                        <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="findAll()"
-                          aria-label="Default pagination" [maxSize]="5"></ngb-pagination>
-                        <pre>Current page: {{ page }}</pre>
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table mb-0 text-center table-striped" style="
+                  position: relative;
+                  height: 400px;
+                  overflow: auto;
+                  width: 100%;
+                ">
+                <thead class="table-light">
+                  <tr>
+                    <th>S.no</th>
+                    <th>User</th>
+                    <th style="width: 300px;">Action</th>
+                    <th>TimeStamp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let log of activityData;let i=index;">
+                    <td>{{ skip + i+1 }}</td>
+                    <td>{{log?.user?.userName}}</td>
+                    <td>{{log.action}}</td>
+                    <td>{{log.createdAt}}</td>
+                  </tr>
+                  <!-- <tr>
+                    <td>115</td>
+                    <td>Admin</td>
+                    <td>User visited <strong>admin - Project</strong></td>
+                    <td>2023-02-09 17:38:43</td>
+                  </tr>
+                  <tr>
+                    <td>130</td>
+                    <td>Admin</td>
+                    <td>User visited <strong>admin - acl</strong></td>
+                    <td>2023-02-09 17:38:43</td>
+                  </tr>
+                  <tr>
+                    <td>120</td>
+                    <td>Admin</td>
+                    <td>User visited <strong>admin - acl</strong></td>
+                    <td>2023-02-09 17:38:43</td>
+                  </tr>
+                  <tr>
+                    <td>180</td>
+                    <td>Admin</td>
+                    <td>User visited <strong>admin - User</strong></td>
+                    <td>2023-02-09 17:38:43</td>
+                  </tr>
+                  <tr>
+                    <td>110</td>
+                    <td>Admin</td>
+                    <td>User visited <strong>admin - Add Group</strong></td>
+                    <td>2023-02-09 17:38:43</td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
+            <div class="pagination-wrap">
+              <p>Current page: {{ page }}</p>
+              <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="findAll()" aria-label="Default pagination" [maxSize]="maxSize"></ngb-pagination>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
