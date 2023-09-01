@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { CurrencyService } from 'src/app/service/currency/currency.service';
 import { HttpClient } from '@angular/common/http';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 @Component({
   selector: 'app-add-currency',
   templateUrl: './add-currency.component.html',
@@ -19,11 +20,13 @@ export class AddCurrencyComponent implements OnInit {
   currencyid: any;
   submitted: boolean = false;
   addCurrency!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private service: CurrencyService,
     private router: Router,
     private route: ActivatedRoute,
+    public toastService: ToasterService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -48,17 +51,27 @@ export class AddCurrencyComponent implements OnInit {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addCurrency.valid) {
+        this.loader = true;
         this.service.SaveData(this.addCurrency.value).subscribe((result) => {
+          this.loader = false;
+          this.toastService.show('Currency created', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/currency']);
         });
       }
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.addCurrency.valid) {
-        this.service
-          .update(this.currencyid, this.addCurrency.value)
-          .subscribe((currencyData) => {
+        this.loader = true;
+        this.service.update(this.currencyid, this.addCurrency.value).subscribe((currencyData) => {
             this.isEdit = false;
+            this.loader = false;
+            this.toastService.show('Currency updated', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            });
             this.router.navigate(['pages/currency']);
           });
       }

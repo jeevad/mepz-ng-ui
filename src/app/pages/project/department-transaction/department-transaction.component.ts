@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 import { DepartmentService } from 'src/app/service/department/department.service';
 import { ProjectService } from 'src/app/service/project/project.service';
@@ -22,11 +23,13 @@ export class DepartmentTransactionComponent {
   loader = false;
   projectType: string | null = 'individual';
   departmentId: any;
+  showModal: boolean = false;
 
   constructor(
     private departmentService: DepartmentService,
     private projectService: ProjectService,
     private route: ActivatedRoute,
+    public toastService: ToasterService,
     private customDialog: MyCustomDialogService
   ) { }
 
@@ -37,8 +40,17 @@ export class DepartmentTransactionComponent {
     this.loadProjectDepartments();
   }
 
+  openAddDeptMod(){
+    this.showModal = true;
+  }
+
+  closeModal(){
+    this.showModal = false;
+  }
+
   // Add selected departments
   addDepartments(): void {
+    this.loader = true;
     const selectedItems = this.departmentData.filter((item) => item.selected);
     const departmentData = {
       departments: selectedItems.map((item) => ({
@@ -48,12 +60,17 @@ export class DepartmentTransactionComponent {
         code: item.code,
       })),
     };
-    this.departmentService
-      .saveDepartments(this.projectId, departmentData)
-      .subscribe({
-        next: (response) => {
-          console.log('Departments saved successfully', response);
+    this.departmentService.saveDepartments(this.projectId, departmentData).subscribe({next: (response) => {
+          // console.log('Departments saved successfully', response);
           this.loadProjectDepartments();
+          this.showModal = false;
+          this.loader = false;
+          this.toastService.show(
+            selectedItems.length === 1 ? selectedItems.length + ' Department added' : selectedItems.length + ' Departments added', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            }
+          );
         },
         error: (error) => {
           console.error('Failed to save departments', error);

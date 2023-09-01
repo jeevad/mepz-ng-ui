@@ -19,6 +19,7 @@ export class AddGroupComponent implements OnInit {
   editdata: any;
   submitted: boolean = false;
   addGroups!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private groups: GroupsService,
@@ -56,8 +57,10 @@ export class AddGroupComponent implements OnInit {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addGroups.valid) {
+        this.loader = true;
         // Save new group data
         this.groups.SaveData(this.addGroups.value).subscribe((result) => {
+          this.loader = false;
           this.toastService.show('Group created', {
             classname: 'bg-success text-light',
             delay: 10000,
@@ -68,8 +71,10 @@ export class AddGroupComponent implements OnInit {
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.addGroups.valid) {
+        this.loader = true;
         // Update existing group data
         this.groups.update(this.groupid, this.addGroups.value).subscribe((data) => {
+          this.loader = false;
           this.isEdit = false;
           this.toastService.show('Group updated', {
             classname: 'bg-success text-light',

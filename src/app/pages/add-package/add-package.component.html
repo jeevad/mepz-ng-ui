@@ -13,6 +13,7 @@
              </div>
                   <div class="card border-top border-0 border-4 border-primary">
                         <div class="card-body p-4">
+                            <app-loader *ngIf="loader"></app-loader>
                           <form class="" [formGroup] = "addPackage" (ngSubmit)="SaveData()">
                               <div class="col-md-6">
                                     <label for="inputCode" class="form-label">Package Code</label>

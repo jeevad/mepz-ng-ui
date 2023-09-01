@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { DepartmentService } from 'src/app/service/department/department.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-add-department',
@@ -21,11 +22,13 @@ export class AddDepartmentComponent implements OnInit {
   editdata: any;
   submitted: boolean = false;
   addDepartment!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private department: DepartmentService,
     private router: Router,
     private route: ActivatedRoute,
+    public toastService: ToasterService,
     private formBuilder: FormBuilder
   ) {
     this.selectedActive = '';
@@ -59,17 +62,29 @@ export class AddDepartmentComponent implements OnInit {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addDepartment.valid) {
+        this.loader = true;
         // Save new department data
         this.department.SaveData(this.addDepartment.value).subscribe((result) => {
+          this.loader = false;
+          this.toastService.show('Department created', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/department']);
         });
       }
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.addDepartment.valid) {
+        this.loader = true;
         // Update existing department data
         this.department.update(this.deptid, this.addDepartment.value).subscribe((data) => {
+          this.loader = false;
           this.isEdit = false;
+          this.toastService.show('Department updated', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/department']);
         });
       }

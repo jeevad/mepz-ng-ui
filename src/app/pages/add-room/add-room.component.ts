@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RoomService } from 'src/app/service/room/room.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-add-room',
@@ -19,11 +20,13 @@ export class AddRoomComponent implements OnInit {
   editdata: any;
   submitted: boolean = false;
   addRoom!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private room: RoomService,
     private router: Router,
     private route: ActivatedRoute,
+    public toastService: ToasterService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -55,17 +58,29 @@ export class AddRoomComponent implements OnInit {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addRoom.valid) {
+        this.loader = true;
         // Save new room data
         this.room.SaveData(this.addRoom.value).subscribe((result) => {
+          this.loader = false;
+          this.toastService.show('Room created', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/room-detail']);
         });
       }
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.addRoom.valid) {
+        this.loader = true;
         // Update existing room data
         this.room.update(this.roomid, this.addRoom.value).subscribe((data) => {
           this.isEdit = false;
+          this.loader = false;
+          this.toastService.show('Room updated', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/room-detail']);
         });
       }

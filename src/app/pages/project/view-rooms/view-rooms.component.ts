@@ -8,6 +8,7 @@ import { RoomSelectionModalComponent } from './room-selection-modal.component';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../service/project/project.service';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-view-rooms',
@@ -33,6 +34,8 @@ export class ViewRoomsComponent {
   selectAllRoomsCheckbox: boolean = false; //for selectAll
   isRoomSelected: boolean = false;
   projectType: string | null = 'individual';
+  showModal: boolean = false;
+  loader: boolean = false;
 
   constructor(
     private room: RoomService,
@@ -40,6 +43,7 @@ export class ViewRoomsComponent {
     private modalService: NgbModal,
     private route: ActivatedRoute,
     private router: Router,
+    public toastService: ToasterService,
     private customDialog: MyCustomDialogService
   ) {
     // For Quantity dropdown: Creating options from 1 to 20
@@ -67,12 +71,21 @@ export class ViewRoomsComponent {
     modalRef.componentInstance.projectType = this.projectType;
   }
 
+  openModal(){
+    this.showModal = true;
+  }
+
+  closeModal(){
+    this.showModal = false;
+  }
+
   // Function to save room data
   saveRoomData(): void {
-    console.log('Save data method called');
     for (let i = 0; i < this.roomData.length; i++) {
       const selectedQuantity = this.roomData[i].selectedQuantity;
+      console.log("selectedQuantity :- ",selectedQuantity);
       if (selectedQuantity > 0) {
+        this.loader = true;
         for (let j = 0; j < selectedQuantity; j++) {
           const roomDataObject = {
             masterId: this.roomData[i]._id,
@@ -80,24 +93,30 @@ export class ViewRoomsComponent {
             code: this.roomData[i].code,
             alias: this.roomData[i].name,
           };
-          console.log('roomData:', roomDataObject);
-          this.room
-            .saveRoomData(this.projectId, this.deptId, roomDataObject)
-            .subscribe((response: any) => {
-              console.log('Data saved successfully:', response);
-              this.projectRooms.push(roomDataObject);
-              this.loadProjectRooms(); //real-time listing
-            });
+          this.room.saveRoomData(this.projectId, this.deptId, roomDataObject).subscribe((response: any) => {
+            this.projectRooms.push(roomDataObject);
+            this.loadProjectRooms(); //real-time listing
+          });
         }
+        this.loader = false;
+        this.showModal = false;
+        this.toastService.show(
+          selectedQuantity === "1" ? 
+          selectedQuantity + ' ' + this.roomData[i].name + ' - Room added' :
+          selectedQuantity + ' ' + this.roomData[i].name + ' - Rooms added', {
+          classname: 'bg-success text-light',
+          delay: 10000,
+        });
       }
     }
   }
 
   // Function to load room data
   loadRoomData(): void {
+    // this.loader = true;
     this.room.Load(0, 10).subscribe((data: any) => {
       this.roomData = data.results;
-      console.log(data.results);
+      // this.loader = false;
     });
   }
 
@@ -116,11 +135,11 @@ export class ViewRoomsComponent {
 
   // Function to load room list
   loadProjectRooms(): void {
-    this.room
-      .getProjectRooms(this.projectId, this.deptId)
-      .subscribe((data: any) => {
+    this.loader = true;
+    this.room.getProjectRooms(this.projectId, this.deptId).subscribe((data: any) => {
         this.project = data.results[0];
         this.department = data.results[0].departments;
+        this.loader = false;
         this.projectRooms = data.results[0].departments.rooms;
         this.projectRooms.forEach((room: any) => {
           room.enabled = true;
@@ -235,6 +254,7 @@ export class ViewRoomsComponent {
 
   // Delete a department
   deleteRoom(roomId: string): void {
+    this.loader = true;
     const dialogRef = this.customDialog.openConfirmDialog({
       dialogMsg: 'Are you sure want to delete?',
     });
@@ -248,9 +268,8 @@ export class ViewRoomsComponent {
           roomId: roomId,
         };
 
-        this.projectService.saveProjectField(this.projectId, data).subscribe(
-          () => {
-            console.log('Room deleted successfully');
+        this.projectService.saveProjectField(this.projectId, data).subscribe(() => {
+            this.loader = false;
             this.loadProjectRooms();
           },
           (error) => {

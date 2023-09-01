@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { HttpClient } from '@angular/common/http';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-edit-equipment',
@@ -22,12 +23,14 @@ export class EditEquipmentComponent {
   submitted: boolean = false;
   addEquipment!: FormGroup;
   activeTab = 1;
+  loader: boolean = false;
 
   constructor(
     private department: EquipmentService,
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    public toastService: ToasterService,
     private http: HttpClient
   ) { }
 
@@ -96,6 +99,7 @@ SaveData() {
   this.submitted = true;
   if (this.addEquipment.valid) {
     if (!this.isEdit) {
+      this.loader = true;
       // Save new equipment data
       const formData = {
         ...this.addEquipment.value,
@@ -104,10 +108,16 @@ SaveData() {
         equipmentLabel: this.addEquipment.value.equipmentLabel
       };
       this.department.SaveData(formData).subscribe((result) => {
+        this.loader = false;
+        this.toastService.show('Equipment created', {
+          classname: 'bg-success text-light',
+          delay: 10000,
+        });
         this.router.navigate(['pages/equipment-data']);
       });
     } else {
       // Update existing equipment data
+      this.loader = true;
       const formData = {
         ...this.addEquipment.value,
         equipmentPackage: this.addEquipment.value.equipmentPackage,
@@ -117,6 +127,11 @@ SaveData() {
       };
       this.department.update(this.deptid, formData).subscribe((data) => {
         this.isEdit = false;
+        this.loader = false;
+        this.toastService.show('Equipment updated', {
+          classname: 'bg-success text-light',
+          delay: 10000,
+        });
         this.router.navigate(['pages/equipment-data']);
       });
     }

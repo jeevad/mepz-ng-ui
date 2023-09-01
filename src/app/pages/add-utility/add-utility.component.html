@@ -9,6 +9,7 @@
         </div>
         <div class="card border-top border-0 border-4 border-primary">
           <div class="card-body p-5">
+            <app-loader *ngIf="loader"></app-loader>
             <form [formGroup]="addUtility" (ngSubmit)="SaveData()">
               <div class="col-md-6">
                 <label for="inputFirstName" class="form-label">Utility Code</label>

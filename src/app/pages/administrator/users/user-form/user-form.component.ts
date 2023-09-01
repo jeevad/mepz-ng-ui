@@ -8,6 +8,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 import { UserAdminService } from 'src/app/service/user-admin/user-admin.service';
 @Component({
   selector: 'app-user-form',
@@ -27,11 +28,13 @@ export class UserFormComponent implements OnInit {
   submitted: boolean = false;
   userForm!: FormGroup;
   name: string[] = [];
+  loader: boolean = false;
 
   constructor(
     private group: UserAdminService,
     private router: Router,
     private route: ActivatedRoute,
+    public toastService: ToasterService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -96,17 +99,27 @@ export class UserFormComponent implements OnInit {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.userForm.valid) {
+        this.loader = true;
         this.group.SaveUserData(this.userForm.value).subscribe((result) => {
+          this.loader = false;
+          this.toastService.show('User created', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['/pages/admin-user']);
         });
       }
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.userForm.valid) {
-        this.group
-          .update(this.roomid, this.userForm.value)
-          .subscribe((data) => {
+        this.loader = true;
+        this.group.update(this.roomid, this.userForm.value).subscribe((data) => {
             this.isEdit = false;
+            this.loader = false;
+            this.toastService.show('User updated', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            });
             this.router.navigate(['/pages/admin-user']);
           });
       }

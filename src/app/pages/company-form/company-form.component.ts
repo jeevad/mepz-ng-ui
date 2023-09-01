@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 import { CompanyService } from 'src/app/service/master-company/company.service';
 
 @Component({
@@ -14,18 +15,21 @@ import { CompanyService } from 'src/app/service/master-company/company.service';
   templateUrl: './company-form.component.html',
   styleUrls: ['./company-form.component.css'],
 })
+
 export class CompanyFormComponent implements OnInit {
   departmentdata: any;
   isEdit: boolean = false;
   companyid: any;
   submitted: boolean = false;
   addCompany!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private service: CompanyService,
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    public toastService: ToasterService,
     private http: HttpClient
   ) {}
 
@@ -81,6 +85,7 @@ export class CompanyFormComponent implements OnInit {
   SaveData() {
     this.submitted = true;
     if (this.addCompany.valid) {
+      this.loader = true;
       const data = {
         ...this.addCompany.value,
         inactive: this.addCompany.value.inactive.toString(),
@@ -90,14 +95,25 @@ export class CompanyFormComponent implements OnInit {
       };
       if (!this.isEdit) {
         this.service.SaveData(data).subscribe((result: any) => {
+          this.loader = false;
+          this.toastService.show('Company created', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           // Handle file uploads
           this.uploadFiles(result._id);
+          this.router.navigate(['/company']);
         });
       } else {
         this.service.update(this.companyid, data).subscribe((data: any) => {
           // Handle file uploads
           this.uploadFiles(this.companyid);
           this.isEdit = false;
+          this.loader = false;
+          this.toastService.show('Company updated', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['/company']);
         });
       }

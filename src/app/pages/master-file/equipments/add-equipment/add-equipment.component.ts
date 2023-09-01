@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-add-equipment',
@@ -20,12 +21,13 @@ export class AddEquipmentComponent implements OnInit {
   editdata: any;
   submitted: boolean = false;
   addEquipment!: FormGroup;
-
+  loader: boolean = false;
 
   constructor(
     private department: EquipmentService,
     private router: Router,
     private route: ActivatedRoute,
+    public toastService: ToasterService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -61,14 +63,26 @@ export class AddEquipmentComponent implements OnInit {
     this.submitted = true;
     if (this.addEquipment.valid) {
       if (!this.isEdit) {
+        this.loader = true;
         // Save new equipment data
         this.department.SaveData(this.addEquipment.value).subscribe((result) => {
+          this.loader = false;
+          this.toastService.show('Equipment created', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/equipment-data']);
         });
       } else {
         // Update existing equipment data
+        this.loader = true;
         this.department.update(this.deptid, this.addEquipment.value).subscribe((data) => {
           this.isEdit = false;
+          this.loader = false;
+          this.toastService.show('Equipment updated', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/equipment-data']);
         });
       }

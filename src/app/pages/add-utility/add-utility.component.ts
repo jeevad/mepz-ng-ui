@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 import { UtilityService } from 'src/app/service/utility/utility.service';
 @Component({
   selector: 'app-add-utility',
@@ -20,11 +21,13 @@ export class AddUtilityComponent implements OnInit {
   editdata: any;
   submitted: boolean = false;
   addUtility!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private utility: UtilityService,
     private router: Router,
     private route: ActivatedRoute,
+    public toastService: ToasterService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -48,17 +51,27 @@ export class AddUtilityComponent implements OnInit {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addUtility.valid) {
+        this.loader = true;
         this.utility.SaveData(this.addUtility.value).subscribe((result) => {
+          this.loader = false;
+          this.toastService.show('Utility created', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/utility-detail']);
         });
       }
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.addUtility.valid) {
-        this.utility
-          .update(this.utilityid, this.addUtility.value)
-          .subscribe((data) => {
+        this.loader = true;
+        this.utility.update(this.utilityid, this.addUtility.value).subscribe((data) => {
             this.isEdit = false;
+            this.loader = false;
+            this.toastService.show('Utility updated', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            });
             this.router.navigate(['pages/utility-detail']);
           });
       }

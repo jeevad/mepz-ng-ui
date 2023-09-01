@@ -8,12 +8,12 @@
         <div class="d-lg-flex align-items-center mb-4 gap-3">
           <h4 class="mb-0 text-primary">Add Equipment </h4>
           <div class="ms-auto"><a routerLink="/pages/equipment-data" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i
-                class="bx bx-table"></i>Manage Department</a></div>
+                class="bx bx-table"></i>Manage Equipment</a></div>
         </div>
 
         <div class="card border-top border-0 border-4 border-primary">
           <div class="card-body p-4">
-
+            <app-loader *ngIf="loader"></app-loader>
             <form class="row" [formGroup]="addEquipment" (ngSubmit)="SaveData()" autocomplete="off">
               <div class="col-md-6 mt-0">
                 <label for="inputFirstName" class="form-label">Equipment Code</label>

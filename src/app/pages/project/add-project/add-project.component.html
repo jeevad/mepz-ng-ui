@@ -11,6 +11,7 @@
         </div>
         <div class="card border-top border-0 border-4 border-primary">
           <div class="card-body p-4">
+            <app-loader *ngIf="loader"></app-loader>
             <form class="form-horizontal row" method="post" [formGroup]="addProjectForm" (ngSubmit)="SaveData()" autocomplete="off">
               <div class="col-md-6" *ngIf="!isTemplate">
                 <label class="form-label">Code</label>

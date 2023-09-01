@@ -8,6 +8,7 @@ import {
 import { PackageService } from 'src/app/service/package/package.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 @Component({
   selector: 'app-add-package',
   templateUrl: './add-package.component.html',
@@ -20,11 +21,13 @@ export class AddPackageComponent implements OnInit {
   packageid: any;
   submitted: boolean = false;
   addPackage!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private service: PackageService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    public toastService: ToasterService,
     private router: Router
   ) {}
 
@@ -49,17 +52,27 @@ export class AddPackageComponent implements OnInit {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addPackage.valid) {
+        this.loader = true;
         this.service.SaveData(this.addPackage.value).subscribe((result) => {
+          this.loader = false;
+          this.toastService.show('Package created', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/package']);
         });
       }
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.addPackage.valid) {
-        this.service
-          .update(this.packageid, this.addPackage.value)
-          .subscribe((data) => {
+        this.loader = true;
+        this.service.update(this.packageid, this.addPackage.value).subscribe((data) => {
             this.isEdit = false;
+            this.loader = false;
+            this.toastService.show('Package updated', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            });
             this.router.navigate(['pages/package']);
           });
       }

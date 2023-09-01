@@ -7,6 +7,7 @@
         </div>
       </div>
       <div class="col-sm-12">
+        <app-loader *ngIf="loader"></app-loader>
         <div class="table-responsive">
           <table id="table-info" class="table table-condensed">
             <tbody>
@@ -28,8 +29,9 @@
                 class="fa-solid fa-chevron-right fa-sm"></i></a>
           </div>
           <div class="float-end d-lg-flex gap-3">
-            <button title="Add Department" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-              data-target="#myModal2">
+            <!-- <button title="Add Department" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+              data-target="#myModal2"> -->
+            <button title="Add Department" type="button" class="btn btn-sm btn-primary" (click)="openAddDeptMod()">
               <i class="fal fa-file-plus"> </i>
             </button>
           </div>
@@ -109,11 +111,11 @@
 
 <!-- Modal -->
 <div class="container demo">
-  <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-    <div class="modal-dialog" role="document">
+  <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" [ngClass]="showModal ? 'd-block' : 'd-none'">
+    <div class="modal-dialog" role="document" [ngClass]="showModal ? 'right-0' : 'right-320'">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" aria-label="Close" (click)="closeModal()">
             <span aria-hidden="true">&times;</span>
           </button>
           <h4 class="modal-title" id="myModalLabel2">Add Department</h4>
@@ -146,7 +148,7 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="add_department"
                   (click)="addDepartments()">Add</button>
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" (click)="closeModal()">Close</button>
               </div>
             </div>
             <!-- </div> -->

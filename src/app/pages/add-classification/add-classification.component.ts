@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 import { ClassificationService } from 'src/app/service/classification/classification.service';
 @Component({
   selector: 'app-add-classification',
@@ -16,12 +17,14 @@ export class AddClassificationComponent implements OnInit {
   editdata: any;
   submitted: boolean = false;
   addClassification!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private http: HttpClient,
     private service: ClassificationService,
     private router: Router,
     private route: ActivatedRoute,
+    public toastService: ToasterService,
     private formBuilder: FormBuilder
   ) {}
   ngOnInit(): void {
@@ -45,19 +48,27 @@ export class AddClassificationComponent implements OnInit {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addClassification.valid) {
-        this.service
-          .SaveData(this.addClassification.value)
-          .subscribe((result) => {
+        this.loader = true;
+        this.service.SaveData(this.addClassification.value).subscribe((result) => {
+            this.loader = false;
+            this.toastService.show('Hospital classification created', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            });
             this.router.navigate(['pages/hospital-data']);
           });
       }
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.addClassification.valid) {
-        this.service
-          .update(this.deptid, this.addClassification.value)
-          .subscribe((classificationdata) => {
+        this.loader = true;
+        this.service.update(this.deptid, this.addClassification.value).subscribe((classificationdata) => {
             this.isEdit = false;
+            this.loader = false;
+            this.toastService.show('Hospital classification updated', {
+              classname: 'bg-success text-light',
+              delay: 10000,
+            });
             this.router.navigate(['pages/hospital-data']);
           });
       }

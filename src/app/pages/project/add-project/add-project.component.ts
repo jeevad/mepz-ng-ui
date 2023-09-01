@@ -28,6 +28,7 @@ export class AddProjectComponent {
   addProjectForm!: FormGroup;
   projectType: string | null = 'individual';
   isTemplate = false;
+  loader: boolean = false;
 
   constructor(
     private department: ProjectService,
@@ -50,6 +51,7 @@ export class AddProjectComponent {
     });
     let fromGroup = {};
     if (this.projectType === 'template') {
+      console.log("this.projectType >> ",this.projectType);
       this.isTemplate = true;
       fromGroup = {
         // code: ['', Validators.required],
@@ -68,7 +70,6 @@ export class AddProjectComponent {
       };
     } else {
       console.log('in-----');
-
       fromGroup = {
         code: ['', Validators.required],
         name: ['', Validators.required],
@@ -95,9 +96,11 @@ export class AddProjectComponent {
     if (!this.isEdit) {
       this.submitted = true;
       if (this.addProjectForm.valid) {
+        this.loader = true;
         this.department
           .SaveData(this.addProjectForm.value)
           .subscribe((result) => {
+            this.loader = false;
             this.toastService.show('Project created', {
               classname: 'bg-success text-light',
               delay: 10000,
@@ -108,10 +111,12 @@ export class AddProjectComponent {
     } else if (this.isEdit) {
       this.submitted = true;
       if (this.addProjectForm.valid) {
+        this.loader = true;
         this.department
           .update(this.deptid, this.addProjectForm.value)
           .subscribe((data) => {
             this.isEdit = false;
+            this.loader = false;
             console.log('in-----');
             
             this.toastService.show('Updated project', {
