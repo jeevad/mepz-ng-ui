@@ -1,4 +1,5 @@
 <app-header *ngIf="blankUrl || !isCheckoutRoute()"></app-header>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
 <br>
 <section class="section main-content" [class.body-width]="blankUrl || !isCheckoutRoute()">
   <router-outlet></router-outlet>

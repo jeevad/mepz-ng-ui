@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 import { GroupsService } from 'src/app/service/groups/groups.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class AddGroupComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public toastService: ToasterService,
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +58,10 @@ export class AddGroupComponent implements OnInit {
       if (this.addGroups.valid) {
         // Save new group data
         this.groups.SaveData(this.addGroups.value).subscribe((result) => {
+          this.toastService.show('Group created', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/group-detail']);
         });
       }
@@ -65,6 +71,10 @@ export class AddGroupComponent implements OnInit {
         // Update existing group data
         this.groups.update(this.groupid, this.addGroups.value).subscribe((data) => {
           this.isEdit = false;
+          this.toastService.show('Group updated', {
+            classname: 'bg-success text-light',
+            delay: 10000,
+          });
           this.router.navigate(['pages/group-detail']);
         });
       }
