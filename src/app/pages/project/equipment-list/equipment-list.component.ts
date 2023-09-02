@@ -8,6 +8,7 @@ import { EquipmentAllocationModalComponent } from '../equipment-allocation-modal
 import { RoomService } from 'src/app/service/room/room.service';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-equipment-list',
@@ -39,6 +40,7 @@ export class EquipmentListComponent implements OnInit {
     private route: ActivatedRoute,
     private modalService: NgbModal,
     private customDialog: MyCustomDialogService,
+    public toastService: ToasterService,
     private breakpointObserver: BreakpointObserver
   ) {}
 
@@ -95,6 +97,10 @@ export class EquipmentListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.projectService.Removedata(id).subscribe((data) => {
+          this.toastService.show('Equipment deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.loadEquipments();
         });
       }

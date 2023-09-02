@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserFormComponent } from '../../users/user-form/user-form.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-admin-group',
@@ -24,7 +25,7 @@ export class AdminGroupComponent implements OnInit {
   loader: boolean = false;
   maxSize: number = 5;
 
-  constructor(private group: AdminGroupService, private breakpointObserver: BreakpointObserver, private customDialog: MyCustomDialogService) {}
+  constructor(private group: AdminGroupService, private breakpointObserver: BreakpointObserver, public toastService: ToasterService, private customDialog: MyCustomDialogService) {}
 
   LoadGroupData() {
     this.loader = true;
@@ -45,6 +46,10 @@ export class AdminGroupComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.group.Removedata(id).subscribe((data) => {
+          this.toastService.show('Admin group deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.LoadGroupData();
         });
       }

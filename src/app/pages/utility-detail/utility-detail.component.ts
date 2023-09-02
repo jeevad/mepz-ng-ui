@@ -4,6 +4,7 @@ import { UtilityService } from 'src/app/service/utility/utility.service';
 import { HttpClient } from '@angular/common/http';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-utility-detail',
@@ -20,7 +21,7 @@ export class UtilityDetailComponent implements OnInit {
   utilityData: any[] = [];
   maxSize: number = 5;
 
-  constructor(private utility: UtilityService, private http: HttpClient, private customDialog: MyCustomDialogService, private breakpointObserver: BreakpointObserver) {
+  constructor(private utility: UtilityService, private http: HttpClient, private customDialog: MyCustomDialogService, public toastService: ToasterService, private breakpointObserver: BreakpointObserver) {
     this.Find();
   }
 
@@ -56,6 +57,10 @@ export class UtilityDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.utility.Removedata(id).subscribe((data) => {
+          this.toastService.show('Utility deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.Find();
         });
       }

@@ -3,6 +3,7 @@ import { EquipmentService } from 'src/app/service/equipment/equipment.service';
 import { HttpClient } from '@angular/common/http';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-equipment-detail',
@@ -23,6 +24,7 @@ export class EquipmentDetailComponent implements OnInit {
     private equipmentService: EquipmentService,
     private http: HttpClient,
     private customDialog: MyCustomDialogService,
+    public toastService: ToasterService,
     private breakpointObserver: BreakpointObserver) {
     this.Load();
   }
@@ -68,6 +70,10 @@ export class EquipmentDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.equipmentService.Removedata(id).subscribe((data) => {
+          this.toastService.show('Equipment deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.Load();
         });
       }

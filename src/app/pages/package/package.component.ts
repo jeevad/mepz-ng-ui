@@ -4,6 +4,7 @@ import { PackageService } from 'src/app/service/package/package.service';
 import { HttpClient } from '@angular/common/http';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-package',
@@ -20,7 +21,7 @@ export class PackageComponent implements OnInit {
   loader: boolean = false;
   maxSize: number = 5;
 
-  constructor(private http: HttpClient, private service: PackageService, private customDialog: MyCustomDialogService, private breakpointObserver: BreakpointObserver) {
+  constructor(private http: HttpClient, private service: PackageService, private customDialog: MyCustomDialogService, public toastService: ToasterService, private breakpointObserver: BreakpointObserver) {
     this.Find();
   }
 
@@ -56,6 +57,10 @@ export class PackageComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.service.Removedata(id).subscribe((data) => {
+          this.toastService.show('Package deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.Find();
         });
       }

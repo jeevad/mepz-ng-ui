@@ -4,6 +4,7 @@ import { GroupsService } from 'src/app/service/groups/groups.service';
 import { HttpClient } from '@angular/common/http';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-group-detail',
@@ -20,7 +21,7 @@ export class GroupDetailComponent implements OnInit {
   loader: boolean = false;
   maxSize: number = 5;
   
-  constructor(private groups: GroupsService, private http: HttpClient, private breakpointObserver: BreakpointObserver, private customDialog: MyCustomDialogService) {
+  constructor(private groups: GroupsService, private http: HttpClient, private breakpointObserver: BreakpointObserver, public toastService: ToasterService, private customDialog: MyCustomDialogService) {
     this.Find();
   }
 
@@ -56,6 +57,10 @@ export class GroupDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.groups.Removedata(id).subscribe((data) => {
+          this.toastService.show('Group deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.Find();
         });
       }

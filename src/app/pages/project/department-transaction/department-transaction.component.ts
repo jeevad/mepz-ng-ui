@@ -164,7 +164,10 @@ export class DepartmentTransactionComponent {
 
         this.projectService.saveProjectField(this.projectId, data).subscribe({
           next: () => {
-            console.log('Department deleted successfully');
+            this.toastService.show('Department deleted', {
+              classname: 'bg-danger text-light',
+              delay: 10000,
+            });
             this.loadProjectDepartments();
           },
           error: (error) => {

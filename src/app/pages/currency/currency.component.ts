@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-currency',
@@ -21,7 +22,7 @@ export class CurrencyComponent implements OnInit {
   loader: boolean = false;
   maxSize: number = 5;
 
-  constructor(private service: CurrencyService, private http: HttpClient, private customDialog: MyCustomDialogService, private breakpointObserver: BreakpointObserver
+  constructor(private service: CurrencyService, private http: HttpClient, private customDialog: MyCustomDialogService, public toastService: ToasterService, private breakpointObserver: BreakpointObserver
     ) {
     this.find();
   }
@@ -58,6 +59,10 @@ export class CurrencyComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.service.Removedata(id).subscribe((data) => {
+          this.toastService.show('Currency deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.find();
         });
       }

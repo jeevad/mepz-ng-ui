@@ -4,6 +4,7 @@ import * as $ from 'jquery';
 import { ActivitiesService } from 'src/app/service/activities/activities.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-activity-log',
@@ -20,7 +21,7 @@ export class ActivityLogComponent implements OnInit {
   loader: boolean = false;
   maxSize: number = 5;
 
-  constructor(private group: ActivitiesService, private customDialog: MyCustomDialogService, private breakpointObserver: BreakpointObserver) {}
+  constructor(private group: ActivitiesService, private customDialog: MyCustomDialogService, public toastService: ToasterService, private breakpointObserver: BreakpointObserver) {}
 
   findAll() {
     this.loader = true;
@@ -44,6 +45,10 @@ export class ActivityLogComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.group.Removedata(id).subscribe((data) => {
+          this.toastService.show('Activity log deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.findAll();
         });
       }

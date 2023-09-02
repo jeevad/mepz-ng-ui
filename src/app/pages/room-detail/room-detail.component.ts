@@ -4,6 +4,7 @@ import { RoomService } from 'src/app/service/room/room.service';
 import { HttpClient } from '@angular/common/http';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-room-detail',
@@ -19,7 +20,7 @@ export class RoomDetailComponent implements OnInit {
   loader: boolean = false;
   maxSize: number = 5;
 
-  constructor(private room: RoomService, private http: HttpClient, private customDialog: MyCustomDialogService, private breakpointObserver: BreakpointObserver) {
+  constructor(private room: RoomService, private http: HttpClient, private customDialog: MyCustomDialogService, public toastService: ToasterService, private breakpointObserver: BreakpointObserver) {
     this.Load();
   }
 
@@ -67,6 +68,10 @@ export class RoomDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.room.Removedata(id).subscribe((data) => {
+          this.toastService.show('Room deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.Load();
         });
       }

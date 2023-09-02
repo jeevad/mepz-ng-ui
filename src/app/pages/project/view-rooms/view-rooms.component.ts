@@ -270,6 +270,10 @@ export class ViewRoomsComponent {
 
         this.projectService.saveProjectField(this.projectId, data).subscribe(() => {
             this.loader = false;
+            this.toastService.show('Room deleted', {
+              classname: 'bg-danger text-light',
+              delay: 10000,
+            });
             this.loadProjectRooms();
           },
           (error) => {

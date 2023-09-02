@@ -27,33 +27,23 @@
             </div>
             <div>
                 <div>
-                    <div class="float-start d-lg-flex gap-3">
-                        <a class="btn btn-sm btn-success" routerLink="/pages/projects/{{ projectType }}/list"
+                    <div class="float-start d-lg-flex mt-2">
+                        <a class="btn btn-sm btn-success me-2" routerLink="/pages/projects/{{ projectType }}/list"
                             title="Back"><i class="fa-solid fa-chevron-left fa-sm"></i> </a>
-                        <a class="btn btn-sm btn-danger" routerLink="/pages/projects/{{ projectType }}/list"
+                        <a class="btn btn-sm btn-danger me-2" routerLink="/pages/projects/{{ projectType }}/list"
                             title="Cancel"><i class="fa-solid fa-cancel fa-sm"></i> </a>
-                        <a class="btn btn-sm btn-primary"
+                        <a class="btn btn-sm btn-primary me-2"
                             routerLink="/pages/projects/{{ projectType }}/{{projectId}}/equipment-summary"
                             title="Summary"><i class="fa-solid fa-list-alt fa-sm"></i> </a>
                     </div>
-                    <div class="float-end d-lg-flex gap-3">
-                        <button type="button" class="btn btn-primary btn-xs" title="Equipment List" data-toggle="modal"
-                            data-target="#myModal4"> <i class='fal fa-list'></i></button>
-                        <button type="button" class="btn btn-sm btn-primary" title="Filter"><i
-                                class='fal fa-filter'></i></button>
+                    <div class="float-end d-lg-flex mt-2">
+                        <button type="button" class="btn btn-primary btn-xs me-2" title="Equipment List" data-toggle="modal" data-target="#myModal4"> <i class='fal fa-list'></i></button>
+                        <button type="button" class="btn btn-xs btn-primary me-2" title="Filter"><i class='fal fa-filter'></i></button>
                         <!-- Add Equipment -->
-                        <button title="Add Equipment" type="button" class="btn btn-sm btn-primary"
-                            (click)="openEquipmentAllocationModal()">
-                            <i class="fal fa-file-plus"> </i>
-                        </button>
-
-                        <button title="Replace" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                            data-target="#myModal3" type="button" class="btn btn-sm btn-primary"><i
-                                class='fal fa-exchange'></i></button>
-                        <button type="button" class="btn btn-sm btn-danger" (click)="delete('1230')" id="delete_eq" title="DELETE"><i
-                                class='bx bxs-trash'></i></button>
-                        <button type="button" class="btn btn-sm btn-success" id="copy_paste" title="COPY"><i
-                                class='bx bxs-copy'></i></button>
+                        <button title="Add Equipment" type="button" class="btn btn-xs btn-primary me-2" (click)="openEquipmentAllocationModal()"><i class="fal fa-file-plus"> </i></button>
+                        <button title="Replace" type="button" data-toggle="modal" data-target="#myModal3" type="button" class="btn btn-xs btn-primary me-2"><i class='fal fa-exchange'></i></button>
+                        <button type="button" class="btn btn-xs btn-danger me-2" (click)="delete('1230')" id="delete_eq" title="DELETE"><i class='bx bxs-trash'></i></button>
+                        <button type="button" class="btn btn-xs btn-success me-2" id="copy_paste" title="COPY"><i class='bx bxs-copy'></i></button>
                     </div>
                 </div>
             </div>

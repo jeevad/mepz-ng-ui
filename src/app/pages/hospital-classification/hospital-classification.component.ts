@@ -4,6 +4,7 @@ import { ClassificationService } from 'src/app/service/classification/classifica
 import { HttpClient } from '@angular/common/http';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-hospital-classification',
@@ -23,6 +24,7 @@ export class HospitalClassificationComponent implements OnInit {
     private service: ClassificationService,
     private http: HttpClient,
     private customDialog: MyCustomDialogService,
+    public toastService: ToasterService,
     private breakpointObserver: BreakpointObserver
   ) {
     this.find();
@@ -57,6 +59,10 @@ export class HospitalClassificationComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.service.Removedata(id).subscribe((classificationdata) => {
+          this.toastService.show('Hospital classification deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.find();
         });
       }

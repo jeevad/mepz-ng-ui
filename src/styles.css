@@ -2860,6 +2860,9 @@ td {
     .page-content {
         padding: 1rem 0px 0.7rem 0rem;
     }
+    section {
+        padding: 25px 0 !important;
+    }
 }
 .bg-yellow{
     background-color: #fff1bc !important;
@@ -2869,4 +2872,27 @@ td {
 }
 .bg-info-subtle{
     background-color: #cff4fc !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 6px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #1cabb1;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #1cabb1;
 }

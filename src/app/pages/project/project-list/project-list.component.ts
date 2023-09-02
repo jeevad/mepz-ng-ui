@@ -5,6 +5,7 @@ import { ProjectService } from 'src/app/service/project/project.service';
 import { AddProjectModalComponent } from './add-project-modal/add-project-modal.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 // import { NgxSpinnerService } from 'ngx-spinner';
 
 export interface DialogData {
@@ -37,6 +38,7 @@ export class ProjectListComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private customDialog: MyCustomDialogService,
+    public toastService: ToasterService,
     private breakpointObserver: BreakpointObserver
   ) {}
 
@@ -120,6 +122,10 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.projectService.Removedata(id).subscribe((data) => {
+          this.toastService.show('Project deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.Load();
         });
       }

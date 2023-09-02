@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
+import { ToasterService } from '@app/components/toaster/toaster.service';
 
 @Component({
   selector: 'app-department',
@@ -26,6 +27,7 @@ export class DepartmentComponent implements OnInit {
     private http: HttpClient,
     private breakpointObserver: BreakpointObserver,
     private customDialog: MyCustomDialogService,
+    public toastService: ToasterService
   ) {
     this.Load(); // Initial loading of departments
   }
@@ -74,6 +76,10 @@ export class DepartmentComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
         this.department.Removedata(id).subscribe((data) => {
+          this.toastService.show('Department deleted', {
+            classname: 'bg-danger text-light',
+            delay: 10000,
+          });
           this.Load();
         });
       }
