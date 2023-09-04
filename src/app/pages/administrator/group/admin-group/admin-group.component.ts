@@ -45,7 +45,9 @@ export class AdminGroupComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
+        this.loader = true;
         this.group.Removedata(id).subscribe((data) => {
+          this.loader = false;
           this.toastService.show('Admin group deleted', {
             classname: 'bg-danger text-light',
             delay: 10000,

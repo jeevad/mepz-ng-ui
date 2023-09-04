@@ -96,7 +96,9 @@ export class EquipmentListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
+        this.loader = true;
         this.projectService.Removedata(id).subscribe((data) => {
+          this.loader = false;
           this.toastService.show('Equipment deleted', {
             classname: 'bg-danger text-light',
             delay: 10000,

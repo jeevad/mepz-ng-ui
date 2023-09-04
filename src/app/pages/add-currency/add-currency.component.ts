@@ -34,8 +34,10 @@ export class AddCurrencyComponent implements OnInit {
     this.currencyid = this.route.snapshot.paramMap.get('id');
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
+        this.loader = true;
         this.service.FindbyID(param['id']).subscribe((resp) => {
           this.isEdit = true;
+          this.loader = false;
           this.addCurrency.patchValue(resp);
         });
       }

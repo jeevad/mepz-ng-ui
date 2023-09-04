@@ -2863,6 +2863,9 @@ td {
     section {
         padding: 25px 0 !important;
     }
+    .card-body.p-5{
+        padding: 1rem !important;
+    }
 }
 .bg-yellow{
     background-color: #fff1bc !important;

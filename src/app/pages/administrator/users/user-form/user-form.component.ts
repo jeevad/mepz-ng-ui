@@ -67,8 +67,10 @@ export class UserFormComponent implements OnInit {
     // patch value on update
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
+        this.loader = true;
         this.group.LoadbyID(param['id']).subscribe((resp: any) => {
           this.isEdit = true;
+          this.loader = false;
           delete resp.password;
           this.userForm.patchValue(resp);
         });

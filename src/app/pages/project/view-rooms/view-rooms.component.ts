@@ -254,14 +254,13 @@ export class ViewRoomsComponent {
 
   // Delete a department
   deleteRoom(roomId: string): void {
-    this.loader = true;
     const dialogRef = this.customDialog.openConfirmDialog({
       dialogMsg: 'Are you sure want to delete?',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
       if (result === 'ok') {
+        this.loader = true;
         const data = {
           type: 'room',
           field: 'delete',

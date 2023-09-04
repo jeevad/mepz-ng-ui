@@ -37,9 +37,11 @@ export class AddGroupComponent implements OnInit {
     // Check if group ID exists in the route params for edit mode
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
+        this.loader = true;
         // Load group data by ID for editing
         this.groups.FindbyID(param['id']).subscribe((resp) => {
           this.isEdit = true;
+          this.loader = false;
           this.addGroups.patchValue(resp);
         });
       }

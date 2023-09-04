@@ -32,8 +32,10 @@ export class AddClassificationComponent implements OnInit {
 
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
+        this.loader = true;
         this.service.FindbyID(param['id']).subscribe((resp) => {
           this.isEdit = true;
+          this.loader = false;
           this.addClassification.patchValue(resp);
         });
       }

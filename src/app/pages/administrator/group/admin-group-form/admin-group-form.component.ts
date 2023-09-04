@@ -43,6 +43,7 @@ export class AdminGroupFormComponent implements OnInit {
     this.submitted = true;
     if (!this.isEdit) {
       if(this.addgroup.valid){
+        this.submitted = false;
         this.loader = true;
         this.group.SaveGroupData(this.addgroup.value).subscribe((result) => {
           if (result != null) {
@@ -59,14 +60,17 @@ export class AdminGroupFormComponent implements OnInit {
         });
       }
     } else if (this.isEdit) {
+      this.submitted = true;
       if(this.addgroup.valid){
+        this.submitted = false;
         this.updateRecord(this.groupid, this.editdata);
         this.router.navigate(['pages/admin-group']);
       }
-    } else {
-      this.message = 'please enter valid data';
-      this.messageclass = 'error';
-    }
+    } 
+    // else {
+    //   this.message = 'please enter valid data';
+    //   this.messageclass = 'error';
+    // }
   }
   Cleardata() {
     this.addgroup = new FormGroup({
@@ -75,9 +79,10 @@ export class AdminGroupFormComponent implements OnInit {
   }
 
   Updatedata(Id: any) {
+    this.loader = true;
     this.group.LoadbyID(Id).subscribe((data) => {
       this.editdata = data;
-
+      this.loader = false;
       this.addgroup = new FormGroup({
         name: new FormControl(this.editdata.name),
       });

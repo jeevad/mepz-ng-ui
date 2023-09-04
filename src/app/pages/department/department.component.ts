@@ -75,7 +75,9 @@ export class DepartmentComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
+        this.loader = true;
         this.department.Removedata(id).subscribe((data) => {
+          this.loader = false;
           this.toastService.show('Department deleted', {
             classname: 'bg-danger text-light',
             delay: 10000,

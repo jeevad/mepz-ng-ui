@@ -41,9 +41,11 @@ export class AddDepartmentComponent implements OnInit {
     // Check if department ID exists in the route params for edit mode
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
+        this.loader = true;
         // Load department data by ID for editing
         this.department.LoadbyID(param['id']).subscribe((resp) => {
           this.isEdit = true;
+          this.loader = false;
           this.addDepartment.patchValue(resp);
         });
       }

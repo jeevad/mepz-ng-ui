@@ -37,8 +37,10 @@ export class CompanyFormComponent implements OnInit {
     this.companyid = this.route.snapshot.paramMap.get('id');
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
+        this.loader = true;
         this.service.LoadbyID(param['id']).subscribe((resp) => {
           this.isEdit = true;
+          this.loader = false;
           this.addCompany.patchValue(resp);
         });
       }

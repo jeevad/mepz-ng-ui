@@ -4,7 +4,7 @@
     <div class="row page-content">
       <div class="col-md-12">
         <div class="d-lg-flex align-items-center mb-4 gap-3">
-          <h4 class="mb-0 text-primary">Add Department </h4>
+          <h4 class="mb-0 text-primary">{{ isEdit ? 'Edit Department' : 'Add Department' }}</h4>
           <div class="ms-auto"><a routerLink="/pages/department" class="btn btn-primary sqare-0 mt-2 mt-lg-0"><i
                 class="bx bx-table"></i>Manage Department</a></div>
         </div>
@@ -39,7 +39,7 @@
               </div>
 
 
-              <div class="col-6 mt-3">
+              <div class="col-md-6 mt-3">
                 <label for="inputState" class="form-label">Active</label>
                 <select class="custom-select form-select form-control" (change)="change($event)" formControlName="active" [ngClass]="{'is-invalid':submitted && addDepartment.controls['active'].
                 errors}">

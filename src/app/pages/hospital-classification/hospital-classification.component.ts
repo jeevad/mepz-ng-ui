@@ -58,7 +58,9 @@ export class HospitalClassificationComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'ok') {
+        this.loader = true;
         this.service.Removedata(id).subscribe((classificationdata) => {
+          this.loader = false;
           this.toastService.show('Hospital classification deleted', {
             classname: 'bg-danger text-light',
             delay: 10000,

@@ -153,8 +153,8 @@ export class DepartmentTransactionComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
       if (result === 'ok') {
+        this.loader = true;
         const data = {
           type: 'department',
           // field: isDeleted:true,
@@ -164,6 +164,7 @@ export class DepartmentTransactionComponent {
 
         this.projectService.saveProjectField(this.projectId, data).subscribe({
           next: () => {
+            this.loader = false;
             this.toastService.show('Department deleted', {
               classname: 'bg-danger text-light',
               delay: 10000,

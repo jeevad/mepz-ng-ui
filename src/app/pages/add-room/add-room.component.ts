@@ -37,9 +37,11 @@ export class AddRoomComponent implements OnInit {
     // Check if room ID exists in the route params for edit mode
     this.route.params.subscribe((param) => {
       if (param && param['id']) {
+        this.loader = true;
         // Load room data by ID for editing
         this.room.LoadbyID(param['id']).subscribe((resp) => {
           this.isEdit = true;
+          this.loader = false;
           this.addRoom.patchValue(resp);
         });
       }
