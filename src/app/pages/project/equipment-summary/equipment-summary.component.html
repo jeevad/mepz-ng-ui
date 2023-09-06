@@ -66,33 +66,33 @@
                     <td>{{eqp.code}}</td>
                     <td> {{eqp.name}}</td>
                     <td>100</td>
-                    <td class=" editablex">
+                    <td class="bg-yellow editablex">
                       <app-edit-input-equipment [data]="eqp.apq || 0" [equipmentId]="eqp.id" [field]="'apq'"
                         [inputsize]="100"></app-edit-input-equipment>
                     </td>
-                    <td class=" editablex">
+                    <td class="bg-yellow editablex">
                       <app-edit-input-equipment [data]="eqp.fpq || 0" [equipmentId]="eqp.id" [field]="'fpq'"
                         [inputsize]="100"></app-edit-input-equipment>
                     </td>
-                    <td class=" editablex">
+                    <td class="bg-yellow editablex">
                       <app-edit-input-equipment [data]="eqp.qty || 0" [equipmentId]="eqp.id" [field]="'qty'"
                         [inputsize]="100"></app-edit-input-equipment>
                     </td>
-                    <td class=" editablex">
+                    <td class="bg-yellow editablex">
                       <app-edit-input-equipment [data]="eqp.cost || 0" [equipmentId]="eqp.id" [field]="'cost'"
                         [inputsize]="100"></app-edit-input-equipment>
                     </td>
                     <td>{{ eqp.markupPer }}</td>
                     <td>{{eqp.qty * eqp.cost}}</td>
-                    <td><app-edit-input-equipment [data]="eqp.group || '-'" [equipmentId]="eqp.id" [field]="'group'"
+                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.group || '-'" [equipmentId]="eqp.id" [field]="'group'"
                         [inputsize]="100"></app-edit-input-equipment></td>
-                    <td><app-edit-input-equipment [data]="eqp.utility || '-'" [equipmentId]="eqp.id" [field]="'utility'"
+                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.utility || '-'" [equipmentId]="eqp.id" [field]="'utility'"
                         [inputsize]="100"></app-edit-input-equipment>
                     </td>
-                    <td><app-edit-input-equipment [data]="eqp.remarks || '-'" [equipmentId]="eqp.id" [field]="'remarks'"
+                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.remarks || '-'" [equipmentId]="eqp.id" [field]="'remarks'"
                         [inputsize]="100"></app-edit-input-equipment>
                     </td>
-                    <td><app-edit-input-equipment [data]="eqp.labels || '-'" [equipmentId]="eqp.id" [field]="'group'"
+                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.labels || '-'" [equipmentId]="eqp.id" [field]="'group'"
                         [inputsize]="100"></app-edit-input-equipment>
                     </td>
                   </tr>
