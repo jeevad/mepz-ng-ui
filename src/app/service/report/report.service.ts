@@ -64,7 +64,7 @@ export const REPORT_TYPE = [
   },
   {
     title: 'disabled-equipment-listing-bq',
-    key: '',
+    key: 'disabled-equipment-listing-bq',
     format: [{
       key: 'pdf',
       title: 'PDF'
@@ -237,8 +237,8 @@ export const REPORT_TYPE = [
     }],
   },
   {
-    title: 'summary-of-equipment-variation',
-    key: 'summary-of-equipment-variation',
+    title: 'equipment-listing-bq-by-group-revision',
+    key: 'equipment-listing-bq-by-group-revision',
     format: [{
       key: 'pdf',
       title: 'PDF'
@@ -349,7 +349,7 @@ export class ReportService {
   getEquipmentReports(params: {
     projectId: string;
     reportType: string;
-    format: string;
+    format: any;
     roomId?: any[];
     group?: any[];
   }) {
@@ -364,9 +364,29 @@ export class ReportService {
     delete params.roomId;
     delete params.group;
     params = { ...params, ...room, ...group };
-    return this.http.get(environment.apiUrl + '/reports/getEquipmentReports', {
-      params: params,
-      responseType: 'blob',
-    });
+    if(params.format.key === "pdf-1-page"){
+      return this.http.get(environment.apiUrl + '/reports/getEquipmentReports' + '?projectId=' + params.projectId + '&reportType=' + params.reportType + '&reportFormat=pdfs&pagewise=1',{
+        responseType: 'blob',
+      });
+    } else if(params.format.key === "pdf-with-price" || params.format.key === "pdf-1-page-with-price") {
+      return this.http.get(environment.apiUrl + '/reports/getEquipmentReports' + '?projectId=' + params.projectId + '&reportType=' + params.reportType + '-with-price&reportFormat=pdfs&pagewise=1',{
+        responseType: 'blob',
+      });
+    } else if(params.format.key === "pdf-1-page-w-sign") {
+      return this.http.get(environment.apiUrl + '/reports/getEquipmentReports' + '?projectId=' + params.projectId + '&reportType=' + params.reportType + '&reportFormat=pdfs&pagewise=1&w_sign=1',{
+        responseType: 'blob',
+      });
+    } else {
+      return this.http.get(environment.apiUrl + '/reports/getEquipmentReports', {
+        params: params,
+        responseType: 'blob',
+      });
+    }
+    
+    // return this.http.get(environment.apiUrl + '/reports/getEquipmentReports', {
+    //   params: params,
+    //   responseType: 'blob',
+    // });
+    
   }
 }

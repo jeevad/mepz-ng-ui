@@ -25,6 +25,7 @@ export class ReportsComponent implements OnInit {
   selectedGroup!: string;
   reportTypeList = REPORT_TYPE;
   reportFormat!: string;
+  loader : boolean = false;
   // selectedDepartments: any[] = [];
   // deptId!: any;
   // projectId: any;
@@ -125,8 +126,9 @@ export class ReportsComponent implements OnInit {
       .map((room: any) => room.departments.rooms._id);
   }
 
-  exportData(format: string) {
-    const params = {
+  exportData(format: any) {
+    this.loader = true;
+    const params :any = {
       projectId: this.selectedProjectId,
       reportType: this.selectedReportType,
       group: this.getSelectedGroup(),
@@ -134,11 +136,15 @@ export class ReportsComponent implements OnInit {
       format,
     };
     // console.log('getSelectedRoom', this.getSelectedRoom());
-    // console.log('params', params);
+    console.log('params', params);
     // return;
 
     this.reportService.getEquipmentReports(params).subscribe((response) => {
-      saveAs(response, `${this.selectedReportType}.pdf`);
+      // saveAs(response, `${this.selectedReportType}.pdf`);
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url, '_blank');
+      this.loader = false;
     });
   }
 }
