@@ -33,10 +33,29 @@
     </ng-template> -->
 
 <div *ngIf="mode === 'view'" class="cell">{{data}}</div>
-<mat-form-field *ngIf="mode === 'edit'" subscriptSizing="dynamic" [style.width.px]="inputsize">
-  <input matInput type="text" focusable editableOnEnter [(ngModel)]="updatedData" appAutofocus #inputBox
-    id="codeInput" />
-  <button matSuffix mat-icon-button aria-label="Clear" (click)="saveData()">
-    <i class="fal fa-save"> </i>
-  </button>
-</mat-form-field>
+<ng-container *ngIf="mode === 'edit'">
+  <ng-container *ngIf="inputType === 'text'">
+    <mat-form-field subscriptSizing="dynamic" [style.width.px]="inputsize">
+      <input matInput type="text" focusable editableOnEnter [(ngModel)]="updatedData" appAutofocus #inputBox
+        id="codeInput" />
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="saveData()">
+        <i class="fal fa-save"> </i>
+      </button>
+    </mat-form-field>
+  </ng-container>
+  <ng-container *ngIf="inputType === 'group'">
+    <div class="input-group">
+      <select name="equ_listing" id="equ_listing1" style="width: 100px;" class="form-select" [(ngModel)]="updatedData">
+        <option value="">Select Group Name</option>
+        <option *ngFor="let master of masterList" [ngValue]="master.name">
+          {{ master.name }}
+        </option>
+      </select>
+      <span class="input-group-btn">
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="saveData()">
+          <i class="fal fa-save"> </i>
+        </button>
+      </span>
+    </div>
+  </ng-container>
+</ng-container>

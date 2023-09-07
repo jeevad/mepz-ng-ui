@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatInput } from '@angular/material/input';
+import { GroupsService } from '@app/service/groups/groups.service';
 // import { ViewModeDirective } from './view-mode.directive';
 // import { EditModeDirective } from './edit-mode.directive';
 // import { NgControl } from '@angular/forms';
@@ -44,10 +45,12 @@ export class EditInputEquipmentComponent {
 
   @ViewChild('inputBox')
   inputBox!: ElementRef;
+  masterList: any = [];
 
   constructor(
     private host: ElementRef,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private groups: GroupsService
   ) {}
 
   // onFocusOut() {
@@ -83,6 +86,9 @@ export class EditInputEquipmentComponent {
       .subscribe(() => {
         this.mode = 'edit';
         this.editMode.next(true);
+        if (this.inputType === 'group') {
+          this.loadGroups();
+        }
         // setTimeout(() => {
         //   this.inputBox.nativeElement.focus();
         // }, 1);
@@ -122,5 +128,11 @@ export class EditInputEquipmentComponent {
         this.data = this.updatedData;
         this.mode = 'view';
       });
+  }
+
+  loadGroups() {
+    this.groups.Find(0, 0).subscribe((data: any) => {
+      this.masterList = data.results;
+    });
   }
 }

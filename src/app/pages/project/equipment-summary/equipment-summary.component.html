@@ -84,16 +84,18 @@
                     </td>
                     <td>{{ eqp.markupPer }}</td>
                     <td>{{eqp.qty * eqp.cost}}</td>
-                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.group || '-'" [equipmentId]="eqp.id" [field]="'group'"
-                        [inputsize]="100"></app-edit-input-equipment></td>
-                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.utility || '-'" [equipmentId]="eqp.id" [field]="'utility'"
-                        [inputsize]="100"></app-edit-input-equipment>
+                    <td class="bg-yellow">
+                      <app-edit-input-equipment [data]="eqp.group || '-'" [equipmentId]="eqp.id" [field]="'group'"
+                        [inputType]="'group'" [inputsize]="100"></app-edit-input-equipment>
                     </td>
-                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.remarks || '-'" [equipmentId]="eqp.id" [field]="'remarks'"
-                        [inputsize]="100"></app-edit-input-equipment>
+                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.utility || '-'" [equipmentId]="eqp.id"
+                        [field]="'utility'" [inputsize]="100"></app-edit-input-equipment>
                     </td>
-                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.labels || '-'" [equipmentId]="eqp.id" [field]="'group'"
-                        [inputsize]="100"></app-edit-input-equipment>
+                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.remarks || '-'" [equipmentId]="eqp.id"
+                        [field]="'remarks'" [inputsize]="100"></app-edit-input-equipment>
+                    </td>
+                    <td class="bg-yellow"><app-edit-input-equipment [data]="eqp.labels || '-'" [equipmentId]="eqp.id"
+                        [field]="'group'" [inputsize]="100"></app-edit-input-equipment>
                     </td>
                   </tr>
                 </tbody>
@@ -109,8 +111,9 @@
             </div>
             <div class="pagination-wrap">
               <p>Current page: {{ page }}</p>
-              <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="loadEquipments()" aria-label="Default pagination" [maxSize]="maxSize"></ngb-pagination>
-          </div>
+              <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page"
+                (pageChange)="loadEquipments()" aria-label="Default pagination" [maxSize]="maxSize"></ngb-pagination>
+            </div>
           </div>
         </div>
       </div>
