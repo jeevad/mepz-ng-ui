@@ -161,7 +161,7 @@ const routes: Routes = [
         component: TransactionViewComponent,
       },
       {
-        path: ':projectType/:id/tac',
+        path: ':projectType/:projectId/tac',
         component: TacComponent,
       },
     ],

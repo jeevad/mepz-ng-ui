@@ -1,282 +1,308 @@
 <section class="section pt-2">
     <div class="container">
         <div class="row page-content">
-        <!-- Title -->
-        <div class="col-md-12">
-            <div class="d-lg-flex align-items-center mb-4 gap-3">
-            <h4 class="mb-0 text-primary">Testing and Commissioning Report </h4>
-            </div>
-        </div>
-        <!-- Project Info -->
-        <div class="col-md-12 mb-3">
-            <div class="table-responsive">
-            <table class="table table-borderless table-light">
-                <tbody>
-                <tr>
-                    <td><h6 class="mb-0">Project Info</h6></td>
-                    <td colspan="2"><strong>Code: </strong>ASM</td>
-                    <td><strong>Project Name: </strong>ARUNAMARI SPECIALIST MEDICAL CENTRE</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
-        </div>
-        <!-- Filters and buttons -->
-        <div class="col-md-12">
-            <form>
-                <div class="row">
-                    <div class="col-lg-6 col-xl-5">
-                        <div class="row mb-3">
-                            <label for="package" class="col-sm-2 col-lg-3 form-label">Package</label>
-                            <div class="col-sm-10 col-lg-9">
-                                <select class="form-select" id="package">
-                                    <option selected>Filter Package</option>
-                                    <option value="VEN-1">VEN-1</option>
-                                    <option value="MON-1">MON-1</option>
-                                    <option value="ECG-1">ECG-1</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-5">
-                        <div class="row mb-3">
-                            <label for="group" class="col-sm-2 form-label">Group</label>
-                            <div class="col-sm-10">
-                                <select class="form-select" id="group">
-                                    <option selected>Filter Group</option>
-                                    <option value="ARCHITECTURAL">ARCHITECTURAL</option>
-                                    <option value="REF ATTACHED CSSD DOCUM">REF ATTACHED CSSD DOCUM</option>
-                                    <option value="LOOSE MEDICAL EQUIPMENT">LOOSE MEDICAL EQUIPMENT</option>
-                                    </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
-                            <div class="cols">
-                                <label for="eqcode-field" class="form-label">Eq Code:</label>
-                                <input type="text" class="form-control" id="eqcode-field" placeholder="Filter Eq Code">
-                            </div>
-                            <div class="cols">
-                                <label for="equipment-field" class="form-label">Equipment</label>
-                                <input type="text" class="form-control" id="equipment-field" placeholder="Filter Equipment">
-                            </div>
-                            <div class="cols">
-                                <label for="brand-field" class="form-label">Brand</label>
-                                <input type="text" class="form-control" id="brand-field" placeholder="Filter Brand">
-                            </div>
-                            <div class="cols">
-                                <label for="model-field" class="form-label">Model</label>
-                                <input type="text" class="form-control" id="model-field" placeholder="Filter Model">
-                            </div>
-                            <div class="cols">
-                                <label for="country-field" class="form-label">Country</label>
-                                <input type="text" class="form-control" id="country-field" placeholder="Filter Country">
-                            </div>
-                            <div class="cols">
-                                <label for="supplier-field" class="form-label">Supplier</label>
-                                <input type="text" class="form-control" id="supplier-field" placeholder="Filter Supplier">
-                            </div>
-                            <div class="cols">
-                                <label for="actual-delivery-field" class="form-label">Actual Delivery</label>
-                                <input type="text" class="form-control" id="actual-delivery-field" placeholder="yyyy-mm">
-                            </div>
-                            <div class="cols">
-                                <label for="est-delivery-field" class="form-label">Est Delivery</label>
-                                <input type="text" class="form-control" id="est-delivery-field" placeholder="yyyy-mm">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="d-flex flex-wrap mt-4">
-                <div class="mb-2 me-2">
-                    <button class="btn btn-primary sqare-0">Print Full Page</button>
-                </div>
-                <div class="mb-2 me-2">
-                    <button class="btn btn-primary sqare-0" (click)="printReportModal(reportcontent)">Print Reports</button>
-                </div>
-                <div class="mb-2 me-2">
-                    <button class="btn btn-primary sqare-0" (click)="uploadDocModal(upldoccontent)">Upload Documents</button>
+            <!-- Title -->
+            <div class="col-md-12">
+                <div class="d-lg-flex align-items-center mb-4 gap-3">
+                    <h4 class="mb-0 text-primary">Testing and Commissioning Report </h4>
                 </div>
             </div>
-        </div>
-        <!-- Table -->
-        <div class="col-md-12 mt-4">
-            <div class="card p-3">
-            <div class="card-body">
+            <!-- Project Info -->
+            <div class="col-md-12 mb-3">
                 <div class="table-responsive">
-                <table class="table table-striped" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th class="bg-gray"></th>
-                        <th class="text-center" colspan="5">Equipment</th>
-                        <th class="bg-gray text-center" colspan="14">Equipment Planning and Procure Planning</th>
-                        <th class="text-center" colspan="20">Equipment Delivery and Commissioning</th>
-                        <th class="bg-gray text-center" colspan="8">Hand Over</th>
-                    </tr>
-                    <tr>
-                        <th class="bg-gray">No</th>
-                        <th>Pak Code</th>
-                        <th>Equipment Page</th>
-                        <th>Equipment Code</th>
-                        <th>Equipment</th>
-                        <th>Group</th>
-                        <th class="bg-gray">Tender Qty</th>
-                        <th class="bg-gray">Room Data Interaction</th>
-                        <th class="bg-gray">4 Wall Interaction</th>
-                        <th class="bg-gray">Total Qty</th>
-                        <th class="bg-gray">APQ(Approved Procure Qty)</th>
-                        <th class="bg-gray">FPQ(Future Procure Qty)</th>
-                        <th class="bg-gray">Unit cost</th>
-                        <th class="bg-gray">Total Cost</th>
-                        <th class="bg-gray">Total APQ Cost</th>
-                        <th class="bg-gray">Total FPQ Cost</th>
-                        <th class="bg-gray">Brand</th>
-                        <th class="bg-gray">Model</th>
-                        <th class="bg-gray">Country Of Origin</th>
-                        <th class="bg-gray">Remarks</th>
-                        <th>Manufacturer</th>
-                        <th>Supplier Firm</th>
-                        <th>Contact Person</th>
-                        <th>Tel/Emai</th>
-                        <th>Site Facility Visit</th>
-                        <th>Site Facility Confirm</th>
-                        <th>Est Delivery</th>
-                        <th>Delivery Actual(yyyy-mm-dd)</th>
-                        <th>Returns</th>
-                        <th>%payment</th>
-                        <th>Location Store</th>
-                        <th>Location Point Of Location(Room Code)</th>
-                        <th>Delivery Documents</th>
-                        <th>Internal Testing Est Schedule</th>
-                        <th>Internal Testing Actual</th>
-                        <th>Third Party Testing Est Schedule</th>
-                        <th>%Validation & Remarks</th>
-                        <th>Final Testing With Client Est Schedule</th>
-                        <th>Final Testing With Client Actual</th>
-                        <th>Documentation	</th>
-                        <th class="bg-gray">Room Inspection 1 Est Schedule</th>
-                        <th class="bg-gray">Room Inspection 1 Actual</th>
-                        <th class="bg-gray">Room Inspection 2 Est Schedule</th>
-                        <th class="bg-gray">Room Inspection 2 Actual</th>
-                        <th class="bg-gray">Hand Over Est Schedule</th>
-                        <th class="bg-gray">Hand Over Actual</th>
-                        <th class="bg-gray">Documentation</th>
-                        <th class="bg-gray">Remarks</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="bg-gray">1</td>
-                        <td></td>
-                        <td></td>
-                        <td>HAM141/001</td>
-                        <td>TROLLEY PT TRAUMA/RESUS RADIOLUCENT W CASSET.TRAY</td>
-                        <td>-</td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>13800.00</td>
-                        <td>27,600.00</td>
-                        <td>27,600.00</td>
-                        <td>0.00</td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td><a href="javascript:;">Room Details</a></td>
-                        <td></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                    </tr>
-                    <tr>
-                        <td class="bg-gray">2</td>
-                        <td></td>
-                        <td></td>
-                        <td>HAM141/001</td>
-                        <td>TROLLEY PT TRAUMA/RESUS RADIOLUCENT W CASSET.TRAY</td>
-                        <td>-</td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>13800.00</td>
-                        <td>27,600.00</td>
-                        <td>27,600.00</td>
-                        <td>0.00</td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td><a href="javascript:;">Room Details</a></td>
-                        <td></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td><input type="date" class="form-control" /></td>
-                        <td></td>
-                        <td class="bg-yellow"><app-edit-input-equipment [data]="0" [inputsize]="100"></app-edit-input-equipment></td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="table table-borderless table-light">
+                        <tbody>
+                            <tr *ngIf="project">
+                                <td><h6 class="mb-0">Project Info</h6></td>
+                                <td colspan="2"><strong>Code: </strong>{{project?.code}}</td>
+                                <td><strong>Project Name: </strong>{{project?.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <!-- <div class="pagination-wrap">
-                <p>Current page: {{ page }}</p>
-                <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="loadEquipments()" aria-label="Default pagination" [maxSize]="maxSize"></ngb-pagination>
-            </div> -->
             </div>
+            <!-- Filters and buttons -->
+            <div class="col-md-12">
+                <form autocomplete="off">
+                    <div class="row">
+                        <div class="col-lg-6 col-xl-5">
+                            <div class="row mb-3">
+                                <label for="package" class="col-sm-2 col-lg-3 form-label">Package</label>
+                                <div class="col-sm-10 col-lg-9">
+                                    <select class="form-select" id="package" (change)="onFilterChange(0, $event)">
+                                        <option selected hidden>Filter Package</option>
+                                        <option value={{package.code}} *ngFor="let package of packages">{{package.code}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xl-5">
+                            <div class="row mb-3">
+                                <label for="group" class="col-sm-2 form-label">Group</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" id="group" (change)="onFilterChange(1, $event)">
+                                        <option selected hidden>Filter Group</option>
+                                        <option value={{group.name}} *ngFor="let group of groups">{{group.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
+                                <div class="cols">
+                                    <label for="eqcode-field" class="form-label">Eq Code:</label>
+                                    <input type="text" class="form-control" id="eqcode-field" placeholder="Filter Eq Code" (keyup)="onFilterChange(2, $event)">
+                                </div>
+                                <div class="cols">
+                                    <label for="equipment-field" class="form-label">Equipment</label>
+                                    <input type="text" class="form-control" id="equipment-field" placeholder="Filter Equipment" (keyup)="onFilterChange(3, $event)">
+                                </div>
+                                <div class="cols">
+                                    <label for="brand-field" class="form-label">Brand</label>
+                                    <input type="text" class="form-control" id="brand-field" placeholder="Filter Brand" (keyup)="onFilterChange(4, $event)">
+                                </div>
+                                <div class="cols">
+                                    <label for="model-field" class="form-label">Model</label>
+                                    <input type="text" class="form-control" id="model-field" placeholder="Filter Model" (keyup)="onFilterChange(5, $event)">
+                                </div>
+                                <div class="cols">
+                                    <label for="country-field" class="form-label">Country</label>
+                                    <input type="text" class="form-control" id="country-field" placeholder="Filter Country" (keyup)="onFilterChange(6, $event)">
+                                </div>
+                                <div class="cols">
+                                    <label for="supplier-field" class="form-label">Supplier</label>
+                                    <input type="text" class="form-control" id="supplier-field" placeholder="Filter Supplier" (keyup)="onFilterChange(7, $event)">
+                                </div>
+                                <div class="cols">
+                                    <label for="actual-delivery-field" class="form-label">Actual Delivery</label>
+                                    <input type="date" class="form-control" id="actual-delivery-field" placeholder="yyyy-mm" (change)="onFilterChange(8, $event)">
+                                </div>
+                                <div class="cols">
+                                    <label for="est-delivery-field" class="form-label">Est Delivery</label>
+                                    <input type="date" class="form-control" id="est-delivery-field" placeholder="yyyy-mm" (change)="onFilterChange(9, $event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="d-flex flex-wrap mt-4">
+                    <div class="mb-2 me-2">
+                        <button class="btn btn-primary sqare-0" (click)="exportToExcel()">Print Reports</button>
+                    </div>
+                    <!-- <div class="mb-2 me-2">
+                        <button class="btn btn-primary sqare-0" (click)="printReportModal(reportcontent)">Print Reports</button>
+                    </div> -->
+                    <div class="mb-2 me-2">
+                        <button class="btn btn-primary sqare-0" (click)="uploadDocModal(upldoccontent)">Upload Documents</button>
+                    </div>
+                </div>
             </div>
-        </div>
+            <!-- Table -->
+            <div class="col-md-12 mt-4">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <app-loader *ngIf="loader"></app-loader>
+                        <div class="table-responsive">
+                            <table class="table table-striped" cellspacing="0" width="100%" id="tac-table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Code : {{project?.code}}</th>
+                                        <th colspan="46">Project Name : {{project?.name}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-gray"></th>
+                                        <th class="text-center" colspan="5">Equipment</th>
+                                        <th class="bg-gray text-center" colspan="14">Equipment Planning and Procure Planning</th>
+                                        <th class="text-center" colspan="20">Equipment Delivery and Commissioning</th>
+                                        <th class="bg-gray text-center" colspan="8">Hand Over</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-gray">No</th>
+                                        <th>Pak Code</th>
+                                        <th>Equipment Package</th>
+                                        <th>Equipment Code</th>
+                                        <th>Equipment</th>
+                                        <th>Group</th>
+                                        <th class="bg-gray">Tender Qty</th>
+                                        <th class="bg-gray">Room Data Interaction</th>
+                                        <th class="bg-gray">4 Wall Interaction</th>
+                                        <th class="bg-gray">Total Qty</th>
+                                        <th class="bg-gray">APQ(Approved Procure Qty)</th>
+                                        <th class="bg-gray">FPQ(Future Procure Qty)</th>
+                                        <th class="bg-gray">Unit cost</th>
+                                        <th class="bg-gray">Total Cost</th>
+                                        <th class="bg-gray">Total APQ Cost</th>
+                                        <th class="bg-gray">Total FPQ Cost</th>
+                                        <th class="bg-gray">Brand</th>
+                                        <th class="bg-gray">Model</th>
+                                        <th class="bg-gray">Country Of Origin</th>
+                                        <th class="bg-gray">Remarks</th>
+                                        <th>Manufacturer</th>
+                                        <th>Supplier Firm</th>
+                                        <th>Contact Person</th>
+                                        <th>Tel/Emai</th>
+                                        <th>Site Facility Visit</th>
+                                        <th>Site Facility Confirm</th>
+                                        <th>Est Delivery</th>
+                                        <th>Delivery Actual(yyyy-mm-dd)</th>
+                                        <th>Returns</th>
+                                        <th>%payment</th>
+                                        <th>Location Store</th>
+                                        <th>Location Point Of Location(Room Code)</th>
+                                        <th>Delivery Documents</th>
+                                        <th>Internal Testing Est Schedule</th>
+                                        <th>Internal Testing Actual</th>
+                                        <th>Third Party Testing Est Schedule</th>
+                                        <th>%Validation & Remarks</th>
+                                        <th>Final Testing With Client Est Schedule</th>
+                                        <th>Final Testing With Client Actual</th>
+                                        <th>Documentation	</th>
+                                        <th class="bg-gray">Room Inspection 1 Est Schedule</th>
+                                        <th class="bg-gray">Room Inspection 1 Actual</th>
+                                        <th class="bg-gray">Room Inspection 2 Est Schedule</th>
+                                        <th class="bg-gray">Room Inspection 2 Actual</th>
+                                        <th class="bg-gray">Hand Over Est Schedule</th>
+                                        <th class="bg-gray">Hand Over Actual</th>
+                                        <th class="bg-gray">Documentation</th>
+                                        <th class="bg-gray">Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let equip of filteredEquipmentData; let i = index">
+                                        <td class="bg-gray">{{ skip + i+1 }}</td>
+                                        <td>{{equip.package}}</td>
+                                        <td></td>
+                                        <td>{{equip.code}}</td>
+                                        <td>{{equip.name}}</td>
+                                        <td>{{equip.group}}</td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.tender_qty || 0" [equipmentId]="equip.id" [field]="'tender_qty'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.room_data_interaction || '&#160;'" [equipmentId]="equip.id" [field]="'room_data_interaction'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.four_wall_interaction || '&#160;'" [equipmentId]="equip.id" [field]="'four_wall_interaction'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>{{equip.qty}}</td>
+                                        <td>{{equip.apq}}</td>
+                                        <td>{{equip.fpq}}</td>
+                                        <td>{{equip.cost}}</td>
+                                        <td>{{equip.qty * equip.cost}}</td>
+                                        <td>{{equip.qty * equip.cost}}</td>
+                                        <td>{{equip.qty * equip.cost}}</td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.brands || '&#160;'" [equipmentId]="equip.id" [field]="'brands'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.model || '&#160;'" [equipmentId]="equip.id" [field]="'model'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.country_of_origin || '&#160;'" [equipmentId]="equip.id" [field]="'country_of_origin'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.equipment_planning_procure_planning_remarks || '&#160;'" [equipmentId]="equip.id" [field]="'equipment_planning_procure_planning_remarks'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.manufacturer || '&#160;'" [equipmentId]="equip.id" [field]="'manufacturer'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.supplier_firm || '&#160;'" [equipmentId]="equip.id" [field]="'supplier_firm'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.contact_person || '&#160;'" [equipmentId]="equip.id" [field]="'contact_person'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.tel_email || '&#160;'" [equipmentId]="equip.id" [field]="'tel_email'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.site_facility_visit || '&#160;'" [equipmentId]="equip.id" [field]="'site_facility_visit'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.site_facility_confirm || '&#160;'" [equipmentId]="equip.id" [field]="'site_facility_confirm'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.est_delivery || ''"
+                                            [inputType]="'date'" [field]="'est_delivery'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.delivery_actual || ''"
+                                            [inputType]="'date'" [field]="'delivery_actual'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.returns || '&#160;'" [equipmentId]="equip.id" [field]="'returns'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.payment || '&#160;'" [equipmentId]="equip.id" [field]="'payment'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.location_store || '&#160;'" [equipmentId]="equip.id" [field]="'location_store'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td><a (click)="exportData(equip.code,projectId)" class="cursor-pointer text-primary"><b>Room Details</b></a></td>
+                                        <td></td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.internal_testing_est || ''"
+                                            [inputType]="'date'" [field]="'internal_testing_est'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.internal_testing_actual || ''"
+                                            [inputType]="'date'" [field]="'internal_testing_actual'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.thirdparty_testing_est || ''"
+                                            [inputType]="'date'" [field]="'thirdparty_testing_est'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.validation_remarks || '&#160;'" [equipmentId]="equip.id" [field]="'validation_remarks'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.final_testing_client_est || ''"
+                                            [inputType]="'date'" [field]="'final_testing_client_est'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.final_testing_client_actual || ''"
+                                            [inputType]="'date'" [field]="'final_testing_client_actual'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.room_ins_1_est || ''"
+                                            [inputType]="'date'" [field]="'room_ins_1_est'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.room_ins_1_actual || ''"
+                                            [inputType]="'date'" [field]="'room_ins_1_actual'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.room_ins_2_est || ''"
+                                            [inputType]="'date'" [field]="'room_ins_2_est'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.room_ins_2_actual || ''"
+                                            [inputType]="'date'" [field]="'room_ins_2_actual'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.handover_est || ''"
+                                            [inputType]="'date'" [field]="'handover_est'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td>
+                                            <app-edit-input-equipment [equipmentId]="equip.id" [data]="equip.handover_actual || ''"
+                                            [inputType]="'date'" [field]="'handover_actual'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                        <td></td>
+                                        <td class="bg-yellow">
+                                            <app-edit-input-equipment [data]="equip.remarks || '&#160;'" [equipmentId]="equip.id" [field]="'remarks'" [inputsize]="100"></app-edit-input-equipment>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination-wrap">
+                            <p>Current page: {{ page }}</p>
+                            <ngb-pagination class="d-inline-block" [collectionSize]="count" [(page)]="page" (pageChange)="loadEquipments()" aria-label="Default pagination" [maxSize]="maxSize"></ngb-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -308,12 +334,12 @@
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <form>
+                            <form [formGroup]="uplDocForm">
                                 <div class="mb-3 w-50">
                                     <label for="chooseFile" class="form-label">Choose Files</label>
-                                    <input class="form-control" type="file" id="chooseFile">
+                                    <input class="form-control" type="file" id="chooseFile" formControlName="file">
                                 </div>
-                                <button class="btn btn-primary">Upload Document</button>
+                                <button type="submit" class="btn btn-primary" (click)="uplDoc()">Upload Document</button>
                             </form>
                         </td>
                     </tr>
@@ -349,9 +375,7 @@
                         <td>
                             <select class="form-select w-75" id="package">
                                 <option selected>Filter Package</option>
-                                <option value="VEN-1">VEN-1</option>
-                                <option value="MON-1">MON-1</option>
-                                <option value="ECG-1">ECG-1</option>
+                                <option value={{package.code}} *ngFor="let package of packages">{{package.code}}</option>
                             </select>
                         </td>
                         <td></td>

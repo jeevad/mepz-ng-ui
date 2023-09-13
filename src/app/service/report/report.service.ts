@@ -350,6 +350,7 @@ export class ReportService {
     projectId: string;
     reportType: string;
     format: any;
+    equipCode?:any;
     roomId?: any[];
     group?: any[];
   }) {
@@ -376,12 +377,15 @@ export class ReportService {
       return this.http.get(environment.apiUrl + '/reports/getEquipmentReports' + '?projectId=' + params.projectId + '&reportType=' + params.reportType + '&reportFormat=pdfs&pagewise=1&w_sign=1',{
         responseType: 'blob',
       });
-    } else {
+    }else {
       return this.http.get(environment.apiUrl + '/reports/getEquipmentReports', {
         params: params,
         responseType: 'blob',
       });
     }
+
+    
+    
     
     // return this.http.get(environment.apiUrl + '/reports/getEquipmentReports', {
     //   params: params,

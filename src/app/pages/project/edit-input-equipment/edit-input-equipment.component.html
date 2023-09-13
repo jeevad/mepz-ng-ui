@@ -32,7 +32,6 @@
       <input matInput type="text" [(ngModel)]="updatedData" focusable editableOnEnter>
     </ng-template> -->
 
-<div *ngIf="mode === 'view'" class="cell">{{data}}</div>
 <ng-container *ngIf="mode === 'edit'">
   <ng-container *ngIf="inputType === 'text'">
     <mat-form-field subscriptSizing="dynamic" [style.width.px]="inputsize">
@@ -59,3 +58,10 @@
     </div>
   </ng-container>
 </ng-container>
+<ng-container *ngIf="inputType === 'date'">
+  <div subscriptSizing="dynamic">
+    <input type="date" class="form-control" [(ngModel)]="updatedData" (change)="saveData()" />
+  </div>
+</ng-container>
+
+<div *ngIf="mode === 'view'" class="cell">{{data}}</div>

@@ -55,7 +55,7 @@ export class EquipmentSummaryComponent {
   loadFromMaster() {
     this.equipmentService.Load(this.skip, this.limit).subscribe((data: any) => {
       this.loadFromMasterData = data.results;
-      console.log(data.results, 'data results');
+      // console.log(data.results, 'data results');
 
       const groupNames = this.loadFromMasterData
         .filter(
@@ -77,6 +77,7 @@ export class EquipmentSummaryComponent {
         this.equipmentData = data.results;
         this.count = data.count;
         console.log('data.count', data.count);
+        console.log('data.results', data.results);
 
         // this.filteredEquipmentData = this.equipmentData.slice();
         this.loader = false;

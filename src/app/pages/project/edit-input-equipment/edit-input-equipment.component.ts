@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatInput } from '@angular/material/input';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { GroupsService } from '@app/service/groups/groups.service';
 // import { ViewModeDirective } from './view-mode.directive';
 // import { EditModeDirective } from './edit-mode.directive';
@@ -116,18 +117,16 @@ export class EditInputEquipmentComponent {
     const data = {
       type: this.type,
       field: this.field,
-      value: this.updatedData,
+      value: this.updatedData.trim(),
       // departmentId: this.departmentId,
       // roomId: this.roomId,
       // equipmentId: this.equipmentId,
     };
-    this.projectService
-      .updateEquipmentFields(this.equipmentId, data)
-      .subscribe((response: any) => {
-        console.log('Data saved successfully:', response);
-        this.data = this.updatedData;
-        this.mode = 'view';
-      });
+    this.projectService.updateEquipmentFields(this.equipmentId, data).subscribe((response: any) => {
+      console.log('Data saved successfully:', response);
+      this.data = this.updatedData;
+      this.mode = 'view';
+    });
   }
 
   loadGroups() {
