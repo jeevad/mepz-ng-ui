@@ -28,7 +28,6 @@ import { DepartmentTransactionComponent } from './project/department-transaction
 import { PastTransactionComponent } from './project/past-transaction/past-transaction.component';
 import { ReportsComponent } from './reports/reports.component';
 // import { EquipmentSpecificationComponent } from './equipment-specification/equipment-specification.component';
-// import { EquipmentBrandComponent } from './equipment-brand/equipment-brand.component';
 import { ReportsByPackageComponent } from './reports-by-package/reports-by-package.component';
 // import { TemplateDepartmentComponent } from './template-department/template-department.component';
 import { EditAdminUserComponent } from './edit-admin-user/edit-admin-user.component';
@@ -214,5 +213,7 @@ export const routingcomponents = [
   EquipmentListComponent,
   EditEquipmentComponent,
   ProjectListComponent,
+  EquipmentBrandComponent,
+  EquipmentSpecificationComponent
   // ProjectTemplateEquipmentComponent
 ];

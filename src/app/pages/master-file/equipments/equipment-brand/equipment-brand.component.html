@@ -7,10 +7,9 @@
              </div>
              <hr>
           </div>
-
           <div class="col-sm-12">
             <div class="row">
-                <form class="form-horizontal" method="post">
+                <form [formGroup]="brandForm" class="form-horizontal">
                     <div class="table-responsive">
                         <table>
                             <tbody>
@@ -24,59 +23,23 @@
                                     <th>Contact Person</th>
                                     <th>Tel/E-mail</th>
                                 </tr>
-                                <tr>
-                                    <td >1</td>
-                                    <td><input type="text" class="form-control" name="supplier[]" value="" fdprocessedid="9rxwli8"></td>
-                                    <td><input type="text" class="form-control" name="brand[]" value="" fdprocessedid="spesu"></td>
-                                    <td><input type="text" class="form-control" name="model[]" value="" fdprocessedid="klvgt7"></td>
-                                    <td><input type="text" class="form-control" name="country_origin[]" value="" fdprocessedid="mgeoni"></td>
-                                    <td><input type="text" class="form-control" name="unit_price[]" value="" fdprocessedid="5j6pmt"></td>
-                                    <td><input type="text" class="form-control" name="spoc[]" value="" fdprocessedid="zome6s"></td>
-                                    <td><input type="text" class="form-control" name="contact_details[]" value="" fdprocessedid="5kgoha"></td>
+                                <tr formArrayName="brands" *ngFor="let brand of brandArray.controls; let i = index;">
+                                    <ng-container [formGroupName]='i'>
+                                        <td >{{i+1}}</td>
+                                        <td><input type="text" class="form-control" formControlName="supplier"></td>
+                                        <td><input type="text" class="form-control" formControlName="brand"></td>
+                                        <td><input type="text" class="form-control" formControlName="model"></td>
+                                        <td><input type="text" class="form-control" formControlName="country_origin"></td>
+                                        <td><input type="text" class="form-control" formControlName="unit_price"></td>
+                                        <td><input type="text" class="form-control" formControlName="spoc"></td>
+                                        <td><input type="text" class="form-control" formControlName="contact_details"></td>
+                                    </ng-container>
                                 </tr>
+                                <tr><td colspan="8"><hr></td></tr>
                                 <tr>
-                                    <td >2</td>
-                                    <td><input type="text" class="form-control" name="supplier[]" value="" fdprocessedid="g40vg8"></td>
-                                    <td><input type="text" class="form-control" name="brand[]" value="" fdprocessedid="0d4z9t"></td>
-                                    <td><input type="text" class="form-control" name="model[]" value="" fdprocessedid="h3qkcf"></td>
-                                    <td><input type="text" class="form-control" name="country_origin[]" value="" fdprocessedid="9bpyar"></td>
-                                    <td><input type="text" class="form-control" name="unit_price[]" value="" fdprocessedid="u823ko"></td>
-                                    <td><input type="text" class="form-control" name="spoc[]" value="" fdprocessedid="jzhpl8"></td>
-                                    <td><input type="text" class="form-control" name="contact_details[]" value="" fdprocessedid="u2cgxe"></td>
+                                    <td colspan="2"></td><td  colspan="4">Details for Testing &amp; Commissioning Report</td><td colspan="2"></td>
                                 </tr>
-                                <tr>
-                                    <td >3</td>
-                                    <td><input type="text" class="form-control" name="supplier[]" value="" fdprocessedid="j8ts4g"></td>
-                                    <td><input type="text" class="form-control" name="brand[]" value="" fdprocessedid="jsjc8l"></td>
-                                    <td><input type="text" class="form-control" name="model[]" value="" fdprocessedid="cjofgv"></td>
-                                    <td><input type="text" class="form-control" name="country_origin[]" value="" fdprocessedid="wa06rr"></td>
-                                    <td><input type="text" class="form-control" name="unit_price[]" value="" fdprocessedid="5x18v"></td>
-                                    <td><input type="text" class="form-control" name="spoc[]" value="" fdprocessedid="qsd49o"></td>
-                                    <td><input type="text" class="form-control" name="contact_details[]" value="" fdprocessedid="g4d0usv"></td>
-                                </tr>
-                                <tr>
-                                    <td >4</td>
-                                    <td><input type="text" class="form-control" name="supplier[]" value="" fdprocessedid="1gr5kf"></td>
-                                    <td><input type="text" class="form-control" name="brand[]" value="" fdprocessedid="nm4l5p"></td>
-                                    <td><input type="text" class="form-control" name="model[]" value="" fdprocessedid="uubvgk"></td>
-                                    <td><input type="text" class="form-control" name="country_origin[]" value="" fdprocessedid="q8lgwl"></td>
-                                    <td><input type="text" class="form-control" name="unit_price[]" value="" fdprocessedid="265dgl"></td>
-                                    <td><input type="text" class="form-control" name="spoc[]" value="" fdprocessedid="wdsqt8"></td>
-                                    <td><input type="text" class="form-control" name="contact_details[]" value="" fdprocessedid="l6xl9x"></td>
-                                </tr>
-                                <tr>
-                                    <td >5</td>
-                                    <td><input type="text" class="form-control" name="supplier[]" value="" fdprocessedid="pt3au"></td>
-                                    <td><input type="text" class="form-control" name="brand[]" value="" fdprocessedid="qa4qha"></td>
-                                    <td><input type="text" class="form-control" name="model[]" value="" fdprocessedid="wifyn"></td>
-                                    <td><input type="text" class="form-control" name="country_origin[]" value="" fdprocessedid="ircky"></td>
-                                    <td><input type="text" class="form-control" name="unit_price[]" value="" fdprocessedid="ffsbyp"></td>
-                                    <td><input type="text" class="form-control" name="spoc[]" value="" fdprocessedid="vtsxsk"></td>
-                                    <td><input type="text" class="form-control" name="contact_details[]" value="" fdprocessedid="dbjtcnu"></td>
-                                </tr>
-                                <tr><td colspan="8"><hr border="10px solid red"></td></tr>
-                                <tr><td colspan="2"></td><td  colspan="4">Details for Testing &amp; Commissioning Report</td><td colspan="2"></td></tr>
-                                <tr><td colspan="8"><hr border="10px solid red"></td></tr>
+                                <tr><td colspan="8"><hr></td></tr>
                                 <tr>
                                     <th>Manufacturer</th>
                                     <th>Supplier Name</th>
@@ -88,14 +51,14 @@
                                     <th>Tel/E-mail</th>
                                 </tr>
                                 <tr>
-                                    <td><input type="text" class="form-control" name="manufacturer_tac[]" value="" fdprocessedid="3uf22k"></td>
-                                    <td><input type="text" class="form-control" name="supplier_tac[]" value="" fdprocessedid="6g8axm"></td>
-                                    <td><input type="text" class="form-control" name="brand_tac[]" value="" fdprocessedid="6txkwb"></td>
-                                    <td><input type="text" class="form-control" name="model_tac[]" value="" fdprocessedid="sqe1l"></td>
-                                    <td><input type="text" class="form-control" name="country_origin_tac[]" value="" fdprocessedid="9ygq3f"></td>
-                                    <td><input type="text" class="form-control" name="unit_price_tac[]" value="" fdprocessedid="o4zw2"></td>
-                                    <td><input type="text" class="form-control" name="spoc_tac[]" value="" fdprocessedid="i7if0r"></td>
-                                    <td><input type="text" class="form-control" name="contact_details_tac[]" value="" fdprocessedid="vqqe4l"></td>
+                                    <td><input type="text" class="form-control" formControlName="manufacturer_tac"></td>
+                                    <td><input type="text" class="form-control" formControlName="supplier_tac"></td>
+                                    <td><input type="text" class="form-control" formControlName="brand_tac"></td>
+                                    <td><input type="text" class="form-control" formControlName="model_tac"></td>
+                                    <td><input type="text" class="form-control" formControlName="country_origin_tac"></td>
+                                    <td><input type="text" class="form-control" formControlName="unit_price_tac"></td>
+                                    <td><input type="text" class="form-control" formControlName="spoc_tac"></td>
+                                    <td><input type="text" class="form-control" formControlName="contact_details_tac"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -103,7 +66,7 @@
                     <div class="col-md-12 text-center mt-3">
                         <a class="btn btn-primary px-4 me-3" (click)="save()">Save</a>
                         <a class="btn btn-secondary px-4" (click)="cancel()">Cancel</a>
-                  </div>
+                    </div>
                 </form>
             </div>
           </div>

@@ -27,7 +27,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let item of equipmentData; let i = index">
+                      <tr *ngFor="let item of equipmentData; let i = index" [ngbTooltip]="tipContent" placement="top" container="body" tooltipClass="custom-tooltip">
+                        <ng-template #tipContent>
+                          <div class="custom-tooltip-content">
+                            <img class="img-fluid" src="assets/images/gallery/16.png">
+                          </div>
+                        </ng-template>
                         <td>{{ skip + i+1 }}</td>
                         <td>{{ item.code }}</td>
                         <td>{{ item.name }}</td>

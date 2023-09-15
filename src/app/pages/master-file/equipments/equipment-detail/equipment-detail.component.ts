@@ -10,6 +10,7 @@ import { ToasterService } from '@app/components/toaster/toaster.service';
   templateUrl: './equipment-detail.component.html',
   styleUrls: ['./equipment-detail.component.css'],
 })
+
 export class EquipmentDetailComponent implements OnInit {
   [x: string]: any;
   page = 1;

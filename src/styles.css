@@ -2899,3 +2899,10 @@ td {
 ::-webkit-scrollbar-thumb:hover {
     background: #1cabb1;
 }
+
+.custom-tooltip .tooltip-inner {
+    padding: 0;
+}
+.custom-tooltip .tooltip-arrow {
+    display: none;
+}

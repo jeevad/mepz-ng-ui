@@ -49,7 +49,7 @@ export class TacComponent implements OnInit{
     this.loadGroup();
 
     this.uplDocForm = this.fb.group({
-      'file':''
+      file: ['']
     })
   }
 
