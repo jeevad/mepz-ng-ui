@@ -206,3 +206,10 @@ h6 {
   .selectedRoom {
     background-color: greenyellow;
   }
+
+  /* th, td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100px;
+  } */

@@ -15,7 +15,6 @@ import { ToasterService } from '@app/components/toaster/toaster.service';
   templateUrl: './equipment-list.component.html',
   styleUrls: ['./equipment-list.component.css'],
 })
-
 export class EquipmentListComponent implements OnInit {
   page = 1;
   limit = 10;
@@ -32,6 +31,9 @@ export class EquipmentListComponent implements OnInit {
   deptId!: string;
   projectType: string | null = 'individual';
   maxSize: number = 5;
+  departmentQuery: string = '';
+  roomQuery: string = '';
+  equipmentQuery: string = '';
 
   constructor(
     public dialog: MatDialog,
@@ -51,21 +53,30 @@ export class EquipmentListComponent implements OnInit {
     this.reponsivePagination();
   }
 
-  reponsivePagination(){
-    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
-      if (result.matches) {
-        this.maxSize = 1;
-      } else {
-        this.maxSize = 5;
-      }
-    });
+  reponsivePagination() {
+    this.breakpointObserver
+      .observe([Breakpoints.Small, Breakpoints.XSmall])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.maxSize = 1;
+        } else {
+          this.maxSize = 5;
+        }
+      });
   }
 
   loadEquipments() {
     this.skip = this.limit * (this.page - 1);
     this.loader = true;
+    const params = {
+      skip: this.skip,
+      limit: this.limit,
+      departmentQuery: this.departmentQuery,
+      roomQuery: this.roomQuery,
+      equipmentQuery: this.equipmentQuery,
+    };
     this.projectService
-      .getEquipments(this.projectId, this.skip, this.limit)
+      .getEquipments(this.projectId, params)
       .subscribe((data: any) => {
         this.equipmentData = data.results;
         this.count = data.count;

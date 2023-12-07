@@ -51,33 +51,33 @@
                 <div class="card p-3">
                     <div class="card-body">
                         <app-loader *ngIf="loader"></app-loader>
-                        <div class="table-responsive">
+                        <div class="table">
                             <table id="example" class="table" cellspacing="0" width="100%">
                                 <thead>
                                     <tr role="row">
                                         <th>Department</th>
                                         <th>Room</th>
                                         <th>Equipment</th>
-                                        <th>APQ</th>
-                                        <th>FPQ</th>
+                                        <!-- <th>APQ</th>
+                                        <th>FPQ</th> -->
                                         <th>QTY</th>
                                     </tr>
                                 </thead>
                                 <thead>
                                     <tr>
-                                        <th><input type="text" placeholder="Search Department" fdprocessedid="6ij23s">
+                                        <th><input type="text" [(ngModel)]="departmentQuery" (keydown.enter)="loadEquipments()" placeholder="Search Department" fdprocessedid="6ij23s">
                                         </th>
-                                        <th><input type="text" placeholder="Search Room" fdprocessedid="tvivm"></th>
-                                        <th><input type="text" placeholder="Search Equipment" fdprocessedid="aw57a6">
+                                        <th><input type="text" [(ngModel)]="roomQuery" (keydown.enter)="loadEquipments()" placeholder="Search Room" fdprocessedid="tvivm"></th>
+                                        <th><input type="text" [(ngModel)]="equipmentQuery" (keydown.enter)="loadEquipments()" placeholder="Search Equipment" fdprocessedid="aw57a6">
                                         </th>
-                                        <th></th>
-                                        <th></th>
+                                        <!-- <th></th>
+                                        <th></th> -->
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr role="row" class="odd" *ngFor="let eqp of filteredEquipmentData; let i=index;">
-                                        <td><strong>{{eqp.department.code}}</strong> - {{eqp.department.name}} </td>
+                                        <td ><strong>{{eqp.department.code}}</strong> - {{eqp.department.name}} </td>
                                         <td (click)="selectRoom(eqp,i)" class=""
                                             [class.selectedRoom]="selectedIndex === i" role="button">
                                             <div data-dep="AD - ADMINISTRATION (L4)" data-room="AD101 - RECEPTION"
@@ -95,14 +95,14 @@
                                                 </label>
                                             </div>
                                         </td>
-                                        <td class="bg-yellow editablex">
+                                        <!-- <td class="bg-yellow editablex">
                                             <app-edit-input-equipment [data]="eqp.apq || 0" [equipmentId]="eqp.id"
                                                 [field]="'apq'" [inputsize]="100"></app-edit-input-equipment>
                                         </td>
                                         <td class="bg-yellow editablex">
                                             <app-edit-input-equipment [data]="eqp.fpq || 0" [equipmentId]="eqp.id"
                                                 [field]="'fpq'" [inputsize]="100"></app-edit-input-equipment>
-                                        </td>
+                                        </td> -->
                                         <td class="bg-yellow editablex">
                                             <app-edit-input-equipment [data]="eqp.qty || 0" [equipmentId]="eqp.id"
                                                 [field]="'qty'" [inputType]="'text'"

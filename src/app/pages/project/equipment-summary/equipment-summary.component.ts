@@ -11,7 +11,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   templateUrl: './equipment-summary.component.html',
   styleUrls: ['./equipment-summary.component.css'],
 })
-
 export class EquipmentSummaryComponent {
   page = 1;
   limit = 10;
@@ -42,14 +41,16 @@ export class EquipmentSummaryComponent {
     this.reponsivePagination();
   }
 
-  reponsivePagination(){
-    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
-      if (result.matches) {
-        this.maxSize = 1;
-      } else {
-        this.maxSize = 5;
-      }
-    });
+  reponsivePagination() {
+    this.breakpointObserver
+      .observe([Breakpoints.Small, Breakpoints.XSmall])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.maxSize = 1;
+        } else {
+          this.maxSize = 5;
+        }
+      });
   }
 
   loadFromMaster() {
@@ -71,14 +72,16 @@ export class EquipmentSummaryComponent {
   loadEquipments() {
     this.skip = this.limit * (this.page - 1);
     this.loader = true;
+    const params = {
+      skip: this.skip,
+      limit: this.limit,
+    };
     this.projectService
-      .getEquipments(this.projectId, this.skip, this.limit)
+      .getEquipments(this.projectId, params)
       .subscribe((data: any) => {
         this.equipmentData = data.results;
         this.count = data.count;
-        console.log('data.count', data.count);
-        console.log('data.results', data.results);
-
+        
         // this.filteredEquipmentData = this.equipmentData.slice();
         this.loader = false;
         this.loadFromMaster();
