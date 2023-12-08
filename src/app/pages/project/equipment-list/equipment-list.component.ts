@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,6 +9,7 @@ import { RoomService } from 'src/app/service/room/room.service';
 import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-custom-dialog.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ToasterService } from '@app/components/toaster/toaster.service';
+import { EqpDetailModalComponent } from '../eqp-detail-modal/eqp-detail-modal.component';
 
 @Component({
   selector: 'app-equipment-list',
@@ -52,7 +53,12 @@ export class EquipmentListComponent implements OnInit {
     this.loadEquipments();
     this.reponsivePagination();
   }
-
+  openDetailModal(eqp: any) {
+    const modalRef = this.modalService.open(EqpDetailModalComponent, {
+      size: 'xl',
+    });
+    modalRef.componentInstance.eqp = eqp;
+  }
   reponsivePagination() {
     this.breakpointObserver
       .observe([Breakpoints.Small, Breakpoints.XSmall])
@@ -83,21 +89,6 @@ export class EquipmentListComponent implements OnInit {
         this.filteredEquipmentData = this.equipmentData.slice(); //For search bar
         this.loader = false;
       });
-  }
-
-  //Search Bar function
-  searchProjectList(): void {
-    if (this.searchText.trim() !== '') {
-      this.filteredEquipmentData = this.equipmentData.filter(
-        (item: any) =>
-          item.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-          item.code.toLowerCase().includes(this.searchText.toLowerCase()) ||
-          item.type.toLowerCase().includes(this.searchText.toLowerCase()) ||
-          item.company.toLowerCase().includes(this.searchText.toLowerCase())
-      );
-    } else {
-      this.filteredEquipmentData = this.equipmentData.slice();
-    }
   }
 
   // Deletes an item

@@ -22,7 +22,7 @@ import { AddCurrencyComponent } from './add-currency/add-currency.component';
 // import { ProjectTemplateComponent } from './project-template/project-template.component';
 // import { ProjectNewtemplateComponent } from './project-newtemplate/project-newtemplate.component';
 import { ProjectComponent } from './project/project.component';
-import { EquipmentAllocationComponent } from './project/equipment-allocation/equipment-allocation.component';
+import { EquipmentAllocationComponent } from './unused/equipment-allocation/equipment-allocation.component';
 import { EquipmentSummaryComponent } from './project/equipment-summary/equipment-summary.component';
 import { DepartmentTransactionComponent } from './project/department-transaction/department-transaction.component';
 import { PastTransactionComponent } from './project/past-transaction/past-transaction.component';
