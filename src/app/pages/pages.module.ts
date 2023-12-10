@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule, routingcomponents } from './pages-routing.module';
-import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,6 +20,10 @@ import { FocusableDirective } from '../directives/focusable.directive';
 import { LoaderComponent } from '../components/loader/loader.component';
 import { EditInputEquipmentComponent } from './project/edit-input-equipment/edit-input-equipment.component';
 import { TacComponent } from './project/tac/tac.component';
+import { ResizeColumnDirective } from '@app/directives/resize-column.directive';
+import {MatTableModule} from '@angular/material/table';
+import { CdkColumnDef } from '@angular/cdk/table';
+import { ColumnResizeDirective } from '@app/directives/column-resize.directive';
 // import { EditEquipmentComponent } from './edit-equipment/edit-equipment.component';
 
 @NgModule({
@@ -32,6 +36,8 @@ import { TacComponent } from './project/tac/tac.component';
     EditModeDirective,
     FocusableDirective,
     TacComponent,
+    ResizeColumnDirective,
+    ColumnResizeDirective,
     // EquipmentListComponent,
     // EditEquipmentComponent,
   ],
@@ -52,6 +58,9 @@ import { TacComponent } from './project/tac/tac.component';
     MatIconModule,
     LoaderComponent,
     ReactiveFormsModule,
+    MatTableModule,
+    NgbTooltipModule,
   ],
+  providers:[CdkColumnDef]
 })
 export class PagesModule {}

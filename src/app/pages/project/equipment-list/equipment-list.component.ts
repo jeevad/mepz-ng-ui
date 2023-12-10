@@ -14,7 +14,7 @@ import { EqpDetailModalComponent } from '../eqp-detail-modal/eqp-detail-modal.co
 @Component({
   selector: 'app-equipment-list',
   templateUrl: './equipment-list.component.html',
-  styleUrls: ['./equipment-list.component.css'],
+  styleUrls: ['./equipment-list.component.scss'],
 })
 export class EquipmentListComponent implements OnInit {
   page = 1;
