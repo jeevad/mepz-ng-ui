@@ -10,6 +10,7 @@ import { MyCustomDialogService } from 'src/app/components/my-custom-dialog/my-cu
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ToasterService } from '@app/components/toaster/toaster.service';
 import { EqpDetailModalComponent } from '../eqp-detail-modal/eqp-detail-modal.component';
+import { FilterModalComponent } from './filter-modal/filter-modal.component';
 
 @Component({
   selector: 'app-equipment-list',
@@ -58,6 +59,20 @@ export class EquipmentListComponent implements OnInit {
       size: 'xl',
     });
     modalRef.componentInstance.eqp = eqp;
+  }
+
+  openFilterModal() {
+    const modalRef = this.modalService.open(FilterModalComponent, {
+      size: 'lg',
+    });
+    modalRef.result.then((data) => {
+      console.log('data',data);
+      
+      // on close
+    }, (reason) => {
+      // on dismiss
+    });
+    // modalRef.componentInstance.eqp = eqp;
   }
   reponsivePagination() {
     this.breakpointObserver
