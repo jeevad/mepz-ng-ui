@@ -36,6 +36,7 @@ export class EquipmentListComponent implements OnInit {
   departmentQuery: string = '';
   roomQuery: string = '';
   equipmentQuery: string = '';
+  filters: any[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -65,13 +66,18 @@ export class EquipmentListComponent implements OnInit {
     const modalRef = this.modalService.open(FilterModalComponent, {
       size: 'lg',
     });
-    modalRef.result.then((data) => {
-      console.log('data',data);
-      
-      // on close
-    }, (reason) => {
-      // on dismiss
-    });
+    modalRef.result.then(
+      (data) => {
+        // console.log('data', data);
+        this.filters = data;
+        this.loadEquipments();
+        // on close
+      },
+      (reason) => {
+        // console.log('reason', reason);
+        // on dismiss
+      }
+    );
     // modalRef.componentInstance.eqp = eqp;
   }
   reponsivePagination() {
@@ -95,6 +101,7 @@ export class EquipmentListComponent implements OnInit {
       departmentQuery: this.departmentQuery,
       roomQuery: this.roomQuery,
       equipmentQuery: this.equipmentQuery,
+      filters: this.filters,
     };
     this.projectService
       .getEquipments(this.projectId, params)

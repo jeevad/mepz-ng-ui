@@ -46,11 +46,31 @@ export class ProjectService {
     return this.http.delete(environment.apiUrl + '/project/' + id);
   }
 
-  getEquipments(projectId: string, params: {}) {
+  getEquipments(projectId: string, params: any) {
+    let filters: any = [];
+    // console.log('params.filters--------', params.filters);
+    // console.log('params.filters', typeof params.filters);
+
+    // if (Array.isArray(params.filters)) {
+    // data.filters.forEach((filter: any) => {});
+    params.filters.forEach((item: any, i: number) => {
+      if (item['department']) {
+        filters[`department[${i}]`] = item['department'];
+      }
+      if (item['equipment']) {
+        filters[`equipment[${i}]`] = item['equipment'];
+      }
+      if (item['room']) {
+        filters[`room[${i}]`] = item['room'];
+      }
+    });
+    delete params.filters;
+    // }
+
     return this.http.get(
       environment.apiUrl + '/project/getProjectEquipments/' + projectId,
       {
-        params,
+        params: { ...params, ...filters },
       }
     );
   }

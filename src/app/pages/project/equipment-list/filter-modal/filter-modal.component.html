@@ -4,34 +4,40 @@
 </div>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="modal-body">
-        <div class="table">
-            <table id="example" role="grid" class="table" formArrayName="filters">
-                <thead>
-                    <tr role="row">
-                        <th>Department</th>
-                        <th>Room</th>
-                        <th>Equipment</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr *ngFor="let filterForm of filters.controls; let i = index" [formGroupName]="i">
-                        <!-- <ng-container [formGroup]="filterForm"> -->
-                        <td><input type="text" placeholder="Search Department" formControlName="department"
-                                fdprocessedid="6ij23s">
-                        </td>
-                        <td><input type="text" placeholder="Search Room" formControlName="room" fdprocessedid="tvivm">
-                        </td>
-                        <td><input type="text" placeholder="Search Equipment" formControlName="equipment"
-                                fdprocessedid="aw57a6">
-                        </td>
-                        <!-- </ng-container> -->
-                    </tr>
-                </thead>
-            </table>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table">
+                    <table id="example" role="grid" class="table" formArrayName="filters">
+                        <thead>
+                            <tr role="row">
+                                <th>Department</th>
+                                <th>Room</th>
+                                <th>Equipment</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr *ngFor="let filterForm of filters.controls; let i = index" [formGroupName]="i">
+                                <!-- <ng-container [formGroup]="filterForm"> -->
+                                <td><input type="text" placeholder="Search Department" formControlName="department"
+                                        fdprocessedid="6ij23s">
+                                </td>
+                                <td><input type="text" placeholder="Search Room" formControlName="room"
+                                        fdprocessedid="tvivm">
+                                </td>
+                                <td><input type="text" placeholder="Search Equipment" formControlName="equipment"
+                                        fdprocessedid="aw57a6">
+                                </td>
+                                <!-- </ng-container> -->
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Apply</button>
-        <button type="submit" class="btn btn-success">Submit</button>  
+        <button type="submit" class="btn btn-primary">Apply</button>
+        <!-- <button type="button" class="btn btn-warning">Reset</button> -->
+        <button type="button" class="btn btn-danger" (click)="activeModal.dismiss('Cancel click')">Cancel</button>
     </div>
 </form>

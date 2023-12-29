@@ -52,8 +52,8 @@ export class FilterModalComponent {
   }
 
   onSubmit() {
-    console.log(this.form.value);
-    this.activeModal.close(this.form.value);
+    // console.log(this.form.value);
+    // console.log('this.filters.value', this.filters.value);
+    this.activeModal.close(this.filters.value);
   }
-
 }
