@@ -168,6 +168,17 @@ export class EquipmentListComponent implements OnInit {
     modalRef.componentInstance.deptId = this.deptId;
     modalRef.componentInstance.roomId = this.selectedRoomId;
     modalRef.componentInstance.projectType = this.projectType;
+    modalRef.result.then(
+      (data) => {
+        console.log('data', data);
+        this.loadEquipments();
+        // on close
+      },
+      (reason) => {
+        console.log('reason', reason);
+        // on dismiss
+      }
+    );
   }
   openAddRoomModal() {
     if (!this.deptId) {
@@ -191,6 +202,7 @@ export class EquipmentListComponent implements OnInit {
       },
       (reason) => {
         console.log('reason', reason);
+        this.loadEquipments();
         // on dismiss
       }
     );
