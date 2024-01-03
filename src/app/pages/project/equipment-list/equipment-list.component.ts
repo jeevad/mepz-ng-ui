@@ -11,6 +11,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ToasterService } from '@app/components/toaster/toaster.service';
 import { EqpDetailModalComponent } from '../eqp-detail-modal/eqp-detail-modal.component';
 import { FilterModalComponent } from './filter-modal/filter-modal.component';
+import { AddRoomModalComponent } from '../add-room-modal/add-room-modal.component';
 
 @Component({
   selector: 'app-equipment-list',
@@ -167,6 +168,32 @@ export class EquipmentListComponent implements OnInit {
     modalRef.componentInstance.deptId = this.deptId;
     modalRef.componentInstance.roomId = this.selectedRoomId;
     modalRef.componentInstance.projectType = this.projectType;
+  }
+  openAddRoomModal() {
+    if (!this.deptId) {
+      const dialogRef = this.customDialog.openAlertDialog({
+        dialogMsg: 'Please select Department from the table',
+      });
+      return;
+    }
+    const modalRef = this.modalService.open(AddRoomModalComponent, {
+      size: 'xl',
+      modalDialogClass: 'rightSideBar',
+    });
+    modalRef.componentInstance.projectId = this.projectId;
+    modalRef.componentInstance.deptId = this.deptId;
+
+    modalRef.result.then(
+      (data) => {
+        console.log('data', data);
+        this.loadEquipments();
+        // on close
+      },
+      (reason) => {
+        console.log('reason', reason);
+        // on dismiss
+      }
+    );
   }
 
   // Function to load room list

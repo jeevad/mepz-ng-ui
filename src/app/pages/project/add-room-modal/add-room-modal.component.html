@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h4 class="modal-title">Filter</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<form>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table">
+                    <table id="example1" class="table" width="100%">
+                        <thead>
+                            <tr role="row">
+                                <th>Qty</th>
+                                <th>Room</th>
+                                <th>Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of roomData">
+                                <td>
+                                    <!-- This is Qty -->
+                                    <select [(ngModel)]="item.selectedQuantity" name="rm_code" fdprocessedid="c8ea2k">
+                                        <option [ngValue]="0">0</option>
+                                        <option *ngFor="let option of selectOptions" [value]="option.value">
+                                            {{ option.label }}
+                                        </option>
+                                    </select>
+                                </td>
+                                <td>{{ item.name | uppercase}}</td>
+                                <td>{{ item.code | uppercase}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="saveRoomData()">Add</button>
+        <button type="button" class="btn btn-danger" (click)="activeModal.dismiss('Cancel click')">Close</button>
+    </div>
+</form>

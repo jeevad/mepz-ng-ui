@@ -15,8 +15,8 @@
                                 <td>
                                     <h6>Project Info</h6>
                                 </td>
-                                <td colspan="2"><strong>Code: </strong>{{this.equipmentData[0]?.projectCode}}</td>
-                                <td><strong>Project Name: </strong>{{this.equipmentData[0]?.projectName}}</td>
+                                <td colspan="2"><strong>Code: </strong>{{equipmentData[0]?.project.code}}</td>
+                                <td><strong>Project Name: </strong>{{equipmentData[0]?.project.name}}</td>
                                 <td><small>Legend:</small> <span class="label label-primary new-eq">New Equipment</span>
                                     <span class="label label-primary replace-eq">Replaced Equipment</span>
                                 </td>
@@ -39,9 +39,11 @@
                     <div class="float-end d-lg-flex mt-2">
                         <button type="button" class="btn btn-primary btn-xs me-2" title="Equipment List"
                             data-toggle="modal" data-target="#myModal4"> <i class='fal fa-list'></i></button>
-                        <button type="button" class="btn btn-xs btn-primary me-2" title="Filter" (click)="openFilterModal()"><i
-                                class='fal fa-filter'></i></button>
+                        <button type="button" class="btn btn-xs btn-primary me-2" title="Filter"
+                            (click)="openFilterModal()"><i class='fal fa-filter'></i></button>
                         <!-- Add Equipment -->
+                        <button title="Add Equipment" type="button" class="btn btn-xs btn-primary me-2"
+                            (click)="openAddRoomModal()"><i class="fal fa-file-plus"> </i> Add Rooms</button>
                         <button title="Add Equipment" type="button" class="btn btn-xs btn-primary me-2"
                             (click)="openEquipmentAllocationModal()"><i class="fal fa-file-plus"> </i></button>
                         <button title="Replace" type="button" data-toggle="modal" data-target="#myModal3" type="button"
@@ -58,18 +60,6 @@
                     <div class="card-body">
                         <app-loader *ngIf="loader"></app-loader>
 
-                        <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                            <ng-container *ngFor="let column of displayedColumns; let i = index"
-                                [matColumnDef]="column">
-                                <th mat-header-cell *matHeaderCellDef [resizeColumn]="true" [index]="i">
-                                    <span>{{column}} </span></th>
-                                <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-                            </ng-container>
-
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                        </table> -->
                         <div class="table">
 
                             <table id="example" role="grid" class="table table-resize" width="100%">
@@ -106,9 +96,10 @@
                                 </thead>
                                 <tbody>
                                     <tr role="row" class="odd" *ngFor="let eqp of filteredEquipmentData; let i=index;">
-                                        <td container="body" class="table-cell" role="gridcell" (click)="selectDept(eqp,i)" 
-                                        [class.selectedRoom]="selectedDeptIndex === i" placement="top"
-                                            [ngbTooltip]="eqp.department.name"><strong>{{eqp.department.code}}</strong>
+                                        <td container="body" class="table-cell" role="gridcell"
+                                            (click)="selectDept(eqp,i)" [class.selectedRoom]="selectedDeptIndex === i"
+                                            placement="top" [ngbTooltip]="eqp.department.name">
+                                            <strong>{{eqp.department.code}}</strong>
                                             - {{eqp.department.name}} </td>
                                         <td class="table-cell" role="gridcell" (click)="selectRoom(eqp,i)"
                                             [class.selectedRoom]="selectedIndex === i" role="button" placement="top"
