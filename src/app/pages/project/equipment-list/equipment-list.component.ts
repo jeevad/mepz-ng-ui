@@ -37,6 +37,7 @@ export class EquipmentListComponent implements OnInit {
   roomQuery: string = '';
   equipmentQuery: string = '';
   filters: any[] = [];
+  selectedDeptIndex!: number;
 
   constructor(
     public dialog: MatDialog,
@@ -144,6 +145,10 @@ export class EquipmentListComponent implements OnInit {
     this.selectedIndex = index;
   }
 
+  selectDept(eqp: any, index: number) {
+    this.deptId = eqp.department.projectDepartmentId;
+    this.selectedDeptIndex = index;
+  }
   // openCustomDialog() {
   //   this.customDialog.openAlertDialog();
   // }

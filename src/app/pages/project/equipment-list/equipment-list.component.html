@@ -106,7 +106,8 @@
                                 </thead>
                                 <tbody>
                                     <tr role="row" class="odd" *ngFor="let eqp of filteredEquipmentData; let i=index;">
-                                        <td container="body" class="table-cell" role="gridcell" placement="top"
+                                        <td container="body" class="table-cell" role="gridcell" (click)="selectDept(eqp,i)" 
+                                        [class.selectedRoom]="selectedDeptIndex === i" placement="top"
                                             [ngbTooltip]="eqp.department.name"><strong>{{eqp.department.code}}</strong>
                                             - {{eqp.department.name}} </td>
                                         <td class="table-cell" role="gridcell" (click)="selectRoom(eqp,i)"

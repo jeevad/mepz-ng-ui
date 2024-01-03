@@ -55,13 +55,13 @@ export class ProjectService {
     // data.filters.forEach((filter: any) => {});
     params.filters.forEach((item: any, i: number) => {
       if (item['department']) {
-        filters[`department[${i}]`] = item['department'];
+        filters[`departments[${i}]`] = item['department'];
       }
       if (item['equipment']) {
-        filters[`equipment[${i}]`] = item['equipment'];
+        filters[`equipments[${i}]`] = item['equipment'];
       }
       if (item['room']) {
-        filters[`room[${i}]`] = item['room'];
+        filters[`rooms[${i}]`] = item['room'];
       }
     });
     delete params.filters;
