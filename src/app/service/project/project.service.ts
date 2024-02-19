@@ -53,7 +53,7 @@ export class ProjectService {
 
     // if (Array.isArray(params.filters)) {
     // data.filters.forEach((filter: any) => {});
-    params.filters.forEach((item: any, i: number) => {
+    params.filters?.forEach((item: any, i: number) => {
       if (item['department']) {
         filters[`departments[${i}]`] = item['department'];
       }
@@ -75,7 +75,7 @@ export class ProjectService {
     );
   }
 
-  // Function to get selected equipments for a project
+  // Function to get selected equipments for a project  
   getProjectEquipments(projectId: string, deptId: string, roomId: string) {
     const url =
       environment.apiUrl +
